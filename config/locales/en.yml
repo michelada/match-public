@@ -1,16 +1,12 @@
 # Files in the config/locales directory are used for internationalization
 #
 en:
-  user:
-    confirmation_instructions: "Didn't receive confirmation ionstructions?"
-    email: "Email"
-    forgot_password: "Forgot password"
-    log_in: "Log in"
-    log_out: "Log out"
-    log_up: "Log up"
-    password: "Password"
-    password_confirmation: "Password confirmation"
-    remember_me: "Remember me"
+  buttons:
+    create: "Create"
+    new: "New"
+    edit: "Edit"
+    update: "Update"
+  home: "Home" 
   team:
     create: "Create a team"
     destroy: "Delete team"
@@ -22,11 +18,17 @@ en:
       error_creating: "Error creating the team"
       error_deleting: "Error deleting the team"
       error_updating: "Error updating the team"
-  buttons:
-    create: "Create"
-    new: "New"
-    edit: "Edit"
-    update: "Update"
+  user:
+    confirmation_instructions: "Didn't receive confirmation ionstructions?"
+    email: "Email"
+    forgot_password: "Forgot password"
+    log_in: "Log in"
+    log_out: "Log out"
+    log_up: "Log up"
+    password: "Password"
+    password_confirmation: "Password confirmation"
+    remember_me: "Remember me"
+
   activerecord:
     errors:
       models:

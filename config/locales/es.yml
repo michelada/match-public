@@ -1,6 +1,23 @@
 # Files in the config/locales directory are used for internationalization
 
 es:
+  buttons:
+    create: "Creat"
+    new: "Nuevo"
+    edit: "Editar"
+    update: "Actualizar"
+  home: "Inicio"
+  team:
+    create: "Crear un equipo"
+    destroy: "Eliminar equipo"
+    edit: "Editar equipo"
+    messajes:
+      created: "Equipo creado"
+      deleted: "Equipo eliminado"
+      updated: "Equipo actualizado"
+      error_creating: "Error creado el equipo"
+      error_deleting: "Error eliminando al equipo"
+      error_updating: "Error actualizando el equipo"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
@@ -13,22 +30,7 @@ es:
     password: "Contraseña"
     password_confirmation: "Confirmar contraseña"
     remember_me: "Recordarme"
-  team:
-    create: "Crear un equipo"
-    destroy: "Eliminar equipo"
-    edit: "Editar equipo"
-    messajes:
-      created: "Equipo creado"
-      deleted: "Equipo eliminado"
-      updated: "Equipo actualizado"
-      error_creating: "Error creado el equipo"
-      error_deleting: "Error eliminando al equipo"
-      error_updating: "Error actualizando el equipo"
-  buttons:
-    create: "Creat"
-    new: "Nuevo"
-    edit: "Editar"
-    update: "Actualizar"
+
   activerecord:
     errors:
       models:
