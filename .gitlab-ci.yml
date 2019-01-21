@@ -1,0 +1,7 @@
+test:
+  script:
+    - rails test
+
+rubocop:
+  script:
+    - rubocop
