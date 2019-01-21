@@ -63,5 +63,6 @@ es:
           attributes:
             email:
               invalid: "no valido."
+              taken: "ya registrado"
             password_confirmation:
               confirmation: "Error en la contraseñ"
