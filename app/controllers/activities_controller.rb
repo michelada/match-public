@@ -19,6 +19,32 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def destroy
+    @activity = Activity.find_by(id: params[:id])
+    if @activity.destroy
+      flash[:notice] = t('activities.messajes.deleted')
+      redirect_to activities_path
+    else
+      flash[:alert] = t('activities.messajess.erorr_deleting')
+      render 'index'
+    end
+  end
+
+  def edit
+    @activity = Activity.find_by(id: params[:id])
+  end
+
+  def update
+    @activity = Activity.find_by(id: params[:id])
+    if @activity.update(activity_params)
+      flash[:notice] = t('activities.messajes.updated')
+      redirect_to activities_path
+    else
+      flash[:notice] = t('activities.messajes.error_updatind')
+      render 'edit'
+    end
+  end
+
   private
 
   def activity_params

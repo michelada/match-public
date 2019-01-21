@@ -1,16 +1,18 @@
 %h1 
-  = t("activities.my_activities")
-= link_to t("buttons.add"), new_activity_path 
+  = t('activities.my_activities')
+= link_to t('buttons.add'), new_activity_path 
 %br
 %table
   %thead
     %tr
       %th 
-        = t("labels.name")
+        = t('labels.name')
       %th
-        = t("lables.location")
+        = t('lables.location')
       %th 
-        = t("labels.english")
+        = t('labels.english')
+      %th 
+        = t('buttons.action')
     %tbody
       - @activities&.each do |activity|
         %tr
@@ -20,3 +22,6 @@
             = activity.location
           %td
             = activity.english
+          %td
+            = link_to t('buttons.edit'), edit_activity_path(activity)
+            = link_to t('buttons.delete'), activity_path(activity), method: :delete, data: {confirm: t('actions.confirm')}

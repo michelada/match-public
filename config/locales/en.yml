@@ -1,16 +1,22 @@
 # Files in the config/locales directory are used for internationalization
 #
 en:
+  actions:
+    confirm: "Are you sure?"
   activities:
-    add: "Agregar actividad"
+    add: "Add activity"
     all: "All activities"
+    edit_activity: "Edit activity"
     my_activities: "My activities"
     messajes:
+      error_deleting: "Error deleting activity"
       error_update: "Error updating activity"
       error_upload: "Error uploading activity"
+      deleted: "Activity deleted"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
   buttons:
+    actions: "Actions"
     add: "Add"
     create: "Create"
     edit: "Edit"
