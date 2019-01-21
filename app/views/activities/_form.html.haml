@@ -1,0 +1,5 @@
+= simple_form_for (@activity) do |f|
+  = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity_name")
+  = f.input :location, label: t("labels.location"), placeholder: t("placeholders.location_name")
+  = f.input :english, label: t("labels.english")
+  = f.button :submit, option
