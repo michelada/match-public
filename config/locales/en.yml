@@ -1,12 +1,27 @@
 # Files in the config/locales directory are used for internationalization
 #
 en:
+  activities:
+    add: "Agregar actividad"
+    all: "All activities"
+    my_activities: "My activities"
+    messajes:
+      error_update: "Error updating activity"
+      error_upload: "Error uploading activity"
+      updated: "Activity updated"
+      uploaded: "Activity uploaded"
   buttons:
+    add: "Add"
     create: "Create"
-    new: "New"
     edit: "Edit"
+    new: "New"
+    upload: "Upload"
     update: "Update"
   home: "Home" 
+  labels:
+    english: "English"
+    name: "Name"
+    location: "Location"
   team:
     create: "Create a team"
     destroy: "Delete team"
@@ -18,6 +33,10 @@ en:
       error_creating: "Error creating the team"
       error_deleting: "Error deleting the team"
       error_updating: "Error updating the team"
+  placeholders:
+    activity_name: "Activity name"
+    location_name: "Link/Name"
+    team_name: "Team name"
   user:
     confirmation_instructions: "Didn't receive confirmation ionstructions?"
     email: "Email"

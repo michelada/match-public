@@ -1,12 +1,27 @@
 # Files in the config/locales directory are used for internationalization
 
 es:
+  activities:
+    add: "Add activity"
+    all: "Todas las actividades"
+    my_activities: "Mis actividades"
+    messajes:
+      error_update: "Error actualizando actividad"
+      error_upload: "Error cargando actividad"
+      updated: "Actividad actualizada"
+      uploaded: "Actividad cargada"
   buttons:
-    create: "Creat"
-    new: "Nuevo"
+    add: "Agregar"
+    create: "Crear"
     edit: "Editar"
+    new: "Nuevo"
+    upload: "Cargar"
     update: "Actualizar"
   home: "Inicio"
+  labels:
+    english: "Ingles"
+    name: "Nombre"
+    location: "Locación"
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
@@ -18,6 +33,10 @@ es:
       error_creating: "Error creado el equipo"
       error_deleting: "Error eliminando al equipo"
       error_updating: "Error actualizando el equipo"
+  placeholders:
+    activity_name: "Nombre de la actividad"
+    team_name: "Nombre del equipo"
+    location_name: "Link/Nombre"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"

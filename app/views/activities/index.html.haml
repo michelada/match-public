@@ -1,0 +1,22 @@
+%h1 
+  = t("activities.my_activities")
+= link_to t("buttons.add"), new_activity_path 
+%br
+%table
+  %thead
+    %tr
+      %th 
+        = t("labels.name")
+      %th
+        = t("lables.location")
+      %th 
+        = t("labels.english")
+    %tbody
+      - @activities&.each do |activity|
+        %tr
+          %td
+            = activity.name
+          %td
+            = activity.location
+          %td
+            = activity.english

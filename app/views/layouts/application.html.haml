@@ -15,8 +15,9 @@
       - if user_signed_in?
         = link_to t("home"), root_path unless current_page?(root_path)
         = link_to t("user.new_invitation"), new_user_invitation_path unless current_page?(new_user_invitation_path)
-        = link_to t("user.log_out"), destroy_user_session_path, method: :delete
+        = link_to t("activities.my_activities"), activities_path unless current_page?(activities_path)
         = link_to t("team.create"), new_team_path unless current_page?(root_path) || current_user.team
+        = link_to t("user.log_out"), destroy_user_session_path, method: :delete
 
 
     = yield
