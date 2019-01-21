@@ -13,6 +13,7 @@
       - if user_signed_in?
         = link_to t("user.log_out"), destroy_user_session_path, method: :delete
         = link_to t("user.new_invitation"), new_user_invitation_path
+        = link_to "Nuevo equipo", new_team_path unless current_page?(controller: "teams", action: "new") || current_user.team
 
     %p.notice= notice
     %p.alert= alert
