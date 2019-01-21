@@ -4,3 +4,9 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/*.rb'
     - 'db/*.rb'
+
+Metrics/BlockLength:
+  Enabled: false
+
+Documentation:
+  Enabled: false
