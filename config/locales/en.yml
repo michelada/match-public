@@ -28,6 +28,7 @@ en:
     english: "English"
     name: "Name"
     location: "Location"
+    type: "Type"
   team:
     create: "Create a team"
     destroy: "Delete team"
