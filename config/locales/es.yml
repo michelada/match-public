@@ -28,6 +28,7 @@ es:
     english: "Ingles"
     name: "Nombre"
     location: "Locación"
+    type: "Tipo"
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
