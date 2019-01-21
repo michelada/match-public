@@ -1,5 +1,6 @@
 # Adding function to invitation controller.
-module Users
+#
+module User
   class InvitationsController < Devise::InvitationsController
     after_action :update_user_account, only: [:create]
 
