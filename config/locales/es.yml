@@ -8,6 +8,7 @@ es:
     all: "Todas las actividades"
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
+    status: "Estado"
     messajes:
       error_deleting: "Error eliminando la actividad"
       error_update: "Error actualizando actividad"
