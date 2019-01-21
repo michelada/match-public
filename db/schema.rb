@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_213152) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.integer "type"
+    t.integer "activity_type"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
