@@ -1,7 +1,8 @@
 require 'test_helper'
-
-class Judge::MainControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+module Judge
+  class MainControllerTest < ActionDispatch::IntegrationTest
+    # test "the truth" do
+    #   assert true
+    # end
+  end
 end

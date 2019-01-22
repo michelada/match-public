@@ -1,2 +1,4 @@
-module Judge::MainHelper
+module Judge
+  module MainHelper
+  end
 end
