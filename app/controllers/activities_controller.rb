@@ -5,12 +5,15 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
+    @locations = Location.all
+    @selected_locations = []
   end
 
   def create
     @activity = Activity.new(activity_params)
     @activity.user_id = current_user.id
     if @activity.save
+      assign_locations_string
       redirect_to activities_path
       flash[:notice] = t('activities.messajes.uploaded')
     else
@@ -32,6 +35,8 @@ class ActivitiesController < ApplicationController
 
   def edit
     @activity = Activity.find_by(id: params[:id])
+    @locations = Location.all
+    @selected_locations = @activity.locations
   end
 
   def update
@@ -46,6 +51,18 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def assign_locations_string
+    @selected_locations = params[:locations_string].split(',')
+    @selected_locations.each do |location_name|
+      if Location.exists?(['name LIKE ?', location_name.to_s])
+        @activity.locations << Location.find_by(name: location_name)
+      else
+        new_location = Location.create(name: location_name)
+        @activity.locations << new_location
+      end
+    end
+  end
 
   def activity_params
     params.require(:activity).permit(:name, :english, :location)

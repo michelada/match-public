@@ -1,0 +1,4 @@
+= t("labels.add_location")
+= simple_form_for (@location) do |f|
+  = f.input :name, label: t("labels.name")
+  = f.button :submit
