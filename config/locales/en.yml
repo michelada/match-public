@@ -59,6 +59,10 @@ en:
   activerecord:
     errors:
       models:
+        activity:
+          attributes:
+            name:
+              taken: "Activity name already taken"
         user:
           attributes:
             email:

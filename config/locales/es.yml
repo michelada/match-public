@@ -61,6 +61,10 @@ es:
   activerecord:
     errors:
       models:
+        activity:
+          attributes:
+            name:
+              taken: "Ya existe una actividad con ese nombre"
         user:
           attributes:
             email:
