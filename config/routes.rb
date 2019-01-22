@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :apis
   resources :activities
   resources :teams
   devise_for :users, controllers: { invitations: 'users/invitations' }
