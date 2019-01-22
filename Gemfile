@@ -32,10 +32,13 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+  gem 'bootstrap', '~> 4.1.3'
 end
 
 group :test do
+  gem 'simplecov'
   gem 'capybara', '>= 2.15'
+  gem "minitest-rails"
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
 end
