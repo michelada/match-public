@@ -17,8 +17,6 @@
         = link_to t("user.new_invitation"), new_user_invitation_path unless current_page?(new_user_invitation_path)
         = link_to t("activities.my_activities"), activities_path unless current_page?(activities_path)
         = link_to t("team.create"), new_team_path unless current_page?(new_team_path) || current_user.team
-        = current_page?(new_team_path)
-        = current_user.team
         = link_to t("user.log_out"), destroy_user_session_path, method: :delete
 
 
