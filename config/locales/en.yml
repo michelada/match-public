@@ -24,11 +24,14 @@ en:
     new: "New"
     upload: "Upload"
     update: "Update"
+  errors:
+    format: "%{messaje}"
   home: "Home" 
   labels:
     english: "English"
-    name: "Name"
     location: "Location"
+    name: "Name"
+    other_location: "Add another: "
     type: "Type"
   team:
     create: "Create a team"
@@ -63,9 +66,15 @@ en:
           attributes:
             name:
               taken: "Activity name already taken"
+            location:
+              blank: "Location needed"
+        team:
+          attributes:
+            name:
+              taken: "Team name already taken"
         user:
           attributes:
             email:
-              invalid: "invalid"
+              invalid: "Invalid email"
             password_confirmation:
               confirmation: "Password does not match"

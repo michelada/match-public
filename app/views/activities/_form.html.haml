@@ -1,6 +1,27 @@
 = simple_form_for (@activity) do |f|
+  .location_list_elements
+    %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
+ 
   = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity_name")
+
+  = f.label :location
+  = f.select :location, @locations.map {|l| l.name}
+  = link_to "Add", new_activity_path, id: "add_location"
+
+  #other_location
+    =f.input :location, label: t("labels.other_location")
+  %a#add_new{href: "#"} Add
+
+  .locations_list
+    %ul
+      - loaded_locations = ""
+      - @selected_locations.each_with_index do |location|
+        %li{id: location[:id]}= location[:name]
+        %input{id: location[:id], type: "button", value: "-"}
+        - loaded_locations += (location[:name]+",")
+      %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
+
   = f.input :activity_type, label: t('labels.type'), collection: Activity.activity_types.keys, include_blank: false
   = f.input :location, label: t("labels.location"), placeholder: t("placeholders.location_name")
   = f.input :english, label: t("labels.english")
-  = f.button :submit, option
+  %input{:type=>"submit"}
