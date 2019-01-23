@@ -29,8 +29,9 @@ en:
   home: "Home" 
   labels:
     english: "English"
-    name: "Name"
     location: "Location"
+    name: "Name"
+    other_location: "Add another: "
     type: "Type"
   team:
     create: "Create a team"
