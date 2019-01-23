@@ -76,7 +76,7 @@ es:
         user:
           attributes:
             email:
-              invalid: "E-mail no valido."
+              invalid: "E-mail no valido"
               taken: "E-mail ya registrado"
             password_confirmation:
-              confirmation: "Error en la contraseñ"
+              confirmation: "Error en la contraseña"
