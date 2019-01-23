@@ -1,0 +1,2 @@
+module Judge::ActivitiesHelper
+end

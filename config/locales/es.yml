@@ -9,6 +9,7 @@ es:
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
     status: "Estado"
+    title: "Actividades"
     messajes:
       error_deleting: "Error eliminando la actividad"
       error_update: "Error actualizando actividad"
@@ -29,8 +30,9 @@ es:
   home: "Inicio"
   labels:
     english: "Ingles"
-    name: "Nombre"
     location: "Locación"
+    name: "Nombre"
+    other_location: "Otra:"
     type: "Tipo"
   team:
     create: "Crear un equipo"
