@@ -1,0 +1,56 @@
+body {
+  background-color: $blue;
+  color: #333;
+  margin: 33px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  color: $white;
+}
+p, ol, ul, td {
+  font-size: 13px;
+  line-height: 18px;
+  color: $white;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: $yellow;
+
+  &:visited {
+    color: $yellow;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+th {
+  padding-bottom: 5px;
+}
+
+td {
+  padding: 0 5px 7px;
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+label {
+  display: block;
+  color:$white;
+}
