@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_225044) do
+ActiveRecord::Schema.define(version: 2019_01_23_191444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,26 @@ ActiveRecord::Schema.define(version: 2019_01_21_225044) do
     t.integer "activity_type", null: false
     t.integer "status", default: 0, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "activities_locations", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "location_id", null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "comment"
+    t.boolean "status"
+    t.integer "activity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_feedbacks_on_activity_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|
@@ -60,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_225044) do
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
-    t.index %w[invited_by_type invited_by_id], name: "index_users_on_invited_by_type_and_invited_by_id"
+    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["team_id"], name: "index_users_on_team_id"
   end
