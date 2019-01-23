@@ -6,7 +6,6 @@ module Judge
 
     def show
       @activity = Activity.find(params[:id])
-      @feedback = feedback.find_by(id: params[:id])
     end
   end
 end
