@@ -55,7 +55,7 @@ class ActivitiesController < ApplicationController
   private
 
   def assign_locations_string
-    @selected_locations = params[:locations_string].split(',')
+    @selected_locations = params[:locations_string].split('ß')
     @selected_locations.each do |location_name|
       if Location.exists?(['name LIKE ?', location_name.to_s])
         @activity.locations << Location.find_by(name: location_name)
@@ -67,6 +67,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :english, :location, :activity_type)
+    params.require(:activity).permit(:name, :english, :location, :activity_type, :locations_string)
   end
 end

@@ -4,13 +4,13 @@
  
   = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity_name")
 
-  = f.label :location
-  = f.select :location, @locations.map {|l| l.name}
-  = link_to "Add", new_activity_path, id: "add_location"
+  = t("labels.location")
+  = f.select :locations, @locations.map {|l| l.name}
+  = link_to t("buttons.add"), new_activity_path, id: "add_location"
 
   #other_location
-    =f.input :location, label: t("labels.other_location")
-  %a#add_new{href: "#"} Add
+    = f.input :location, label: t("labels.other_location")
+  = link_to t("buttons.add"), new_activity_path, id: "add_new"
 
   .locations_list
     %ul
@@ -18,7 +18,7 @@
       - @selected_locations.each_with_index do |location|
         %li{id: location[:id]}= location[:name]
         %input{id: location[:id], type: "button", value: "-"}
-        - loaded_locations += (location[:name]+",")
+        - loaded_locations += (location[:name]+"ß")
       %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
 
   = f.input :activity_type, label: t('labels.type'), collection: Activity.activity_types.keys, include_blank: false
