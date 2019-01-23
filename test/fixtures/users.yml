@@ -1,6 +1,6 @@
 
 user:
-  email: 'miguel.urbina@michelada.io'
+  email: 'admin_example@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
   confirmed_at: <%= Time.zone.now - 1.hour %>
