@@ -42,6 +42,8 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find_by(id: params[:id])
     if @activity.update(activity_params)
+      @activity.locations = []
+      assign_locations_string
       flash[:notice] = t('activities.messajes.updated')
       redirect_to activities_path
     else
@@ -58,6 +60,7 @@ class ActivitiesController < ApplicationController
       if Location.exists?(['name LIKE ?', location_name.to_s])
         @activity.locations << Location.find_by(name: location_name)
       else
+        new_location = Location.new
         new_location = Location.create(name: location_name)
         @activity.locations << new_location
       end

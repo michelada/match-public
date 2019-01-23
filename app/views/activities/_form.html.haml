@@ -1,7 +1,7 @@
 = simple_form_for (@activity) do |f|
   .location_list_elements
     %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
-    <input type="text" hidden="true" name=/>
+ 
   = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity_name")
 
   = f.label :location
@@ -14,9 +14,12 @@
   
   .locations_list
     %ul
-      - @selected_locations.each_with_index do |location, i|
-        %li{id: i}= location[:name]
-        %input{id:i, type: "button", value: "-"}
-  
+      - loaded_locations = ""
+      - @selected_locations.each_with_index do |location|
+        %li{id: location[:id]}= location[:name]
+        %input{id: location[:id], type: "button", value: "-"}
+        - loaded_locations += (location[:name]+",")
+      %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
+
   = f.input :english, label: t("labels.english")
   %input{:type=>"submit"}
