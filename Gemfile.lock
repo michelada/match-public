@@ -148,6 +148,9 @@ GEM
     minitest-rails (3.0.0)
       minitest (~> 5.8)
       railties (~> 5.0)
+    minitest-rails-capybara (0.0.2)
+      capybara
+      minitest-rails
     msgpack (1.2.6)
     multi_json (1.13.1)
     nio4r (2.3.1)
@@ -295,6 +298,7 @@ DEPENDENCIES
   letter_opener
   listen (>= 3.0.5, < 3.2)
   minitest-rails
+  minitest-rails-capybara
   pg
   pry-rails
   puma (~> 3.11)
