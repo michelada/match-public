@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root 'main#index'
   namespace :judge do
     resources :main, only: [:index]
-    resources :activities
+    resources :avtivities, only: %w[show index]
+    namespace :activities do
+      resources :feedback, only: %w[create edit update]
+    end
   end
 end
