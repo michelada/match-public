@@ -13,8 +13,8 @@
       %p.alert= alert
       = link_to t('user.log_in'), new_user_session_path unless user_signed_in? || current_page?(new_user_session_path)
       - if user_signed_in?
-        = link_to t('home'), jugde_main_index_path unless current_page?(judge_main_index_path)
-        = link_to t('activities.all'), activities_path unless current_page?(activities_path)
+        = link_to t('home'), judge_main_index_path unless current_page?(judge_main_index_path)
+        = link_to t('activities.all'), judge_activities_path unless current_page?(judge_activities_path)
         = link_to t('team.create'), new_team_path unless current_page?(new_team_path) || current_user.team
         = link_to t('user.log_out'), destroy_user_session_path, method: :delete
 
