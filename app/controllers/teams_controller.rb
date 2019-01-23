@@ -1,4 +1,13 @@
 class TeamsController < ApplicationController
+
+  def index
+    @top_trhee_teams = Team.obtain_top_three_teams
+    respond_to do |format|
+      format.html
+      format.json { render json: @top_trhee_teams}
+    end
+  end
+
   def new
     @team = Team.new
   end

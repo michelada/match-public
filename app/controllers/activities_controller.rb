@@ -1,6 +1,12 @@
 class ActivitiesController < ApplicationController
   def index
     @activities = Activity.user_activities(current_user.id)
+
+    @last_activity = Activity.last
+    respond_to do |format|
+      format.html
+      format.json { render json: @last_activity }
+    end
   end
 
   def new
