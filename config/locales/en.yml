@@ -8,6 +8,7 @@ en:
     all: "All activities"
     edit_activity: "Edit activity"
     my_activities: "My activities"
+    status: "Status"
     messajes:
       error_deleting: "Error deleting activity"
       error_update: "Error updating activity"
@@ -23,12 +24,15 @@ en:
     new: "New"
     upload: "Upload"
     update: "Update"
+  errors:
+    format: "%{messaje}"
   home: "Home" 
   labels:
     english: "English"
-    name: "Name"
     location: "Location"
+    name: "Name"
     other_location: "Add another: "
+    type: "Type"
   team:
     create: "Create a team"
     destroy: "Delete team"
@@ -58,9 +62,19 @@ en:
   activerecord:
     errors:
       models:
+        activity:
+          attributes:
+            name:
+              taken: "Activity name already taken"
+            location:
+              blank: "Location needed"
+        team:
+          attributes:
+            name:
+              taken: "Team name already taken"
         user:
           attributes:
             email:
-              invalid: "invalid"
+              invalid: "Invalid email"
             password_confirmation:
               confirmation: "Password does not match"

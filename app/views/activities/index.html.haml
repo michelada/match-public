@@ -8,9 +8,13 @@
       %th 
         = t('labels.name')
       %th
+        = t('labels.type')
+      %th
         = t('lables.location')
       %th 
         = t('labels.english')
+      %th 
+        = t('activities.status')
       %th 
         = t('buttons.action')
     %tbody
@@ -19,9 +23,13 @@
           %td
             = activity.name
           %td
+            = activity.activity_type
+          %td
             = activity.locations.first&.name
           %td
-            = activity.english
+            = activity.english ? "Sí": "No"
+          %td 
+            = activity.status 
           %td
             = link_to t('buttons.edit'), edit_activity_path(activity)
             = link_to t('buttons.delete'), activity_path(activity), method: :delete, data: {confirm: t('actions.confirm')}

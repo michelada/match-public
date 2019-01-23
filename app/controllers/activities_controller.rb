@@ -60,7 +60,6 @@ class ActivitiesController < ApplicationController
       if Location.exists?(['name LIKE ?', location_name.to_s])
         @activity.locations << Location.find_by(name: location_name)
       else
-        new_location = Location.new
         new_location = Location.create(name: location_name)
         @activity.locations << new_location
       end
@@ -68,6 +67,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :english, :location)
+    params.require(:activity).permit(:name, :english, :location, :activity_type)
   end
 end

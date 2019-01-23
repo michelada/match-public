@@ -8,6 +8,7 @@ es:
     all: "Todas las actividades"
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
+    status: "Estado"
     messajes:
       error_deleting: "Error eliminando la actividad"
       error_update: "Error actualizando actividad"
@@ -23,12 +24,15 @@ es:
     new: "Nuevo"
     upload: "Cargar"
     update: "Actualizar"
+  errors:
+    format: "%{message}"
   home: "Inicio"
   labels:
     english: "Ingles"
-    name: "Nombre"
     location: "Locación"
+    name: "Nombre"
     other_location: "Otra:"
+    type: "Tipo"
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
@@ -60,10 +64,20 @@ es:
   activerecord:
     errors:
       models:
+        activity:
+          attributes:
+            name:
+              taken: "Ya existe una actividad con ese nombre"
+            location:
+              blank: "Necesitas agregar una locación"
+        team:
+          attributes:
+            name:
+              taken: "El equipo ya existente"
         user:
           attributes:
             email:
-              invalid: "no valido."
-              taken: "ya registrado"
+              invalid: "E-mail no valido"
+              taken: "E-mail ya registrado"
             password_confirmation:
-              confirmation: "Error en la contraseñ"
+              confirmation: "Error en la contraseña"

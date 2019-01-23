@@ -21,5 +21,7 @@
         - loaded_locations += (location[:name]+",")
       %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
 
+  = f.input :activity_type, label: t('labels.type'), collection: Activity.activity_types.keys, include_blank: false
+  = f.input :location, label: t("labels.location"), placeholder: t("placeholders.location_name")
   = f.input :english, label: t("labels.english")
   %input{:type=>"submit"}

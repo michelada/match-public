@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+    %title McmMichelada
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+      %p.notice= notice
+      %p.alert= alert
+      = link_to t('user.log_in'), new_user_session_path unless user_signed_in? || current_page?(new_user_session_path)
+      - if user_signed_in?
+        = link_to t('home'), root_path unless current_page?(root_path)
+        = link_to t('user.new_invitation'), new_user_invitation_path unless current_page?(new_user_invitation_path)
+        = link_to t('activities.my_activities'), activities_path unless current_page?(activities_path)
+        = link_to t('team.create'), new_team_path unless current_page?(new_team_path) || current_user.team
+        = link_to t('user.log_out'), destroy_user_session_path, method: :delete
+
+
+    = yield

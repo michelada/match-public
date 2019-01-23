@@ -16,12 +16,14 @@ ActiveRecord::Schema.define(version: 2019_01_22_192914) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string "name"
-    t.boolean "english"
+    t.string "name", null: false
+    t.boolean "english", null: false
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.integer "activity_type", null: false
+    t.integer "status", default: 0, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -37,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_01_22_192914) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_01_22_192914) do
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
     t.bigint "team_id"
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
