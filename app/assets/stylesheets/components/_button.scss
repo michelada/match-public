@@ -1,0 +1,13 @@
+  .button {
+  background: $yellow;
+  color: $blue;
+  width: 200px;
+  height: 30px;
+  line-height: 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: none;
+    &:hover {
+      color: $blue;
+    }
+}
