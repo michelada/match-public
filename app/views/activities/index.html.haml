@@ -25,7 +25,7 @@
           %td
             = activity.activity_type
           %td
-            = activity.location
+            = activity.locations.first&.name
           %td
             = activity.english ? "Sí": "No"
           %td 
