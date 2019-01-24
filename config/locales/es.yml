@@ -35,6 +35,7 @@ es:
     english: "Ingles"
     location: "Locación"
     name: "Nombre"
+    notes: "Notas"
     other_location: "Otra:"
     type: "Tipo"
   team:
@@ -50,8 +51,9 @@ es:
       error_updating: "Error actualizando el equipo"
   placeholders:
     activity_name: "Nombre de la actividad"
+    notes_description: "Link / Información adicional"
+    other_location: "No encuentras una locación? Agregala aquí"
     team_name: "Nombre del equipo"
-    location_name: "Link/Nombre"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
@@ -72,6 +74,7 @@ es:
           attributes:
             name:
               taken: "Ya existe una actividad con ese nombre"
+              blank: "Debes de poner un nombre"
             location:
               blank: "Necesitas agregar una locación"
         team:

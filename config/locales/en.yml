@@ -35,6 +35,7 @@ en:
     english: "English"
     location: "Location"
     name: "Name"
+    notes: "Notes"
     other_location: "Add another: "
     type: "Type"
   team:
@@ -50,7 +51,8 @@ en:
       error_updating: "Error updating the team"
   placeholders:
     activity_name: "Activity name"
-    location_name: "Link/Name"
+    notes_description: "Link / Aditional information"
+    other_location: "Can't find your location? Add it here"
     team_name: "Team name"
   user:
     confirmation_instructions: "Didn't receive confirmation ionstructions?"
@@ -70,6 +72,7 @@ en:
           attributes:
             name:
               taken: "Activity name already taken"
+              blank: "A name is required"
             location:
               blank: "Location needed"
         team:

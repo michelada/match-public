@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
-    @locations = Location.all.sort
+    @locations = Location.all
     @selected_locations = []
   end
 
@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
       redirect_to activities_path
       flash[:notice] = t('activities.messajes.uploaded')
     else
-      flash[:alert] = t('activities.messajes.error_uploading')
+      flash[:alert] = t('activities.messajes.error_creating')
       render 'new'
     end
   end
@@ -47,7 +47,7 @@ class ActivitiesController < ApplicationController
       flash[:notice] = t('activities.messajes.updated')
       redirect_to activities_path
     else
-      flash[:notice] = t('activities.messajes.error_updatind')
+      flash[:notice] = t('activities.messajes.error_updating')
       render 'edit'
     end
   end
@@ -56,15 +56,15 @@ class ActivitiesController < ApplicationController
 
   def assign_locations_string
     @selected_locations = params[:locations_string]
-    unless @selected_locations.empty?
-      @selected_locations = @selected_locations.split('ß')
-      @selected_locations.each do |location_name|
-        if Location.exists?(['name LIKE ?', location_name.to_s])
-          @activity.locations << Location.find_by(name: location_name)
-        else
-          new_location = Location.create(name: location_name)
-          @activity.locations << new_location
-        end
+    return if @selected_locations.empty?
+
+    @selected_locations = @selected_locations.split('ß')
+    @selected_locations.each do |location_name|
+      if Location.exists?(['name LIKE ?', location_name.to_s])
+        @activity.locations << Location.find_by(name: location_name)
+      else
+        new_location = Location.create(name: location_name)
+        @activity.locations << new_location
       end
     end
   end
