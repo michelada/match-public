@@ -1,18 +1,18 @@
 body {
   background-color: $blue;
   color: #333;
-  margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
   line-height: 18px;
   font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h2 {
   color: $white;
 }
 p, ol, ul, td {
-  font-size: 13px;
+  font-size: $primary-font-size;
   line-height: 18px;
   color: $white;
 }
@@ -25,14 +25,10 @@ pre {
 
 a {
   color: $yellow;
+  font-size: $secondary-font-size;
 
   &:visited {
     color: $yellow;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
   }
 }
 
@@ -53,4 +49,5 @@ div {
 label {
   display: block;
   color:$white;
+  font-size: $primary-font-size;
 }

@@ -20,5 +20,6 @@
         = link_to t("team.create"), new_team_path unless current_page?(new_team_path) || current_user.team
         = link_to t("user.log_out"), destroy_user_session_path, method: :delete
 
-
-    = yield
+    .application-content
+      = yield
+  = render partial: 'welcome/footer'
