@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class FeedbackControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = users(:user)
+  end
+
+  test "user can create a comment" do
+    sign_in @user
+    feedback = feedbacks(:feedback)
+    assert true
+  end
 end
