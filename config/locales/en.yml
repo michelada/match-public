@@ -25,6 +25,9 @@ en:
     new: "New"
     upload: "Upload"
     update: "Update"
+  comments:
+    all: "Comments"
+    create: "Comment"
   errors:
     format: "%{messaje}"
   home: "Home" 

@@ -25,6 +25,9 @@ es:
     new: "Nuevo"
     upload: "Cargar"
     update: "Actualizar"
+  comments:
+    all: "Comentarios"
+    create: "Comentar"
   errors:
     format: "%{message}"
   home: "Inicio"

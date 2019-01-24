@@ -1,6 +1,14 @@
 %h2
   = @activity.name
 
+- @activity.feedback.each do |feedback|
+  = feedback.user.name? ? feedback.user.name : feedback.user.email
+  %br
+  = feedback.comment
+  %br
+
+%h2 
 = simple_form_for [@activity, @feedback] do |f|
-  = f.input :comment, label: "Comentario"
-  = f.button :submit, label: "Comentar"
+  = f.input :comment, label: t('comments.all')
+  = f.button :submit, t('comments.create')
+
