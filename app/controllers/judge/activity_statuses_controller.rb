@@ -4,7 +4,7 @@ module Judge
       @activity_status = ActivityStatus.new(activity_status_params)
       @activity_status.user_id = current_user.id
       @activity_status.aprove = true
-      if @activity_status.save
+      if @activity_status.save && verify_activity_general_status
         flash[:notice] = t('activities.messajes.aproved')
       else
         flash[:alert] = t('activities.messajes.error_aproving')
@@ -14,7 +14,7 @@ module Judge
 
     def update
       change_activity_status
-      if @activity_status.update_attribute(:aprove, @activity_status.aprove)
+      if @activity_status.update_attribute(:aprove, @activity_status.aprove) && verify_activity_general_status
         flash[:notice] = @activity_status.aprove ? t('activities.messajes.aproved') : t('activities.messajes.unaproved')
       else
         flash[:alert] = @activity_status.aprove ? t('activities.messajes.error_aproving') : t('activities.messajes.error_unaproving')
@@ -31,6 +31,16 @@ module Judge
 
     def activity_status_params
       params.permit(:activity_id)
+    end
+
+    def verify_activity_general_status
+      activity_statuses = ActivityStatus.aproves_in_activity(params[:activity_id])
+      activity = Activity.find(params[:activity_id])
+      if activity_statuses.count == 3
+        activity.update_attribute(:status, 2)
+      else
+        activity.update_attribute(:status, 1)
+      end
     end
   end
 end
