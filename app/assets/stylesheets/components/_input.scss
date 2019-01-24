@@ -1,0 +1,13 @@
+.input-text {
+  all: unset;
+  background: $light-blue;
+  color: $white;
+  padding: $regular-padding;
+  border-radius: $border-radius;
+  width: 100%;
+  height: 40px;
+  &:focus {
+    color: $white;    
+    background: $light-blue;
+  }
+}
