@@ -1,5 +1,9 @@
 %h2
   = @activity.name
+  %h3
+    = @activity.status
+  - if @activity.english
+    %h3 Inglés
 
 - @activity.feedback.each do |feedback|
   = feedback.user.name? ? feedback.user.name : feedback.user.email
