@@ -14,5 +14,5 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-// crashes on test  require bootstrap
+//= require bootstrap
 //= require_tree .
