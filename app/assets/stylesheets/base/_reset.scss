@@ -6,6 +6,9 @@ body {
   line-height: 18px;
   margin: 33px;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h2 {
@@ -16,7 +19,7 @@ color: $white;
 }
 p, ol, ul, td {
   color: $white;
-  font-size: 13px;
+  font-size: $primary-font-size;
   line-height: 18px;
 }
 
@@ -28,14 +31,10 @@ pre {
 
 a {
   color: $yellow;
+  font-size: $secondary-font-size;
 
   &:visited {
     color: $yellow;
-  }
-
-  &:hover {
-    background-color: $mirage;
-    color: $white;
   }
 }
 
@@ -55,5 +54,5 @@ div {
 
 label {
   color:$white;
-  display: block;
+  font-size: $primary-font-size;
 }
