@@ -5,9 +5,13 @@ class FeedbackControllerTest < ActionDispatch::IntegrationTest
     @user = users(:user)
   end
 
-  test "user can create a comment" do
+  test 'user can create a comment' do
     sign_in @user
     feedback = feedbacks(:feedback)
-    assert true
+    activity_android = activities(:android_studio)
+    post activity_feedbacks_path(activity_android.id), params: { feedback: { name: 'Example',
+                                                                             user_id: feedback.user_id,
+                                                                             activity_id: feedback.activity_id } }
+    assert_redirected_to activity_path(feedback.activity_id)
   end
 end
