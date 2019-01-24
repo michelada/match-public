@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   namespace :judge do
     resources :main, only: [:index]
   end
+  get '/api' => 'api#api'
 end

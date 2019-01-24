@@ -3,6 +3,7 @@ class ActivitiesController < ApplicationController
     @activities = Activity.user_activities(current_user.id)
 
     @last_activity = Activity.last
+    
     respond_to do |format|
       format.html
       format.json { render json: @last_activity }
@@ -55,5 +56,7 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:name, :english, :location, :activity_type)
+  end
+
   end
 end
