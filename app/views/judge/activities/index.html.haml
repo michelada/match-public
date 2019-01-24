@@ -18,7 +18,7 @@
       - @activities&.each do |activity|
         %tr
           %td
-            = link_to activity.name, judge_activity_path(activity)
+            = link_to activity.name, activity_path(activity)
           %td
             = activity.activity_type
           %td

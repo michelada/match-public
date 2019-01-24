@@ -4,9 +4,11 @@ class CreateFeedbacks < ActiveRecord::Migration[5.2]
       t.string :comment
       t.boolean :status
       t.integer :activity_id
+      t.integer :user_id
 
       t.timestamps
     end
     add_index :feedbacks, :activity_id
+    add_index :feedbacks, :user_id
   end
 end

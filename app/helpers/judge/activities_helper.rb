@@ -1,2 +1,4 @@
-module Judge::ActivitiesHelper
+module Judge
+  module ActivitiesHelper
+  end
 end

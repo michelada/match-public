@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
+    @feedback = Feedback.new
     @locations = Location.all
     @selected_locations = []
   end
@@ -20,6 +21,11 @@ class ActivitiesController < ApplicationController
       flash[:alert] = t('activities.messajes.error_uploading')
       render 'new'
     end
+  end
+
+  def show
+    @activity = Activity.find(params[:id])
+    @feedback = Feedback.new
   end
 
   def destroy

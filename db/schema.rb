@@ -36,9 +36,11 @@ ActiveRecord::Schema.define(version: 2019_01_23_191444) do
     t.string "comment"
     t.boolean "status"
     t.integer "activity_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_feedbacks_on_activity_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
   create_table "locations", force: :cascade do |t|

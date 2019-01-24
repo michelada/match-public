@@ -1,5 +1,5 @@
 module Judge
-  class JudgeController < BaseController
+  class JudgeController < ApplicationController
     before_action :authenticate_user!
     layout 'judge/application'
 
