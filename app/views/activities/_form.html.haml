@@ -9,7 +9,7 @@
   = link_to t("buttons.add"), new_activity_path, id: "add_location"
 
   #other_location
-    = f.input :location, label: t("labels.other_location")
+    = f.input :locations, label: t("labels.other_location")
   = link_to t("buttons.add_other"), new_activity_path, id: "add_new"
 
   .locations_list
@@ -24,4 +24,4 @@
   = f.input :activity_type, label: t('labels.type'), collection: Activity.activity_types.keys, include_blank: false
   = f.input :location, label: t("labels.location"), placeholder: t("placeholders.location_name")
   = f.input :english, label: t("labels.english")
-  %input{:type=>"submit"}
+  %input{:type=>"submit", :value=> t("buttons.submit")}

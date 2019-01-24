@@ -68,7 +68,7 @@ function deleteLI(){
     var value = ($(('li#' + this.id)).text());
     
     if(value !== ""){
-      $('#locations_string').val($('#locations_string').val().replace((value + ","),''));
+      $('#locations_string').val($('#locations_string').val().replace((value + "ß"),''));
     }
 
     $('li, input').remove("#" + this.id);

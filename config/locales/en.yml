@@ -21,14 +21,17 @@ en:
     add: "Add"
     add_other: "Add other"
     create: "Create"
+    delete: "Delete"
     edit: "Edit"
     new: "New"
+    submit: "Submit"
     upload: "Upload"
     update: "Update"
   errors:
     format: "%{messaje}"
   home: "Home" 
   labels:
+    description: "Description"
     english: "English"
     location: "Location"
     name: "Name"

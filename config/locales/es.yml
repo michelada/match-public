@@ -21,14 +21,17 @@ es:
     add: "Agregar"
     add_other: "Agregar otro"
     create: "Crear"
+    delete: "Eliminar"
     edit: "Editar"
     new: "Nuevo"
+    submit: "Enviar"
     upload: "Cargar"
     update: "Actualizar"
   errors:
     format: "%{message}"
   home: "Inicio"
   labels:
+    description: "Descripción"
     english: "Ingles"
     location: "Locación"
     name: "Nombre"
