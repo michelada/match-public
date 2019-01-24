@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', function() {
   //Handles items added from the select input.
   $('#add_location').on('click', function(ev) {
     ev.preventDefault();
-    var activity = $('#activity_location').val();
+    var activity = $('#activity_locations').val();
     var locString = $('#locations_string').val();
 
     if(locString.includes(activity)){
@@ -39,13 +39,14 @@ $(document).on('turbolinks:load', function() {
     ev.preventDefault();
     var textVal = $('#other_location input').val();
     var locString = $('#locations_string').val();
+    var activity = $('#other_location input').val();
+
     if($(textVal) === ""){
       alert('You can leave this field blank')
     }else {
       if(locString.includes(activity)){
         alert("The element you're tryng to add is already on the list")
       }else{
-        var activity = $('#other_location input').val();
         $('#locations_string').val(locString+ activity + "ß");
         $('.locations_list ul').append('<li id=' + counter + '>' + activity + '</li>');
         $('.locations_list ul').append('<input id=' + counter + ' type="button" value="-">');

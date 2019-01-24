@@ -19,6 +19,7 @@ en:
   buttons:
     actions: "Actions"
     add: "Add"
+    add_other: "Add other"
     create: "Create"
     edit: "Edit"
     new: "New"
