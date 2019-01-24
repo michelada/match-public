@@ -11,12 +11,19 @@ es:
     status: "Estado"
     title: "Actividades"
     messajes:
+      aproved: "Actividad aprobada"
+      erro_aproving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"
+      error_unaproving: "Error desaprobando la actividad"
       error_update: "Error actualizando actividad"
       error_upload: "Error cargando actividad"
       deleted: "Actividad eliminada"
+      unaproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
+    statuses:
+      aprove: "Aprobar"
+      unaprove: "Desaprobar"
   buttons:
     actions: "Acciones"
     add: "Agregar"

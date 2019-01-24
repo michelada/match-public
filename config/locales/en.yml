@@ -11,12 +11,20 @@ en:
     status: "Status"
     title: "Activities"
     messajes:
+      aproved: "Activity aproved"
+      error_aproving: "Error aproving activity"
+      error_unaproving: "Error unaproving activity"
       error_deleting: "Error deleting activity"
       error_update: "Error updating activity"
       error_upload: "Error uploading activity"
+      unaproved: "Succesfully unaproved activity"
       deleted: "Activity deleted"
+      unaproved: "The activity was unaproved"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
+    statuses:
+      aprove: "Aprove"
+      unaprove: "Unaprove"
   buttons:
     actions: "Actions"
     add: "Add"
