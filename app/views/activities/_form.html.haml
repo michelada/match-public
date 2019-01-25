@@ -4,24 +4,26 @@
  
   = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity_name")
 
-  = f.label :location
-  = f.select :location, @locations.map {|l| l.name}
-  = link_to "Add", new_activity_path, id: "add_location"
+  = t("labels.location")
+  - unless @locations.nil?
+    = f.select :locations, @locations.sort_by{ |loc | loc.name.downcase }.map {|l| l.name}
+  = link_to t("buttons.add"), new_activity_path, id: "add_location"
 
   #other_location
-    =f.input :location, label: t("labels.other_location")
-  %a#add_new{href: "#"} Add
+    = f.input :locations, label: t("labels.other_location"), placeholder: t("placeholders.other_location")
+    = link_to t("buttons.add_other"), new_activity_path, id: "add_new"
 
   .locations_list
     %ul
       - loaded_locations = ""
-      - @selected_locations.each_with_index do |location|
-        %li{id: location[:id]}= location[:name]
-        %input{id: location[:id], type: "button", value: "-"}
-        - loaded_locations += (location[:name]+",")
+      - unless @selected_locations.nil? 
+        - @selected_locations.each_with_index do |location|
+          %li{id: location[:id]}= location[:name]
+          %input{id: location[:id], type: "button", value: "-"}
+          - loaded_locations += (location[:name]+"ß")
       %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
 
   = f.input :activity_type, label: t('labels.type'), collection: Activity.activity_types.keys, include_blank: false
-  = f.input :location, label: t("labels.location"), placeholder: t("placeholders.location_name")
+  = f.input :notes, label: t("labels.notes"), placeholder: t("placeholders.notes_description")
   = f.input :english, label: t("labels.english")
-  %input{:type=>"submit"}
+  %input{:type=>"submit", :value=> t("buttons.submit")}

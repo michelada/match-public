@@ -17,11 +17,17 @@ h1 {
   text-transform: uppercase;
 }
 
+em {
+  color: $white;
+  font-size: $secondary-font-size
+}
+
 p, ol, ul, td {
   color: $white;
   font-size: $primary-font-size;
   line-height: 18px;
 }
+
 
 pre {
   background-color: $blue;
@@ -31,7 +37,7 @@ pre {
 
 a {
   color: $yellow;
-  font-size: $secondary-font-size;
+  font-size: $primary-font-size;
 
   &:visited {
     color: $yellow;

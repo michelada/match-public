@@ -1,18 +1,19 @@
-%h2
-  = t("user.log_in")
-= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email, t("user.email")
-    %br
-    = f.email_field :email, class: 'input-text'
-  .field
-    = f.label :password, t("user.password")
-    %br
-    = f.password_field :password, class: 'input-text'
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me, t("user.remember_me")
-  .actions
-    = f.submit t("user.log_in"), class: 'button'
-= render "devise/shared/links"
+.container.center-vertical
+  .main-content.small
+    .image-content
+      = image_tag 'michelada_white_one', alt: 'michelada', width: '300', class: 'image-michelada'
+    .information-content
+      = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.email_field :email, class: 'input-text'
+        .field
+          = f.password_field :password, class: 'input-text password-field'
+          = link_to t("user.forgot_password"), new_password_path(resource_name)
+        - if devise_mapping.rememberable? 
+          .field
+            = f.check_box :remember_me, class: 'checkbx'
+        .actions
+          = f.submit t("user.log_in"), class: 'button'
+    %p
+      = t("user.new-registration")
+      = link_to t("user.log_up"), new_registration_path(resource_name)

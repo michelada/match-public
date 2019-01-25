@@ -10,7 +10,7 @@
       %th
         = t('labels.type')
       %th
-        = t('lables.location')
+        = t('labels.location')
       %th 
         = t('labels.english')
       %th 
@@ -21,7 +21,7 @@
       - @activities&.each do |activity|
         %tr
           %td
-            = activity.name
+            = link_to activity.name, activity_path(activity.id)
           %td
             = activity.activity_type
           %td
