@@ -16,9 +16,9 @@ class ActivitiesController < ApplicationController
     if @activity.save
       assign_locations_string
       redirect_to activities_path
-      flash[:notice] = t('activities.messajes.uploaded')
+      flash[:notice] = t('activities.messages.uploaded')
     else
-      flash[:alert] = t('activities.messajes.error_creating')
+      flash[:alert] = t('activities.messages.error_creating')
       render 'new'
     end
   end
@@ -26,10 +26,10 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity = Activity.find_by(id: params[:id])
     if @activity.destroy
-      flash[:notice] = t('activities.messajes.deleted')
+      flash[:notice] = t('activities.messages.deleted')
       redirect_to activities_path
     else
-      flash[:alert] = t('activities.messajess.erorr_deleting')
+      flash[:alert] = t('activities.messagess.erorr_deleting')
       render 'index'
     end
   end
@@ -45,10 +45,10 @@ class ActivitiesController < ApplicationController
     if @activity.update(activity_params)
       @activity.locations = []
       assign_locations_string
-      flash[:notice] = t('activities.messajes.updated')
+      flash[:notice] = t('activities.messages.updated')
       redirect_to activities_path
     else
-      flash[:notice] = t('activities.messajes.error_updating')
+      flash[:notice] = t('activities.messages.error_updating')
       render 'edit'
     end
   end
@@ -58,13 +58,14 @@ class ActivitiesController < ApplicationController
   def assign_locations_string
     @selected_locations = params[:locations_string]
     return if @selected_locations.empty?
+
     @selected_locations = @selected_locations.split('ß')
     @selected_locations.each do |location_name|
       location_name[0] = location_name[0].upcase
-      if Location.exists?(['name LIKE ?', location_name.to_s])
-        if Location.find_by(name:location_name)
-          @activity.locations << Location.find_by(name: location_name)
-        end
+      if Location.exists?(['name ILIKE ?', location_name.to_s])
+        @activity.locations << if Location.find_by(name: location_name).nil?
+          Location.where('lower(name) = ?', location_name.downcase).first
+        else
       else
         new_location = Location.create(name: location_name)
         @activity.locations << new_location

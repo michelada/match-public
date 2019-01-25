@@ -9,7 +9,7 @@ es:
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
     status: "Estado"
-    messajes:
+    messages:
       error_deleting: "Error eliminando la actividad"
       error_update: "Error actualizando actividad"
       error_upload: "Error cargando actividad"
@@ -42,7 +42,7 @@ es:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
     edit: "Editar equipo"
-    messajes:
+    messages:
       created: "Equipo creado"
       deleted: "Equipo eliminado"
       updated: "Equipo actualizado"
@@ -69,6 +69,8 @@ es:
 
   activerecord:
     errors:
+      messages:
+        record_invalid: "Record invalid"
       models:
         activity:
           attributes:

@@ -23,7 +23,7 @@ $(document).on('turbolinks:load', function() {
     var activity = $('#activity_locations').val();
     var locString = $('#locations_string').val();
 
-    if(locString.includes(activity)){
+    if(locString.toLowerCase().includes(activity.toLowerCase())){
       alert("The element you're tryng to add is already on the list")
     }else{
       $('#locations_string').val(locString + activity + "ß");
@@ -44,7 +44,7 @@ $(document).on('turbolinks:load', function() {
     if($(textVal) === ""){
       alert('You can leave this field blank')
     }else {
-      if(locString.includes(activity)){
+      if(locString.toLowerCase().includes(activity.toLowerCase())){
         alert("The element you're tryng to add is already on the list")
       }else{
         $('#locations_string').val(locString+ activity + "ß");
