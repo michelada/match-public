@@ -1,0 +1,2 @@
+module ActivityStatusHelper
+end

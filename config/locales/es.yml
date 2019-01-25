@@ -1,7 +1,7 @@
 # Files in the config/locales directory are used for internationalization
 
 es:
-  actions: 
+  actions:
     confirm: "¿Estás seguro?"
   activities:
     add: "Agregar actividad"
@@ -9,35 +9,56 @@ es:
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
     status: "Estado"
-    messajes:
+    title: "Actividades"
+    status_approve: "Aprobar"
+    status_unapprove: "Desaprobar"
+    messages:
+      approved: "Actividad aprobada"
+      error_creating: "Error creando la actividad"
+      erro_approving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"
+      error_unapproving: "Error desaprobando la actividad"
       error_update: "Error actualizando actividad"
       error_upload: "Error cargando actividad"
       deleted: "Actividad eliminada"
+      unapproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
+  alerts: 
+    activities:
+      other_blank: "Este campo no puede estar en blanco"
   buttons:
     actions: "Acciones"
     add: "Agregar"
+    add_other: "Agregar otro"
     create: "Crear"
+    delete: "Eliminar"
     edit: "Editar"
     new: "Nuevo"
+    submit: "Enviar"
     upload: "Cargar"
     update: "Actualizar"
+  comments:
+    all: "Comentarios"
+    create: "Comentar"
+    created: "Comentario realizado"
+    error_creating: "Error guardando comentario"
   errors:
     format: "%{message}"
   home: "Inicio"
   labels:
+    description: "Descripción"
     english: "Ingles"
     location: "Locación"
     name: "Nombre"
+    notes: "Notas"
     other_location: "Otra:"
     type: "Tipo"
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
     edit: "Editar equipo"
-    messajes:
+    messages:
       created: "Equipo creado"
       deleted: "Equipo eliminado"
       updated: "Equipo actualizado"
@@ -46,8 +67,9 @@ es:
       error_updating: "Error actualizando el equipo"
   placeholders:
     activity_name: "Nombre de la actividad"
+    notes_description: "Link / Información adicional"
+    other_location: "No encuentras una locación? Agregala aquí"
     team_name: "Nombre del equipo"
-    location_name: "Link/Nombre"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
@@ -60,19 +82,28 @@ es:
     password: "Contraseña"
     password_confirmation: "Confirmar contraseña"
     remember_me: "Recordarme"
+<<<<<<< HEAD
   information:
     footer: "Copyrights michelada.io 2019"
     landing:
       best_player: "Let the BEST PLAYER win"
       name: "Michelada Content Match"
       about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
+=======
+    new-registration: '¿Eres nuevo?'
+    registrado: 'Ya tengo una cuenta.'
+
+>>>>>>> development
   activerecord:
     errors:
+      messages:
+        record_invalid: "Record invalid"
       models:
         activity:
           attributes:
             name:
               taken: "Ya existe una actividad con ese nombre"
+              blank: "Debes de poner un nombre"
             location:
               blank: "Necesitas agregar una locación"
         team:

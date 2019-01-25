@@ -9,8 +9,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %meta{:name => 'viewport', :content => 'width=device-width,initial-scale=1'}/
   %body
-    %header
-      = render 'welcome/header'
+    = render 'welcome/header'
     .application-content
       = yield
   = render partial: 'welcome/footer'
