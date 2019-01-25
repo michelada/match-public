@@ -1,2 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+android_studio:
+  id: 1
+  activity_type: 0
+  name: "Android Studio Curso"
+  location: "Tec de Colima"
+  english: true

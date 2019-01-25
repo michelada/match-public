@@ -1,0 +1,18 @@
+%h2
+  = @activity.name
+  %h3
+    = @activity.status
+  - if @activity.english
+    %h3 Inglés
+
+- @activity.feedback.each do |feedback|
+  = feedback.user.name? ? feedback.user.name : feedback.user.email
+  %br
+  = feedback.comment
+  %br
+
+%h2 
+= simple_form_for [@activity, @feedback] do |f|
+  = f.input :comment, label: t('comments.all')
+  = f.button :submit, t('comments.create')
+
