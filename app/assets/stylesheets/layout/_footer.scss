@@ -1,0 +1,22 @@
+.wraper-footer {
+  color: $white;
+  display: flex;
+  width: 100%;
+}
+
+.footer {
+  background: $light-blue;
+  height: auto;
+  padding: $regular-padding 0;
+  width: 100%;
+} 
+
+.container-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.github-icon {
+  margin-right: 8px;
+}
