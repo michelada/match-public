@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :apis
+  resources :api_activities
+  resources :api_teams
   resources :activities
   resources :teams
   devise_for :users, controllers: { invitations: 'users/invitations' }
@@ -8,5 +9,4 @@ Rails.application.routes.draw do
   namespace :judge do
     resources :main, only: [:index]
   end
-  get '/api' => 'api#api'
 end

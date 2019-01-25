@@ -2,9 +2,9 @@ module Api
   class ApiService
     def top_teams_format(teams)
       base_obj = {
-        "valueNameHeader": "MCM",
-        "valueHeader": "Top 5 Teams",
-        "color": "green",
+        "valueNameHeader": "TEAMS",
+        "valueHeader": "TOP 5",
+        "color": "red",
         "data": [
           {
           "name":"Jean-Luc Picard",
@@ -33,6 +33,25 @@ module Api
           value: team.score
         })
       end
+      return response.to_json
+    end
+
+    def last_activity_format(activity)
+      label_obj = {
+        "postfix": "MyUnits",
+        "color": "blue",
+        "data": {
+        "value": 1234
+        }
+      }
+
+      response = label_obj.clone
+      response["data"] = []
+      postfix = activity.activity_type + "-" + activity.location
+      response["postfix"] = postfix
+      response["data"].push({
+          value: activity.name
+      })
       return response.to_json
     end
   end
