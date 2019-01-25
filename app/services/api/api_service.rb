@@ -4,7 +4,8 @@ module Api
       base_obj = {
         "valueNameHeader": "TEAMS",
         "valueHeader": "TOP 5",
-        "color": "red",
+        "color": "red
+        ",
         "data": [
           {
           "name":"Jean-Luc Picard",
@@ -13,14 +14,6 @@ module Api
           {
           "name":"James Kirk",
           "value": 350
-          },
-          {
-          "name":"Kathryn Janeway",
-          "value": 1850
-          },
-          {
-          "name":"Jonathan Archer",
-          "value": 1250
           }
         ]
       }
@@ -37,21 +30,22 @@ module Api
     end
 
     def last_activity_format(activity)
+      team_name = activity.user.team.name
       label_obj = {
         "postfix": "MyUnits",
         "color": "blue",
         "data": {
-        "value": 1234
+          "value": 1234
         }
       }
 
       response = label_obj.clone
       response["data"] = []
-      postfix = activity.activity_type + "-" + activity.location
+      postfix = "Team #{team_name} - #{activity.activity_type} at #{activity.location}"
       response["postfix"] = postfix
-      response["data"].push({
-          value: activity.name
-      })
+      response["data"] = {
+        value: activity.name
+      }
       return response.to_json
     end
   end

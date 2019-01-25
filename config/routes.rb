@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :api_activities
-  resources :api_teams
+  namespace :api do 
+    resources :activities, only: [:index]
+    resources :teams, only: [:index]
+  end
   resources :activities
   resources :locations, only: [:new, :index, :create]
   resources :teams
