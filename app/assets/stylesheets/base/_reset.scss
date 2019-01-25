@@ -63,21 +63,3 @@ label {
   color:$white;
   font-size: $primary-font-size;
 }
-
-input {
-  box-sizing: border-box !important;
-  color: $white !important;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
-    box-shadow: 0 0 0 30px $light-blue inset !important;
-    -webkit-box-shadow: 0 0 0 30px $light-blue inset !important;
-}
-
-input:-webkit-autofill {
-    -webkit-text-fill-color: $white !important;    
-    color: $white !important;
-}
