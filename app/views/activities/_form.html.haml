@@ -6,7 +6,7 @@
 
   = t("labels.location")
   - unless @locations.nil?
-    = f.select :locations, @locations.map {|l| l.name}
+    = f.select :locations, @locations.sort_by{ |loc | loc.name.downcase }.map {|l| l.name}
   = link_to t("buttons.add"), new_activity_path, id: "add_location"
 
   #other_location

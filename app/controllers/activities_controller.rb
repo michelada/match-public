@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
+    @locations = Location.all
     @activity = Activity.new(activity_params)
     @activity.user_id = current_user.id
     if @activity.save
@@ -57,11 +58,13 @@ class ActivitiesController < ApplicationController
   def assign_locations_string
     @selected_locations = params[:locations_string]
     return if @selected_locations.empty?
-
     @selected_locations = @selected_locations.split('ß')
     @selected_locations.each do |location_name|
+      location_name[0] = location_name[0].upcase
       if Location.exists?(['name LIKE ?', location_name.to_s])
-        @activity.locations << Location.find_by(name: location_name)
+        if Location.find_by(name:location_name)
+          @activity.locations << Location.find_by(name: location_name)
+        end
       else
         new_location = Location.create(name: location_name)
         @activity.locations << new_location
