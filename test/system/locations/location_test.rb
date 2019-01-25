@@ -19,7 +19,7 @@ class LocationTest < ApplicationSystemTestCase
     message = accept_alert do
       click_link 'Agregar'
     end
-    assert_equal message, "El elemento que tratas de agregar ya está en la lista"
+    assert_equal message, 'El elemento que tratas de agregar ya está en la lista'
   end
 
   test 'Users cant add the same location twice (from other_location text input)' do
@@ -29,7 +29,7 @@ class LocationTest < ApplicationSystemTestCase
     message = accept_alert do
       click_link 'Agregar otro'
     end
-    assert_equal message, "El elemento que tratas de agregar ya está en la lista"
+    assert_equal message, 'El elemento que tratas de agregar ya está en la lista'
   end
 
   test 'Users can create a new location when editing an activity' do

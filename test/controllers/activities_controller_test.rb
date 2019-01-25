@@ -18,7 +18,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
   test 'loged user can create an activity' do
     sign_in @user
-    post activities_path, params: { activity: { name: 'Android Studio', activity_type: 'Curso', english: 0 }, locations_string: 'UDEC,TEC,' }
+    post activities_path, params: { activity: { name: 'Android Studio', activity_type: 'Curso', english: 0 }, locations_string: 'UDEC,TEC' }
     assert_redirected_to activities_path, 'Controller response unexpectefd'
   end
 end

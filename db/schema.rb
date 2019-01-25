@@ -33,6 +33,26 @@ ActiveRecord::Schema.define(version: 2019_01_24_213157) do
     t.bigint "location_id", null: false
   end
 
+  create_table "activity_statuses", force: :cascade do |t|
+    t.integer "activity_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "approve", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_activity_statuses_on_activity_id"
+    t.index ["user_id"], name: "index_activity_statuses_on_user_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "comment"
+    t.integer "activity_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_feedbacks_on_activity_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false

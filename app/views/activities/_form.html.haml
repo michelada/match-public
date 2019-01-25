@@ -16,7 +16,7 @@
   .locations_list
     %ul
       - loaded_locations = ""
-      - unless @selected_locations.nil?
+      - unless @selected_locations.nil? 
         - @selected_locations.each_with_index do |location|
           %li{id: location[:id]}= location[:name]
           %input{id: location[:id], type: "button", value: "-"}

@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
+    @feedback = Feedback.new
     @locations = Location.all
     @selected_locations = []
   end
@@ -13,14 +14,18 @@ class ActivitiesController < ApplicationController
     @locations = Location.all
     @activity = Activity.new(activity_params)
     @activity.user_id = current_user.id
-    if @activity.save
-      assign_locations_string
+    if @activity.save && assign_locations_string
       redirect_to activities_path
       flash[:notice] = t('activities.messages.uploaded')
     else
       flash[:alert] = t('activities.messages.error_creating')
       render 'new'
     end
+  end
+
+  def show
+    @activity = Activity.find(params[:id])
+    @feedback = Feedback.new
   end
 
   def destroy
@@ -57,7 +62,7 @@ class ActivitiesController < ApplicationController
 
   def assign_locations_string
     @selected_locations = params[:locations_string]
-    return if @selected_locations.empty?
+    return true if @selected_locations.empty?
 
     check_if_exists_and_assing
   end

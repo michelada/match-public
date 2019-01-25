@@ -1,7 +1,7 @@
 # Files in the config/locales directory are used for internationalization
 
 es:
-  actions: 
+  actions:
     confirm: "¿Estás seguro?"
   activities:
     add: "Agregar actividad"
@@ -9,12 +9,19 @@ es:
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
     status: "Estado"
+    title: "Actividades"
+    status_approve: "Aprobar"
+    status_unapprove: "Desaprobar"
     messages:
+      approved: "Actividad aprobada"
       error_creating: "Error creando la actividad"
+      erro_approving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"
+      error_unapproving: "Error desaprobando la actividad"
       error_update: "Error actualizando actividad"
       error_upload: "Error cargando actividad"
       deleted: "Actividad eliminada"
+      unapproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
   alerts: 
@@ -31,6 +38,11 @@ es:
     submit: "Enviar"
     upload: "Cargar"
     update: "Actualizar"
+  comments:
+    all: "Comentarios"
+    create: "Comentar"
+    created: "Comentario realizado"
+    error_creating: "Error guardando comentario"
   errors:
     format: "%{message}"
   home: "Inicio"
