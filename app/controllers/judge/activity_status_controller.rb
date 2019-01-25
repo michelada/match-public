@@ -3,21 +3,21 @@ module Judge
     def create
       @activity_status = ActivityStatus.new(activity_status_params)
       @activity_status.user_id = current_user.id
-      @activity_status.aprove = true
+      @activity_status.approve = true
       if @activity_status.save && verify_activity_general_status
-        flash[:notice] = t('activities.messages.aproved')
+        flash[:notice] = t('activities.messages.approved')
       else
-        flash[:alert] = t('activities.messages.error_aproving')
+        flash[:alert] = t('activities.messages.error_approving')
       end
       redirect_to judge_activity_path(@activity_status.activity_id)
     end
 
     def update
       change_activity_status
-      if @activity_status.update_attribute(:aprove, @activity_status.aprove) && verify_activity_general_status
-        flash[:notice] = @activity_status.aprove ? t('activities.messages.aproved') : t('activities.messages.unaproved')
+      if @activity_status.update_attribute(:approve, @activity_status.approve) && verify_activity_general_status
+        flash[:notice] = @activity_status.approve ? t('activities.messages.approved') : t('activities.messages.unapproved')
       else
-        flash[:alert] = @activity_status.aprove ? t('activities.messages.error_aproving') : t('activities.messages.error_unaproving')
+        flash[:alert] = @activity_status.approve ? t('activities.messages.error_approving') : t('activities.messages.error_unapproving')
       end
       redirect_to judge_activity_path(@activity_status.activity_id)
     end
@@ -25,8 +25,8 @@ module Judge
     private
 
     def change_activity_status
-      @activity_status = ActivityStatus.user_aprove_status_activity(current_user.id, params[:activity_id])
-      @activity_status.aprove = !@activity_status.aprove
+      @activity_status = ActivityStatus.user_approve_status_activity(current_user.id, params[:activity_id])
+      @activity_status.approve = !@activity_status.approve
     end
 
     def activity_status_params
@@ -34,7 +34,7 @@ module Judge
     end
 
     def verify_activity_general_status
-      activity_statuses = ActivityStatus.aproves_in_activity(params[:activity_id])
+      activity_statuses = ActivityStatus.approves_in_activity(params[:activity_id])
       activity = Activity.find(params[:activity_id])
       if activity_statuses.count == 3
         activity.update_attribute(:status, 2)

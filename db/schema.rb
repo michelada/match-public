@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 2019_01_24_193340) do
   end
 
   create_table "activity_statuses", force: :cascade do |t|
-    t.integer "activity_id"
-    t.integer "user_id"
-    t.boolean "aprove"
+    t.integer "activity_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "approve", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_activity_statuses_on_activity_id"
