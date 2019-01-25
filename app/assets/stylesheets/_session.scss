@@ -1,0 +1,20 @@
+.main-content {
+  &.small {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+}
+
+.image-michelada {
+  margin-bottom: calc(#{$regular-margin} * 3);
+}
+
+.information-content {
+  a {
+    margin-bottom: $regular-margin;
+  }
+}
+
+.password-field {
+  margin-bottom: 0px;
+}
