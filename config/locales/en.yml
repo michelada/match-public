@@ -22,7 +22,7 @@ en:
       unapproved: "The activity was unapproved"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
-    status_approve: "approve"
+    status_approve: "Approve"
     status_unapprove: "Unapprove"
   buttons:
     actions: "Actions"
