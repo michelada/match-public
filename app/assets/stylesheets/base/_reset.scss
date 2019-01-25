@@ -1,11 +1,11 @@
 body {
+  color: $white;
   background-color: $blue;
-  color: #333;
-  line-height: 18px;
-  font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 18px;
+  min-height: 100vh;
 }
 
 h2 {
@@ -24,8 +24,8 @@ p, ol, ul, td {
 }
 
 pre {
-  background-color: #eee;
-  font-size: 11px;
+  background-color: $blue;
+  font-size: $primary-font-size;
   padding: 10px;
 }
 
@@ -53,22 +53,6 @@ div {
 }
 
 label {
-  color:$white;
+  color: $white;
   font-size: $primary-font-size;
-}
-
-input {
-  box-sizing: border-box !important;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
-    box-shadow: 0 0 0 30px $light-blue inset !important;
-    -webkit-box-shadow: 0 0 0 30px $light-blue inset !important;
-}
-
-input:-webkit-autofill {
-    -webkit-text-fill-color: $white !important;
 }
