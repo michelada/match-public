@@ -30,10 +30,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .DS_Store
-<<<<<<< HEAD
-coverage
-.DS_Store
-=======
 app/.DS_Store
 coverage
->>>>>>> development
