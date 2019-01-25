@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :judge do
     resources :main, only: [:index]
     resources :activities, only: %w[index show] do
-      resources :activity_statuses, only: %w[create update]
+      resources :activity_status, only: %w[create update]
     end
   end
 

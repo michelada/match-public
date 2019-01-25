@@ -5,9 +5,9 @@ class FeedbacksController < ApplicationController
     @comment.user_id = current_user.id
     @comment.activity_id = @activity.id
     if @comment.save
-      flash[:notice] = 'Comentario guardado'
+      flash[:notice] = t('comments.created')
     else
-      flash[:alert] = 'Comentarion no guardado'
+      flash[:alert] = t('comments.error_creating')
     end
     redirect_to activity_path(@activity)
   end

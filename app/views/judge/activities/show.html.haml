@@ -1,12 +1,12 @@
 %h2
   = @activity.name
--if @activity_status.nil?
-  = link_to t("activities.statuses.aprove"),  judge_activity_activity_statuses_path(@activity), method: :post
-- else
-  - if @activity_status.aprove
-    = link_to t("activities.statuses.unaprove"),  judge_activity_activity_status_path(@activity), method: :patch
-  - else 
-    = link_to t("activities.statuses.aprove"),  judge_activity_activity_status_path(@activity), method: :patch
+  -if @activity_status.nil?
+    = link_to t("activities.statuses.aprove"),  judge_activity_activity_status_index_path(@activity), method: :post
+  - else
+    - if @activity_status.aprove
+      = link_to t("activities.statuses.unaprove"),  judge_activity_activity_status_path(@activity), method: :patch
+    - else 
+      = link_to t("activities.statuses.aprove"),  judge_activity_activity_status_path(@activity), method: :patch
 
 
   %h3

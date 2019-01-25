@@ -1,7 +1,7 @@
 # Files in the config/locales directory are used for internationalization
 
 es:
-  actions: 
+  actions:
     confirm: "¿Estás seguro?"
   activities:
     add: "Agregar actividad"
@@ -10,7 +10,7 @@ es:
     my_activities: "Mis actividades"
     status: "Estado"
     title: "Actividades"
-    messajes:
+    messages:
       aproved: "Actividad aprobada"
       erro_aproving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"
@@ -35,6 +35,8 @@ es:
   comments:
     all: "Comentarios"
     create: "Comentar"
+    created: "Comentario realizado"
+    error_creating: "Error guardando comentario"
   errors:
     format: "%{message}"
   home: "Inicio"
@@ -48,7 +50,7 @@ es:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
     edit: "Editar equipo"
-    messajes:
+    messages:
       created: "Equipo creado"
       deleted: "Equipo eliminado"
       updated: "Equipo actualizado"

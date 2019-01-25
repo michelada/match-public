@@ -10,7 +10,7 @@ en:
     my_activities: "My activities"
     status: "Status"
     title: "Activities"
-    messajes:
+    messages:
       aproved: "Activity aproved"
       error_aproving: "Error aproving activity"
       error_unaproving: "Error unaproving activity"
@@ -36,9 +36,11 @@ en:
   comments:
     all: "Comments"
     create: "Comment"
+    created: "Comment saved"
+    error_creating: "Error saving comment"
   errors:
     format: "%{messaje}"
-  home: "Home" 
+  home: "Home"
   labels:
     english: "English"
     location: "Location"
@@ -49,7 +51,7 @@ en:
     create: "Create a team"
     destroy: "Delete team"
     edit: "Edit team"
-    messajes: 
+    messages:
       created: "Team created"
       deleted: "Team deleted"
       updated: "Team updated"
