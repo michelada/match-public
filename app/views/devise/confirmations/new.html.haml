@@ -5,7 +5,7 @@
   .field
     = f.label :email, t("user.email")
     %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+    = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'input-text'
   .actions
-    = f.submit t("devise.confirmations.resend_instructions")
+    = f.submit t("devise.confirmations.resend_instructions"), class: 'button'
 = render "devise/shared/links"
