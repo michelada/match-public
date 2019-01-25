@@ -1,11 +1,11 @@
 body {
   background-color: $blue;
   color: #333;
-  line-height: 18px;
-  font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 18px;
+  min-height: 100vh;
 }
 
 h2 {
@@ -18,15 +18,15 @@ h1 {
 }
 
 p, ol, ul, td {
+  color: $white;
   font-size: $primary-font-size;
   line-height: 18px;
-  color: $white;
 }
 
 pre {
   background-color: #eee;
-  padding: 10px;
   font-size: 11px;
+  padding: 10px;
 }
 
 a {
@@ -53,8 +53,7 @@ div {
 }
 
 label {
-  display: block;
-  color:$white;
+  color: $white;
   font-size: $primary-font-size;
 }
 
