@@ -17,6 +17,9 @@ en:
       deleted: "Activity deleted"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
+  alerts: 
+    activities:
+      other_blank: "This field can't be blank"
   buttons:
     actions: "Actions"
     add: "Add"

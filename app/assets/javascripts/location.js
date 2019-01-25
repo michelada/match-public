@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function() {
     var locString = $('#locations_string').val();
 
     if(locString.toLowerCase().includes(activity.toLowerCase())){
-      alert("The element you're tryng to add is already on the list")
+      alert("El elemento que tratas de agregar ya está en la lista")
     }else{
       $('#locations_string').val(locString + activity + "ß");
       $('.locations_list ul').append('<li id=' + counter + '>' + activity + '</li>');
@@ -41,11 +41,11 @@ $(document).on('turbolinks:load', function() {
     var locString = $('#locations_string').val();
     var activity = $('#other_location input').val();
 
-    if($(textVal) === ""){
-      alert('You can leave this field blank')
+    if(textVal === ""){
+      alert("El campo \"Otra\" no puede estar en blanco")
     }else {
       if(locString.toLowerCase().includes(activity.toLowerCase())){
-        alert("The element you're tryng to add is already on the list")
+        alert("El elemento que tratas de agregar ya está en la lista")
       }else{
         $('#locations_string').val(locString+ activity + "ß");
         $('.locations_list ul').append('<li id=' + counter + '>' + activity + '</li>');

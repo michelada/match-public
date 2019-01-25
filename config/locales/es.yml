@@ -17,6 +17,9 @@ es:
       deleted: "Actividad eliminada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
+  alerts: 
+    activities:
+      other_blank: "Este campo no puede estar en blanco"
   buttons:
     actions: "Acciones"
     add: "Agregar"
