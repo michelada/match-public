@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :api_activities
   resources :api_teams
   resources :activities
+  resources :locations, only: [:new, :index, :create]
   resources :teams
   devise_for :users, controllers: { invitations: 'users/invitations' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,75 @@
+body {
+  background-color: $blue;
+  color: #333;
+  line-height: 18px;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  color: $white;
+}
+
+h1 {
+  color: $red;
+  text-transform: uppercase;
+}
+
+p, ol, ul, td {
+  font-size: $primary-font-size;
+  line-height: 18px;
+  color: $white;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: $yellow;
+  font-size: $secondary-font-size;
+
+  &:visited {
+    color: $yellow;
+  }
+}
+
+th {
+  padding-bottom: 5px;
+}
+
+td {
+  padding: 0 5px 7px;
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+label {
+  display: block;
+  color:$white;
+  font-size: $primary-font-size;
+}
+
+input {
+  box-sizing: border-box !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    box-shadow: 0 0 0 30px $light-blue inset !important;
+    -webkit-box-shadow: 0 0 0 30px $light-blue inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: $white !important;
+}
