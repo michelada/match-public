@@ -17,11 +17,17 @@ h1 {
   text-transform: uppercase;
 }
 
+em {
+  color: $white;
+  font-size: $secondary-font-size
+}
+
 p, ol, ul, td {
   font-size: $primary-font-size;
   line-height: 18px;
   color: $white;
 }
+
 
 pre {
   background-color: #eee;
@@ -31,7 +37,7 @@ pre {
 
 a {
   color: $yellow;
-  font-size: $secondary-font-size;
+  font-size: $primary-font-size;
 
   &:visited {
     color: $yellow;
@@ -60,6 +66,7 @@ label {
 
 input {
   box-sizing: border-box !important;
+  color: $white !important;
 }
 
 input:-webkit-autofill,
@@ -71,5 +78,6 @@ input:-webkit-autofill:active  {
 }
 
 input:-webkit-autofill {
-    -webkit-text-fill-color: $white !important;
+    -webkit-text-fill-color: $white !important;    
+    color: $white !important;
 }

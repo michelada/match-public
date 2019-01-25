@@ -1,22 +1,24 @@
-%h2
-  = t("user.log_up")
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-text'
-  .field
-    = f.label :password, t("user.password")
-    - if @minimum_password_length
-      %em
-        (Al menos #{@minimum_password_length} caracteres)
-    %br/
-    = f.password_field :password, autocomplete: "new-password", class: 'input-text'
-  .field
-    = f.label :password_confirmation, t("user.password_confirmation")
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-text'
-  .actions
-    = f.submit t("user.log_up"), class:'button'
-= render "devise/shared/links"
+.container
+  .main-content.small
+    .image-content
+      = image_tag 'michelada_white_one', alt: 'michelada', width: '250', class: 'image-michelada'
+    .information-content
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .field
+          = f.label :email
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-text'
+        .field
+          = f.label :password, t("user.password")
+          = f.password_field :password, autocomplete: "new-password", class: 'input-text'
+          - if @minimum_password_length
+            %em
+              (Al menos #{@minimum_password_length} caracteres)
+        .field
+          = f.label :password_confirmation, t("user.password_confirmation")
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-text'
+        .actions
+          = f.submit t("user.log_up"), class:'button'
+      %p
+        = t('user.registrado')
+        = link_to t("user.log_in"), new_user_session_path

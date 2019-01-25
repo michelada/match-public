@@ -12,7 +12,6 @@
     %header
       %p.notice= notice
       %p.alert= alert
-      = link_to t("user.log_in"), new_user_session_path unless user_signed_in? || current_page?(new_user_session_path)
       - if user_signed_in?
         = link_to t("home"), root_path unless current_page?(root_path)
         = link_to t("user.new_invitation"), new_user_invitation_path unless current_page?(new_user_invitation_path)

@@ -60,6 +60,8 @@ es:
     password: "Contraseña"
     password_confirmation: "Confirmar contraseña"
     remember_me: "Recordarme"
+    new-registration: 'Eres nuevo? '
+    registrado: 'Ya tengo una cuenta '
 
   activerecord:
     errors:
