@@ -1,18 +1,18 @@
 body {
   background-color: $blue;
   color: #333;
-  line-height: 18px;
-  font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 18px;
+  min-height: 100vh;
 }
 
 h2 {
   color: $white;
 }
 h1 {
-color: $white;
+  color: $white;
 }
 p, ol, ul, td {
   color: $white;
@@ -50,6 +50,6 @@ div {
 }
 
 label {
-  color:$white;
+  color: $white;
   font-size: $primary-font-size;
 }
