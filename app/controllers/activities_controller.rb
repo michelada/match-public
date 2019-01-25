@@ -11,14 +11,14 @@ class ActivitiesController < ApplicationController
   end
 
   def create
+    @locations = Location.all
     @activity = Activity.new(activity_params)
     @activity.user_id = current_user.id
-    if @activity.save
-      assign_locations_string
+    if @activity.save && assign_locations_string
       redirect_to activities_path
       flash[:notice] = t('activities.messages.uploaded')
     else
-      flash[:alert] = t('activities.messages.error_uploading')
+      flash[:alert] = t('activities.messages.error_creating')
       render 'new'
     end
   end
@@ -53,7 +53,7 @@ class ActivitiesController < ApplicationController
       flash[:notice] = t('activities.messages.updated')
       redirect_to activities_path
     else
-      flash[:notice] = t('activities.messages.error_updatind')
+      flash[:notice] = t('activities.messages.error_updating')
       render 'edit'
     end
   end
@@ -61,18 +61,24 @@ class ActivitiesController < ApplicationController
   private
 
   def assign_locations_string
-    @selected_locations = params[:locations_string].split(',')
-    @selected_locations.each do |location_name|
-      if Location.exists?(['name LIKE ?', location_name.to_s])
-        @activity.locations << Location.find_by(name: location_name)
-      else
-        new_location = Location.create(name: location_name)
-        @activity.locations << new_location
-      end
+    @selected_locations = params[:locations_string]
+    return true if @selected_locations.empty?
+
+    check_if_exists_and_assing
+  end
+
+  def check_if_exists_and_assing
+    @selected_locations.split('ß').each do |location_name|
+      location_name[0] = location_name[0].upcase
+      @activity.locations << if Location.exists?(['name ILIKE ?', location_name.to_s])
+                               Location.where('name ILIKE ?', location_name)
+                             else
+                               Location.create(name: location_name)
+                             end
     end
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :english, :location, :activity_type)
+    params.require(:activity).permit(:name, :english, :location, :activity_type, :locations_string)
   end
 end

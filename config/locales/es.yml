@@ -10,8 +10,11 @@ es:
     my_activities: "Mis actividades"
     status: "Estado"
     title: "Actividades"
+    status_approve: "Aprobar"
+    status_unapprove: "Desaprobar"
     messages:
       approved: "Actividad aprobada"
+      error_creating: "Error creando la actividad"
       erro_approving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"
       error_unapproving: "Error desaprobando la actividad"
@@ -21,14 +24,18 @@ es:
       unapproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
-    status_approve: "Aprobar"
-    status_unapprove: "Desaprobar"
+  alerts: 
+    activities:
+      other_blank: "Este campo no puede estar en blanco"
   buttons:
     actions: "Acciones"
     add: "Agregar"
+    add_other: "Agregar otro"
     create: "Crear"
+    delete: "Eliminar"
     edit: "Editar"
     new: "Nuevo"
+    submit: "Enviar"
     upload: "Cargar"
     update: "Actualizar"
   comments:
@@ -40,9 +47,11 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    description: "Descripción"
     english: "Ingles"
     location: "Locación"
     name: "Nombre"
+    notes: "Notas"
     other_location: "Otra:"
     type: "Tipo"
   team:
@@ -58,8 +67,9 @@ es:
       error_updating: "Error actualizando el equipo"
   placeholders:
     activity_name: "Nombre de la actividad"
+    notes_description: "Link / Información adicional"
+    other_location: "No encuentras una locación? Agregala aquí"
     team_name: "Nombre del equipo"
-    location_name: "Link/Nombre"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
@@ -75,11 +85,14 @@ es:
 
   activerecord:
     errors:
+      messages:
+        record_invalid: "Record invalid"
       models:
         activity:
           attributes:
             name:
               taken: "Ya existe una actividad con ese nombre"
+              blank: "Debes de poner un nombre"
             location:
               blank: "Necesitas agregar una locación"
         team:

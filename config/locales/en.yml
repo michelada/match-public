@@ -12,6 +12,7 @@ en:
     title: "Activities"
     messages:
       approved: "Activity approved"
+      error_creating: "Error creating that activity"
       error_approving: "Error approving activity"
       error_unapproving: "Error unapproving activity"
       error_deleting: "Error deleting activity"
@@ -22,14 +23,20 @@ en:
       unapproved: "The activity was unapproved"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
+  alerts: 
+    activities:
+      other_blank: "This field can't be blank"
     status_approve: "Approve"
     status_unapprove: "Unapprove"
   buttons:
     actions: "Actions"
     add: "Add"
+    add_other: "Add other"
     create: "Create"
+    delete: "Delete"
     edit: "Edit"
     new: "New"
+    submit: "Submit"
     upload: "Upload"
     update: "Update"
   comments:
@@ -41,9 +48,11 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    description: "Description"
     english: "English"
     location: "Location"
     name: "Name"
+    notes: "Notes"
     other_location: "Add another: "
     type: "Type"
   team:
@@ -59,7 +68,8 @@ en:
       error_updating: "Error updating the team"
   placeholders:
     activity_name: "Activity name"
-    location_name: "Link/Name"
+    notes_description: "Link / Aditional information"
+    other_location: "Can't find your location? Add it here"
     team_name: "Team name"
   user:
     confirmation_instructions: "Didn't receive confirmation ionstructions?"
@@ -74,11 +84,14 @@ en:
 
   activerecord:
     errors:
+      messages:
+        record_invalid: "Record invalid"
       models:
         activity:
           attributes:
             name:
               taken: "Activity name already taken"
+              blank: "A name is required"
             location:
               blank: "Location needed"
         team:
