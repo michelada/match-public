@@ -60,7 +60,12 @@ es:
     password: "Contraseña"
     password_confirmation: "Confirmar contraseña"
     remember_me: "Recordarme"
-
+  information:
+    footer: "Copyrights michelada.io 2019"
+    landing:
+      best_player: "Let the BEST PLAYER win"
+      name: "Michelada Content Match"
+      about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
   activerecord:
     errors:
       models:

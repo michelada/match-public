@@ -1,0 +1,26 @@
+.landing{
+  padding: $regular-padding 0;
+}
+.container-information {
+  color: $white;
+  text-align: center;
+  align-items: center;
+}
+.michelada-icon {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 100px;
+  width: 100px;
+}
+.button{
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+h2{
+  text-transform: uppercase;
+  font-size: $primary-font-size;
+}
+h3{
+  text-transform: none;
+  font-size: $primary-font-size;
+}
