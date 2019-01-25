@@ -1,38 +1,40 @@
 body {
   background-color: $blue;
   color: #333;
-  margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  display: flex;
+  flex-direction: column;
   font-family: 'Montserrat', sans-serif;
+  line-height: 18px;
+  min-height: 100vh;
 }
 
 h2 {
   color: $white;
 }
+
+h1 {
+  color: $red;
+  text-transform: uppercase;
+}
+
 p, ol, ul, td {
-  font-size: 13px;
-  line-height: 18px;
   color: $white;
+  font-size: $primary-font-size;
+  line-height: 18px;
 }
 
 pre {
   background-color: #eee;
-  padding: 10px;
   font-size: 11px;
+  padding: 10px;
 }
 
 a {
   color: $yellow;
+  font-size: $secondary-font-size;
 
   &:visited {
     color: $yellow;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
   }
 }
 
@@ -51,6 +53,22 @@ div {
 }
 
 label {
-  display: block;
-  color:$white;
+  color: $white;
+  font-size: $primary-font-size;
+}
+
+input {
+  box-sizing: border-box !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    box-shadow: 0 0 0 30px $light-blue inset !important;
+    -webkit-box-shadow: 0 0 0 30px $light-blue inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: $white !important;
 }
