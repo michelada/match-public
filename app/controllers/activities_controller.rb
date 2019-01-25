@@ -59,17 +59,17 @@ class ActivitiesController < ApplicationController
     @selected_locations = params[:locations_string]
     return if @selected_locations.empty?
 
-    @selected_locations = @selected_locations.split('ß')
-    @selected_locations.each do |location_name|
+    check_if_exists_and_assing
+  end
+
+  def check_if_exists_and_assing
+    @selected_locations.split('ß').each do |location_name|
       location_name[0] = location_name[0].upcase
-      if Location.exists?(['name ILIKE ?', location_name.to_s])
-        @activity.locations << if Location.find_by(name: location_name).nil?
-          Location.where('lower(name) = ?', location_name.downcase).first
-        else
-      else
-        new_location = Location.create(name: location_name)
-        @activity.locations << new_location
-      end
+      @activity.locations << if Location.exists?(['name ILIKE ?', location_name.to_s])
+                               Location.where('name ILIKE ?', location_name)
+                             else
+                               Location.create(name: location_name)
+                             end
     end
   end
 

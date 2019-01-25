@@ -10,6 +10,7 @@ es:
     my_activities: "Mis actividades"
     status: "Estado"
     messages:
+      error_creating: "Error creando la actividad"
       error_deleting: "Error eliminando la actividad"
       error_update: "Error actualizando actividad"
       error_upload: "Error cargando actividad"
