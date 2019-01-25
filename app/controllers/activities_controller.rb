@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
+    @feedback = Feedback.new
     @locations = Location.all
     @selected_locations = []
   end
@@ -15,20 +16,25 @@ class ActivitiesController < ApplicationController
     if @activity.save
       assign_locations_string
       redirect_to activities_path
-      flash[:notice] = t('activities.messajes.uploaded')
+      flash[:notice] = t('activities.messages.uploaded')
     else
-      flash[:alert] = t('activities.messajes.error_uploading')
+      flash[:alert] = t('activities.messages.error_uploading')
       render 'new'
     end
+  end
+
+  def show
+    @activity = Activity.find(params[:id])
+    @feedback = Feedback.new
   end
 
   def destroy
     @activity = Activity.find_by(id: params[:id])
     if @activity.destroy
-      flash[:notice] = t('activities.messajes.deleted')
+      flash[:notice] = t('activities.messages.deleted')
       redirect_to activities_path
     else
-      flash[:alert] = t('activities.messajess.erorr_deleting')
+      flash[:alert] = t('activities.messagess.erorr_deleting')
       render 'index'
     end
   end
@@ -44,10 +50,10 @@ class ActivitiesController < ApplicationController
     if @activity.update(activity_params)
       @activity.locations = []
       assign_locations_string
-      flash[:notice] = t('activities.messajes.updated')
+      flash[:notice] = t('activities.messages.updated')
       redirect_to activities_path
     else
-      flash[:notice] = t('activities.messajes.error_updatind')
+      flash[:notice] = t('activities.messages.error_updatind')
       render 'edit'
     end
   end

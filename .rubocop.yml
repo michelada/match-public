@@ -8,5 +8,8 @@ Metrics/BlockLength:
 Metrics/BlockLength:
   Enabled: false
 
+Metrics/AbcSize:
+  Max: 17
+
 Documentation:
   Enabled: false

@@ -6,10 +6,10 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save && current_user.update_attribute(:team, @team)
-      flash[:notice] = t('team.messajes.created')
+      flash[:notice] = t('team.messages.created')
       redirect_to root_path
     else
-      flash[:alert] = t('team.messajes.error_creating')
+      flash[:alert] = t('team.messages.error_creating')
       render 'new'
     end
   end
