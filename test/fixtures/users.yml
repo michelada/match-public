@@ -5,3 +5,11 @@ user:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
   confirmed_at: <%= Time.zone.now - 1.hour %>
   confirmation_sent_at: <%= Time.zone.now - 2.hours %>
+
+user_with_team:
+  email: 'team_member@michelada.io'
+  role: 0
+  team_id: 1
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
+  confirmed_at: <%= Time.zone.now - 1.hour %>
+  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
