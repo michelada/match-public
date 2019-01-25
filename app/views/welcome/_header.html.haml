@@ -4,20 +4,26 @@
   .nav
     = link_to t("user.log_in"), new_user_session_path unless user_signed_in? || current_page?(new_user_session_path)
     - if user_signed_in?
-      = link_to new_activity_path, class: "header-icon" do
+      = link_to new_activity_path do
         -if controller_name == "activities"
           = image_tag 'file-yellow', alt: 'change-activity', class: 'header-icon'
         -else
           = image_tag 'file', alt: 'change-activities', class: 'header-icon'
       
-      = link_to  root_path , class: 'header-icon' do
+      = link_to  root_path  do
         -if controller_name == 'main'
           = image_tag 'first_yellow', alt: 'team', class: 'header-icon'
         -else
           = image_tag 'first', alt: 'team', class: 'header-icon'
       
-      = link_to  new_team_path , class: 'header-icon' do
+      = link_to  new_team_path do
         -if controller_name == 'teams'
           = image_tag 'man-yellow', alt: 'team', class: 'header-icon'
         -else
           = image_tag 'man', alt: 'team', class: 'header-icon'
+      
+      = link_to  destroy_user_session_path, method: :delete do
+        -if controller_name == 'sign_out'
+          = image_tag 'out-yellow', alt: 'out', class: 'header-icon'
+        -else
+          = image_tag 'out', alt: 'out', class: 'header-icon'
