@@ -15,9 +15,9 @@
   }
 
   svg {
-    fill: $white;
     width: 35px;
-
+    height: 35px;
+    fill: $white;
     &.is_active {
       fill: $yellow;
     }
