@@ -4,8 +4,7 @@ module Api
       base_obj = {
         "valueNameHeader": "TEAMS",
         "valueHeader": "TOP 5",
-        "color": "red
-        ",
+        "color": "red",
         "data": [
           {
           "name":"Jean-Luc Picard",

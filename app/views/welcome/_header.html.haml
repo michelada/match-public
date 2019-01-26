@@ -1,1 +1,15 @@
-//aqui header
+%header
+  .container.header
+    = link_to root_path do
+      = image_tag 'michelada_white_one', alt: 'company-logo', height: 60, class: 'company-logo'
+    .nav
+      = link_to t("user.log_in"), new_user_session_path unless user_signed_in? || current_page?(new_user_session_path)
+      - if user_signed_in?
+        = link_to new_activity_path do
+          = render partial: 'welcome/icons/file', locals: {is_active: controller_name == 'activities' }
+        = link_to  root_path do
+          = render partial: 'welcome/icons/first', locals: {is_active: controller_name == 'main' }
+        = link_to  new_team_path do
+          = render partial: 'welcome/icons/man', locals: {is_active: controller_name == 'teams' }
+        = link_to  destroy_user_session_path, method: :delete do
+          Log out

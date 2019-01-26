@@ -28,3 +28,10 @@ activity2:
   location: Tec
   activity_type: 1
   user: user_test2
+
+android_studio:
+  id: 1
+  activity_type: 0
+  name: "Android Studio Curso"
+  location: "Tec de Colima"
+  english: true
