@@ -30,7 +30,7 @@
   %br
 
 %h2
-= simple_form_for [@activity, @feedback] do |f|
+= simple_form_for [:judge, @activity, @feedback] do |f|
   = f.input :comment, label: t('comments.all')
   = f.button :submit, t('comments.create')
 
