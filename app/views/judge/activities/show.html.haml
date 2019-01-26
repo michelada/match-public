@@ -11,8 +11,18 @@
 
   %h3
     = @activity.status
-  - if @activity.english
-    %h3 Inglés
+  %h3 
+    = "#{t('labels.type')} #{@activity.activity_type}"
+  %h3
+    = t('labels.english') if @activity.english
+  %h3 
+    = t('labels.events') unless @activity.locations.empty?
+    - @activity.locations&.each do |events|
+      %h4
+        = events.name
+
+%h3
+  = t('labels.comments')
 - @activity.feedback.each do |feedback|
   = feedback.user.name? ? feedback.user.name : feedback.user.email
   %br

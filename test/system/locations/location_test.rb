@@ -7,13 +7,13 @@ class LocationTest < ApplicationSystemTestCase
   end
 
   test 'Users can create a new location from new_activity view' do
-    create_simple_acitivy
+    create_simple_activy
     click_link 'Editar'
     assert_equal true, page.has_content?('Test location')
   end
 
   test 'Users cant add the same location twice (from select menu)' do
-    create_simple_acitivy
+    create_simple_activy
     click_link 'Editar'
     select('Test location', from: 'activity[locations]')
     message = accept_alert do
@@ -23,7 +23,7 @@ class LocationTest < ApplicationSystemTestCase
   end
 
   test 'Users cant add the same location twice (from other_location text input)' do
-    create_simple_acitivy
+    create_simple_activy
     click_link 'Editar'
     fill_in 'activity[locations]', with: 'Test location'
     message = accept_alert do
@@ -33,7 +33,7 @@ class LocationTest < ApplicationSystemTestCase
   end
 
   test 'Users can create a new location when editing an activity' do
-    create_simple_acitivy
+    create_simple_activy
     click_link 'Editar'
     fill_in 'activity[locations]', with: 'Example location2'
     click_link 'Agregar otro'
@@ -64,7 +64,7 @@ class LocationTest < ApplicationSystemTestCase
     assert_equal true, page.has_content?('Test_location_3')
   end
 
-  def create_simple_acitivy
+  def create_simple_activy
     visit new_activity_path
     fill_in 'activity[name]', with: 'Test'
     fill_in 'activity[locations]', with: 'Test location'

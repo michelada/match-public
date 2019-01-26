@@ -48,13 +48,15 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    comments: "Comments"
     description: "Description"
     english: "English"
+    events: "Events:"
     location: "Location"
     name: "Name"
     notes: "Notes"
     other_location: "Add another: "
-    type: "Type"
+    type: "Type:"
   team:
     create: "Create a team"
     destroy: "Delete team"

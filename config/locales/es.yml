@@ -47,13 +47,15 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    comments: "Comentarios"
     description: "Descripción"
-    english: "Ingles"
+    english: "Inglés"
+    events: "Eventos:"
     location: "Locación"
     name: "Nombre"
     notes: "Notas"
     other_location: "Otra:"
-    type: "Tipo"
+    type: "Tipo:"
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
