@@ -1,5 +1,5 @@
 module Judge
-  class ActivityStatusController < ApplicationController
+  class ActivityStatusController < JudgeController
     def create
       @activity_status = ActivityStatus.new(activity_status_params)
       @activity_status.user_id = current_user.id
