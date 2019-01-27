@@ -1,0 +1,31 @@
+%h2 Welcome admin
+
+%table
+  %thead
+    %tr
+      %th
+        = t('user.email')
+      %th
+        = t('labels.name')
+      %th
+        = t('labels.role')
+      %th
+        = t('labels.team')
+      %th
+        = t('buttons.action')
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td
+            = user.email
+          %td
+            = user.name
+          %td
+            = user.role
+          %td
+            = user.team&.name
+          %td
+            = simple_form_for(user, url: admin_user_manager_path(user)) do |f|
+              = f.input :role, collection: User.roles.keys, include_blank: false, label: false 
+              %td
+                = f.button :submit, t('buttons.update')

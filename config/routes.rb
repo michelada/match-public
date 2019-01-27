@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :user_manager, only: %w[index update]
+  end
+
   resources :activities, only: [:show] do
     resources :feedbacks, only: %w[index create delete update]
   end

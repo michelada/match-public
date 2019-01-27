@@ -54,7 +54,9 @@ en:
     name: "Name"
     notes: "Notes"
     other_location: "Add another: "
+    team: "Team"
     type: "Type"
+    role: "Role"
   team:
     create: "Create a team"
     destroy: "Delete team"

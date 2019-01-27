@@ -8,4 +8,5 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   enum role: { user: 0, judge: 1, admin: 2 }
+  scope :all_except_actual, ->(actual_user) { where.not(id: actual_user) }
 end

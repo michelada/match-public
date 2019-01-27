@@ -53,6 +53,8 @@ es:
     name: "Nombre"
     notes: "Notas"
     other_location: "Otra:"
+    role: "Rol"
+    team: "Equipo"
     type: "Tipo"
   team:
     create: "Crear un equipo"
