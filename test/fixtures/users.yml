@@ -1,5 +1,15 @@
 
-user:
-  email: 'admin_example@michelada.io'
-  role: 0
+admin_user:
+  email: 'admin_user@mmichelada.io'
+  role: 2
   encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
+
+judge_user:
+  email: 'judge_user@michelada.io'
+  role: 1
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'normalUser') %>
+
+user:
+  email: 'normal_user@michelada.io'
+  role: 0
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'normalUser') %>

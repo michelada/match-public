@@ -76,6 +76,7 @@ en:
   user:
     confirmation_instructions: "Didn't receive confirmation ionstructions?"
     email: "Email"
+    error_updating_role: "Error updating role"
     forgot_password: "Forgot password"
     log_in: "Log in"
     log_out: "Log out"
@@ -85,7 +86,7 @@ en:
     remember_me: "Remember me"
     new-registration: 'New here? '
     registrado: 'I alredy have an account. '
-    
+    role_updated: "Role updated" 
   activerecord:
     errors:
       messages:

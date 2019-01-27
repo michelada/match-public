@@ -75,6 +75,7 @@ es:
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
+    error_updating_role: "Error actualizando rol"
     forgot_password: "Olvidé mi contraseña"
     forgot_password_submit: "Restablecer contraseña"
     log_in: "Iniciar sesión"
@@ -86,7 +87,7 @@ es:
     remember_me: "Recordarme"
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
-
+    role_updated: "Role actualizado"
   activerecord:
     errors:
       messages:
