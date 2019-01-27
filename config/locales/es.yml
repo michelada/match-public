@@ -87,7 +87,7 @@ es:
     remember_me: "Recordarme"
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
-    role_updated: "Role actualizado"
+    role_updated: "Rol actualizado"
   activerecord:
     errors:
       messages:

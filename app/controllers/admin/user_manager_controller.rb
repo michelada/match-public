@@ -6,11 +6,10 @@ module Admin
 
     def update
       @user = User.find(params[:id])
-      @user.role = user_params[:role]
       if @user.update_attributes(role: user_params[:role])
         flash[:notice] = t('user.role_updated')
       else
-        flash[:alert] = t('user_error_updating_role')
+        flash[:alert] = t('user.error_updating_role')
       end
       redirect_to admin_user_manager_index_path
     end
