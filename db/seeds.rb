@@ -28,3 +28,9 @@ unless User.exists?('admin_user@michelada.io')
 end
 
 Location.find_or_create_by(name: 'UDC')
+
+Activity.find_or_create_by(name: 'Intro a Android Studio', english: false, activity_type: 1, user_id: 1)
+
+Activity.find_or_create_by(name: '¿Qué es CRUD?', english: false, activity_type: 0, user_id: 1)
+
+Activity.find_or_create_by(name: 'ROR as a day-to-day', english: true, activity_type: 2, user_id: 1)
