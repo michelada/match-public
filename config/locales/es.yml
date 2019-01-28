@@ -48,14 +48,18 @@ es:
   home: "Inicio"
   labels:
     comments: "Comentarios"
+    create_team: "Crea un equipo"
     description: "Descripción"
     english: "Inglés"
     events: "Eventos:"
+    invite_users: "Invita a tus compañeros"
     location: "Locación"
     name: "Nombre"
     notes: "Notas"
     other_location: "Otra:"
+    role: "Rol"
     type: "Tipo:"
+    team: "Equipo"
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
@@ -70,11 +74,13 @@ es:
   placeholders:
     activity_name: "Nombre de la actividad"
     notes_description: "Link / Información adicional"
-    other_location: "No encuentras una locación? Agregala aquí"
+    other_location: "¿No encuentras una locación? Agregala aquí"
     team_name: "Nombre del equipo"
+    user_email: "Ingresa el correo del usuario"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
+    error_updating_role: "Error actualizando rol"
     forgot_password: "Olvidé mi contraseña"
     forgot_password_submit: "Restablecer contraseña"
     log_in: "Iniciar sesión"
@@ -86,7 +92,7 @@ es:
     remember_me: "Recordarme"
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
-
+    role_updated: "Rol actualizado"
   activerecord:
     errors:
       messages:
@@ -102,7 +108,8 @@ es:
         team:
           attributes:
             name:
-              taken: "El equipo ya existente"
+              blank: "Debes nombrar a tu equipo"
+              taken: "El equipo ya existe"
         user:
           attributes:
             email:

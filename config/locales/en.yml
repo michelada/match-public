@@ -26,8 +26,8 @@ en:
   alerts: 
     activities:
       other_blank: "This field can't be blank"
-    status_approve: "Approve"
-    status_unapprove: "Unapprove"
+    status_approve: "Approved"
+    status_unapprove: "Unapproved"
   buttons:
     actions: "Actions"
     add: "Add"
@@ -48,15 +48,28 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+<<<<<<< HEAD
     comments: "Comments"
     description: "Description"
     english: "English"
     events: "Events:"
+=======
+    create_team: "Create a team"
+    description: "Description"
+    english: "English"
+    invite_users: "Invite your teammates"
+>>>>>>> development
     location: "Location"
     name: "Name"
     notes: "Notes"
     other_location: "Add another: "
+<<<<<<< HEAD
     type: "Type:"
+=======
+    team: "Team"
+    type: "Type"
+    role: "Role"
+>>>>>>> development
   team:
     create: "Create a team"
     destroy: "Delete team"
@@ -73,9 +86,11 @@ en:
     notes_description: "Link / Aditional information"
     other_location: "Can't find your location? Add it here"
     team_name: "Team name"
+    user_email: "Insert the user email"
   user:
     confirmation_instructions: "Didn't receive confirmation ionstructions?"
     email: "Email"
+    error_updating_role: "Error updating role"
     forgot_password: "Forgot password"
     log_in: "Log in"
     log_out: "Log out"
@@ -84,8 +99,8 @@ en:
     password_confirmation: "Password confirmation"
     remember_me: "Remember me"
     new-registration: 'New here? '
-    registrado: 'I alredy have an account. '
-    
+    registrado: 'I already have an account. '
+    role_updated: "Role updated" 
   activerecord:
     errors:
       messages:
@@ -101,6 +116,7 @@ en:
         team:
           attributes:
             name:
+              blank: "Team name can not be empty"
               taken: "Team name already taken"
         user:
           attributes:
