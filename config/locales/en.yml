@@ -49,8 +49,10 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    create_team: "Create a team"
     description: "Description"
     english: "English"
+    invite_users: "Invite your teammates"
     location: "Location"
     name: "Name"
     notes: "Notes"
@@ -74,6 +76,7 @@ en:
     notes_description: "Link / Aditional information"
     other_location: "Can't find your location? Add it here"
     team_name: "Team name"
+    user_email: "Insert the user email"
   user:
     confirmation_instructions: "Didn't receive confirmation ionstructions?"
     email: "Email"
@@ -103,6 +106,7 @@ en:
         team:
           attributes:
             name:
+              blank: "Team name can not be empty"
               taken: "Team name already taken"
         user:
           attributes:
