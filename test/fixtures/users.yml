@@ -32,21 +32,15 @@ user:
   email: 'admin_example@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
-  confirmed_at: <%= Time.zone.now - 1.hour %>
-  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
 
 user_test1:
   email: 'test@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  confirmed_at: <%= Time.zone.now - 1.hour %>
-  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
   team: team1
 
 user_test2:
   email: 'test2@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  confirmed_at: <%= Time.zone.now - 1.hour %>
-  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
   team: team2
