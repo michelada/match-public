@@ -25,6 +25,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    user_has_permissions
     @feedback = Feedback.new
   end
 
@@ -80,5 +81,10 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:name, :english, :location, :activity_type, :locations_string)
+  end
+
+  def user_has_permissions
+    flash[:alert] = t('activities.messages.error_accessing')
+    redirect_to root_path if current_user.team.id != @activity.user.team&.id && current_user.role != 'judge'
   end
 end
