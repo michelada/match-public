@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do 
+  namespace :api do
     resources :activities, only: [:index]
     resources :teams, only: [:index]
   end

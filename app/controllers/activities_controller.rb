@@ -79,26 +79,17 @@ class ActivitiesController < ApplicationController
   end
 
   def assign_activities_points
-    points = obtain_activity_poins
-    binding.pry
-    @activity.update_attribute(:score, points)
+    obtain_activity_poins
+    @activity.update_attribute(:score, @activity.score)
   end
 
   def obtain_activity_poins
-    points = 0
-    case @activity.activity_type
-    when 'Curso'
-      points += 40
-      points += 15 * @activity.locations.count
-    when 'Platica'
-      points += 25
-      points += 15 * @activity.locations.count
-    when 'Post'
-      points += 10
-      points += 5 * @activity.locations.count
-    end
-    points += 10 if @activity.english
-    points
+    @activity.score = 40 if @activity.activity_type == 'Curso'
+    @activity.score = 25 if @activity.activity_type == 'Platica'
+    @activity.score = 10 if @activity.activity_type == 'Post'
+    @activity.score += 5 if @activity.english
+    events_extra_points = @activity.activity_type == 'Post' ? 5 : 15
+    @activity.score += events_extra_points * @activity.locations.count
   end
 
   def activity_params
