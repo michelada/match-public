@@ -13,25 +13,6 @@
 #  status        :integer          default("Por validar"), not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-activity1:
-  name: POO Java
-  english: false
-  location: UDC
-  activity_type: 0
-  user: user_test1
-
-activity2:
-  name: POO ruby
-  english: true
-  location: Tec
-  activity_type: 1
-  user: user_test2
-
-android_studio:
-  id: 1
-  activity_type: 0
-  name: "Android Studio Curso"
-  location: "Tec de Colima"
-  english: true
+class ActivitySerializer < ActiveModel::Serializer
+  attributes :name, :location, :activity_type
+end
