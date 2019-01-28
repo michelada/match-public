@@ -26,8 +26,8 @@ en:
   alerts: 
     activities:
       other_blank: "This field can't be blank"
-    status_approve: "Approve"
-    status_unapprove: "Unapprove"
+    status_approve: "Approved"
+    status_unapprove: "Unapproved"
   buttons:
     actions: "Actions"
     add: "Add"
