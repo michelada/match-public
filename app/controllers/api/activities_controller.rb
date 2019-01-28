@@ -3,7 +3,7 @@ module Api
     def index
       @last_activity = Activity.last
       @response = ::Api::ApiService.new.last_activity_format(@last_activity)
-      render json: @response 
+      render json: @response
     end
   end
 end

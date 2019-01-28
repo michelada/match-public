@@ -1,31 +1,16 @@
 module Api
   class ApiService
     def top_teams_format(teams)
-      base_obj = {
-        "valueNameHeader": "TEAMS",
-        "valueHeader": "TOP 5",
-        "color": "red",
-        "data": [
-          {
-          "name":"Jean-Luc Picard",
-          "value": 1450
-          },
-          {
-          "name":"James Kirk",
-          "value": 350
-          }
-        ]
-      }
-     
+      base_obj = obtain_base_object
       response = base_obj.clone
-      response["data"] = []
+      response['data'] = []
       teams.each do |team|
-        response["data"].push({
+        response['data'].push(
           name: team.name,
           value: team.score
-        })
+        )
       end
-      return response.to_json
+      response.to_json
     end
 
     def last_activity_format(activity)
@@ -46,7 +31,37 @@ module Api
       response["data"] = {
         value: activity.name
       }
-      return response.to_json
+      response.to_json
+    end
+
+    private
+
+    def obtain_base_object
+      {
+        "valueNameHeader": 'TEAMS',
+        "valueHeader": 'TOP 5',
+        "color": 'red',
+        "data": [
+          {
+            "name": 'Jean-Luc Picard',
+            "value": 1450
+          },
+          {
+            "name": 'James Kirk',
+            "value": 350
+          }
+        ]
+      }
+    end
+
+    def obtain_label_object
+      {
+        "postfix": 'MyUnits',
+        "color": 'blue',
+        "data": {
+          "value": 1234
+        }
+      }
     end
   end
 end
