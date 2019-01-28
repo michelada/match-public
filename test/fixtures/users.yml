@@ -13,3 +13,27 @@ user_with_team:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
   confirmed_at: <%= Time.zone.now - 1.hour %>
   confirmation_sent_at: <%= Time.zone.now - 2.hours %>
+
+user_with_full_team_1:
+  email: 'full_team_member_1@michelada.io'
+  role: 0
+  team_id: 2
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
+  confirmed_at: <%= Time.zone.now - 1.hour %>
+  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
+
+user_with_full_team_2:
+  email: 'full_team_member_2@michelada.io'
+  role: 0
+  team_id: 2
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
+  confirmed_at: <%= Time.zone.now - 1.hour %>
+  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
+
+user_with_full_team_3:
+  email: 'full_team_member_3@michelada.io'
+  role: 0
+  team_id: 2
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
+  confirmed_at: <%= Time.zone.now - 1.hour %>
+  confirmation_sent_at: <%= Time.zone.now - 2.hours %>

@@ -1,3 +1,7 @@
 team1:
   id: 1
   name: testTeam
+
+team2:
+  id: 2
+  name: fullTeam

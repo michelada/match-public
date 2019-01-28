@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   def new
+    redirect_to team_path(current_user.team) unless current_user.team.nil?
     @team = Team.new
     @name = "#{Spicy::Proton.adjective}_#{Spicy::Proton.noun}"
   end
@@ -13,6 +14,10 @@ class TeamsController < ApplicationController
       flash[:alert] = t('team.messages.error_creating')
       render new_team_path
     end
+  end
+
+  def show
+    @team = Team.find_by(id: params[:id])
   end
 
   private
