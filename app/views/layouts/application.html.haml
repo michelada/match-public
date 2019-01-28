@@ -11,5 +11,6 @@
   %body
     = render 'welcome/header'
     .application-content
-      = yield
+      .container
+        = yield
   = render partial: 'welcome/footer'

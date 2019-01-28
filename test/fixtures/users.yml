@@ -1,39 +1,63 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :bigint(8)        not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  name                   :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  invitation_token       :string
+#  invitation_created_at  :datetime
+#  invitation_sent_at     :datetime
+#  invitation_accepted_at :datetime
+#  invitation_limit       :integer
+#  invited_by_type        :string
+#  invited_by_id          :bigint(8)
+#  invitations_count      :integer          default(0)
+#  team_id                :bigint(8)
+#  role                   :integer
+#
+
+
+admin_user:
+  email: 'admin_user@mmichelada.io'
+  role: 2
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
+
+judge_user:
+  email: 'judge_user@michelada.io'
+  role: 1
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'normalUser') %>
 
 user:
-  email: 'admin_example@michelada.io'
+  email: 'normal_user@michelada.io'
   role: 0
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
-  confirmed_at: <%= Time.zone.now - 1.hour %>
-  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'normalUser') %>
+
+user_test1:
+  email: 'test@michelada.io'
+  role: 0
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
+  team: team1
+
+user_test2:
+  email: 'test2@michelada.io'
+  role: 0
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
+  team: team2
 
 user_with_team:
-  email: 'team_member@michelada.io'
+  email: 'team_user@michelada.io'
   role: 0
-  team_id: 1
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
-  confirmed_at: <%= Time.zone.now - 1.hour %>
-  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
-
-user_with_full_team_1:
-  email: 'full_team_member_1@michelada.io'
-  role: 0
-  team_id: 2
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
-  confirmed_at: <%= Time.zone.now - 1.hour %>
-  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
-
-user_with_full_team_2:
-  email: 'full_team_member_2@michelada.io'
-  role: 0
-  team_id: 2
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
-  confirmed_at: <%= Time.zone.now - 1.hour %>
-  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
-
-user_with_full_team_3:
-  email: 'full_team_member_3@michelada.io'
-  role: 0
-  team_id: 2
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
-  confirmed_at: <%= Time.zone.now - 1.hour %>
-  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
+  team: team1
+  
