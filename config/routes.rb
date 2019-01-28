@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do 
+  namespace :api do
     resources :activities, only: [:index]
     resources :teams, only: [:index]
   end
@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :activities, only: %w[index show] do
       resources :activity_status, only: %w[create update]
     end
+  end
+
+  namespace :admin do
+    resources :user_manager, only: %w[index update]
   end
 
   resources :activities, only: [:show] do
