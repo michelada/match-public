@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :api do
+    resources :activities, only: [:index]
+    resources :teams, only: [:index]
+  end
   resources :activities
   resources :teams
   devise_for :users, controllers: { invitations: 'users/invitations' }

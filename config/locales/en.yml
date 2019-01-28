@@ -85,7 +85,7 @@ en:
     password_confirmation: "Password confirmation"
     remember_me: "Remember me"
     new-registration: 'New here? '
-    registrado: 'I alredy have an account. '
+    registrado: 'I already have an account. '
     role_updated: "Role updated" 
   activerecord:
     errors:
