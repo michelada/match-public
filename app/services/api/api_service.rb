@@ -1,7 +1,35 @@
 module Api
   class ApiService
     def top_teams_format(teams)
-      base_obj = {
+      base_obj = obtain_base_object
+      response = base_obj.clone
+      response['data'] = []
+      teams.each do |team|
+        response['data'].push(
+          name: team.name,
+          value: team.score
+        )
+      end
+      response.to_json
+    end
+
+    def last_activity_format(activity)
+      team_name = activity.user.team.name
+      label_obj = obtain_label_object
+      response = label_obj.clone
+      response['data'] = []
+      postfix = "Team #{team_name} - #{activity.activity_type} at #{activity.location}"
+      response['postfix'] = postfix
+      response['data'] = {
+        value: activity.name
+      }
+      response.to_json
+    end
+
+    private
+
+    def obtain_base_object
+      {
         "valueNameHeader": 'TEAMS',
         "valueHeader": 'TOP 5',
         "color": 'red',
@@ -16,36 +44,16 @@ module Api
           }
         ]
       }
-
-      response = base_obj.clone
-      response['data'] = []
-      teams.each do |team|
-        response['data'].push(
-          name: team.name,
-          value: team.score
-        )
-      end
-      response.to_json
     end
 
-    def last_activity_format(activity)
-      team_name = activity.user.team.name
-      label_obj = {
+    def obtain_label_object
+      {
         "postfix": 'MyUnits',
         "color": 'blue',
         "data": {
           "value": 1234
         }
       }
-
-      response = label_obj.clone
-      response['data'] = []
-      postfix = "Team #{team_name} - #{activity.activity_type} at #{activity.location}"
-      response['postfix'] = postfix
-      response['data'] = {
-        value: activity.name
-      }
-      response.to_json
     end
   end
 end

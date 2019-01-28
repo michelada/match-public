@@ -53,6 +53,8 @@ es:
     name: "Nombre"
     notes: "Notas"
     other_location: "Otra:"
+    role: "Rol"
+    team: "Equipo"
     type: "Tipo"
   team:
     create: "Crear un equipo"
@@ -73,6 +75,7 @@ es:
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
+    error_updating_role: "Error actualizando rol"
     forgot_password: "Olvidé mi contraseña"
     forgot_password_submit: "Restablecer contraseña"
     log_in: "Iniciar sesión"
@@ -84,7 +87,7 @@ es:
     remember_me: "Recordarme"
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
-
+    role_updated: "Rol actualizado"
   activerecord:
     errors:
       messages:
