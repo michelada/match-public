@@ -100,7 +100,8 @@ es:
         team:
           attributes:
             name:
-              taken: "El equipo ya existente"
+              blank: "El nombre no puede estar en blanco"
+              taken: "El equipo ya existe"
         user:
           attributes:
             email:

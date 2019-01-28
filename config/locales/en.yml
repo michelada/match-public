@@ -99,6 +99,7 @@ en:
         team:
           attributes:
             name:
+              blank: "Team name can't be blank"
               taken: "Team name already taken"
         user:
           attributes:

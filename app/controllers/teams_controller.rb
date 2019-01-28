@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   def new
     @team = Team.new
+    @name = "#{Spicy::Proton.adjective}_#{Spicy::Proton.noun}"
   end
 
   def create
@@ -10,7 +11,7 @@ class TeamsController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = t('team.messages.error_creating')
-      render 'new'
+      render new_team_path
     end
   end
 
