@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze
+  before_action :user_has_team
   def new
     @team = Team.new
   end
@@ -37,5 +38,9 @@ class TeamsController < ApplicationController
     return false if !user2.empty? && !user2.match(VALID_EMAIL_REGEX)
 
     true
+  end
+
+  def user_has_team
+    redirect_to root_path if current_user.team
   end
 end
