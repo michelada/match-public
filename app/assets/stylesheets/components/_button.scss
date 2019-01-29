@@ -10,8 +10,17 @@
   text-transform: uppercase;
   font-weight: 500;
   margin-top: $regular-padding;
-  font
-    &:hover {
-      color: $blue;
-    }
+  &:hover {
+    color: $blue;
+  }
+}
+a.button{
+  color: $blue;
+  display: table;
+  text-align: center;
+  line-height: 35px;
+  margin-top: $regular-padding;
+  &:visited {
+    color: $blue;
+  }
 }

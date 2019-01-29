@@ -1,0 +1,20 @@
+.container.center-vertical
+  .main-content.small
+    .landing
+      = image_tag 'michelada', alt: 'michelada', class: 'michelada-icon' 
+      .container-information
+        %h2.color2 M
+        %h2.color1 ichelada
+        %h2.color2 C
+        %h2.color1 ontent 
+        %h2.color2 M
+        %h2.color1 atch 
+        %br
+        %p= t("information.landing.about")
+        %br
+        %h3.color1 Let the
+        %h3.color2 BEST PLAYER
+        %h3.color1 win
+        %br
+        = link_to t("user.sign_up"), new_user_registration_path,  class: "button"
+        = link_to t("user.log_in"), new_user_session_path,  class: "button"

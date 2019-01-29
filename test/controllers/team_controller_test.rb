@@ -20,6 +20,6 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
   test 'loged user can create a team' do
     sign_in @user
     post teams_path, params: { team: { name: 'michelada' } }
-    assert_redirected_to root_path, 'Controller reponse unexpected'
+    assert_redirected_to main_index_path, 'Controller reponse unexpected'
   end
 end
