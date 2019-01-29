@@ -40,7 +40,6 @@ $(document).on('turbolinks:load', function() {
 
   function addLocation() {
     var textVal = $('#other_location input').val();
-    console.log(textVal);
     var locString = $('#locations_string').val();
     var activity = $('#other_location input').val();
 

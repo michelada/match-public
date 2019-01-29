@@ -1,23 +1,23 @@
 .activities {
   .tags_box {
     background: $light-blue;
-    padding: $regular-padding;
     border-radius: $border-radius;
     display: flex;
+    padding: $regular-padding;
     ul {
-      width: 100%;
+      display: flex;
       flex-wrap: wrap;
       list-style: none;
-      padding: 0;
-      display: flex;
       margin: 0;
+      padding: 0;
+      width: 100%;
       li {
         background: $blue;
-        display: flex;            
-        padding: 3px $regular-padding;
-        font-size: $secondary-font-size;
         border-radius: 15px;
+        display: flex;            
+        font-size: $secondary-font-size;
         margin: 0 5px 5px 0;
+        padding: 3px $regular-padding;
         a {
           cursor: pointer;
           margin-left: $regular-margin;
@@ -27,11 +27,11 @@
   }
   
     label {
-    margin-top: $regular-margin;    
+      margin-top: $regular-margin;    
     }
   
     .button {
-    margin-bottom: $regular-margin;
+      margin-bottom: $regular-margin;
     }
   
     select {
@@ -39,8 +39,8 @@
     }
     
     .form-check {
-      display: flex;
       align-items: center;
+      display: flex;
     }
     
     .label-mobile {
