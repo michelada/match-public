@@ -1,15 +1,33 @@
 
 .header {
-  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
   width: 100%;
-  text-align: right;
-} 
-.nav{
-  text-align: right;
-  justify-content: flex-end;
- }
-.header-icon{
-  margin-right: 2em;
-  height: 30px;
-  width: 30px;
+
+  .nav {
+    justify-content: flex-end;
+    text-align: right;
+    > * {
+      margin-left: $regular-margin;
+    }
+  }
+
+  svg {
+    width: 35px;
+    height: 35px;
+    fill: $white;
+    &.is_active {
+      fill: $yellow;
+    }
+  }
+
+  @include breakpoint(mobile) {
+    .company-logo {
+      width: 60px;
+      object-fit: cover;
+      object-position: left;
+    }
+  }
 }

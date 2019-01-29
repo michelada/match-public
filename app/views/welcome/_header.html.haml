@@ -1,29 +1,17 @@
-%header.header{class: controller_name}
-  %p.notice= notice
-  %p.alert= alert
-  .nav
-    = link_to t("user.log_in"), new_user_session_path unless user_signed_in? || current_page?(new_user_session_path)
-    - if user_signed_in?
-      = link_to new_activity_path do
-        -if controller_name == 'activities'
-          = image_tag 'file-yellow', alt: 'change-activity', class: 'header-icon'
-        -else
-          = image_tag 'file', alt: 'change-activities', class: 'header-icon'
-      
-      = link_to  root_path do
-        -if controller_name == 'main'
-          = image_tag 'first_yellow', alt: 'team', class: 'header-icon'
-        -else
-          = image_tag 'first', alt: 'team', class: 'header-icon'
-      
-      = link_to  new_team_path do
-        -if controller_name == 'teams'
-          = image_tag 'man-yellow', alt: 'team', class: 'header-icon'
-        -else
-          = image_tag 'man', alt: 'team', class: 'header-icon'
-      
-      = link_to  destroy_user_session_path, method: :delete do
-        -if controller_name == 'sign_out'
-          = image_tag 'out-yellow', alt: 'out', class: 'header-icon'
-        -else
-          = image_tag 'out', alt: 'out', class: 'header-icon'
+%header
+  .container.header
+    = link_to root_path do
+      = image_tag 'michelada_white_one', alt: 'company-logo', height: 60, class: 'company-logo'
+    .nav
+      = link_to t("user.log_in"), new_user_session_path unless user_signed_in? || current_page?(new_user_session_path)
+      - if user_signed_in?
+        = link_to new_activity_path do
+          = render partial: 'welcome/icons/file', locals: {is_active: controller_name == 'activities' }
+        = link_to  root_path do
+          = render partial: 'welcome/icons/first', locals: {is_active: controller_name == 'main' }
+        = link_to  new_team_path do
+          = render partial: 'welcome/icons/man', locals: {is_active: controller_name == 'teams' }
+        = link_to  new_team_path do
+          = render partial: 'welcome/icons/vote', locals: {is_active: controller_name == 'teams' }
+        = link_to  destroy_user_session_path, method: :delete do
+          Log out
