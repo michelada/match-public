@@ -57,7 +57,7 @@ en:
     english: "English"
     invite_users: "Invite your teammates"
     location: "Location"
-    name: "Name"
+    name: "Name of your content"
     notes: "Notes"
     other_location: "Add another: "
     team: "Team"
@@ -77,7 +77,7 @@ en:
   placeholders:
     activity_name: "Activity name"
     notes_description: "Link / Aditional information"
-    other_location: "Can't find your location? Add it here"
+    other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"
   user:

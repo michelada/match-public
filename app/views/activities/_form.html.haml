@@ -1,29 +1,34 @@
-= simple_form_for (@activity) do |f|
-  .location_list_elements
-    %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
- 
-  = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity_name")
+.container.center-vertical.activities
+  .main-content.small
+    = simple_form_for (@activity) do |f|
+      .location_list_elements
+        %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
+    
+      = f.input :name, label: t("labels.name"),  input_html: { class: 'input-text' }
+      .row
+        .col-sm-6.col-xs-12.mb-3
+          %label.mt-0
+            = t("labels.location")
+          - unless @locations.nil?
+            = f.select :locations, @locations.sort_by{ |loc | loc.name.downcase }.map {|l| l.name}, class: 'location-select', prompt: "Select location"
+        .col-sm-6.col-xs-12
+          #other_location
+            = f.input :locations, label: t("labels.other_location"), placeholder: t("placeholders.other_location"), input_html: { class: 'input-text add-location' }, label_html: { class: 'mt-0'}            
 
-  = t("labels.location")
-  - unless @locations.nil?
-    = f.select :locations, @locations.sort_by{ |loc | loc.name.downcase }.map {|l| l.name}
-  = link_to t("buttons.add"), new_activity_path, id: "add_location"
+      .locations_list.tags_box
+        %ul
+          - loaded_locations = ""
+          - unless @selected_locations.nil? 
+            - @selected_locations.each_with_index do |location|
+              %li{id: location[:id]}
+                = location[:name]
+                %a{id: location[:id]} x
+              - loaded_locations += (location[:name]+"ß")
+          %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
 
-  #other_location
-    = f.input :locations, label: t("labels.other_location"), placeholder: t("placeholders.other_location")
-    = link_to t("buttons.add_other"), new_activity_path, id: "add_new"
-
-  .locations_list
-    %ul
-      - loaded_locations = ""
-      - unless @selected_locations.nil? 
-        - @selected_locations.each_with_index do |location|
-          %li{id: location[:id]}= location[:name]
-          %input{id: location[:id], type: "button", value: "-"}
-          - loaded_locations += (location[:name]+"ß")
-      %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
-
-  = f.input :activity_type, label: t('labels.type'), collection: Activity.activity_types.keys, include_blank: false
-  = f.input :notes, label: t("labels.notes"), placeholder: t("placeholders.notes_description")
-  = f.input :english, label: t("labels.english")
-  %input{:type=>"submit", :value=> t("buttons.submit")}
+      %label
+        = t('labels.type')
+      = f.select :activity_type, Activity.activity_types.keys, include_blank: false
+      = f.input :notes, label: t("labels.notes"), placeholder: t("placeholders.notes_description"), input_html: { class: 'input-text' }
+      = f.input :english, label: t("labels.english"), input_html: {class: 'mt-0'} , label_html: { class: 'mt-0'}    
+      %input{type: "submit", value: t("buttons.submit"), class: 'button'}
