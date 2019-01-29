@@ -94,9 +94,11 @@ es:
     registrado: 'Ya tengo una cuenta.'
     role_updated: "Rol actualizado"
   information:
-    footer: "Copyrights michelada.io 2019"
+    footer:
+      copyrights: "Derechos de autor michelada.io 2019"
+      about: "Acerca de MCM"
     landing:
-      about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
+      about: "El MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blog, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
   activerecord:
     errors:
       messages:

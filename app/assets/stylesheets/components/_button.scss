@@ -9,7 +9,7 @@
   border: none;
   text-transform: uppercase;
   font-weight: 500;
-  margin-top: $regular-padding;
+  margin-top: $regular-margin;
   &:hover {
     color: $blue;
   }
@@ -17,9 +17,10 @@
 a.button {
   color: $blue;
   display: table;
-  text-align: center;
   line-height: 35px;
-  margin-top: $regular-padding;
+  margin-top: $regular-margin;
+  text-align: center;
+  text-decoration: none;
   &:visited {
     color: $blue;
   }   
@@ -31,7 +32,7 @@ a.login {
   text-decoration: none;
   text-transform: uppercase;
   line-height: 35px;
-  margin-top: $regular-padding;
+  margin-top: $regular-margin;
   &:visited {
     color: $white;
   }   

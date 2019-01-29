@@ -93,7 +93,13 @@ en:
     remember_me: "Remember me"
     new-registration: 'New here? '
     registrado: 'I already have an account. '
-    role_updated: "Role updated" 
+    role_updated: "Role updated"
+  information:
+    footer:
+      copyrights: "Copyrights michelada.io 2019"
+      about: "About us MCM"
+    landing:
+      about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
   activerecord:
     errors:
       messages:
