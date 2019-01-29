@@ -52,7 +52,8 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
-    create_team: "Create a team"
+    create_team: "Create your own"
+    dinasty: 'Dinasty'
     description: "Description"
     english: "English"
     invite_users: "Invite your teammates"
@@ -63,6 +64,7 @@ en:
     team: "Team"
     type: "Type"
     role: "Role"
+    email_uno: 'Partner in crime'
   team:
     create: "Create a team"
     destroy: "Delete team"

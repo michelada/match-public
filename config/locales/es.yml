@@ -49,7 +49,8 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
-    create_team: "Crea un equipo"
+    create_team: "Crea tu propia"
+    dinasty: 'Dinastía'
     description: "Descripción"
     english: "Inglés"
     invite_users: "Invita a tus compañeros"
@@ -60,6 +61,7 @@ es:
     role: "Rol"
     team: "Equipo"
     type: "Tipo"
+    email_uno: 'Correo'
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
