@@ -1,4 +1,18 @@
-%p My team: 
-= @team.name
+%p="Welcome, #{current_user.email}"
+%h2=@team.name
+%p="Score: #{@team.score || 0}"
+%p="--------------------------------"
+%h2 Best EFFORT
+
+- @activities&.each do |activity|
+  %p
+    =activity.name
+  %p
+    =activity.status
+  %p
+    =activity.activity_type
+  %p
+    =link_to "Details", activity_path(activity)
+    
 - if @team.users.count < 3
   %input{ :type => "button", :href => "#", :value => t("buttons.invite")}

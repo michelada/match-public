@@ -19,10 +19,8 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.user_id = current_user.id
     if @activity.save && assign_locations_string && assign_activity_points
-      redirect_to activities_path
-      flash[:notice] = t('activities.messages.uploaded')
+      redirect_to team_path(current_user.team)
     else
-      flash[:alert] = t('activities.messages.error_creating')
       render 'new'
     end
   end

@@ -3,6 +3,8 @@ require 'test_helper'
 class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:user)
+    @team = teams(:team3)
+    @user_with_team = users(:user_with_team)
   end
 
   test 'no loged user can no visit activity index' do
@@ -17,9 +19,9 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'loged user can create an activity' do
-    sign_in @user
+    sign_in @user_with_team
     post activities_path, params: { activity: { name: 'Android Studio', activity_type: 'Curso', english: 0 }, locations_string: 'UDEC,TEC' }
-    assert_redirected_to activities_path, 'Controller response unexpectefd'
+    assert_redirected_to team_path(@team), 'Controller response unexpectefd'
   end
 
   test 'users with no team can not access create activity view' do
