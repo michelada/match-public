@@ -13,6 +13,5 @@
     =activity.activity_type
   %p
     =link_to "Details", activity_path(activity)
-
 - if @team.users.count < 3
   = link_to "Invitar", new_user_invitation_path
