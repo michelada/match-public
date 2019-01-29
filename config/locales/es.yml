@@ -15,6 +15,7 @@ es:
     title: "Actividades"
     messages:
       approved: "Actividad aprobada"
+      error_accessing: "No puedes acceder a esta actividad"
       error_creating: "Error creando la actividad"
       erro_approving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"

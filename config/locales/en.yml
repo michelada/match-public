@@ -15,6 +15,7 @@ en:
     title: "Activities"
     messages:
       approved: "Activity approved"
+      error_accessing: "You can not access to this activity"
       error_creating: "Error creating that activity"
       error_approving: "Error approving activity"
       error_unapproving: "Error unapproving activity"
