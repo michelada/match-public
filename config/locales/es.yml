@@ -8,10 +8,11 @@ es:
     all: "Todas las actividades"
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
+    pending: "Actividades por revisar"
     status: "Estado"
-    title: "Actividades"
     status_approve: "Aprobar"
     status_unapprove: "Desaprobar"
+    title: "Actividades"
     messages:
       approved: "Actividad aprobada"
       error_creating: "Error creando la actividad"
@@ -34,6 +35,7 @@ es:
     create: "Crear"
     delete: "Eliminar"
     edit: "Editar"
+    invite: "Invitar"
     new: "Nuevo"
     submit: "Enviar"
     upload: "Cargar"
@@ -47,12 +49,16 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    create_team: "Crea un equipo"
     description: "Descripción"
-    english: "Ingles"
+    english: "Inglés"
+    invite_users: "Invita a tus compañeros"
     location: "Locación"
     name: "Título"
     notes: "Notas"
     other_location: "Otra:"
+    role: "Rol"
+    team: "Equipo"
     type: "Tipo"
   team:
     create: "Crear un equipo"
@@ -70,9 +76,11 @@ es:
     notes_description: "Link / Información adicional"
     other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
+    user_email: "Ingresa el correo del usuario"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
+    error_updating_role: "Error actualizando rol"
     forgot_password: "Olvidé mi contraseña"
     forgot_password_submit: "Restablecer contraseña"
     log_in: "Iniciar sesión"
@@ -84,7 +92,7 @@ es:
     remember_me: "Recordarme"
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
-
+    role_updated: "Rol actualizado"
   activerecord:
     errors:
       messages:
@@ -100,7 +108,8 @@ es:
         team:
           attributes:
             name:
-              taken: "El equipo ya existente"
+              blank: "Debes nombrar a tu equipo"
+              taken: "El equipo ya existe"
         user:
           attributes:
             email:
