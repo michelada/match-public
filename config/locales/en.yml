@@ -15,6 +15,7 @@ en:
     title: "Activities"
     messages:
       approved: "Activity approved"
+      error_accessing: "You can not access to this activity"
       error_creating: "Error creating that activity"
       error_approving: "Error approving activity"
       error_unapproving: "Error unapproving activity"
@@ -52,9 +53,11 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
-    create_team: "Create a team"
     comments: "Comments"
+    create_team: "Create your own"
+    dinasty: 'Dinasty'
     description: "Description"
+    email_uno: 'Partner in crime'
     english: "English"
     events: "Events:"
     invite_users: "Invite your teammates"

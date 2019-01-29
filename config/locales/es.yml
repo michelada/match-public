@@ -15,6 +15,7 @@ es:
     title: "Actividades"
     messages:
       approved: "Actividad aprobada"
+      error_accessing: "No puedes acceder a esta actividad"
       error_creating: "Error creando la actividad"
       erro_approving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"
@@ -50,7 +51,8 @@ es:
   home: "Inicio"
   labels:
     comments: "Comentarios"
-    create_team: "Crea un equipo"
+    create_team: "Crea tu propia"
+    dinasty: 'Dinastía'
     description: "Descripción"
     english: "Inglés"
     events: "Eventos:"
@@ -62,6 +64,8 @@ es:
     role: "Rol"
     type: "Tipo:"
     team: "Equipo"
+    type: "Tipo"
+    email_uno: 'Correo'
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
