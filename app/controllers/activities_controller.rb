@@ -4,10 +4,14 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity = Activity.new
-    @feedback = Feedback.new
-    @locations = Location.all
-    @selected_locations = []
+    if current_user.team.nil?
+      redirect_to new_team_path
+    else
+      @activity = Activity.new
+      @feedback = Feedback.new
+      @locations = Location.all
+      @selected_locations = []
+    end
   end
 
   def create

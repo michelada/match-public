@@ -1,0 +1,4 @@
+%p My team: 
+= @team.name
+- if @team.users.count < 3
+  %input{ :type => "button", :href => "#", :value => t("buttons.invite")}
