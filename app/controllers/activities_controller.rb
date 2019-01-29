@@ -1,8 +1,4 @@
 class ActivitiesController < ApplicationController
-  def index
-    @activities = Activity.user_activities(current_user.id)
-  end
-
   def new
     if current_user.team.nil?
       redirect_to new_team_path
