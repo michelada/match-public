@@ -1,0 +1,13 @@
+.container.center-vertical
+  .main-content.small
+    .landing
+      .container-information
+        = image_tag 'michelada', alt: 'michelada', class: 'michelada-icon' 
+        %h2= t("information.landing.name")
+        %p= t("information.landing.about")
+        %br
+        %h3= t("information.landing.best_player")
+        %br
+        = link_to t("user.sign_up"), new_user_registration_path,  class: "button"
+        %br
+        = link_to t("user.log_in"), new_user_session_path,  class: "button"

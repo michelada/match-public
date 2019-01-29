@@ -8,10 +8,11 @@ es:
     all: "Todas las actividades"
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
+    pending: "Actividades por revisar"
     status: "Estado"
-    title: "Actividades"
     status_approve: "Aprobar"
     status_unapprove: "Desaprobar"
+    title: "Actividades"
     messages:
       approved: "Actividad aprobada"
       error_creating: "Error creando la actividad"
@@ -34,6 +35,7 @@ es:
     create: "Crear"
     delete: "Eliminar"
     edit: "Editar"
+    invite: "Invitar"
     new: "Nuevo"
     submit: "Enviar"
     upload: "Cargar"
@@ -47,12 +49,16 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    create_team: "Crea un equipo"
     description: "Descripción"
-    english: "Ingles"
+    english: "Inglés"
+    invite_users: "Invita a tus compañeros"
     location: "Locación"
     name: "Nombre"
     notes: "Notas"
     other_location: "Otra:"
+    role: "Rol"
+    team: "Equipo"
     type: "Tipo"
   team:
     create: "Crear un equipo"
@@ -68,11 +74,13 @@ es:
   placeholders:
     activity_name: "Nombre de la actividad"
     notes_description: "Link / Información adicional"
-    other_location: "No encuentras una locación? Agregala aquí"
+    other_location: "¿No encuentras una locación? Agregala aquí"
     team_name: "Nombre del equipo"
+    user_email: "Ingresa el correo del usuario"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
+    error_updating_role: "Error actualizando rol"
     forgot_password: "Olvidé mi contraseña"
     forgot_password_submit: "Restablecer contraseña"
     log_in: "Iniciar sesión"
@@ -84,11 +92,10 @@ es:
     remember_me: "Recordarme"
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
+    role_updated: "Rol actualizado"
   information:
     footer: "Copyrights michelada.io 2019"
     landing:
-      best_player: "Let the BEST PLAYER win"
-      name: "Michelada Content Match"
       about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
   activerecord:
     errors:
@@ -105,7 +112,8 @@ es:
         team:
           attributes:
             name:
-              taken: "El equipo ya existente"
+              blank: "Debes nombrar a tu equipo"
+              taken: "El equipo ya existe"
         user:
           attributes:
             email:

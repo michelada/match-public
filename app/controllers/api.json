@@ -1,0 +1,18 @@
+{
+  "postfix": "Top 3 Teams",
+  "color": "green",
+  "data": [
+  {
+    "name": "los apis",
+    "value": 100
+  },
+  {
+    "name": "121212",
+    "value": 98
+  },
+  {
+    "name": "prueba2",
+    "value": 90
+  }
+  ]
+}

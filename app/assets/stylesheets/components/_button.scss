@@ -14,7 +14,7 @@
     color: $blue;
   }
 }
-a.button{
+a.button {
   color: $blue;
   display: table;
   text-align: center;
@@ -22,5 +22,18 @@ a.button{
   margin-top: $regular-padding;
   &:visited {
     color: $blue;
-  }
+  }   
 }
+a.login {
+  color: $white;
+  font-size: $primary-font-size;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 35px;
+  margin-top: $regular-padding;
+  &:visited {
+    color: $white;
+  }   
+} 
+
