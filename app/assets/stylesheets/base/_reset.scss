@@ -17,6 +17,21 @@ h1 {
   text-transform: uppercase;
 }
 
+h3 {
+  color: $white;
+  font-size: 25px;
+  font-weight: 400;
+  span {
+    color: $red;
+    text-transform: uppercase;
+    font-size: $highlight-font-size;
+  }
+}
+
+h5 {
+  color: $white;
+}
+
 em {
   color: $white;
   font-size: $secondary-font-size
