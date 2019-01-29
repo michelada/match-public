@@ -8,10 +8,11 @@ es:
     all: "Todas las actividades"
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
+    pending: "Actividades por revisar"
     status: "Estado"
-    title: "Actividades"
     status_approve: "Aprobar"
     status_unapprove: "Desaprobar"
+    title: "Actividades"
     messages:
       approved: "Actividad aprobada"
       error_creating: "Error creando la actividad"
