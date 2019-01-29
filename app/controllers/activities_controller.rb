@@ -14,7 +14,7 @@ class ActivitiesController < ApplicationController
     @locations = Location.all
     @activity = Activity.new(activity_params)
     @activity.user_id = current_user.id
-    if @activity.save && assign_locations_string
+    if @activity.save && assign_locations_string && assign_activity_points
       redirect_to activities_path
       flash[:notice] = t('activities.messages.uploaded')
     else
@@ -76,6 +76,20 @@ class ActivitiesController < ApplicationController
                                Location.create(name: location_name)
                              end
     end
+  end
+
+  def assign_activity_points
+    obtain_activity_points
+    @activity.update_attribute(:score, @activity.score)
+  end
+
+  def obtain_activity_points
+    @activity.score = 40 if @activity.activity_type == 'Curso'
+    @activity.score = 25 if @activity.activity_type == 'Platica'
+    @activity.score = 10 if @activity.activity_type == 'Post'
+    @activity.score += 5 if @activity.english
+    events_extra_points = @activity.activity_type == 'Post' ? 5 : 15
+    @activity.score += events_extra_points * @activity.locations.count
   end
 
   def activity_params
