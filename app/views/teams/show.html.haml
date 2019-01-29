@@ -13,6 +13,6 @@
     =activity.activity_type
   %p
     =link_to "Details", activity_path(activity)
-    
+
 - if @team.users.count < 3
-  %input{ :type => "button", :href => "#", :value => t("buttons.invite")}
+  = link_to "Invitar", new_user_invitation_path
