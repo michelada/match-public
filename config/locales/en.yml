@@ -38,6 +38,7 @@ en:
     create: "Create"
     delete: "Delete"
     edit: "Edit"
+    invite: "Invite"
     new: "New"
     submit: "Submit"
     upload: "Upload"
@@ -108,7 +109,7 @@ en:
         team:
           attributes:
             name:
-              blank: "Team name can not be empty"
+              blank: "Team name cannot be empty"
               taken: "Team name already taken"
         user:
           attributes:

@@ -9,22 +9,22 @@ end
 
 unless User.exists?('judge_user@michelada.io')
   User.create(email: 'judge_user@michelada.io', password: 'judgeUser',
-              name: 'Usuario Juez', role: 2, team_id: 1)
+              name: 'Usuario Juez', role: 1, team_id: 1)
 end
 
 unless User.exists?('judge_user_2@michelada.io')
   User.create(email: 'judge_user_2@michelada.io', password: 'judgeUser',
-              name: 'Usuario Juez 2', role: 2, team_id: 1)
+              name: 'Usuario Juez 2', role: 1, team_id: 1)
 end
 
 unless User.exists?('judge_user_3@michelada.io')
   User.create(email: 'judge_user_3@michelada.io', password: 'judgeUser',
-              name: 'Usuario Juez 3', role: 2, team_id: 1)
+              name: 'Usuario Juez 3', role: 1, team_id: 1)
 end
 
 unless User.exists?('admin_user@michelada.io')
   User.create(email: 'admin_user@michelada.io', password: 'adminUser',
-              name: 'Usuario Administrador')
+              name: 'Usuario Administrador', role: 2)
 end
 
 Location.find_or_create_by(name: 'UDC')
