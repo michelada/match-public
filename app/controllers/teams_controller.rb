@@ -21,10 +21,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find_by(id: params[:id])
-    @activities = []
-    @team.users.each do |team_member|
-      @activities += team_member.activities
-    end
+    @activities = Activity.team_activities(params[:id])
   end
 
   private
