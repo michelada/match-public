@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze
+
   def new
     redirect_to team_path(current_user.team) unless current_user.team.nil?
     @team = Team.new
@@ -7,7 +9,8 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    if @team.save && current_user.update_attribute(:team, @team)
+    if validate_user && @team.save && current_user.update_attribute(:team, @team)
+      invite_users
       flash[:notice] = t('team.messages.created')
       redirect_to root_path
     else
@@ -24,5 +27,22 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name)
+  end
+
+  def invite_users
+    user1 = params[:user_invitation_1][:email]
+    user2 = params[:user_invitation_2][:email]
+    User.invite!({ email: user1 }, current_user) unless user1.empty?
+    User.invite!({ email: user2 }, current_user) unless user2.empty?
+  end
+
+  def validate_user
+    user1 = params[:user_invitation_1][:email]
+    return false if !user1.empty? && !user1.match(VALID_EMAIL_REGEX)
+
+    user2 = params[:user_invitation_2][:email]
+    return false if !user2.empty? && !user2.match(VALID_EMAIL_REGEX)
+
+    true
   end
 end

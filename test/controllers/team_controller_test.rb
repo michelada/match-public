@@ -19,7 +19,7 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
 
   test 'logged user can create a team' do
     sign_in @user
-    post teams_path, params: { team: { name: 'michelada' } }
+    post teams_path, params: { team: { name: 'michelada' }, user_invitation_1: { email: '' }, user_invitation_2: { email: '' } }
     assert_redirected_to root_path, 'Controller reponse unexpected'
   end
 end

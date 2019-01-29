@@ -48,8 +48,10 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    create_team: "Crea un equipo"
     description: "Descripción"
-    english: "Ingles"
+    english: "Inglés"
+    invite_users: "Invita a tus compañeros"
     location: "Locación"
     name: "Nombre"
     notes: "Notas"
@@ -71,8 +73,9 @@ es:
   placeholders:
     activity_name: "Nombre de la actividad"
     notes_description: "Link / Información adicional"
-    other_location: "No encuentras una locación? Agregala aquí"
+    other_location: "¿No encuentras una locación? Agregala aquí"
     team_name: "Nombre del equipo"
+    user_email: "Ingresa el correo del usuario"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
@@ -104,7 +107,7 @@ es:
         team:
           attributes:
             name:
-              blank: "El nombre no puede estar en blanco"
+              blank: "Debes nombrar a tu equipo"
               taken: "El equipo ya existe"
         user:
           attributes:

@@ -1,3 +1,9 @@
 = simple_form_for @team do |f|
   = f.input :name, label: t("labels.name"), input_html: {value: @name}
+  %h3
+    = t('labels.invite_users')
+  = simple_fields_for :user_invitation_1 do |u|
+    = u.input :email, label: t('user.email'), placeholder: t('placeholders.user_email')
+  = simple_fields_for :user_invitation_2 do |u|
+    = u.input :email, label: t('user.email'), placeholder: t('placeholders.user_email')
   = f.button :submit, option
