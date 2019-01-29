@@ -16,19 +16,11 @@ module Api
     def last_activity_format(activity)
       team_name = activity.user.team.name
       activity_location = activity.locations[0].name
-      label_obj = {
-        "postfix": "MyUnits",
-        "color": "blue",
-        "data": {
-          "value": 1234
-        }
-      }
-
-      response = label_obj.clone
-      response["data"] = []
+      response = obtain_label_object.clone
+      response['data'] = []
       postfix = "Team #{team_name} - #{activity.activity_type} at #{activity_location}"
-      response["postfix"] = postfix
-      response["data"] = {
+      response['postfix'] = postfix
+      response['data'] = {
         value: activity.name
       }
       response.to_json
