@@ -8,10 +8,11 @@ es:
     all: "Todas las actividades"
     edit_activity: "Editar actividad"
     my_activities: "Mis actividades"
+    pending: "Actividades por revisar"
     status: "Estado"
-    title: "Actividades"
     status_approve: "Aprobar"
     status_unapprove: "Desaprobar"
+    title: "Actividades"
     messages:
       approved: "Actividad aprobada"
       error_accessing: "No puedes acceder a esta actividad"
@@ -35,6 +36,7 @@ es:
     create: "Crear"
     delete: "Eliminar"
     edit: "Editar"
+    invite: "Invitar"
     new: "Nuevo"
     submit: "Enviar"
     upload: "Cargar"
@@ -53,7 +55,7 @@ es:
     english: "Inglés"
     invite_users: "Invita a tus compañeros"
     location: "Locación"
-    name: "Nombre"
+    name: "Título"
     notes: "Notas"
     other_location: "Otra:"
     role: "Rol"
@@ -73,7 +75,7 @@ es:
   placeholders:
     activity_name: "Nombre de la actividad"
     notes_description: "Link / Información adicional"
-    other_location: "¿No encuentras una locación? Agregala aquí"
+    other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
   user:

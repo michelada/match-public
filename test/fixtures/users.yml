@@ -41,6 +41,7 @@ judge_user:
 user:
   email: 'normal_user@michelada.io'
   role: 0
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
   encrypted_password: <%= Devise::Encryptor.digest(User, 'normalUser') %>
 
 user_test1:
@@ -54,3 +55,10 @@ user_test2:
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
   team: team2
+
+user_with_team:
+  email: 'team_user@michelada.io'
+  role: 0
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
+  team: team1
+  

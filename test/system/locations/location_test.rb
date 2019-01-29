@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class LocationTest < ApplicationSystemTestCase
   before do
-    @user = users(:user)
+    @user = users(:user_with_team)
     sign_in @user
   end
 
