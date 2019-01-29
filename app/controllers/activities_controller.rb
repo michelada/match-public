@@ -15,12 +15,10 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @locations = Location.all
-    @activity = Activity.new(activity_params)
-    @activity.user_id = current_user.id
+    assing_instance_variables
     if @activity.save && assign_locations_string && assign_activity_points
-      redirect_to activities_path
       flash[:notice] = t('activities.messages.uploaded')
+      redirect_to team_path(current_user.team)
     else
       flash[:alert] = t('activities.messages.error_creating')
       render 'new'
@@ -98,5 +96,11 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:name, :english, :location, :activity_type, :locations_string)
+  end
+
+  def assing_instance_variables
+    @locations = Location.all
+    @activity = Activity.new(activity_params)
+    @activity.user_id = current_user.id
   end
 end
