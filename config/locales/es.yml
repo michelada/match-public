@@ -50,7 +50,7 @@ es:
     description: "Descripción"
     english: "Ingles"
     location: "Locación"
-    name: "Nombre"
+    name: "Título"
     notes: "Notas"
     other_location: "Otra:"
     type: "Tipo"
@@ -68,7 +68,7 @@ es:
   placeholders:
     activity_name: "Nombre de la actividad"
     notes_description: "Link / Información adicional"
-    other_location: "No encuentras una locación? Agregala aquí"
+    other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
   user:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"

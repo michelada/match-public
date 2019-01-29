@@ -51,7 +51,7 @@ en:
     description: "Description"
     english: "English"
     location: "Location"
-    name: "Name"
+    name: "Name of your content"
     notes: "Notes"
     other_location: "Add another: "
     type: "Type"
@@ -69,7 +69,7 @@ en:
   placeholders:
     activity_name: "Activity name"
     notes_description: "Link / Aditional information"
-    other_location: "Can't find your location? Add it here"
+    other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
   user:
     confirmation_instructions: "Didn't receive confirmation ionstructions?"

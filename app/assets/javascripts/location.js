@@ -17,9 +17,14 @@ $(document).on('turbolinks:load', function() {
   //on them. There might be a better way to do this, but i opted to do this.
   counter = 1000;
 
-  //Handles items added from the select input.
-  $('#add_location').on('click', function(ev) {
-    ev.preventDefault();
+  $('.add-location').on('keypress', function(event) {
+    if (event.charCode === 13) {
+      event.preventDefault();
+      addLocation();
+    }
+  });
+
+  $('select#activity_locations').on('change', (event) => {
     var activity = $('#activity_locations').val();
     var locString = $('#locations_string').val();
 
@@ -27,17 +32,15 @@ $(document).on('turbolinks:load', function() {
       alert("El elemento que tratas de agregar ya está en la lista")
     }else{
       $('#locations_string').val(locString + activity + "ß");
-      $('.locations_list ul').append('<li id=' + counter + '>' + activity + '</li>');
-      $('.locations_list ul').append('<input id=' + counter + ' type="button" value="-">');
+      $('.locations_list ul').append('<li id=' + counter + '>' + activity + '<a id=' + counter + ' >x</a></li>');
       deleteLI();
       counter++;
     }
-  })
+  });
 
-  //Handles items added from the text input
-  $('#add_new').on('click', function(ev) {
-    ev.preventDefault();
+  function addLocation() {
     var textVal = $('#other_location input').val();
+    console.log(textVal);
     var locString = $('#locations_string').val();
     var activity = $('#other_location input').val();
 
@@ -48,14 +51,19 @@ $(document).on('turbolinks:load', function() {
         alert("El elemento que tratas de agregar ya está en la lista")
       }else{
         $('#locations_string').val(locString+ activity + "ß");
-        $('.locations_list ul').append('<li id=' + counter + '>' + activity + '</li>');
-        $('.locations_list ul').append('<input id=' + counter + ' type="button" value="-">');
+        $('.locations_list ul').append('<li id=' + counter + '>' + activity + '<a id=' + counter + ' >x</a></li>');
         $('#other_location input').val("");
         deleteLI(); 
         counter++;
       }
     }
-  })
+  }
+
+  //Handles items added from the text input
+  $('#add_new').on('click', function(ev) {
+    ev.preventDefault();
+    addLocation();
+  });
 
   deleteLI();
 })
@@ -63,7 +71,7 @@ $(document).on('turbolinks:load', function() {
 //Until now, "added" locations only exist on the html view and inside a locations_string
 //This method removes the html elements that belong to that item, and deletes it from the string
 function deleteLI(){
-  $('.locations_list input').on('click', function(ev){
+  $('.locations_list a').on('click', function(ev){
     ev.preventDefault();
     var value = ($(('li#' + this.id)).text());
     

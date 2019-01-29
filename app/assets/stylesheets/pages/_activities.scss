@@ -1,0 +1,51 @@
+.activities {
+  .tags_box {
+    background: $light-blue;
+    padding: $regular-padding;
+    border-radius: $border-radius;
+    display: flex;
+    ul {
+      width: 100%;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      margin: 0;
+      li {
+        background: $blue;
+        display: flex;            
+        padding: 3px $regular-padding;
+        font-size: $secondary-font-size;
+        border-radius: 15px;
+        margin: 0 5px 5px 0;
+        a {
+          cursor: pointer;
+          margin-left: $regular-margin;
+        }
+      }
+    }
+  }
+  
+    label {
+    margin-top: $regular-margin;    
+    }
+  
+    .button {
+    margin-bottom: $regular-margin;
+    }
+  
+    select {
+      padding: 10px $regular-padding;
+    }
+    
+    .form-check {
+      display: flex;
+      align-items: center;
+    }
+    
+    .label-mobile {
+      @include breakpoint (mobile) {
+        margin-top: $regular-margin;
+      }
+    }
+}
