@@ -1,5 +1,5 @@
 = simple_form_for @team do |f|
-  = f.input :name, label: t("labels.name"), placeholder: t("placeholders.team_name")
+  = f.input :name, label: t("labels.name"), input_html: {value: @name}
   %h3
     = t('labels.invite_users')
   = simple_fields_for :user_invitation_1 do |u|

@@ -1,8 +1,10 @@
 class TeamsController < ApplicationController
   VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze
-  before_action :user_has_team
+
   def new
+    redirect_to team_path(current_user.team) unless current_user.team.nil?
     @team = Team.new
+    @name = "#{Spicy::Proton.adjective}_#{Spicy::Proton.noun}"
   end
 
   def create
@@ -13,8 +15,14 @@ class TeamsController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = t('team.messages.error_creating')
-      render 'new'
+      render new_team_path
     end
+  end
+
+  def show
+    @team = Team.find_by(id: params[:id])
+    @activities = Activity.team_activities(params[:id])
+    @my_activities = Activity.user_activities(current_user.id)
   end
 
   private
@@ -38,9 +46,5 @@ class TeamsController < ApplicationController
     return false if !user2.empty? && !user2.match(VALID_EMAIL_REGEX)
 
     true
-  end
-
-  def user_has_team
-    redirect_to root_path if current_user.team
   end
 end

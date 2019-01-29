@@ -8,7 +8,10 @@ en:
     all: "All activities"
     edit_activity: "Edit activity"
     my_activities: "My activities"
+    pending: "Pendinig activities"
     status: "Status"
+    status_approve: "Approved"
+    status_unapproved: "Unappoved"
     title: "Activities"
     messages:
       approved: "Activity approved"
@@ -35,6 +38,7 @@ en:
     create: "Create"
     delete: "Delete"
     edit: "Edit"
+    invite: "Invite"
     new: "New"
     submit: "Submit"
     upload: "Upload"
@@ -48,28 +52,19 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
-<<<<<<< HEAD
+    create_team: "Create a team"
     comments: "Comments"
     description: "Description"
     english: "English"
     events: "Events:"
-=======
-    create_team: "Create a team"
-    description: "Description"
-    english: "English"
     invite_users: "Invite your teammates"
->>>>>>> development
     location: "Location"
-    name: "Name"
+    name: "Name of your content"
     notes: "Notes"
     other_location: "Add another: "
-<<<<<<< HEAD
-    type: "Type:"
-=======
-    team: "Team"
-    type: "Type"
     role: "Role"
->>>>>>> development
+    type: "Type:"
+    team: "Team"
   team:
     create: "Create a team"
     destroy: "Delete team"
@@ -84,7 +79,7 @@ en:
   placeholders:
     activity_name: "Activity name"
     notes_description: "Link / Aditional information"
-    other_location: "Can't find your location? Add it here"
+    other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"
   user:
@@ -116,7 +111,7 @@ en:
         team:
           attributes:
             name:
-              blank: "Team name can not be empty"
+              blank: "Team name cannot be empty"
               taken: "Team name already taken"
         user:
           attributes:
