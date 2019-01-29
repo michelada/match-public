@@ -10,8 +10,16 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+one: 
   name: MyString
 
 two:
   name: MyString
+
+location1:
+  id: 1
+  name: UDC
+
+location2:
+  id: 2
+  name: Tec
