@@ -23,6 +23,7 @@ class TeamsController < ApplicationController
     @team = Team.find_by(id: params[:id])
     @activities = Activity.team_activities(params[:id])
     @my_activities = Activity.user_activities(current_user.id)
+    @total_score = Activity.team_activities_score(@team.id)
   end
 
   private
