@@ -6,6 +6,7 @@
 @import 'utils/variables';
 @import 'utils/mixins';
 @import 'utils/helpers';
+@import 'utils/overwrite';
 @import 'base/reset';
 @import 'base/typography';
 @import 'layout/footer';
@@ -16,5 +17,4 @@
 @import 'components/select';
 
 @import 'pages/activities';
-@import 'pages/user';
 @import 'session'
