@@ -6,7 +6,15 @@ class ApplicationController < ActionController::Base
     if current_user.team.nil? && current_user.role != 'admin'
       new_team_path
     else
-      current_user.role == 'admin' ? admin_user_manager_index_path : root_path
+      redirect_user
+    end
+  end
+
+  def redirect_user
+    if current_user.role == 'judge'
+      judge_main_index_path
+    else
+      current_user.role == 'admin' ? admin_user_manager_index_path : new_activity_path
     end
   end
 end
