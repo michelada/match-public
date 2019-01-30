@@ -16,16 +16,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 activity1:
+  id: 2
   name: POO Java
   english: false
-  location: UDC
+  locations: location1
   activity_type: 0
   user: user_test1
 
 activity2:
+  id: 3
   name: POO ruby
   english: true
-  location: Tec
+  locations: location2
   activity_type: 1
   user: user_test2
 
@@ -33,5 +35,4 @@ android_studio:
   id: 1
   activity_type: 0
   name: "Android Studio Curso"
-  location: "Tec de Colima"
   english: true

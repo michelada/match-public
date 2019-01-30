@@ -1,8 +1,4 @@
 class ActivitiesController < ApplicationController
-  def index
-    @activities = Activity.user_activities(current_user.id)
-  end
-
   def new
     if current_user.team.nil?
       redirect_to new_team_path
@@ -15,12 +11,10 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @locations = Location.all
-    @activity = Activity.new(activity_params)
-    @activity.user_id = current_user.id
+    assing_instance_variables
     if @activity.save && assign_locations_string && assign_activity_points
-      redirect_to activities_path
       flash[:notice] = t('activities.messages.uploaded')
+      redirect_to team_path(current_user.team)
     else
       flash[:alert] = t('activities.messages.error_creating')
       render 'new'
@@ -29,6 +23,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    user_has_permissions
     @feedback = Feedback.new
   end
 
@@ -98,5 +93,16 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:name, :english, :location, :activity_type, :locations_string)
+  end
+
+  def user_has_permissions
+    flash[:alert] = t('activities.messages.error_accessing')
+    redirect_to root_path if current_user.team.id != @activity.user.team&.id
+  end
+
+  def assing_instance_variables
+    @locations = Location.all
+    @activity = Activity.new(activity_params)
+    @activity.user_id = current_user.id
   end
 end
