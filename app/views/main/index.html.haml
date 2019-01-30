@@ -1,2 +1,30 @@
+%p
+  Michelada's score: 
+  = Activity.total_score
+
 %h1
-  Welcome
+  = "Top3"
+
+%p 
+  -@top_teams.each do |team|
+    %p
+      = team.name
+      = Activity.team_activities_score(team.id)
+%input{:type=>"button", :href=>teams_path, :value=> "\\/"}
+
+%h2
+  = "Look who is on the Fight"
+  
+%p
+  -@latest_activities.each do |activity|
+    %p
+      %p
+        = activity.name
+      %p
+        = activity.user.team.name
+      %p
+        = activity.activity_type
+      %p
+        = Activity.team_activities_score(activity.user.team.id)
+      %p
+        = "-----------------------------------"
