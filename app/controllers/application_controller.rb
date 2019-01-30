@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     if current_user.team.nil? && current_user.role != 'admin'
       new_team_path
     else
-      root_path
+      current_user.role == 'admin' ? admin_user_manager_index_path : root_path
     end
   end
 end
