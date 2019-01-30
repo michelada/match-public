@@ -1,6 +1,6 @@
 %p
   Michelada's score: 
-  = Activity.total_score
+  = @total_score
 
 %h1
   = "Top3"
@@ -9,7 +9,7 @@
   -@top_teams.each do |team|
     %p
       = team.name
-      = Activity.team_activities_score(team.id)
+      = team.total_score
 %input{:type=>"button", :href=>teams_path, :value=> "\\/"}
 
 %h2
@@ -25,6 +25,6 @@
       %p
         = activity.activity_type
       %p
-        = Activity.team_activities_score(activity.user.team.id)
+        = activity.score
       %p
         = "-----------------------------------"
