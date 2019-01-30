@@ -37,6 +37,8 @@ class Activity < ApplicationRecord
       .order('total_score DESC')
       .limit(team_count)
   })
+  scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
+
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
 end
