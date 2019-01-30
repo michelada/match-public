@@ -13,11 +13,9 @@
 
 team1:
   name: halcones
-  score: 100
 
 team2:
   name: tigres
-  score: 88
 
 team3:
   name: chivos

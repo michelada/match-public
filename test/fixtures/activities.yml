@@ -22,6 +22,8 @@ activity1:
   locations: location1
   activity_type: 0
   user: user_test1
+  status: 2
+  score: 20
 
 activity2:
   id: 3
@@ -30,9 +32,13 @@ activity2:
   locations: location2
   activity_type: 1
   user: user_test2
+  score: 10
 
 android_studio:
   id: 1
   activity_type: 0
   name: "Android Studio Curso"
   english: true
+  status: 2
+  score: 120
+  user: user_test2

@@ -7,7 +7,7 @@ module Api
       teams.each do |team|
         response['data'].push(
           name: team.name,
-          value: team.score
+          value: team.total_score
         )
       end
       response.to_json

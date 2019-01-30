@@ -53,11 +53,13 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    comments: "Comments"
     create_team: "Create your own"
     description: "Description"
     dinasty: 'Dinasty'
     email_uno: 'Partner in crime'
     english: "English"
+    events: "Events:"
     invite_users: "Invite your teammates"
     invite: 'Add member'
     location: "Location"
