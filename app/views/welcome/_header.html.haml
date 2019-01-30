@@ -1,7 +1,7 @@
 %header
   .container.header
     = link_to root_path do
-      = image_tag 'michelada_white_one.jpg', alt: 'company-logo', height: 60, class: 'company-logo'
+      = image_tag 'michelada_white_one.png', alt: 'company-logo', height: 60, class: 'company-logo'
     .nav
       = link_to t("user.log_in"), new_user_session_path unless user_signed_in? || current_page?(new_user_session_path)
       - if user_signed_in?
