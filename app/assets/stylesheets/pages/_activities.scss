@@ -49,3 +49,68 @@
       }
     }
 }
+
+.activities-list {
+  .right-info {
+    text-align: end;
+    font-size: $third-font-size;
+    text-transform: uppercase;
+    strong {
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+  }
+  
+  .section {
+    border-color: $light-blue;
+  }
+
+  .team {
+    font-size: 20px;
+  }
+
+  .center-info {
+    text-align: center;
+  }
+
+  .on-hold {
+    color: $orange;
+  }
+
+  .review {
+    color: $strong-red;
+  }
+
+  .approved {
+    color: $green;
+  }
+
+  .icon-detail {
+    fill: $yellow;
+    height: $primary-icon-size;
+    transform: rotate(-90deg);
+  }
+
+  .points {
+    color: $red;
+  }
+
+  .activities-table {
+    width: 100%;
+    thead {
+      color: $white;
+      font-size: $third-font-size;
+      th {
+        font-weight: 500;
+        padding-bottom: $regular-padding;
+      }
+    }
+    .activity-actions {
+      a {
+        img {
+          height: $secondary-icon-size;
+        }
+      }
+    }
+  }
+}
