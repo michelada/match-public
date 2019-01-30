@@ -15,7 +15,6 @@ gem 'devise_invitable', '~>1.7.0'
 gem 'haml-rails', '~> 1.0'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
 gem 'sass-rails', '~> 5.0'
@@ -48,6 +47,10 @@ group :test do
   gem 'minitest-rails-capybara'
   gem 'selenium-webdriver'
   gem 'simplecov'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
