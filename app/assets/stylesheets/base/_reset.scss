@@ -48,8 +48,15 @@ p, ol, ul, td {
   color: $white;
   font-size: $primary-font-size;
   line-height: 18px;
+  span {
+    color: $yellow;
+  }
 }
 
+hr {
+  width: 100%;
+  border: 0.5px solid $white;
+}
 
 pre {
   background-color: #eee;
