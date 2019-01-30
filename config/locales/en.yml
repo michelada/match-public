@@ -97,6 +97,13 @@ en:
     new-registration: 'New here? '
     registrado: 'I already have an account. '
     role_updated: "Role updated"
+    judge:
+      activities:
+        on_old:
+          remember: "Remember to be"
+          objetive: "objetive."
+          location: "Location"
+          approved: "Approved?"
   information:
     footer:
       copyrights: "Copyrights michelada.io 2019"

@@ -96,6 +96,11 @@ es:
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
     role_updated: "Rol actualizado"
+    judge:
+      activities:
+        on_old:
+          remember: "Recuerda ser"
+          objetive: "Objetivo"
   information:
     footer:
       copyrights: "Derechos de autor michelada.io 2019"

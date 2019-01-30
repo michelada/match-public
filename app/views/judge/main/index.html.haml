@@ -1,25 +1,15 @@
-%h1 
-  = t('activities.pending')
-%br
-%table
-  %thead
-    %tr
-      %th 
-        = t('labels.name')
-      %th
-        = t('labels.type')
-      %th
-        = t('labels.location')
-      %th 
-        = t('labels.english')
-    %tbody
+.contain.center-vertical
+  .main-content.small
+    .judge
+      .button-group
+        %a.button.pill{:href => "main#index"} En espera
+        %a.button.pill{:href => "activities#show"} Todas
+      %h3
+        = t('user.judge.activities.on_old.remember')
+        %span
+          = t('user.judge.activities.on_old.objetive')
       - @activities&.each do |activity|
-        %tr
-          %td
-            = link_to activity.name, activity_path(activity.id)
-          %td
-            = activity.activity_type
-          %td
-            = activity.locations.first&.name
-          %td
-            = activity.english ? "Sí": "No"
+        %p= link_to activity.name, judge_activity_path(activity)
+        %p= activity.activity_type
+        %p= activity.locations.first&.name
+        %p= activity.status
