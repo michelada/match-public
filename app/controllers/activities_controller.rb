@@ -50,7 +50,7 @@ class ActivitiesController < ApplicationController
       @activity.locations = []
       assign_locations_string
       flash[:notice] = t('activities.messages.updated')
-      redirect_to activities_path
+      redirect_to team_path(current_user.team.id)
     else
       flash[:notice] = t('activities.messages.error_updating')
       render 'edit'
