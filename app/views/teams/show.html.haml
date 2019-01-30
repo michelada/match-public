@@ -1,4 +1,46 @@
-%p My team: 
-= @team.name
+%p="Welcome, #{current_user.email}"
+%h2=@team.name
+%p="Score: #{@team.score || 0}"
+%p="--------------------------------"
+%h2 Best EFFORT
+
+- @activities&.each do |activity|
+  %p
+    =activity.name
+  %p
+    =activity.status
+  %p
+    =activity.activity_type
+  %p
+    =link_to "Details", activity_path(activity)
+
+%h1 
+  = t('activities.my_activities')
+%br
+%table
+  %thead
+    %tr
+      %th 
+        = t('labels.name')
+      %th
+        = t('labels.type')
+      %th 
+        = t('activities.status')
+      %th 
+        = t('buttons.action')
+    %tbody
+      - @my_activities&.each do |activity|
+        %tr
+          %td
+            = link_to activity.name, activity_path(activity.id)
+          %td
+            = activity.activity_type
+          %td 
+            = activity.status 
+          %td
+            = link_to t('buttons.edit'), edit_activity_path(activity)
+            = link_to t('buttons.delete'), activity_path(activity), method: :delete, data: {confirm: t('actions.confirm')}
+
+
 - if @team.users.count < 3
-  %input{ :type => "button", :href => "#", :value => t("buttons.invite")}
+  = link_to "Invitar", new_user_invitation_path

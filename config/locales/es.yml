@@ -15,6 +15,7 @@ es:
     title: "Actividades"
     messages:
       approved: "Actividad aprobada"
+      error_accessing: "No puedes acceder a esta actividad"
       error_creating: "Error creando la actividad"
       erro_approving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"
@@ -49,17 +50,19 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
-    create_team: "Crea un equipo"
+    create_team: "Crea tu propia"
+    dinasty: 'Dinastía'
     description: "Descripción"
     english: "Inglés"
     invite_users: "Invita a tus compañeros"
     location: "Locación"
-    name: "Nombre"
+    name: "Título"
     notes: "Notas"
     other_location: "Otra:"
     role: "Rol"
     team: "Equipo"
     type: "Tipo"
+    email_uno: 'Correo'
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
@@ -74,7 +77,7 @@ es:
   placeholders:
     activity_name: "Nombre de la actividad"
     notes_description: "Link / Información adicional"
-    other_location: "¿No encuentras una locación? Agregala aquí"
+    other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
   user:
