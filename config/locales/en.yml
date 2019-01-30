@@ -70,6 +70,7 @@ en:
     sign_out: 'Sign out'
     team: "Team"
     type: "Type"
+    welcome: 'Welcome'
   team:
     create: "Create a team"
     destroy: "Delete team"
