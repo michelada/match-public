@@ -53,19 +53,21 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    comments: "Comments"
     create_team: "Create your own"
     dinasty: 'Dinasty'
     description: "Description"
+    email_uno: 'Partner in crime'
     english: "English"
+    events: "Events:"
     invite_users: "Invite your teammates"
     location: "Location"
     name: "Name of your content"
     notes: "Notes"
     other_location: "Add another: "
-    team: "Team"
-    type: "Type"
     role: "Role"
-    email_uno: 'Partner in crime'
+    type: "Type:"
+    team: "Team"
   team:
     create: "Create a team"
     destroy: "Delete team"
