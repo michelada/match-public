@@ -25,32 +25,31 @@ $(document).on('turbolinks:load', function() {
   });
 
   $('select#activity_locations').on('change', (event) => {
-    var activity = $('#activity_locations').val();
+    var new_location = $('#activity_locations').val();
     var locString = $('#locations_string').val();
 
-    if(locString.toLowerCase().includes(activity.toLowerCase())){
+    if(locString.toLowerCase().includes(new_location.toLowerCase())){
       alert("El elemento que tratas de agregar ya está en la lista")
     }else{
-      $('#locations_string').val(locString + activity + "ß");
-      $('.locations_list ul').append('<li id=' + counter + '>' + activity + '<a id=' + counter + ' >x</a></li>');
+      $('#locations_string').val(locString + new_location + "ß");
+      $('.locations_list ul').append('<li id=' + counter + '>' + new_location + '<a id=' + counter + ' >x</a></li>');
       deleteLI();
       counter++;
     }
   });
 
   function addLocation() {
-    var textVal = $('#other_location input').val();
     var locString = $('#locations_string').val();
-    var activity = $('#other_location input').val();
+    var new_location = $('#other_location input').val();
 
-    if(textVal === ""){
+    if(new_location === ""){
       alert("El campo \"Otra\" no puede estar en blanco")
     }else {
-      if(locString.toLowerCase().includes(activity.toLowerCase())){
+      if(locString.toLowerCase().includes(new_location.toLowerCase())){
         alert("El elemento que tratas de agregar ya está en la lista")
       }else{
-        $('#locations_string').val(locString+ activity + "ß");
-        $('.locations_list ul').append('<li id=' + counter + '>' + activity + '<a id=' + counter + ' >x</a></li>');
+        $('#locations_string').val(locString+ new_location + "ß");
+        $('.locations_list ul').append('<li id=' + counter + '>' + new_location + '<a id=' + counter + ' >x</a></li>');
         $('#other_location input').val("");
         deleteLI(); 
         counter++;
@@ -73,6 +72,7 @@ function deleteLI(){
   $('.locations_list a').on('click', function(ev){
     ev.preventDefault();
     var value = ($(('li#' + this.id)).text());
+    value = value.replace('\nx','').trim()
     
     if(value !== ""){
       $('#locations_string').val($('#locations_string').val().replace((value + "ß"),''));
