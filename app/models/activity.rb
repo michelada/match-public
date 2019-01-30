@@ -25,7 +25,7 @@ class Activity < ApplicationRecord
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)) }
   scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id) }
   scope :latest_activities, -> { order('created_at DESC limit 3') }
-  scope :total_score, -> { sum('score') }
+  scope :total_score, -> { where(status: 2).sum('score') }
   scope :top_teams_by_score, (lambda { |team_count|
     where('activities.status = ?', 2)
       .joins(:user).joins('INNER JOIN teams ON users.team_id = teams.id')
