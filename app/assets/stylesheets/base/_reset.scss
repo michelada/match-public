@@ -17,6 +17,28 @@ h1 {
   text-transform: uppercase;
 }
 
+h3 {
+  color: $white;
+  font-size: 25px;
+  font-weight: 400;
+  span {
+    color: $red;
+    text-transform: uppercase;
+    font-size: $highlight-font-size;
+  }
+  @include breakpoint(mobile) {
+    font-size: 20px;
+    margin-top: $regular-margin;
+    span {
+      font-size: 24px;
+    }
+  }
+}
+
+h5 {
+  color: $white;
+}
+
 em {
   color: $white;
   font-size: $secondary-font-size

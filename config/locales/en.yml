@@ -15,6 +15,7 @@ en:
     title: "Activities"
     messages:
       approved: "Activity approved"
+      error_accessing: "You can not access to this activity"
       error_creating: "Error creating that activity"
       error_approving: "Error approving activity"
       error_unapproving: "Error unapproving activity"
@@ -52,17 +53,19 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
-    create_team: "Create a team"
+    create_team: "Create your own"
+    dinasty: 'Dinasty'
     description: "Description"
     english: "English"
     invite_users: "Invite your teammates"
     location: "Location"
-    name: "Name"
+    name: "Name of your content"
     notes: "Notes"
     other_location: "Add another: "
     team: "Team"
     type: "Type"
     role: "Role"
+    email_uno: 'Partner in crime'
   team:
     create: "Create a team"
     destroy: "Delete team"
@@ -77,7 +80,7 @@ en:
   placeholders:
     activity_name: "Activity name"
     notes_description: "Link / Aditional information"
-    other_location: "Can't find your location? Add it here"
+    other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"
   user:

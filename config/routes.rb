@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :activities, only: [:index]
     resources :teams, only: [:index]
   end
-  resources :activities
+  resources :activities, except: [:index]
   resources :teams
   resources :main, only: [:index] 
   devise_for :users, controllers: { invitations: 'users/invitations' }
