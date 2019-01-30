@@ -24,13 +24,13 @@ class Activity < ApplicationRecord
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)) }
   scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id) }
-  scope :latest_activities, -> { where('activities.status = ?', 0).order('created_at DESC limit 3') }
+  scope :latest_activities, -> { order('created_at DESC limit 3') }
   scope :total_score, -> { sum('score') }
   scope :top_teams_by_score, (lambda { |team_count|
     where('activities.status = ?', 2)
       .joins(:user).joins('INNER JOIN teams ON users.team_id = teams.id')
-      .group('teams.name, teams.id')
-      .select('teams.name as name, teams.id as id, sum(activities.score) as total_score')
+      .group('teams.name')
+      .select('teams.name as name, sum(activities.score) as total_score')
       .order('total_score DESC')
       .limit(team_count)
   })
