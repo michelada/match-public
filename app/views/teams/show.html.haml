@@ -1,6 +1,7 @@
 %p="Welcome, #{current_user.email}"
 %h2=@team.name
-%p="Score: #{@team.score || 0}"
+%p
+  = "Score: #{@team_score}"
 %p="--------------------------------"
 %h2 Best EFFORT
 
@@ -11,6 +12,8 @@
     =activity.status
   %p
     =activity.activity_type
+  %p
+    =activity.score
   %p
     =link_to "Details", activity_path(activity)
 

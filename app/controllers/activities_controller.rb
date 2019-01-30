@@ -50,7 +50,7 @@ class ActivitiesController < ApplicationController
       @activity.locations = []
       assign_locations_string
       flash[:notice] = t('activities.messages.updated')
-      redirect_to activities_path
+      redirect_to team_path(current_user.team.id)
     else
       flash[:notice] = t('activities.messages.error_updating')
       render 'edit'
@@ -80,6 +80,7 @@ class ActivitiesController < ApplicationController
   def assign_activity_points
     obtain_activity_points
     @activity.update_attribute(:score, @activity.score)
+    current_user.role == 'judge' ? vote_for_activity : true
   end
 
   def obtain_activity_points
@@ -104,5 +105,10 @@ class ActivitiesController < ApplicationController
     @locations = Location.all
     @activity = Activity.new(activity_params)
     @activity.user_id = current_user.id
+  end
+
+  def vote_for_activity
+    activity_statuses = ActivityStatus.new(activity_id: @activity.id, user_id: current_user.id, approve: true)
+    activity_statuses.save
   end
 end

@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'main#index'
   namespace :judge do
-    resources :main, only: [:index]
     resources :activities, only: %w[index show] do
       resources :activity_status, only: %w[create update]
+      resources :feedbacks, only: %w[index create]
     end
+    resources :main, only: [:index]
   end
 
   namespace :admin do
@@ -20,6 +21,6 @@ Rails.application.routes.draw do
   end
 
   resources :activities, only: [:show] do
-    resources :feedbacks, only: %w[index create delete update]
+    resources :feedbacks, only: %w[index create]
   end
 end
