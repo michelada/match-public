@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def after_sign_in_path_for(_users)
-    if current_user.team.nil?
+    if current_user.team.nil? && current_user.role != 'admin'
       new_team_path
     else
       root_path
