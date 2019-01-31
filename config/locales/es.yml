@@ -50,6 +50,7 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    admin: 'Lista de usuarios'
     abstract: "Abstract"
     audience: "Audiencia"
     comments: "Comentarios"
@@ -72,6 +73,7 @@ es:
     type: "Tipo:"
     team: "Equipo"
     welcome: 'Bienvenido'
+    welcome-admin: 'Bienvenido admin'
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
