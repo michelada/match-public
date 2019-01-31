@@ -50,6 +50,7 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    admin: 'Lista de usuarios'
     comments: "Comentarios"
     create_team: "Crea tu propia"
     description: "Descripción"

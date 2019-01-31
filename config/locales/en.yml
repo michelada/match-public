@@ -53,6 +53,7 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    admin: 'Users list'
     comments: "Comments"
     create_team: "Create your own"
     description: "Description"
