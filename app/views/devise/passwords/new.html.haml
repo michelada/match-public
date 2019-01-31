@@ -8,7 +8,7 @@
         = f.label :email, t("user.email")
         %br/
         = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-text'
-      %em Ingresa un correo a donde te mandaremos las intrucciones para recuperar tu contraseña
+      %em= t('user.recover_password')
       .actions.mt-3
         = f.submit t("devise.confirmations.resend_instructions"), class: 'button'
       = t("user.new-registration")
