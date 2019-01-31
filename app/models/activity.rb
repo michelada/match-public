@@ -38,4 +38,9 @@ class Activity < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
+
+  def css_class
+    status_class = {"Por validar": "on-hold", "En revisión": "review", "Aprobado": "approved"}
+    status_class[status.to_sym]
+  end
 end

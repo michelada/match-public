@@ -8,8 +8,11 @@
         = t('user.judge.activities.on_old.remember')
         %span
           = t('user.judge.activities.on_old.objetive')
-      - @activities&.each do |activity|
-        %p= link_to activity.name, judge_activity_path(activity)
-        %p= activity.activity_type
-        %p= activity.locations.first&.name
+      - @activities&.each do |activity|        
+        %p= activity.name
+        .d-flex.justify-content-between
+          %p
+            = activity.activity_type
+          = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), judge_activity_path(activity)
         %p= activity.status
+        %hr.section

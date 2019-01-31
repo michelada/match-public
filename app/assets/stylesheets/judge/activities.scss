@@ -26,6 +26,10 @@
   a.button{
     display: unset;
   }
-  .column{
-  border-bottom: 1px }
+  .icon-detail {
+    fill: $yellow;
+    height: $primary-icon-size;
+    transform: rotate(-90deg);
+  }
 }
+    
