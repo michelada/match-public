@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_211001) do
+ActiveRecord::Schema.define(version: 2019_01_31_001417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_01_28_211001) do
     t.integer "status", default: 0, null: false
     t.string "notes"
     t.integer "score"
+    t.string "activity_file"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -90,11 +91,12 @@ ActiveRecord::Schema.define(version: 2019_01_28_211001) do
     t.integer "invitations_count", default: 0
     t.bigint "team_id"
     t.integer "role"
+    t.string "activity_file"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
-    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
+    t.index %w[invited_by_type invited_by_id], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["team_id"], name: "index_users_on_team_id"
   end

@@ -3,7 +3,8 @@
     = simple_form_for (@activity) do |f|
       .location_list_elements
         %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
-    
+      
+      = f.file_field :activity_file
       = f.input :name, label: t("labels.name"),  input_html: { class: 'input-text' }
       .row
         .col-sm-6.col-xs-12.mb-3

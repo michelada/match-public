@@ -15,6 +15,11 @@
     = "#{t('labels.type')} #{@activity.activity_type}"
   %h3
     = t('labels.english') if @activity.english
+
+    - unless @activity.activity_file.nil?
+      %h3 
+        = link_to t('labels.download'), @activity.activity_file.url
+
   %h3 
     = t('labels.events') unless @activity.locations.empty?
     - @activity.locations&.each do |events|
