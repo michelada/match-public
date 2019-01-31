@@ -2,7 +2,7 @@
   .button-group {
     display: inline-block;
     list-style: none;
-    margin-left: 12em;
+    margin-left: 13em;
   }
   .button-group li {
     float: left;
@@ -26,4 +26,6 @@
   a.button{
     display: unset;
   }
+  .column{
+  border-bottom: 1px }
 }

@@ -9,7 +9,8 @@
         %span
           = t('user.judge.activities.on_old.objetive')
       - @activities&.each do |activity|
-        %p= link_to activity.name, judge_activity_path(activity)
-        %p= activity.activity_type
-        %p= activity.locations.first&.name
-        %p= activity.status
+        .column
+          %p= link_to activity.name, judge_activity_path(activity)
+          %p= activity.activity_type
+          %p= activity.locations.first&.name
+          %p= activity.status
