@@ -30,10 +30,7 @@ module Api
     private
 
     def get_activity_location(activity)
-      if activity.locations.length > 0
-        return "at #{activity.locations[0].name}"
-      end
-      return ""
+      activity.locations[0] ? "at #{activity.locations.first.name}" : ""
     end
 
     def get_activity_type_en(activity_type)

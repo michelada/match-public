@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 2019_01_31_001417) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,10 +74,6 @@ ActiveRecord::Schema.define(version: 2019_01_31_001417) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "invitation_token"
