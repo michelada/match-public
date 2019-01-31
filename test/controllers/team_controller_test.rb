@@ -33,18 +33,5 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
     sign_in @team_user
     get team_path(@team_user.team)
     assert_response :success
-  end
-
-  test 'logged user can create a team and invitate an another user to the team' do
-    sign_in @user
-    post teams_path, params: { team: { name: 'michelada2' }, user_invitation_1: { email: 'invitation1@michelada.io' }, user_invitation_2: { email: 'invitation2@michelada.io' } }
-    assert_redirected_to main_index_path, 'Controller reponse unexpected' 
-  end
-
-  test 'user can invitate and logged user to the team' do
-    @user2 = users(:user)
-    sign_in @user
-    post teams_path, params: { team: { name: 'michelada2' }, user_invitation_1: { email: "#{user2.email}" }, user_invitation_2: { email: '' } }
-    assert_redirected_to main_index_path, 'Controller reponse unexpected' 
-  end
+  end  
 end
