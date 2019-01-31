@@ -4,11 +4,22 @@
       .location_list_elements
         %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
     
+      %label
+        = t('labels.type')
+      = f.select :activity_type, Activity.activity_types.keys, include_blank: false
       = f.input :name, label: t("labels.name"),  input_html: { class: 'input-text' }
+      = f.input :description, label: "Descripcion"
+      .optional-fields
+        #pitch-audience
+          = f.input :pitch_audience, label: "Intended Audience"
+        #abstract-outline
+          = f.input :abstract_outline, label: "Outline"
+
       .row
         .col-sm-6.col-xs-12.mb-3
           %label.mt-0
-            = t("labels.location")
+            .location-publication
+              = t("labels.location")
           - unless @locations.nil?
             = f.select :locations, @locations.sort_by{ |loc | loc.name.downcase }.map {|l| l.name}, class: 'location-select', prompt: "Select location"
         .col-sm-6.col-xs-12
@@ -26,9 +37,6 @@
               - loaded_locations += (location[:name]+"ß")
           %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
 
-      %label
-        = t('labels.type')
-      = f.select :activity_type, Activity.activity_types.keys, include_blank: false
       = f.input :notes, label: t("labels.notes"), placeholder: t("placeholders.notes_description"), input_html: { class: 'input-text' }
       = f.input :english, label: t("labels.english"), input_html: {class: 'mt-0'} , label_html: { class: 'mt-0'}    
       %input{type: "submit", value: t("buttons.submit"), class: 'button'}
