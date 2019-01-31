@@ -55,8 +55,9 @@ en:
   labels:
     comments: "Comments"
     create_team: "Create your own"
-    dinasty: 'Dinasty'
     description: "Description"
+    dinasty: 'Dinasty'
+    download: "Download file"
     email_uno: 'Partner in crime'
     english: "English"
     events: "Events:"
