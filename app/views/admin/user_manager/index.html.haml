@@ -1,10 +1,12 @@
 .center-vertical.activities-list.admin-view
   .main-content.medium.container
-    .text-right
-      %p.right-info.mb-5
+    .text-right.mb-4
+      %p.right-info
         %strong.mr-2
           = t('labels.welcome-admin')
-    %h3.mb-4 
+      = link_to  destroy_user_session_path, method: :delete do
+        = t('labels.sign_out')
+    %h3.mb-4
       = t('labels.admin')
     %table.w-100
       %tbody
