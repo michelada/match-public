@@ -38,9 +38,16 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     get root_path
   end
-
+ 
+  #hold on
   test 'users can invite another user.' do
+    params = {
+      email: 'valid@michelada.io'
+    }
     sign_in @user_with_team
-    get new_user_invitation 
+    post new_user_invitation_path, params: params
+    assert_response :redirect
+    assert_redirected_to root_path
   end
+  
 end

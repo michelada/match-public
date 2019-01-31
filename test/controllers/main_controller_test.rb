@@ -30,7 +30,6 @@ class MainControllerTest < ActionDispatch::IntegrationTest
   end
   test 'logged users can view main page' do
     sign_in @user
-    get 
-    assert_redirected_to new_team_path, 'Controller response unexpected'
+    get root_path
   end
 end
