@@ -20,6 +20,7 @@ class Activity < ApplicationRecord
   has_many :activity_statuses
   enum activity_type: { Curso: 0, Platica: 1, Post: 2 }
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
+  mount_uploader :activity_file, ActivityFileUploader
   scope :user_activities, ->(actual_user) { where(user_id: actual_user) }
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)) }
@@ -40,7 +41,7 @@ class Activity < ApplicationRecord
   validates :name, uniqueness: { case_sensitive: false }
 
   def css_class
-    status_class = {"Por validar": "on-hold", "En revisión": "review", "Aprobado": "approved"}
+    status_class = { "Por validar": 'on-hold', "En revisión": 'review', "Aprobado": 'approved' }
     status_class[status.to_sym]
   end
 end

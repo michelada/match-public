@@ -27,7 +27,7 @@ en:
       unapproved: "The activity was unapproved"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
-  alerts: 
+  alerts:
     activities:
       other_blank: "This field can't be blank"
     status_approve: "Approved"
@@ -58,6 +58,7 @@ en:
     create_team: "Create your own"
     description: "Description"
     dinasty: 'Dinasty'
+    download: "Download file"
     email_uno: 'Partner in crime'
     english: "English"
     events: "Events:"
@@ -83,6 +84,7 @@ en:
       error_creating: "Error creating the team"
       error_deleting: "Error deleting the team"
       error_updating: "Error updating the team"
+      no_teams: 'There are no teams'
   placeholders:
     activity_name: "Activity name"
     notes_description: "Link / Aditional information"
@@ -103,6 +105,7 @@ en:
     new-registration: 'New here? '
     registrado: 'I already have an account. '
     role_updated: "Role updated"
+    password_requirement: "(At least 6 characters)"
   information:
     footer:
       copyrights: "Copyrights michelada.io 2019"

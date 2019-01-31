@@ -12,5 +12,3 @@
           = render partial: 'welcome/icons/man', locals: {is_active: controller_name == 'teams' }
         = link_to  judge_main_index_path  do
           = render partial: 'welcome/icons/vote', locals: {is_active: controller_name == 'judge' }
-        = link_to  destroy_user_session_path, method: :delete do
-          Log out
