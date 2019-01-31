@@ -1,19 +1,21 @@
-%h2 Change your password
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "New password"
-    %br/
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-      %br/
-    = f.password_field :password, autofocus: true, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation, "Confirm new password"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Change my password"
-= render "devise/shared/links"
+.center-content-vertical
+  .main-content.container.small
+    .image-content
+      = image_tag 'michelada_white_one', alt: 'michelada', width: '250', class: 'image-michelada'
+    .information-content
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = devise_error_messages!
+        = f.hidden_field :reset_password_token
+        .field
+          = f.label :password, t('user.new_password')
+          - if @minimum_password_length
+            %em= t('user.password_requirement')
+          = f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'input-text'
+        .field
+          = f.label :password_confirmation, t('user.confirm_new_password')
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'input-text'
+        .actions
+          = f.submit t('user.change_password'), class: 'button'
+      = t("user.new-registration")
+      = render "devise/shared/links"
