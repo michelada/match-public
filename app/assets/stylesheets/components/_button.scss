@@ -5,13 +5,36 @@
   height: 35px;
   line-height: 15px;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: $primary-font-size;
   border: none;
   text-transform: uppercase;
   font-weight: 500;
-  margin-top: $regular-padding;
-  font
-    &:hover {
-      color: $blue;
-    }
+  margin-top: $regular-margin;
+  &:hover {
+    color: $blue;
+  }
 }
+a.button {
+  color: $blue;
+  display: table;
+  line-height: 35px;
+  margin-top: $regular-margin;
+  text-align: center;
+  text-decoration: none;
+  &:visited {
+    color: $blue;
+  }   
+}
+a.login {
+  color: $white;
+  font-size: $primary-font-size;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 35px;
+  margin-top: $regular-margin;
+  &:visited {
+    color: $white;
+  }   
+} 
+

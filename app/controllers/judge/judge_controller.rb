@@ -5,7 +5,7 @@ module Judge
     layout 'judge/application'
 
     def user_is_judge
-      redirect_to root_path if current_user.role != 'judge'
+      redirect_to main_index_path  if current_user.role != 'judge'
     end
   end
 end

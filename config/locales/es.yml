@@ -15,6 +15,7 @@ es:
     title: "Actividades"
     messages:
       approved: "Actividad aprobada"
+      error_accessing: "No puedes acceder a esta actividad"
       error_creating: "Error creando la actividad"
       erro_approving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"
@@ -49,17 +50,24 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
-    create_team: "Crea un equipo"
+    comments: "Comentarios"
+    create_team: "Crea tu propia"
     description: "Descripción"
+    dinasty: 'Dinastía'
+    email_uno: 'Correo'
     english: "Inglés"
+    events: "Eventos:"
     invite_users: "Invita a tus compañeros"
+    invite: 'Agregar integrante'
     location: "Locación"
     name: "Título"
     notes: "Notas"
     other_location: "Otra:"
     role: "Rol"
+    sign_out: 'Cerrar sesión'
+    type: "Tipo:"
     team: "Equipo"
-    type: "Tipo"
+    welcome: 'Bienvenido'
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
@@ -93,6 +101,12 @@ es:
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
     role_updated: "Rol actualizado"
+  information:
+    footer:
+      copyrights: "Derechos de autor michelada.io 2019"
+      about: "Acerca de MCM"
+    landing:
+      about: "El MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blog, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
   activerecord:
     errors:
       messages:

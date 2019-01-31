@@ -15,6 +15,7 @@ en:
     title: "Activities"
     messages:
       approved: "Activity approved"
+      error_accessing: "You can not access to this activity"
       error_creating: "Error creating that activity"
       error_approving: "Error approving activity"
       error_unapproving: "Error unapproving activity"
@@ -52,17 +53,24 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
-    create_team: "Create a team"
+    comments: "Comments"
+    create_team: "Create your own"
     description: "Description"
+    dinasty: 'Dinasty'
+    email_uno: 'Partner in crime'
     english: "English"
+    events: "Events:"
     invite_users: "Invite your teammates"
+    invite: 'Add member'
     location: "Location"
     name: "Name of your content"
     notes: "Notes"
     other_location: "Add another: "
+    role: "Role"
+    sign_out: 'Sign out'
     team: "Team"
     type: "Type"
-    role: "Role"
+    welcome: 'Welcome'
   team:
     create: "Create a team"
     destroy: "Delete team"
@@ -93,7 +101,13 @@ en:
     remember_me: "Remember me"
     new-registration: 'New here? '
     registrado: 'I already have an account. '
-    role_updated: "Role updated" 
+    role_updated: "Role updated"
+  information:
+    footer:
+      copyrights: "Copyrights michelada.io 2019"
+      about: "About us MCM"
+    landing:
+      about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
   activerecord:
     errors:
       messages:

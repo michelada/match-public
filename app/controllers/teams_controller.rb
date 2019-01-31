@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_action :user_is_valid
   VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze
 
   def new
@@ -12,7 +13,7 @@ class TeamsController < ApplicationController
     if validate_user && @team.save && current_user.update_attribute(:team, @team)
       invite_users
       flash[:notice] = t('team.messages.created')
-      redirect_to root_path
+      redirect_to main_index_path
     else
       flash[:alert] = t('team.messages.error_creating')
       render new_team_path
@@ -23,6 +24,7 @@ class TeamsController < ApplicationController
     @team = Team.find_by(id: params[:id])
     @activities = Activity.team_activities(params[:id])
     @my_activities = Activity.user_activities(current_user.id)
+    @team_score = Activity.team_activities_score(params[:id])
   end
 
   private
@@ -46,5 +48,9 @@ class TeamsController < ApplicationController
     return false if !user2.empty? && !user2.match(VALID_EMAIL_REGEX)
 
     true
+  end
+
+  def user_is_valid
+    redirect_to root_path if current_user.role == 'admin'
   end
 end
