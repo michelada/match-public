@@ -31,7 +31,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find_by(id: params[:id])
     if @activity.destroy
       flash[:notice] = t('activities.messages.deleted')
-      redirect_to activities_path
+      redirect_to team_path(current_user.team)
     else
       flash[:alert] = t('activities.messagess.erorr_deleting')
       render 'index'
