@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_000108) do
+ActiveRecord::Schema.define(version: 2019_01_31_001417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_01_31_000108) do
     t.text "description"
     t.text "pitch_audience"
     t.text "abstract_outline"
+    t.string "activity_file"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_01_31_000108) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "score"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,6 +78,10 @@ ActiveRecord::Schema.define(version: 2019_01_31_000108) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "invitation_token"
@@ -88,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_01_31_000108) do
     t.integer "invitations_count", default: 0
     t.bigint "team_id"
     t.integer "role"
+    t.string "activity_file"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

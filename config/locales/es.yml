@@ -26,7 +26,7 @@ es:
       unapproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
-  alerts: 
+  alerts:
     activities:
       other_blank: "Este campo no puede estar en blanco"
   buttons:
@@ -54,7 +54,7 @@ es:
     create_team: "Crea tu propia"
     description: "Descripción"
     dinasty: 'Dinastía'
-    email_uno: 'Correo'
+    download: "Descargar archivo"
     english: "Inglés"
     events: "Eventos:"
     invite_users: "Invita a tus compañeros"
@@ -101,6 +101,13 @@ es:
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
     role_updated: "Rol actualizado"
+    password_requirement: "(Al menos 6 caracteres)"
+  information:
+    footer:
+      copyrights: "Derechos de autor michelada.io 2019"
+      about: "Acerca de MCM"
+    landing:
+      about: "El MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blog, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
   activerecord:
     errors:
       messages:

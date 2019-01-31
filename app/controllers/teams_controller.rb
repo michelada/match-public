@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
     if validate_user && @team.save && current_user.update_attribute(:team, @team)
       invite_users
       flash[:notice] = t('team.messages.created')
-      redirect_to root_path
+      redirect_to main_index_path
     else
       flash[:alert] = t('team.messages.error_creating')
       render new_team_path

@@ -27,7 +27,7 @@ en:
       unapproved: "The activity was unapproved"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
-  alerts: 
+  alerts:
     activities:
       other_blank: "This field can't be blank"
     status_approve: "Approved"
@@ -57,6 +57,7 @@ en:
     create_team: "Create your own"
     description: "Description"
     dinasty: 'Dinasty'
+    download: "Download file"
     email_uno: 'Partner in crime'
     english: "English"
     events: "Events:"
@@ -101,7 +102,14 @@ en:
     remember_me: "Remember me"
     new-registration: 'New here? '
     registrado: 'I already have an account. '
-    role_updated: "Role updated" 
+    role_updated: "Role updated"
+    password_requirement: "(At least 6 characters)"
+  information:
+    footer:
+      copyrights: "Copyrights michelada.io 2019"
+      about: "About us MCM"
+    landing:
+      about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
   activerecord:
     errors:
       messages:
