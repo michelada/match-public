@@ -7,38 +7,38 @@ $(document).on('turbolinks:load', function() {
 })
 
 function renderFormBasedOnActivity(){
-  var text = "";
-  var field2 = "";
-  var field3 = "";
+  var textForLocationLabel = "";
+  var textPitchAudience = "";
+  var textAbbstractOutline = "";
   switch($('#activity_activity_type :selected').text()){
     case "Post":
-      text = "Publicación";
+      textForLocationLabel = "Publicación";
       removeLabelsAndInputs();
       break;
     case "Platica":
-      text = "Locación";
-      field2 = "Pitch";
-      field3 = "Abstract";
-      changeLabelsValues(field2, field3);
+      textForLocationLabel = "Locación";
+      textPitchAudience = "Pitch";
+      textAbbstractOutline = "Abstract";
+      changeLabelsValues(textPitchAudience, textAbbstractOutline);
       addRemovedFields();
       break;
     case "Curso":
-      text = "Locación";
-      field2 = "Intended Audience";
-      field3 = "Outline";
-      changeLabelsValues(field2, field3);
+      textForLocationLabel = "Locación";
+      textPitchAudience = "Intended Audience";
+      textAbbstractOutline = "Outline";
+      changeLabelsValues(textPitchAudience, textAbbstractOutline);
       addRemovedFields();
       break;
     default:
     break;
   }
 
-  $('.location-publication').text(text);
+  $('.location-publication').text(textForLocationLabel);
 }
 
-function changeLabelsValues(value1, value2) {
-  $('.optional-fields #pitch-audience label').text(value1)
-  $('.optional-fields #abstract-outline label').text(value2)
+function changeLabelsValues(pitchAudienceText, abstractOutlineText) {
+  $('.optional-fields #pitch-audience label').text(pitchAudienceText)
+  $('.optional-fields #abstract-outline label').text(abstractOutlineText)
 }
 
 function removeLabelsAndInputs() {
