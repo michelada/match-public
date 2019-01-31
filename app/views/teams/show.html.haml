@@ -1,49 +1,64 @@
-%p="Welcome, #{current_user.email}"
-%h2=@team.name
-%p
-  = "Score: #{@team_score}"
-%p="--------------------------------"
-%h2 Best EFFORT
+.container.center-vertical.activities-list
+  .main-content.medium
+    .text-right
+      %p.right-info.mb-0
+        %strong.mr-2 Welcome,
+        = current_user.email
+      = link_to  destroy_user_session_path, method: :delete do
+        = t('labels.sign_out')
 
-- @activities&.each do |activity|
-  %p
-    =activity.name
-  %p
-    =activity.status
-  %p
-    =activity.activity_type
-  %p
-    =activity.score
-  %p
-    =link_to "Details", activity_path(activity)
+    %h3.mt-5
+      %span.team=@team.name
+    %p
+      Score
+      %span #{@team.score || 0}
+    %hr
+    %h3.mt-5.center-info.mb-3 
+      Best
+      %span
+        EFFORT
+    - @activities&.each do |activity|
+      .d-flex.justify-content-between
+        %p
+          = activity.name
+        %p.points
+          30pts
+      %p{class: activity.css_class}
+        = activity.status
+      .d-flex.justify-content-between
+        %p
+          = activity.activity_type
+        = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail', custom_color: '#F9CF26'}), activity_path(activity)
+      %hr.section
 
-%h1 
-  = t('activities.my_activities')
-%br
-%table
-  %thead
-    %tr
-      %th 
-        = t('labels.name')
-      %th
-        = t('labels.type')
-      %th 
-        = t('activities.status')
-      %th 
-        = t('buttons.action')
-    %tbody
-      - @my_activities&.each do |activity|
+    %h3.mt-5.text-center.mb-3.team 
+      = t('activities.my_activities')
+    %br
+    %table.activities-table
+      %thead.mb-3
         %tr
-          %td
-            = link_to activity.name, activity_path(activity.id)
-          %td
-            = activity.activity_type
-          %td 
-            = activity.status 
-          %td
-            = link_to t('buttons.edit'), edit_activity_path(activity)
-            = link_to t('buttons.delete'), activity_path(activity), method: :delete, data: {confirm: t('actions.confirm')}
+          %th 
+            = t('labels.name')
+          %th.text-center
+            = t('labels.type')
+          %th.text-center
+            = t('activities.status')
+          %th.text-right
+            = t('buttons.action')
+      %tbody
+        - @my_activities&.each do |activity|
+          %tr
+            %td
+              = link_to activity.name, activity_path(activity.id)
+            %td.text-center
+              = activity.activity_type
+            %td.text-center{class: activity.css_class}
+              = activity.status 
+            %td.text-right.activity-actions
+              = link_to image_tag('ic-edit'), edit_activity_path(activity)
+              = link_to image_tag('ic-delete'), activity_path(activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
 
 
-- if @team.users.count < 3
-  = link_to "Invitar", new_user_invitation_path
+    - if @team.users.count < 3
+      .text-right.mt-5.mb-5
+        = link_to t('labels.invite'), new_user_invitation_path
