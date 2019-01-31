@@ -55,19 +55,22 @@ en:
   labels:
     comments: "Comments"
     create_team: "Create your own"
-    dinasty: 'Dinasty'
     description: "Description"
+    dinasty: 'Dinasty'
     email_uno: 'Partner in crime'
     english: "English"
     events: "Events:"
     invite_users: "Invite your teammates"
+    invite: 'Add member'
     location: "Location"
     name: "Name of your content"
     notes: "Notes"
     other_location: "Add another: "
     role: "Role"
-    type: "Type:"
+    sign_out: 'Sign out'
     team: "Team"
+    type: "Type"
+    welcome: 'Welcome'
   team:
     create: "Create a team"
     destroy: "Delete team"
