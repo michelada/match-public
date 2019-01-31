@@ -73,6 +73,7 @@ en:
     team: "Team"
     type: "Type"
     welcome: 'Welcome'
+    welcome-admin: 'Welcome admin'
   team:
     create: "Create a team"
     destroy: "Delete team"
