@@ -27,6 +27,22 @@
         = events.name
 
 %h3
+- if @activity.description
+  = t('labels.description')
+  %p
+    = @activity.description
+
+- if @activity.pitch_audience
+  = @activity.activity_type == 'Curso' ? t('labels.pitch') : t('labels.audience')
+  %p
+    = @activity.pitch_audience
+
+- if @activity.abstract_outline
+  = @activity.activity_type == 'Curso' ? t('labels.outline') : t('lables.abstract')
+  %p
+    = @activity.abstract_outline
+
+%h3
   = t('labels.comments')
 - @activity.feedback.each do |feedback|
   = feedback.user.name? ? feedback.user.name : feedback.user.email
