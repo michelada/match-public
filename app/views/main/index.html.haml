@@ -12,7 +12,7 @@
         %strong.text.yellow 3
     - if @top_teams.length == 0
       %h3.text-center.mt5
-        No hay equipos
+        = t("team.messages.no_teams")
     - else
       %p.top-three.mb-5
         -@top_teams.each do |team|

@@ -82,6 +82,7 @@ en:
       error_creating: "Error creating the team"
       error_deleting: "Error deleting the team"
       error_updating: "Error updating the team"
+      no_teams: 'There are no teams'
   placeholders:
     activity_name: "Activity name"
     notes_description: "Link / Aditional information"
