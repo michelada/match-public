@@ -26,7 +26,7 @@ es:
       unapproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
-  alerts: 
+  alerts:
     activities:
       other_blank: "Este campo no puede estar en blanco"
   buttons:
@@ -101,6 +101,7 @@ es:
     new-registration: '¿Eres nuevo?'
     registrado: 'Ya tengo una cuenta.'
     role_updated: "Rol actualizado"
+    password_requirement: "(Al menos 6 caracteres)"
   information:
     footer:
       copyrights: "Derechos de autor michelada.io 2019"
