@@ -42,7 +42,6 @@ group :development do
 end
 
 group :test do
-  gem 'bootstrap', '~> 4.1.3'
   gem 'chromedriver-helper'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'

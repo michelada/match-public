@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   resources :activities, except: [:index]
   resources :teams
-  resources :main, only: [:index] 
+  resources :main, only: [:index]
   devise_for :users, controllers: { invitations: 'users/invitations' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'landing_page#index'

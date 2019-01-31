@@ -3,9 +3,7 @@ class MainController < ApplicationController
   before_action :check_auth
 
   def check_auth
-    unless user_signed_in?
-      redirect_to :controller => :landing_page
-    end
+    redirect_to controller: :landing_page unless user_signed_in?
   end
 
   def index
