@@ -8,18 +8,14 @@
         = t('labels.name')
       %th
         = t('labels.type')
-      %th
-        = t('labels.location')
       %th 
         = t('labels.english')
     %tbody
       - @activities&.each do |activity|
         %tr
           %td
-            = link_to activity.name, activity_path(activity.id)
+            = link_to activity.name, judge_activity_path(activity.id)
           %td
             = activity.activity_type
-          %td
-            = activity.locations.first&.name
           %td
             = activity.english ? "Sí": "No"
