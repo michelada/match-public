@@ -93,6 +93,8 @@ es:
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
   user:
+    change_password: "Cambiar contraseña"
+    confirm_new_password: "Confirmar nueva contraseña"
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
     error_updating_role: "Error actualizando rol"
@@ -102,6 +104,7 @@ es:
     log_out: "Cerrar sesión"
     log_up: "Registrarse"
     new_invitation: "Invitar"
+    new_password: 'Nueva contraseña'
     new-registration: '¿Eres nuevo?'
     password_confirmation: "Confirmar contraseña"
     password_requirement: "(Al menos 6 caracteres)"
