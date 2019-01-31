@@ -1,5 +1,5 @@
-.container.center-vertical
-  .main-content.small
+.center-content-vertical
+  .main-content.small.container
     .image-content
       = image_tag 'michelada_white_one', alt: 'michelada', width: '250', class: 'image-michelada'
     .information-content
@@ -13,7 +13,7 @@
           = f.password_field :password, autocomplete: "new-password", class: 'input-text'
           - if @minimum_password_length
             %em
-              (Al menos #{@minimum_password_length} caracteres)
+              = t("user.password_requirement")
         .field
           = f.label :password_confirmation, t("user.password_confirmation")
           = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-text'

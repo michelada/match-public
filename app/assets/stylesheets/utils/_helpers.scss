@@ -1,3 +1,9 @@
 .center-vertical {
     align-self: center;
 }
+
+.center-content-vertical {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
