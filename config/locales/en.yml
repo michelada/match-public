@@ -53,6 +53,8 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    abstract: "Abstract"
+    audience: "Audience"
     comments: "Comments"
     create_team: "Create your own"
     description: "Description"
@@ -67,6 +69,8 @@ en:
     name: "Name of your content"
     notes: "Notes"
     other_location: "Add another: "
+    outline: "Outline"
+    pitch: "Pitch"
     role: "Role"
     sign_out: 'Sign out'
     team: "Team"

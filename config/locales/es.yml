@@ -50,6 +50,8 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    abstract: "Abstract"
+    audience: "Audiencia"
     comments: "Comentarios"
     create_team: "Crea tu propia"
     description: "Descripción"
@@ -63,6 +65,8 @@ es:
     name: "Título"
     notes: "Notas"
     other_location: "Otra:"
+    outline: "Outline"
+    pitch: "Pitch"
     role: "Rol"
     sign_out: 'Cerrar sesión'
     type: "Tipo:"
