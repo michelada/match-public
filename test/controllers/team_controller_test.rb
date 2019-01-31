@@ -34,4 +34,11 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
     get team_path(@team_user.team)
     assert_response :success
   end
+
+  test 'users can invite another user.' do
+    sign_in @team_user
+    post teams_path, params: { team: { name: 'michelada2' }, user_invitation_1: { email: '' }, user_invitation_2: { email: '' } } 
+    binding.pry
+    assert_redirected_to main_index_path, 'Controller reponse unexpected'
+  end
 end
