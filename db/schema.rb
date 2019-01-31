@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 2019_01_31_001417) do
     t.integer "status", default: 0, null: false
     t.string "notes"
     t.integer "score"
+    t.text "description"
+    t.text "pitch_audience"
+    t.text "abstract_outline"
     t.string "activity_file"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
