@@ -1,6 +1,6 @@
 body {
+  color: $white;
   background-color: $blue;
-  color: #333;
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
@@ -59,8 +59,8 @@ hr {
 }
 
 pre {
-  background-color: #eee;
-  font-size: 11px;
+  background-color: $blue;
+  font-size: $primary-font-size;
   padding: 10px;
 }
 
