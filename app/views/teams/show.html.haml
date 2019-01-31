@@ -11,7 +11,8 @@
       %span.team=@team.name
     %p
       Score
-      %span #{@team_score || 0}
+      %span 
+        = "#{@team_score || 0}"
     %hr
     %h3.mt-5.center-info.mb-3 
       Best
@@ -22,7 +23,7 @@
         %p
           = activity.name
         %p.points
-          30pts
+          = activity.score
       %p{class: activity.css_class}
         = activity.status
       .d-flex.justify-content-between

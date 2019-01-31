@@ -93,7 +93,7 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :english, :location, :activity_type, :locations_string)
+    params.require(:activity).permit(:name, :english, :location, :activity_type, :locations_string, :description, :pitch_audience, :abstract_outline, :notes)
   end
 
   def user_has_permissions
