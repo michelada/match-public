@@ -33,4 +33,4 @@
 app/.DS_Store
 coverage
 
-/public/uploads
+/public/uploadssendgrid.env
