@@ -96,19 +96,20 @@ es:
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
     error_updating_role: "Error actualizando rol"
-    forgot_password: "Olvidé mi contraseña"
     forgot_password_submit: "Restablecer contraseña"
+    forgot_password: "Olvidé mi contraseña"
     log_in: "Iniciar sesión"
     log_out: "Cerrar sesión"
     log_up: "Registrarse"
     new_invitation: "Invitar"
-    password: "Contraseña"
-    password_confirmation: "Confirmar contraseña"
-    remember_me: "Recordarme"
     new-registration: '¿Eres nuevo?'
-    registrado: 'Ya tengo una cuenta.'
-    role_updated: "Rol actualizado"
+    password_confirmation: "Confirmar contraseña"
     password_requirement: "(Al menos 6 caracteres)"
+    password: "Contraseña"
+    recover_password: "Ingresa un correo a donde te mandaremos las intrucciones para recuperar tu contraseña."
+    registrado: 'Ya tengo una cuenta.'
+    remember_me: "Recordarme"
+    role_updated: "Rol actualizado"
   information:
     footer:
       copyrights: "Derechos de autor michelada.io 2019"

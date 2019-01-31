@@ -104,13 +104,14 @@ en:
     log_in: "Log in"
     log_out: "Log out"
     log_up: "Log up"
-    password: "Password"
-    password_confirmation: "Password confirmation"
-    remember_me: "Remember me"
     new-registration: 'New here? '
-    registrado: 'I already have an account. '
-    role_updated: "Role updated"
+    password_confirmation: "Password confirmation"
     password_requirement: "(At least 6 characters)"
+    password: "Password"
+    recover_password: "Enter an email address where you'll receive the intructions to recover your password."
+    registrado: 'I already have an account. '
+    remember_me: "Remember me"
+    role_updated: "Role updated"
   information:
     footer:
       copyrights: "Copyrights michelada.io 2019"
