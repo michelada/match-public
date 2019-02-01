@@ -10,6 +10,7 @@ function renderFormBasedOnActivity(){
   var textForLocationLabel = "";
   var textPitchAudience = "";
   var textAbbstractOutline = "";
+  console.log($('#activity_activity_type :selected').text());
   switch($('#activity_activity_type :selected').text()){
     case "Post":
       textForLocationLabel = "Publicación";
@@ -24,8 +25,8 @@ function renderFormBasedOnActivity(){
       break;
     case "Curso":
       textForLocationLabel = "Locación";
-      textPitchAudience = "Intended Audience";
-      textAbbstractOutline = "Outline";
+      textPitchAudience = "Audiencia";
+      textAbbstractOutline = "Guía";
       changeLabelsValues(textPitchAudience, textAbbstractOutline);
       addRemovedFields();
       break;
@@ -46,5 +47,19 @@ function removeLabelsAndInputs() {
 }
 
 function addRemovedFields(){
+  if ($('.optional-fields').html().trim() == ""){
+    $('.optional-fields').append('<div id="pitch-audience">\
+      <div class="form-group text optional activity_pitch_audience">\
+        <label class="form-control-label text optional" for="activity_pitch_audience">Pitch</label>\
+        <textarea class="form-control text optional input-text" name="activity[pitch_audience]" id="activity_pitch_audience"></textarea>\
+      </div>\
+    </div>\
+    <div id="abstract-outline">\
+      <div class="form-group text optional activity_abstract_outline">\
+        <label class="form-control-label text optional" for="activity_abstract_outline">Abstract</label>\
+        <textarea class="form-control text optional input-text" name="activity[abstract_outline]" id="activity_abstract_outline"></textarea>\
+      </div>\
+    </div>');
+  }
   $('#pitch-audience, #abstract-outline').show();
 }
