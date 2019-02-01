@@ -45,8 +45,6 @@ function removeLabelsAndInputs() {
   $('#pitch-audience, #abstract-outline').hide();
 }
 
-
-//asdfasdfasdfasdf
 function addRemovedFields(){
   $('#pitch-audience, #abstract-outline').show();
 }
