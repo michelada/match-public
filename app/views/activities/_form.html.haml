@@ -8,12 +8,12 @@
         = t('labels.type')
       = f.select :activity_type, Activity.activity_types.keys, include_blank: false
       = f.input :name, label: t("labels.name"),  input_html: { class: 'input-text' }
-      = f.input :description, label: "Descripcion", input_html: { class: 'input-text' }
+      = f.input :description, label: t("labels.description"), input_html: { class: 'input-text' }
       .optional-fields
         #pitch-audience
-          = f.input :pitch_audience, label: "Intended Audience", input_html: { class: 'input-text' }
+          = f.input :pitch_audience, label: t("labels.audience"), input_html: { class: 'input-text' }
         #abstract-outline
-          = f.input :abstract_outline, label: "Outline", input_html: { class: 'input-text' }
+          = f.input :abstract_outline, label: t("labels.outline"), input_html: { class: 'input-text' }
 
       .row
         .col-sm-6.col-xs-12.mb-3
