@@ -39,6 +39,6 @@
 
       = f.input :notes, label: t("labels.notes"), placeholder: t("placeholders.notes_description"), input_html: { class: 'input-text' }
       = f.input :english, label: t("labels.english"), input_html: {class: 'mt-0'} , label_html: { class: 'mt-0'}    
-      = f.file_field :activity_file
+      = f.file_field :activity_file, input_html: { value: "ayayay" }
 
       %input{type: "submit", value: t("buttons.submit"), class: 'button'}
