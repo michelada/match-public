@@ -61,4 +61,3 @@ user_with_team:
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
   team: team3
-  
