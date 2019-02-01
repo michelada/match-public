@@ -72,7 +72,7 @@ es:
     sign_out: 'Cerrar sesión'
     type: "Tipo:"
     team: "Equipo"
-    welcome: 'Bienvenido'
+    welcome: '¡Bienvenido'
     welcome-admin: 'Bienvenido admin'
   team:
     create: "Crear un equipo"
