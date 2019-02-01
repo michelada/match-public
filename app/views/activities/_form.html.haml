@@ -41,7 +41,7 @@
       = f.input :english, label: t("labels.english"), input_html: {class: 'mt-0'} , label_html: { class: 'mt-0'}    
       
       - unless @activity.activity_file.file.nil?
-        = "Archivo seleccionado: #{@activity.activity_file}"
+        = "#{t("labels.selected_file")}: #{@activity.activity_file}"
       = f.file_field :activity_file
 
       %input{type: "submit", value: t("buttons.submit"), class: 'button'}
