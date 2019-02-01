@@ -69,6 +69,7 @@ es:
     outline: "Outline"
     pitch: "Pitch"
     role: "Rol"
+    selected_file: "Archivo seleccionado"
     sign_out: 'Cerrar sesión'
     type: "Tipo:"
     team: "Equipo"

@@ -13,3 +13,6 @@ Metrics/AbcSize:
 
 Documentation:
   Enabled: false
+
+Metrics/ClassLength:
+  Max: 120
