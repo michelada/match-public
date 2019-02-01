@@ -38,13 +38,12 @@ function renderFormBasedOnActivity(){
 }
 
 function changeLabelsValues(pitchAudienceText, abstractOutlineText) {
-  $('.optional-fields #pitch-audience label').text(pitchAudienceText)
-  $('.optional-fields #abstract-outline label').text(abstractOutlineText)
+  $('.optional-fields #pitch-audience label').text(pitchAudienceText);
+  $('.optional-fields #abstract-outline label').text(abstractOutlineText);
 }
 
 function removeLabelsAndInputs() {
-  $('#pitch-audience').remove();
-  $('#abstract-outline').remove();
+  $('#pitch-audience, #abstract-outline').hide();
 }
 
 function addRemovedFields(){
@@ -62,4 +61,5 @@ function addRemovedFields(){
       </div>\
     </div>');
   }
+  $('#pitch-audience, #abstract-outline').show();
 }

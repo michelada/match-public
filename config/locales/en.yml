@@ -73,6 +73,7 @@ en:
     outline: "Outline"
     pitch: "Pitch"
     role: "Role"
+    selected_file: "Selected file"
     sign_out: 'Sign out'
     team: "Team"
     type: "Type"
@@ -120,7 +121,7 @@ en:
       copyrights: "Copyrights michelada.io 2019"
       about: "About us MCM"
     landing:
-      about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
+      about: "MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
   activerecord:
     errors:
       messages:

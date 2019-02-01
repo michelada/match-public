@@ -69,10 +69,11 @@ es:
     outline: "Outline"
     pitch: "Pitch"
     role: "Rol"
+    selected_file: "Archivo seleccionado"
     sign_out: 'Cerrar sesión'
     type: "Tipo:"
     team: "Equipo"
-    welcome: 'Bienvenido'
+    welcome: '¡Bienvenido'
     welcome-admin: 'Bienvenido admin'
   team:
     create: "Crear un equipo"
@@ -118,7 +119,7 @@ es:
       copyrights: "Derechos de autor michelada.io 2019"
       about: "Acerca de MCM"
     landing:
-      about: "El MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blog, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
+      about: "MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blog, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
   activerecord:
     errors:
       messages:

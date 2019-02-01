@@ -4,7 +4,7 @@
     = @activity.status
   - if @activity.english
     %h3 Inglés
-  - unless @activity.activity_file.nil?
+  - unless @activity.activity_file.file.nil?
     %h3
       = link_to t('labels.download'), @activity.activity_file.url
 
