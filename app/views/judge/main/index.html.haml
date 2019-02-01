@@ -1,6 +1,7 @@
 %h1 
   = t('activities.pending')
 %br
+= link_to t('activities.all'), judge_activities_path unless current_page?(judge_activities_path)
 %table
   %thead
     %tr
