@@ -9,6 +9,7 @@ gem 'active_model_serializers', '~> 0.10.2'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.1.3'
 gem 'bootstrap_form', '~>4.1.0'
+gem 'carrierwave', '~> 1.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'devise_invitable', '~>1.7.0'
@@ -41,7 +42,6 @@ group :development do
 end
 
 group :test do
-  gem 'bootstrap', '~> 4.1.3'
   gem 'chromedriver-helper'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'

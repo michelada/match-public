@@ -7,3 +7,24 @@
     align-items: center;
     height: 100%;
 }
+
+.text {
+    &.red {
+        color: $red;
+    }
+    &.yellow {
+        color: $yellow;
+    }
+    &.white {
+        color: $white;
+    }
+    &.increase-1 {
+        font-size: 110%;
+    }
+    &.increase-2 {
+        font-size: 120%;
+    }
+    &.increase-3 {
+        font-size: 130%;
+    }
+}

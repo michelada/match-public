@@ -31,5 +31,33 @@
     height: $primary-icon-size;
     transform: rotate(-90deg);
   }
-}
-    
+  .activities {
+    .tags_box {
+      background: $light-blue;
+      border-radius: $border-radius;
+      display: flex;
+      padding: $regular-padding;
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        li {
+          background: $blue;
+          border-radius: 15px;
+          display: flex;            
+          font-size: $secondary-font-size;
+          margin: 0 5px 5px 0;
+          padding: 3px $regular-padding;
+          a {
+            cursor: pointer;
+            margin-left: $regular-margin;
+          }
+        }
+      }
+    }
+
+  }
+}  
