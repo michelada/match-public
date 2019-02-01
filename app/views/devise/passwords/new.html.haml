@@ -1,11 +1,15 @@
-%h2 
-  = t("user.forgot_password")
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email, t("user.email")
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-text'
-  .actions
-    = f.submit t("devise.confirmations.resend_instructions"), class: 'button'
-= render "devise/shared/links"
+.center-content-vertical
+  .main-content.container.small
+    .image-content
+      = link_to (image_tag 'michelada_white_one', alt: 'michelada', width: '250', class: 'image-michelada'), root_path
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
+      .field
+        = f.label :email, t("user.email")
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-text'
+      %em= t('user.recover_password')
+      .actions.mt-3
+        = f.submit t("devise.confirmations.resend_instructions"), class: 'button'
+      = t("user.new-registration")
+      = render "devise/shared/links"

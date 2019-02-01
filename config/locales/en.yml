@@ -97,6 +97,8 @@ en:
     team_name: "Team name"
     user_email: "Insert the user email"
   user:
+    change_password: "Change password"
+    confirm_new_password: "Confirm new password"
     confirmation_instructions: "Didn't receive confirmation ionstructions?"
     email: "Email"
     error_updating_role: "Error updating role"
@@ -104,19 +106,21 @@ en:
     log_in: "Log in"
     log_out: "Log out"
     log_up: "Log up"
-    password: "Password"
-    password_confirmation: "Password confirmation"
-    remember_me: "Remember me"
+    new_password: 'New password'
     new-registration: 'New here? '
-    registrado: 'I already have an account. '
-    role_updated: "Role updated"
+    password_confirmation: "Password confirmation"
     password_requirement: "(At least 6 characters)"
+    password: "Password"
+    recover_password: "Enter an email address where you'll receive the intructions to recover your password."
+    registrado: 'I already have an account. '
+    remember_me: "Remember me"
+    role_updated: "Role updated"
   information:
     footer:
       copyrights: "Copyrights michelada.io 2019"
       about: "About us MCM"
     landing:
-      about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
+      about: "MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
   activerecord:
     errors:
       messages:
