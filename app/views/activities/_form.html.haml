@@ -42,6 +42,6 @@
       
       - unless @activity.activity_file.file.nil?
         = "Archivo seleccionado: #{@activity.activity_file}"
-      = f.file_field :activity_file, input_html: { value: "ayayay" }
+      = f.file_field :activity_file
 
       %input{type: "submit", value: t("buttons.submit"), class: 'button'}
