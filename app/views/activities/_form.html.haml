@@ -8,6 +8,7 @@
         = t('labels.type')
       = f.select :activity_type, Activity.activity_types.keys, include_blank: false
       = f.input :name, label: t("labels.name"),  input_html: { class: 'input-text' }
+      = f.input :description, label: "Descripcion"
       .optional-fields
         #pitch-audience
           = f.input :pitch_audience, label: "Intended Audience"
