@@ -36,6 +36,9 @@ class TeamsController < ApplicationController
   def invite_users
     user1 = params[:user_invitation_1][:email]
     user2 = params[:user_invitation_2][:email]
+    team_id = current_user.team_id
+    User.find_by(email: user1).update_attribute(:team_id, team_id) if User.exists?(email: user1)
+    User.find_by(email: user2).update_attribute(:team_id, team_id) if User.exists?(email: user2)
     User.invite!({ email: user1 }, current_user) unless user1.empty?
     User.invite!({ email: user2 }, current_user) unless user2.empty?
   end
