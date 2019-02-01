@@ -15,11 +15,32 @@
     = "#{t('labels.type')} #{@activity.activity_type}"
   %h3
     = t('labels.english') if @activity.english
+
+    - unless @activity.activity_file.nil?
+      %h3 
+        = link_to t('labels.download'), @activity.activity_file.url
+
   %h3 
     = t('labels.events') unless @activity.locations.empty?
     - @activity.locations&.each do |events|
       %h4
         = events.name
+
+%h3
+- if @activity.description
+  = t('labels.description')
+  %p
+    = @activity.description
+
+- if @activity.pitch_audience
+  = @activity.activity_type == 'Curso' ? t('labels.pitch') : t('labels.audience')
+  %p
+    = @activity.pitch_audience
+
+- if @activity.abstract_outline
+  = @activity.activity_type == 'Curso' ? t('labels.outline') : t('lables.abstract')
+  %p
+    = @activity.abstract_outline
 
 %h3
   = t('labels.comments')

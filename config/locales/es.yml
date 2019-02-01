@@ -26,7 +26,7 @@ es:
       unapproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
-  alerts: 
+  alerts:
     activities:
       other_blank: "Este campo no puede estar en blanco"
   buttons:
@@ -50,11 +50,14 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    admin: 'Lista de usuarios'
+    abstract: "Abstract"
+    audience: "Audiencia"
     comments: "Comentarios"
     create_team: "Crea tu propia"
     description: "Descripción"
     dinasty: 'Dinastía'
-    email_uno: 'Correo'
+    download: "Descargar archivo"
     english: "Inglés"
     events: "Eventos:"
     invite_users: "Invita a tus compañeros"
@@ -63,11 +66,14 @@ es:
     name: "Título"
     notes: "Notas"
     other_location: "Otra:"
+    outline: "Outline"
+    pitch: "Pitch"
     role: "Rol"
     sign_out: 'Cerrar sesión'
     type: "Tipo:"
     team: "Equipo"
-    welcome: 'Bienvenido'
+    welcome: '¡Bienvenido'
+    welcome-admin: 'Bienvenido admin'
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
@@ -79,6 +85,7 @@ es:
       error_creating: "Error creado el equipo"
       error_deleting: "Error eliminando al equipo"
       error_updating: "Error actualizando el equipo"
+      no_teams: 'No hay equipos'
   placeholders:
     activity_name: "Nombre de la actividad"
     notes_description: "Link / Información adicional"
@@ -86,27 +93,32 @@ es:
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
   user:
+    change_password: "Cambiar contraseña"
+    confirm_new_password: "Confirmar nueva contraseña"
     confirmation_instructions: "¿No ha recibido las instrucciones para la verificación?"
     email: "E-mail"
     error_updating_role: "Error actualizando rol"
-    forgot_password: "Olvidé mi contraseña"
     forgot_password_submit: "Restablecer contraseña"
+    forgot_password: "Olvidé mi contraseña"
     log_in: "Iniciar sesión"
     log_out: "Cerrar sesión"
     log_up: "Registrarse"
     new_invitation: "Invitar"
-    password: "Contraseña"
-    password_confirmation: "Confirmar contraseña"
-    remember_me: "Recordarme"
+    new_password: 'Nueva contraseña'
     new-registration: '¿Eres nuevo?'
+    password_confirmation: "Confirmar contraseña"
+    password_requirement: "(Al menos 6 caracteres)"
+    password: "Contraseña"
+    recover_password: "Ingresa un correo a donde te mandaremos las intrucciones para recuperar tu contraseña."
     registrado: 'Ya tengo una cuenta.'
+    remember_me: "Recordarme"
     role_updated: "Rol actualizado"
   information:
     footer:
       copyrights: "Derechos de autor michelada.io 2019"
       about: "Acerca de MCM"
     landing:
-      about: "El MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blog, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
+      about: "MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blog, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
   activerecord:
     errors:
       messages:

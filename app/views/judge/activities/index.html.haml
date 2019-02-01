@@ -8,8 +8,6 @@
         = t('labels.name')
       %th
         = t('labels.type')
-      %th
-        = t('labels.location')
       %th 
         = t('labels.english')
       %th 
@@ -21,8 +19,6 @@
             = link_to activity.name, judge_activity_path(activity)
           %td
             = activity.activity_type
-          %td
-            = activity.locations.first&.name
           %td
             = activity.english ? "Sí": "No"
           %td 

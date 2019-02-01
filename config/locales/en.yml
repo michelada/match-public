@@ -27,7 +27,7 @@ en:
       unapproved: "The activity was unapproved"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
-  alerts: 
+  alerts:
     activities:
       other_blank: "This field can't be blank"
     status_approve: "Approved"
@@ -53,10 +53,14 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    admin: 'Users list'
+    abstract: "Abstract"
+    audience: "Audience"
     comments: "Comments"
     create_team: "Create your own"
     description: "Description"
     dinasty: 'Dinasty'
+    download: "Download file"
     email_uno: 'Partner in crime'
     english: "English"
     events: "Events:"
@@ -66,11 +70,14 @@ en:
     name: "Name of your content"
     notes: "Notes"
     other_location: "Add another: "
+    outline: "Outline"
+    pitch: "Pitch"
     role: "Role"
     sign_out: 'Sign out'
     team: "Team"
     type: "Type"
     welcome: 'Welcome'
+    welcome-admin: 'Welcome admin'
   team:
     create: "Create a team"
     destroy: "Delete team"
@@ -82,6 +89,7 @@ en:
       error_creating: "Error creating the team"
       error_deleting: "Error deleting the team"
       error_updating: "Error updating the team"
+      no_teams: 'There are no teams'
   placeholders:
     activity_name: "Activity name"
     notes_description: "Link / Aditional information"
@@ -89,6 +97,8 @@ en:
     team_name: "Team name"
     user_email: "Insert the user email"
   user:
+    change_password: "Change password"
+    confirm_new_password: "Confirm new password"
     confirmation_instructions: "Didn't receive confirmation ionstructions?"
     email: "Email"
     error_updating_role: "Error updating role"
@@ -96,18 +106,21 @@ en:
     log_in: "Log in"
     log_out: "Log out"
     log_up: "Log up"
-    password: "Password"
-    password_confirmation: "Password confirmation"
-    remember_me: "Remember me"
+    new_password: 'New password'
     new-registration: 'New here? '
+    password_confirmation: "Password confirmation"
+    password_requirement: "(At least 6 characters)"
+    password: "Password"
+    recover_password: "Enter an email address where you'll receive the intructions to recover your password."
     registrado: 'I already have an account. '
+    remember_me: "Remember me"
     role_updated: "Role updated"
   information:
     footer:
       copyrights: "Copyrights michelada.io 2019"
       about: "About us MCM"
     landing:
-      about: "The MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
+      about: "MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
   activerecord:
     errors:
       messages:

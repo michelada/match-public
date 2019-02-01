@@ -1,30 +1,38 @@
-%p
-  Michelada's score: 
-  = @total_score
+.main-content.container.medium.mt-5
+  .top-players
 
-%h1
-  = "Top3"
+    .d-flex.justify-content-end.total-score
+      Michelada's score:
+      .text.red.ml-2.increase-3.text= "#{@total_score} pts"
 
-%p 
-  -@top_teams.each do |team|
-    %p
-      = team.name
-      = team.total_score
-%input{:type=>"button", :href=>teams_path, :value=> "\\/"}
+    .d-flex.align-items-center.mt-4.mb-5
+      = image_tag 'ic-prize', alt: 'prize', height: '90', class: 'mr-3'
+      %h1
+        Top
+        %strong.text.yellow 3
+    - if @top_teams.length == 0
+      %h3.text-center.mt5
+        = t("team.messages.no_teams")
+    - else
+      %p.top-three.mb-5
+        -@top_teams.each do |team|
+          .d-flex.justify-content-between.mb-4
+            = team.name
+            .text.red
+              = "#{team.total_score} pts"
 
-%h2
-  = "Look who is on the Fight"
-  
-%p
-  -@latest_activities.each do |activity|
-    %p
-      %p
-        = activity.name
-      %p
-        = activity.user.team.name
-      %p
-        = activity.activity_type
-      %p
-        = activity.score
-      %p
-        = "-----------------------------------"
+    .text-center
+      = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
+
+    %h3.d-flex.justify-content-center.align-items-center
+      Look who is on the
+      .text.red.increase-3.ml-3 FIGHT
+
+    .latest-activities.mt-5.mb-5
+      -@latest_activities.each do |activity|
+        .activity
+          .mb-3= activity.name
+          .mb-3= activity.user.team.name
+          .d-flex.mb-3.justify-content-between
+            = activity.activity_type
+            .text.red= "#{activity.score} pts"
