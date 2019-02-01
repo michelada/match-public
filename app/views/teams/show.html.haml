@@ -2,8 +2,9 @@
   .main-content.medium
     .text-right
       %p.right-info.mb-0
-        %strong.mr-2 Welcome,
-        = current_user.email
+        %strong 
+          = "#{t('labels.welcome')},"
+        = "#{current_user.email.remove('@michelada.io')}!"
       = link_to  destroy_user_session_path, method: :delete do
         = t('labels.sign_out')
 
