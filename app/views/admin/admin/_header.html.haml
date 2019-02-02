@@ -1,0 +1,5 @@
+%header
+  - if user_signed_in?
+    .container.header
+      = link_to main_index_path do
+        = image_tag 'michelada_white_one', alt: 'company-logo', height: 60, class: 'company-logo'
