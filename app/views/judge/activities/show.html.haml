@@ -1,56 +1,50 @@
 .contain.center-vertical
   .main-content.small
     .judge
-      .button-group
-        %a.button.pill{:href => "main#index"} En espera
-        %a.button.pill{:href => "activities#show"} Todas
       %h3
         = t('user.judge.activities.on_old.remember')
         %span.text.red
           = t('user.judge.activities.on_old.objetive')
       %p= @activity.name
       %p= @activity.activity_type
-      %p
-        -if @activity.activity_type == 'Post'
-          %p.text.red= t('user.judge.activities.description')
-          %p= @activity.description
+      -if @activity.activity_type == 'Post'
+        %p.text.red= t('user.judge.activities.description')
+        %p= @activity.description
+      -else
+        %p.text.red=t('user.judge.activities.description')
+        %p= @activity.description
+        -if @activity.activity_type == "Curso"
+          %p.text.red= t('user.judge.activities.intended_audence')
+          %p= @activity.pitch_audience
+          %p.text.red= t('user.judge.activities.outline')
+          %p= @activity.abstract_outline
         -else
-          %p.text.red=t('user.judge.activities.description')
-          %p= @activity.description
-          -if @activity.activity_type == "Curso"
-            %p.text.red= t('user.judge.activities.intended_audence')
-            %p= @activity.pitch_audience
-            %p.text.red= t('user.judge.activities.outline')
-            %p= @activity.abstract_outline
-          -else
-            %p.text.red= t('user.judge.activities.pitch')
-            %p= @activity.pitch_audience
-            %p.text.red= t('user.judge.activities.abstrac')
-            %p= @activity.abstract_outline
-
+          %p.text.red= t('user.judge.activities.pitch')
+          %p= @activity.pitch_audience
+          %p.text.red= t('user.judge.activities.abstrac')
+          %p= @activity.abstract_outline
       -if @activity.english
-        = simple_form_for (@activity) do |f|
-          = f.input :english, label: t("labels.english"), input_html: {class: 'mt-0'} , label_html: { class: 'mt-0'}    
-    .locations_list.tags_box
-      %ul
-        - unless @activity.locations.empty?
-          - @activity.locations&.each do |events|
-            %p= events.name
-     
-        -if @activity_status.nil?
-          = link_to t("activities.status_approve"),  judge_activity_activity_status_index_path(@activity), class: 'approve', method: :post
-        - else
-          - if @activity_status.approve
-            = link_to t("activities.status_unapprove"),  judge_activity_activity_status_path(@activity), method: :patch
-          - else
-            = link_to t("activities.status_approve"),  judge_activity_activity_status_path(@activity), method: :patch
-
+        %p= t('labels.english')
+      - unless @activity.locations.empty?
+        .tags_box
+          %ul
+            - @activity.locations&.each do |events|
+              %li= events.name
+    -if @activity_status.nil?
+      = link_to t("activities.status_approve"),  judge_activity_activity_status_index_path(@activity), method: :post
+    - else
+      - if @activity_status.approve
+        = link_to t("activities.status_unapprove"),  judge_activity_activity_status_path(@activity), method: :patch
+      - else
+        = link_to t("activities.status_approve"),  judge_activity_activity_status_path(@activity), method: :patch
+    - unless @activity.activity_file.nil? 
+      = link_to t('labels.download'), @activity.activity_file.url, class:'button'
     - @activity.feedback.each do |feedback|
       %p.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
       %p.gray= feedback.comment
       %hr.section
       
     = simple_form_for [:judge, @activity, @feedback] do |f|
-      = f.input :comment, placeholder: t('comments.all'), input_html: { class: 'input-text'}
+      = f.input :comment, label: '', placeholder: t('comments.all'), input_html: { class: 'input-text'}
       = f.button :submit, t('comments.create'), class: 'button'
 

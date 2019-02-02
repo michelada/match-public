@@ -15,10 +15,11 @@ module Api
 
     def last_activity_format(activity)
       team_name = activity.user.team.name
-      activity_location = activity.locations[0].name
+      activity_location = get_activity_location(activity)
+      activity_type = activity.activity_type == "Post" ? "Post" : get_activity_type_en(activity.activity_type)
       response = obtain_label_object.clone
       response['data'] = []
-      postfix = "Team #{team_name} - #{activity.activity_type} at #{activity_location}"
+      postfix = "Team #{team_name} - #{activity_type} #{activity_location}"
       response['postfix'] = postfix
       response['data'] = {
         value: activity.name
@@ -27,6 +28,14 @@ module Api
     end
 
     private
+
+    def get_activity_location(activity)
+      activity.locations[0] ? "at #{activity.locations.first.name}" : ""
+    end
+
+    def get_activity_type_en(activity_type)
+      activity_type == "Curso" ? "Course" : "Talk"
+    end
 
     def obtain_base_object
       {

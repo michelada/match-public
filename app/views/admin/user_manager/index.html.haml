@@ -1,31 +1,20 @@
-%h2 Welcome admin
-
-%table
-  %thead
-    %tr
-      %th
-        = t('user.email')
-      %th
-        = t('labels.name')
-      %th
-        = t('labels.role')
-      %th
-        = t('labels.team')
-      %th
-        = t('labels.rol')
-    %tbody
-      - @users.each do |user|
-        %tr
-          %td
-            = user.email
-          %td
-            = user.name
-          %td
-            = user.role
-          %td
-            = user.team&.name
-          %td
-            = simple_form_for(user, url: admin_user_manager_path(user)) do |f|
-              = f.input :role, collection: User.roles.keys, include_blank: false, label: false 
-              %td
-                = f.button :submit, t('buttons.update')
+.center-vertical.activities-list.admin-view
+  .main-content.medium.container
+    .text-right.mb-4
+      %p.right-info
+        %strong.mr-2
+          = t('labels.welcome-admin')
+      = link_to  destroy_user_session_path, method: :delete do
+        = t('labels.sign_out')
+    %h3.mb-4
+      = t('labels.admin')
+    %table.w-100
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td
+              .user-mail= user.email.remove('@michelada.io')
+            %td.text-right
+              = simple_form_for(user, url: admin_user_manager_path(user)) do |f|
+                = f.select :role, User.roles.keys, include_blank: false, label: false
+                = f.button :submit, t('buttons.update'), class: 'btn-admin ml-2'
