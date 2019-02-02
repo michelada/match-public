@@ -1,6 +1,6 @@
 .contain.center-vertical
   .main-content.small
-    %p= @activity.name
+    %h2.text.red= @activity.name
     %p= @activity.activity_type
     -if @activity.activity_type == 'Post'
       %p.text.red= t('user.judge.activities.description')
