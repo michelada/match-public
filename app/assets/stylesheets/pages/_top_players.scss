@@ -10,6 +10,12 @@
   .break-arrow {
     fill: $white;
     height: $primary-icon-size;
+    cursor: pointer;
+    transition: .5s;
+    &.expanded {
+      transition: .5s;
+      transform: rotate(180deg);
+    }
   }
   h3 {
     font-weight: 100;
@@ -22,6 +28,15 @@
       &:last-child {
         border: none;
       }
+    }
+  }
+  .collapsed-teams {
+    overflow: hidden;
+    transition: .5s;
+    height: 0px;
+    &.expanded {
+      height: auto;
+      transition: .5s;
     }
   }
 }
