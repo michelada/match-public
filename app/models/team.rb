@@ -14,5 +14,5 @@ class Team < ApplicationRecord
   has_many :users, dependent: :nullify
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
-  scope :obtain_top_five_teams, -> { order('score DESC limit 5') }
+  scope :teams_count, -> { count }
 end

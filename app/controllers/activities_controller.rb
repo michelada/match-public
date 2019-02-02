@@ -42,6 +42,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find_by(id: params[:id])
     @locations = Location.all
     @selected_locations = @activity.locations
+    @filename = @activity.activity_file.url ? File.basename(@activity.activity_file&.url) : nil
   end
 
   def update
