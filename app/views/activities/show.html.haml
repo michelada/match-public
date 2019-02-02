@@ -4,20 +4,20 @@
       %h2.text.red= @activity.name
       %p= @activity.activity_type
       -if @activity.activity_type == 'Post'
-        %p.text.red= t('user.judge.activities.description')
+        %h6.text.red= t('user.judge.activities.description')
         %p= @activity.description
       -else
-        %p.text.red=t('user.judge.activities.description')
+        %h6.text.red=t('user.judge.activities.description')
         %p= @activity.description
         -if @activity.activity_type == "Curso"
-          %p.text.red= t('user.judge.activities.intended_audence')
+          %h6.text.red= t('user.judge.activities.intended_audence')
           %p= @activity.pitch_audience
-          %p.text.red= t('user.judge.activities.outline')
+          %h6.text.red= t('user.judge.activities.outline')
           %p= @activity.abstract_outline
         -else
-          %p.text.red= t('user.judge.activities.pitch')
+          %h6.text.red= t('user.judge.activities.pitch')
           %p= @activity.pitch_audience
-          %p.text.red= t('user.judge.activities.abstrac')
+          %h6.text.red= t('user.judge.activities.abstrac')
           %p= @activity.abstract_outline
       -if @activity.english
         %p= t('labels.english')
@@ -26,13 +26,13 @@
           %ul
             - @activity.locations&.each do |events|
               %li= events.name
-      - unless @activity.activity_file.file.nil? 
+      - unless @activity.activity_file.url.nil? 
         = link_to t('labels.download'), @activity.activity_file.url, class:'button'
       - @activity.feedback.each do |feedback|
-        %p.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
+        %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
         %p.gray= feedback.comment
         %hr.section
         
       = simple_form_for [ @activity, @feedback] do |f|
-        = f.input :comment, label: '', placeholder: t('comments.all'), input_html: { class: 'input-text'}
+        = f.input :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
         = f.button :submit, t('comments.create'), class: 'button'

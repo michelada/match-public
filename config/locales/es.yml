@@ -89,6 +89,7 @@ es:
       no_teams: 'No hay equipos'
   placeholders:
     activity_name: "Nombre de la actividad"
+    comment: "Escribe el comentario"
     notes_description: "Link / Información adicional"
     other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
