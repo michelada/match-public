@@ -12,4 +12,4 @@
           = render partial: 'icons/ic_team', locals: {is_active: controller_path == 'teams' }
         - if current_user.role == 'judge'
           = link_to  judge_main_index_path  do
-            = render partial: 'icons/ic_judge', locals: {is_active: controller_path == 'judge/main' }
+            = render partial: 'icons/ic_judge', locals: {is_active: controller_path.include?('judge') }
