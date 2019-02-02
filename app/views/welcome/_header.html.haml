@@ -5,11 +5,11 @@
         = image_tag 'michelada_white_one', alt: 'company-logo', height: 60, class: 'company-logo'
       .nav
         = link_to new_activity_path do
-          = render partial: 'icons/ic_activities', locals: {is_active: controller_name == 'activities' }
+          = render partial: 'icons/ic_activities', locals: {is_active: controller_path == 'activities' }
         = link_to  main_index_path do
-          = render partial: 'icons/ic_top', locals: {is_active: controller_name == 'main' }
+          = render partial: 'icons/ic_top', locals: {is_active: controller_path == 'main' }
         = link_to  new_team_path do
-          = render partial: 'icons/ic_team', locals: {is_active: controller_name == 'teams' }
+          = render partial: 'icons/ic_team', locals: {is_active: controller_path == 'teams' }
         - if current_user.role == 'judge'
           = link_to  judge_main_index_path  do
-            = render partial: 'icons/ic_judge', locals: {is_active: controller_name == 'judge' }
+            = render partial: 'icons/ic_judge', locals: {is_active: controller_path.include?('judge') }
