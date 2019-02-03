@@ -18,13 +18,14 @@ class Activity < ApplicationRecord
   has_and_belongs_to_many :locations, dependent: :destroy
   has_many :feedback
   has_many :activity_statuses
-  enum activity_type: { Curso: 0, Platica: 1, Post: 2 }
+  enum activity_type: { Curso: 0, Plática: 1, Post: 2 }
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
   mount_uploader :activity_file, ActivityFileUploader
-  scope :user_activities, ->(actual_user) { where(user_id: actual_user) }
+  scope :user_activities, ->(actual_user) { where(user_id: actual_user).order('name ASC') }
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
-  scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)) }
-  scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id) }
+  scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
+  scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id).order('name ASC') }
+  scope :order_by_name, -> { order('name ASC') }
   scope :latest_activities, -> { order('created_at DESC limit 3') }
   scope :total_score, -> { where(status: 2).sum('score') }
   scope :top_teams_by_score, (lambda { |team_count|
