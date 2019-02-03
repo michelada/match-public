@@ -1,57 +1,53 @@
-%h2
-  = @activity.name
-  -if @activity_status.nil?
-    = link_to t("activities.status_approve"),  judge_activity_activity_status_index_path(@activity), method: :post
-  - else
-    - if @activity_status.approve
-      = link_to t("activities.status_unapprove"),  judge_activity_activity_status_path(@activity), method: :patch
-    - else
-      = link_to t("activities.status_approve"),  judge_activity_activity_status_path(@activity), method: :patch
+.contain.center-vertical
+  .main-content.small
+    .judge
+      %h3
+        = t('user.judge.activities.on_old.remember')
+        %span.text.red
+          = t('user.judge.activities.on_old.objetive')
+      -if @activity_status.nil?
+        = link_to t("activities.status_approve"),  judge_activity_activity_status_index_path(@activity), method: :post
+      - else
+        - if @activity_status.approve
+          = link_to t("activities.status_unapprove"),  judge_activity_activity_status_path(@activity), method: :patch
+        - else
+          = link_to t("activities.status_approve"),  judge_activity_activity_status_path(@activity), method: :patch
+      %h3
+        = @activity.name
+      %h5
+        = @activity.activity_type
+      -if @activity.activity_type == 'Post'
+        %h6.text.red= t('user.judge.activities.description') if @activity.description
+        %p= @activity.description
+      -else
+        %h6.text.red=t('user.judge.activities.description') if @activity.description
+        %p= @activity.description
+        -if @activity.activity_type == "Curso"
+          %h6.text.red= t('user.judge.activities.intended_audence') if @activity.description
+          %p= @activity.pitch_audience
+          %h6.text.red= t('user.judge.activities.outline') if @activity.pitch_audience
+          %p= @activity.abstract_outline
+        -else
+          %h6.text.red= t('user.judge.activities.pitch') if @activity.pitch_audience
+          %p= @activity.pitch_audience
+          %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
+          %p= @activity.abstract_outline
 
-
-  %h3
-    = @activity.status
-  %h3 
-    = "#{t('labels.type')} #{@activity.activity_type}"
-  %h3
-    = t('labels.english') if @activity.english
-
-    - unless @activity.activity_file.nil?
-      %h3 
-        = link_to t('labels.download'), @activity.activity_file.url
-
-  %h3 
-    = t('labels.events') unless @activity.locations.empty?
-    - @activity.locations&.each do |events|
-      %h4
-        = events.name
-
-%h3
-- if @activity.description
-  = t('labels.description')
-  %p
-    = @activity.description
-
-- if @activity.pitch_audience
-  = @activity.activity_type == 'Curso' ? t('labels.pitch') : t('labels.audience')
-  %p
-    = @activity.pitch_audience
-
-- if @activity.abstract_outline
-  = @activity.activity_type == 'Curso' ? t('labels.outline') : t('lables.abstract')
-  %p
-    = @activity.abstract_outline
-
-%h3
-  = t('labels.comments')
-- @activity.feedback.each do |feedback|
-  = feedback.user.name? ? feedback.user.name : feedback.user.email
-  %br
-  = feedback.comment
-  %br
-
-%h2
-= simple_form_for [:judge, @activity, @feedback] do |f|
-  = f.input :comment, label: t('comments.all')
-  = f.button :submit, t('comments.create')
+      -if @activity.english
+        %p= t('labels.english')
+      - unless @activity.locations.empty?
+        .tags_box
+          %ul
+            - @activity.locations&.each do |events|
+              %li= events.name
+    - unless @activity.activity_file.url.nil? 
+      = link_to t('labels.download'), @activity.activity_file.url, class:'button'
+    - @activity.feedback.each do |feedback|
+      %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
+      %p.gray= feedback.comment
+      %hr.section
+      
+    = simple_form_for [:judge, @activity, @feedback] do |f|
+      = f.input :comment, label: t('comments.create') , placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
+      = f.button :submit, t('comments.create'), class: 'button'
 
