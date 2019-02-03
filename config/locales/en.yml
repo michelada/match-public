@@ -120,11 +120,14 @@ en:
     password_requirement: "(At least 6 characters)"
     judge:
       activities:
+        abstract: "Abstract"
+        description: "Description"
+        intended_audence: "Intended audience"
+        outline: "Outline"
+        pitch: "Pitch"
         on_old:
-          remember: "Remember to be"
           objetive: "objetive."
-          location: "Location"
-          approved: "Approved?"
+          remember: "Remember to be"
   information:
     footer:
       copyrights: "Copyrights michelada.io 2019"

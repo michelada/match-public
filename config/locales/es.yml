@@ -118,14 +118,14 @@ es:
     password_requirement: "(Al menos 6 caracteres)"
     judge:
       activities:
-        description: "Descripcion:"
-        pith: "Pitc:"
-        abstrac: "Resumen:"
+        abstract: "Resumen:"
+        description: "Descripción:"
         intended_audence: "Audiencia dirigida:"
         outline: "Outline:"
+        pitch: "Pitch:"
         on_old:
-          remember: "Recuerda ser"
           objetive: "Objetivo"
+          remember: "Recuerda ser"
   information:
     footer:
       copyrights: "Derechos de autor michelada.io 2019"
