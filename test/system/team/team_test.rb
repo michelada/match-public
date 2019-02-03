@@ -7,7 +7,7 @@ class TeamTest < ApplicationSystemTestCase
     visit new_team_path
     click_link 'Agregar integrante'
     fill_in 'user[email]', with: 'test90@michelada.io'
-    # click_button 'Enviar invitaci&Oacuten'
+    click_button 'Enviar invitación'
   end
 
   test 'Users can not invite another user at the team when the team is full' do
