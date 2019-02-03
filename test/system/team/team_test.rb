@@ -1,36 +1,27 @@
 require 'application_system_test_case'
 
 class TeamTest < ApplicationSystemTestCase
-  before do
-    @team_user = users(:user_with_team)
-    sign_in @team_user
-  end
-
-
 
   test 'Users can invite another user at the team' do
+    @team_user = users(:user_with_team)
+    sign_in @team_user
     visit new_team_path
     click_link 'Agregar integrante'
     fill_in 'user[email]', with: 'test90@michelada.io'
-    click_button 'Enviar invitación'
+   #click_button 'Enviar invitación'
   end
 
-
-  def create_simple_acitivy
-    visit new_activity_path
-    fill_in 'activity[name]', with: 'Test'
-    fill_in 'activity[locations]', with: 'Test location' 
-    find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
-    click_button 'Enviar'
+  test 'Users can not invite another user at the team when the team is full' do
+    @team_user = users(:user_with_teammates)
+    sign_in @team_user
+    visit new_team_path
+    assert has_no_link?('Agregar integrante')
   end
 
-  def create_multiple_activities
-    visit new_activity_path
-    fill_in 'activity[name]', with: 'Test'
-    3.times do |i|
-      fill_in 'activity[locations]', with: "Test_location_#{i + 1}"
-      find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
-    end
-    click_button 'Enviar'
+  test 'if the team is not complete the page sample a link' do
+    @team_user = users(:user_with_team)
+    sign_in @team_user
+    visit new_team_path
+    assert has_link?('Agregar integrante')
   end
 end

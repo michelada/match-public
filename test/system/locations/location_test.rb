@@ -61,6 +61,18 @@ class LocationTest < ApplicationSystemTestCase
 
   end
 
+  test 'The location creted by the user is an option for all users' do
+    create_simple_acitivy
+    visit new_team_path
+    click_link 'Cerrar sesión'
+    @user = users(:user_with_teammates)
+    sign_in @user
+    visit new_activity_path
+    fill_in 'activity[name]', with: 'Test2'
+    select('Test location', from: 'activity[locations]')
+    click_button 'Enviar'
+  end
+
   def create_simple_acitivy
     visit new_activity_path
     fill_in 'activity[name]', with: 'Test'

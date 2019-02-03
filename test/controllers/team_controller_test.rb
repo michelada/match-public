@@ -39,6 +39,5 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
     @userWithTeam = users(:user_test1)
     get team_path(@userWithTeam.team)
     assert has_link?(I18n.t('labels.invite'))
-    assert_response :success
   end  
 end
