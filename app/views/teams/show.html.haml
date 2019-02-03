@@ -20,18 +20,19 @@
       %span
         EFFORT
     - @activities&.each do |activity|
-      .d-flex.justify-content-between
-        %p
-          = activity.name
-        %p.points
-          = activity.score
-      %p{class: activity.css_class}
-        = activity.status
-      .d-flex.justify-content-between
-        %p
-          = activity.activity_type
-        = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail', custom_color: '#F9CF26'}), activity_path(activity)
-      %hr.section
+      %div{id: "activity_#{activity.id}"}
+        .d-flex.justify-content-between
+          %p
+            = activity.name
+          %p.points
+            = activity.score
+        %p{class: activity.css_class}
+          = activity.status
+        .d-flex.justify-content-between
+          %p
+            = activity.activity_type
+          = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail', custom_color: '#F9CF26'}), activity_path(activity), id: "go_to_#{activity.id}"
+        %hr.section
 
     %h3.mt-5.text-center.mb-3.team 
       = t('activities.my_activities')
