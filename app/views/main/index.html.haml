@@ -20,7 +20,7 @@
             = team.name
             .text.red
               = "#{team.total_score} pts"
-      .collapsed-teams 
+      .collapsed-teams
         -@all_teams.each_with_index do |team, i|
           - if i > 2
             .d-flex.justify-content-between.mb-4
