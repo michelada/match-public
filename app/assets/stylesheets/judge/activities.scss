@@ -1,3 +1,58 @@
-// Place all the styles related to the judge/activities controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.judge {
+  .button-group {
+    display: inline-block;
+    list-style: none;
+    margin-left: 13em;
+  }
+  .button-group li {
+    float: left;
+  }
+  .button.pill {
+    text-transform: none;
+    border-radius: 0 .7em .7em 0;
+    border: 1px solid $light-blue;
+    color: $white;
+    display: unset;
+    background-color: $blue;
+    font-size: $primary-font-size;
+    &:hover{
+      background: $light-blue;
+      color: $yellow;
+    }
+    &:first-child {
+      border-radius: .7em 0  0 .7em;
+      margin-right: -4px;
+    }
+  }
+  .icon-detail {
+    fill: $yellow;
+    height: $primary-icon-size;
+    transform: rotate(-90deg);
+  }
+  .tags_box {
+    background: $light-blue;
+    border-radius: $border-radius;
+    display: flex;
+    padding: $regular-padding;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  li {
+    background: $blue;
+    border-radius: 15px;
+    display: flex;            
+    font-size: $secondary-font-size;
+    margin: 0 5px 5px 0;
+    padding: 3px $regular-padding;
+    a {
+      cursor: pointer;
+      margin-left: $regular-margin;
+    }
+  }
+}

@@ -1,26 +1,12 @@
-%h1 
-  = t('activities.all')
-%br
-= link_to t('activities.pending'), judge_main_index_path
-%table
-  %thead
-    %tr
-      %th 
-        = t('labels.name')
-      %th
-        = t('labels.type')
-      %th 
-        = t('labels.english')
-      %th 
-        = t('activities.status')
-    %tbody
-      - @activities&.each do |activity|
-        %tr
-          %td
-            = link_to activity.name, judge_activity_path(activity)
-          %td
+.contain.center-vertical
+  .main-content.small
+    .judge
+      = render partial: 'judge/form'
+      - @activities&.each do |activity|        
+        %p= activity.name
+        .d-flex.justify-content-between
+          %p
             = activity.activity_type
-          %td
-            = activity.english ? "Sí": "No"
-          %td 
-            = activity.status 
+          = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), judge_activity_path(activity)
+        %p= activity.status
+        %hr.section

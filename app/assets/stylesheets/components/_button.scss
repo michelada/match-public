@@ -10,6 +10,7 @@
   text-transform: uppercase;
   font-weight: 500;
   margin-top: $regular-margin;
+  margin-bottom: $regular-margin;
   &:hover {
     color: $blue;
   }
@@ -37,4 +38,3 @@ a.login {
     color: $white;
   }   
 } 
-

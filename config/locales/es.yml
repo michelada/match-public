@@ -89,6 +89,7 @@ es:
       no_teams: 'No hay equipos'
   placeholders:
     activity_name: "Nombre de la actividad"
+    comment: "Escribe el comentario"
     notes_description: "Link / Información adicional"
     other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
@@ -114,6 +115,17 @@ es:
     registrado: 'Ya tengo una cuenta.'
     remember_me: "Recordarme"
     role_updated: "Rol actualizado"
+    password_requirement: "(Al menos 6 caracteres)"
+    judge:
+      activities:
+        abstract: "Resumen:"
+        description: "Descripción:"
+        intended_audence: "Audiencia dirigida:"
+        outline: "Outline:"
+        pitch: "Pitch:"
+        on_old:
+          objetive: "Objetivo"
+          remember: "Recuerda ser"
   information:
     footer:
       copyrights: "Derechos de autor michelada.io 2019"
