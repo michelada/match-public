@@ -34,10 +34,4 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
     get team_path(@team_user.team)
     assert_response :success
   end
-  
-  test 'if the team have 3 users the invitation button is active' do
-    @userWithTeam = users(:user_test1)
-    get team_path(@userWithTeam.team)
-    assert has_link?(I18n.t('labels.invite'))
-  end  
 end

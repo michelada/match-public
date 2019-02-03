@@ -1,7 +1,6 @@
 require 'application_system_test_case'
 
 class JudgeTest < ApplicationSystemTestCase
-
   test 'Judge can validate an activity' do
     create_simple_acitivy
     @judge = users(:judge_user)
@@ -29,7 +28,7 @@ class JudgeTest < ApplicationSystemTestCase
     sign_in @team_user
     visit new_activity_path
     fill_in 'activity[name]', with: 'Test'
-    fill_in 'activity[locations]', with: 'Test location' 
+    fill_in 'activity[locations]', with: 'Test location'
     find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
     click_button 'Enviar'
     visit new_team_path

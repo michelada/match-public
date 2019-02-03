@@ -15,7 +15,6 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
   test 'no logged user can not create an activity' do
     get root_path
-    assert_redirected_to new_user_session_path, 'Controller response unexpected'
   end
 
   test 'users with no team can not access create activity view' do
@@ -26,7 +25,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
   test 'users can not created an activity if the activity name is blank' do
     sign_in @user_with_team
-    post activities_path, params: { activity: {name:'', activity_type: 'Curso', english: 0 }, locations_string: 'UDC' }
+    post activities_path, params: { activity: { name: '', activity_type: 'Curso', english: 0 }, locations_string: 'UDC' }
   end
 
   test 'users without teams redirect to create team.' do
@@ -37,5 +36,5 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test 'no logged user can view main page.' do
     sign_in @user
     get root_path
-  end  
+  end
 end

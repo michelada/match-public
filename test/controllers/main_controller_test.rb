@@ -5,12 +5,6 @@ class MainControllerTest < ActionDispatch::IntegrationTest
     @user = users(:user)
   end
 
-  test 'no logged user can not visit main page' do
-    get root_path
-    assert_redirected_to new_user_session_path, 'Controller response unexpected'
-  end
-
-  test 'logged user can visit main page' do
   test 'no logged user can not visit main index' do
     get main_index_path
     assert_redirected_to root_path, 'Controller response unexpected'
@@ -34,6 +28,7 @@ class MainControllerTest < ActionDispatch::IntegrationTest
     get new_activity_path
     assert_redirected_to new_team_path, 'Controller response unexpected'
   end
+
   test 'logged users can view main page' do
     sign_in @user
     get root_path
