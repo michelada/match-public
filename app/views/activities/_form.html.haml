@@ -2,7 +2,7 @@
   .main-content.small
     = simple_form_for (@activity) do |f|
       .location_list_elements
-        %input{:type=>"text", :hidden => false, :name => "locations_string", :value => "", :id => "locations_string"}
+        %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
 
       %label
         = t('labels.type')

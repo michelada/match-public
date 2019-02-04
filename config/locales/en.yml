@@ -100,7 +100,7 @@ en:
   placeholders:
     activity_name: "Activity name"
     comment: "Type a comment"
-    notes_description: "Link / Aditional information"
+    notes_description: "Evidences, Aditional information"
     other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"

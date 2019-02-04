@@ -20,9 +20,21 @@ $(document).on('turbolinks:load', function() {
   $('.add-location').on('keypress', function(event) {
     if (event.charCode === 13) {
       event.preventDefault();
-      addLocation();
+      if($('#other_location input').val() === ""){
+        alert("El campo \"" + $('#other_location label').text() + "\" no puede estar en blanco")
+      }else{
+        addLocation();
+      } 
     }
   });
+
+  $('.add-location').on('focusout', function(event) {
+      event.preventDefault();
+      if($('#other_location input').val() !== ""){
+        addLocation();
+      }
+    }
+  );
 
   deleteLI();
 })
@@ -49,17 +61,12 @@ function deleteLI(){
 function addLocation() {
   var locString = $('#locations_string').val();
   var new_location = $('#other_location input').val();
-
-  if(new_location === ""){
-    alert("El campo \"Otra\" no puede estar en blanco")
-  }else {
-    if(locString.toLowerCase().includes(new_location.toLowerCase())){
-      alert("El elemento que tratas de agregar es similar a otro en tu lista")
-    }
-    $('#locations_string').val(locString+ new_location + "ß");
-    $('.locations_list ul').append('<li id=' + counter + '>' + new_location + '<a id=' + counter + ' >x</a></li>');
-    $('#other_location input').val("");
-    deleteLI(); 
-    counter++;
+  if(locString.toLowerCase().includes(new_location.toLowerCase())){
+    alert("El elemento que tratas de agregar es similar a otro en tu lista")
   }
+  $('#locations_string').val(locString+ new_location + "ß");
+  $('.locations_list ul').append('<li id=' + counter + '>' + new_location + '<a id=' + counter + ' >x</a></li>');
+  $('#other_location input').val("");
+  deleteLI(); 
+  counter++;
 }
