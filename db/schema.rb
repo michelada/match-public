@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2019_01_31_001417) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "score"
   end
 
   create_table "users", force: :cascade do |t|
