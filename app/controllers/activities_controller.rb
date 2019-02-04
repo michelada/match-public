@@ -40,6 +40,7 @@ class ActivitiesController < ApplicationController
 
   def edit
     @activity = Activity.find_by(id: params[:id])
+    redirect_to main_index_path unless user_can_edit_activity
     @locations = Location.all
     @selected_locations = @activity.locations
     @filename = @activity.activity_file.url ? File.basename(@activity.activity_file&.url) : nil
@@ -115,5 +116,9 @@ class ActivitiesController < ApplicationController
   def vote_for_activity
     activity_statuses = ActivityStatus.new(activity_id: @activity.id, user_id: current_user.id, approve: true)
     activity_statuses.save
+  end
+
+  def user_can_edit_activity
+    @activity.status != 'Aprobado'
   end
 end

@@ -58,7 +58,7 @@
             %td.text-center{class: activity.css_class}
               = activity.status 
             %td.text-right.activity-actions
-              = link_to image_tag('ic-edit'), edit_activity_path(activity)
+              = link_to image_tag('ic-edit'), edit_activity_path(activity) unless activity.status == 'Aprobado'
               = link_to image_tag('ic-delete'), activity_path(activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
 
 
