@@ -40,6 +40,7 @@ class ActivitiesController < ApplicationController
 
   def edit
     @activity = Activity.find_by(id: params[:id])
+    redirect_to main_index_path unless user_can_edit_activity
     @locations = Location.all
     @selected_locations = @activity.locations
     @filename = @activity.activity_file.url ? File.basename(@activity.activity_file&.url) : nil
@@ -50,6 +51,7 @@ class ActivitiesController < ApplicationController
     if @activity.update(activity_params)
       @activity.locations = []
       assign_locations_string
+      assign_activity_points
       flash[:notice] = t('activities.messages.updated')
       redirect_to team_path(current_user.team.id)
     else
@@ -86,7 +88,7 @@ class ActivitiesController < ApplicationController
 
   def obtain_activity_points
     @activity.score = 40 if @activity.activity_type == 'Curso'
-    @activity.score = 25 if @activity.activity_type == 'Platica'
+    @activity.score = 25 if @activity.activity_type == 'Plática'
     @activity.score = 10 if @activity.activity_type == 'Post'
     @activity.score += 5 if @activity.english
     events_extra_points = @activity.activity_type == 'Post' ? 5 : 15
@@ -114,5 +116,9 @@ class ActivitiesController < ApplicationController
   def vote_for_activity
     activity_statuses = ActivityStatus.new(activity_id: @activity.id, user_id: current_user.id, approve: true)
     activity_statuses.save
+  end
+
+  def user_can_edit_activity
+    @activity.status != 'Aprobado'
   end
 end

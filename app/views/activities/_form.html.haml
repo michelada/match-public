@@ -21,7 +21,7 @@
             .location-publication
               = t("labels.location")
           - unless @locations.nil?
-            = f.select :locations, @locations.sort_by{ |loc | loc.name.downcase }.map {|l| l.name}, class: 'location-select', prompt: "Select location"
+            = f.select :locations, @locations.sort_by{ |loc | loc.name.downcase }.map {|l| l.name}, class: 'location-select', prompt: t('labels.select_location')
         .col-sm-6.col-xs-12
           #other_location
             = f.input :locations, label: t("labels.other_location"), placeholder: t("placeholders.other_location"), input_html: { class: 'input-text add-location' }, label_html: { class: 'mt-0'}

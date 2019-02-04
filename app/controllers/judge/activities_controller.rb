@@ -1,7 +1,7 @@
 module Judge
   class ActivitiesController < JudgeController
     def index
-      @activities = Activity.all
+      @activities = Activity.all.order_by_name
     end
 
     def show
