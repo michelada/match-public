@@ -2,7 +2,7 @@
   .main-content.small
     = simple_form_for (@activity) do |f|
       .location_list_elements
-        %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
+        %input{:type=>"text", :hidden => false, :name => "locations_string", :value => "", :id => "locations_string"}
 
       %label
         = t('labels.type')
@@ -32,7 +32,7 @@
               - loaded_locations += (location[:name]+"ß")
           %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
 
-      = f.input :notes, label: t("labels.notes"), placeholder: t("placeholders.notes_description"), input_html: { class: 'input-text' }
+      = f.input :notes, label: t("labels.link"), placeholder: t("placeholders.notes_description"), input_html: { class: 'input-text' }
       = f.input :english, label: t("labels.english"), input_html: {class: 'mt-0'} , label_html: { class: 'mt-0'}
 
       - unless @filename.nil?
