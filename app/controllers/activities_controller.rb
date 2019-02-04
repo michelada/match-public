@@ -87,7 +87,7 @@ class ActivitiesController < ApplicationController
 
   def obtain_activity_points
     @activity.score = 40 if @activity.activity_type == 'Curso'
-    @activity.score = 25 if @activity.activity_type == 'Platica'
+    @activity.score = 25 if @activity.activity_type == 'Plática'
     @activity.score = 10 if @activity.activity_type == 'Post'
     @activity.score += 5 if @activity.english
     events_extra_points = @activity.activity_type == 'Post' ? 5 : 15
