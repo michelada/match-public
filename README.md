@@ -22,28 +22,29 @@ Things you may want to cover:
 
 To setup database yoy either run:
 
-    bundle exec rails db:setup
+    rails db:setup
 
 or:
 
-    bundle exec rails db:create
-    bundle exec rails db:migrate
-    bundle exec rails db:seed
+    rails db:create
+    rails db:migrate
+    rails db:seed
 
 ### Running migrations
 
 to run migrations use the following command:
 
-    bundle exec rails db:migrate
+    rails db:migrate
 
 ## Tests
 
 You should run the tests with the following command:
 
-    bundle exec rake
+    rails test
+    rails test:system
 
 ## Linting
 
 You can lint the code running Rubocop:
 
-    bundle exec rubocop
+    rubocop
