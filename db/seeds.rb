@@ -34,13 +34,27 @@ unless User.exists?('admin_user@michelada.io')
               name: 'Usuario Administrador', role: 2)
 end
 
-Activity.find_or_create_by(name: 'Curso básico Android Studio', english: false, activity_type: 0, user_id: 1, score: 40, status: 2)
+Activity.find_or_create_by(name: 'Curso básico Android Studio', english: false, activity_type: 0,
+                           description: 'Nos adentramos en el entorno de desarrollo Android Studio, donde conoceremos sus modulos más utilzados,
+                           las herramientas de depuracion que nos ofrece y la forma de trabajo',
+                           pitch_audience: 'Alumnos cursantes o que cursarán la asignatura "Tecnologías móviles y responsibas" en el Tecnológico
+                           de Colima', abstract_outline: 'Conociendo el IDE, modulos, MVC, Vista, Controlador, como ligar el controlador con la vista,
+                           manipulado widgets, AVD, emulador Android, debugear una aplicación', user_id: 1, score: 40, status: 2)
 
-Activity.find_or_create_by(name: 'Curso básico Git', english: false, activity_type: 0, user_id: 1, score: 40)
+Activity.find_or_create_by(name: 'Curso básico Git', english: false, activity_type: 0, user_id: 1,
+                           description: 'Se enseñaran los principales comandos utilizados en Git, casos de uso y buenas prácticas de desarrollo.',
+                           pitch_audience: 'Toda persona que se encuentre en el area de desarrollo que no sepa utilizar Git o que desee mejorar su
+                           habilidades', abstract_outline: 'Que es un sistema de control de versiones, de donde nace Git, para qué utilizar Git,
+                           Github y Gitlab como plataformas para el desarrollo en equipo, principales comandos de Git, buenas practicas', score: 40)
 
 Activity.find_or_create_by(name: '¿Qué es CRUD?', english: false, activity_type: 1, user_id: 2, score: 25)
 
-Activity.find_or_create_by(name: 'La importancia del diseño en el desarrollo', english: true, activity_type: 1, user_id: 2, score: 30, status: 2)
+Activity.find_or_create_by(name: 'La importancia del diseño en el desarrollo', english: true, activity_type: 1,
+                           description: 'Por lo general se suele ver al diseño como lo que pinta las vistas de lo desarrollado, sin embargo,
+                           el diseño va más allá que solo esto', pitch_audience: 'Personas involucradas en el desarrollo de software, cursantes de
+                           de alguna carrera a fin', abstract_outline: 'Como nace el diseño, la necesidad de generar un mejor aspecto visual,
+                           planeación de las interfaces, se podría sin diseño?, la comodidad del usuario, interaccion humano maquina',
+                           user_id: 2, score: 30, status: 2)
 
 Activity.find_or_create_by(name: 'ROR as a day-to-day', english: true, activity_type: 2, user_id: 4, score: 10)
 

@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 2019_01_31_001417) do
   create_table "activities_locations", id: false, force: :cascade do |t|
     t.bigint "activity_id", null: false
     t.bigint "location_id", null: false
-    t.index %w[activity_id location_id], name: "index_activities_locations_on_activity_id_and_location_id"
-    t.index %w[location_id activity_id], name: "index_activities_locations_on_location_id_and_activity_id"
   end
 
   create_table "activity_statuses", force: :cascade do |t|
