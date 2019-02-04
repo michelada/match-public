@@ -50,29 +50,36 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    all: "Todas"
     admin: 'Lista de usuarios'
     abstract: "Abstract"
     audience: "Audiencia"
+    best: "Best"
     comments: "Comentarios"
     create_team: "Crea tu propia"
     description: "Descripción"
     dinasty: 'Dinastía'
     download: "Descargar archivo"
+    effort: "EFFORT"
     english: "Inglés"
+    email_uno: "Partner in crime"
     events: "Eventos:"
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
-    location: "Locación"
+    location: "Evento"
     name: "Título"
     notes: "Notas"
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
     role: "Rol"
+    score: "Score:"
     selected_file: "Archivo seleccionado"
+    select_location: 'Escoje una opción'
     sign_out: 'Cerrar sesión'
     type: "Tipo:"
     team: "Equipo"
+    waiting: "En espera"
     welcome: '¡Bienvenido'
     welcome-admin: 'Bienvenido admin'
   team:

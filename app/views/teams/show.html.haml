@@ -11,14 +11,14 @@
     %h3.mt-5
       %span.team=@team.name
     %p
-      Score
+      = t('labels.score')
       %span 
         = "#{@team_score || 0}"
     %hr
     %h3.mt-5.center-info.mb-3 
-      Best
+      = t('labels.best')
       %span
-        EFFORT
+        = t('labels.effort')
     - @activities&.each do |activity|
       %div{id: "activity_#{activity.id}"}
         .d-flex.justify-content-between

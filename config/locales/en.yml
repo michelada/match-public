@@ -53,16 +53,19 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    all: "All"
     admin: 'Users list'
     abstract: "Abstract"
     audience: "Audience"
+    best: "Best"
     comments: "Comments"
     create_team: "Create your own"
     description: "Description"
     dinasty: 'Dinasty'
     download: "Download file"
-    email_uno: 'Partner in crime'
+    effort: "EFFORT"
     english: "English"
+    email_uno: 'Partner in crime'
     events: "Events:"
     invite_users: "Invite your teammates"
     invite: 'Add member'
@@ -73,10 +76,13 @@ en:
     outline: "Outline"
     pitch: "Pitch"
     role: "Role"
+    score: "Score:"
     selected_file: "Selected file"
+    select_location: "Select an option"
     sign_out: 'Sign out'
     team: "Team"
     type: "Type"
+    waiting: "Waiting"
     welcome: 'Welcome'
     welcome-admin: 'Welcome admin'
   team:
