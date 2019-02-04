@@ -20,7 +20,6 @@ $(document).on('turbolinks:load', function() {
   $('.add-location').on('keypress', function(event) {
     if (event.charCode === 13) {
       event.preventDefault();
-      event.stopImmediatePropagation();
       if($('#other_location input').val() === ""){
         alert("El campo \"" + $('#other_location label').text() + "\" no puede estar en blanco");
       }else{
@@ -31,7 +30,6 @@ $(document).on('turbolinks:load', function() {
 
   $('.add-location').on('focusout', function(event) {
       event.preventDefault();
-      event.stopImmediatePropagation();
       if($('#other_location input').val() !== ""){
         addLocation();
       }
