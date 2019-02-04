@@ -103,7 +103,6 @@ class ActivitiesController < ApplicationController
   end
 
   def user_has_permissions
-    flash[:alert] = t('activities.messages.error_accessing')
     redirect_to root_path if current_user.team.id != @activity.user.team&.id
   end
 
