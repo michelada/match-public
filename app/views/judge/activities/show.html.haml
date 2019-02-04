@@ -39,7 +39,7 @@
         .tags_box
           %ul
             - @activity.locations&.each do |events|
-              %li= events.name
+              %li= link_to events.name, judge_activity_location_path(@activity, events), method: :patch, class: "approve-#{events.approve}"
     - unless @activity.activity_file.url.nil? 
       = link_to t('labels.download'), @activity.activity_file.url, class:'button'
     - @activity.feedback.each do |feedback|

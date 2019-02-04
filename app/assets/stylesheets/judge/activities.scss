@@ -53,6 +53,12 @@
     a {
       cursor: pointer;
       margin-left: $regular-margin;
+    }.approve-true{
+        margin-left: 0;
+        color: $green;
+    }.approve-false{
+      margin-left: 0;
     }
   }
 }
+

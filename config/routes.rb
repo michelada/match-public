@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :activities, only: %w[index show] do
       resources :activity_status, only: %w[create update]
       resources :feedbacks, only: %w[index create]
+      resources :locations, only: %w[update]
     end
     resources :main, only: [:index]
   end
