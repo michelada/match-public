@@ -12,15 +12,7 @@ class LocationTest < ApplicationSystemTestCase
     assert_equal true, page.has_content?('Test location')
   end
 
-  test 'Users cant add the same location twice (from select menu)' do
-    create_simple_acitivy
-    find(:css, 'img[src*="/assets/ic-edit-2ceeb8e85845ac2f003993010690b1ae7205f737bec2f021547c8b1fc3879688.svg"]').click
-    select('Test location', from: 'activity[locations]')
-    message = accept_alert
-    assert_equal message, 'El elemento que tratas de agregar ya está en la lista'
-  end
-
-  test 'Users cant add the same location twice (from other_location text input)' do
+  test 'Users cant add the same location twice ' do
     create_simple_acitivy
     find(:css, 'img[src*="/assets/ic-edit-2ceeb8e85845ac2f003993010690b1ae7205f737bec2f021547c8b1fc3879688.svg"]').click
     fill_in 'activity[locations]', with: 'Test location'
@@ -49,7 +41,8 @@ class LocationTest < ApplicationSystemTestCase
     visit new_activity_path
     fill_in 'activity[name]', with: 'Test 2'
     3.times do |i|
-      select("Test_location_#{i + 1}", from: 'activity[locations]')
+      fill_in 'activity[locations]', with: "Test_location_#{i + 1}"
+      find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
     end
 
     click_button 'Enviar'
@@ -57,18 +50,6 @@ class LocationTest < ApplicationSystemTestCase
 
     assert_equal true, page.has_content?('Test_location_2')
     assert_equal true, page.has_content?('Test_location_3')
-  end
-
-  test 'The location creted by the user is an option for all users' do
-    create_simple_acitivy
-    visit new_team_path
-    click_link 'Cerrar sesión'
-    @user = users(:user_with_teammates)
-    sign_in @user
-    visit new_activity_path
-    fill_in 'activity[name]', with: 'Test2'
-    select('Test location', from: 'activity[locations]')
-    click_button 'Enviar'
   end
 
   def create_simple_acitivy
