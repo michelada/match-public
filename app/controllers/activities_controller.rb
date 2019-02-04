@@ -49,7 +49,6 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find_by(id: params[:id])
     if @activity.update(activity_params)
-      @activity.locations = []
       assign_locations_string
       assign_activity_points
       flash[:notice] = t('activities.messages.updated')
@@ -64,19 +63,9 @@ class ActivitiesController < ApplicationController
 
   def assign_locations_string
     @selected_locations = params[:locations_string]
-    return true if @selected_locations.empty?
-
-    check_if_exists_and_assing
-  end
-
-  def check_if_exists_and_assing
+    @activity.locations.destroy_all
     @selected_locations.split('ß').each do |location_name|
-      location_name[0] = location_name[0].upcase
-      @activity.locations << if Location.exists?(['name ILIKE ?', location_name.to_s])
-                               Location.where('name ILIKE ?', location_name)
-                             else
-                               Location.create(name: location_name)
-                             end
+      @activity.locations << Location.create(name: location_name)
     end
   end
 
