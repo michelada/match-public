@@ -34,32 +34,33 @@
           = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail', custom_color: '#F9CF26'}), activity_path(activity), id: "go_to_#{activity.id}"
         %hr.section
 
-    %h3.mt-5.text-center.mb-3.team 
-      = t('activities.my_activities')
-    %br
-    %table.activities-table
-      %thead.mb-3
-        %tr
-          %th 
-            = t('labels.name')
-          %th.text-center
-            = t('labels.type')
-          %th.text-center
-            = t('activities.status')
-          %th.text-right
-            = t('buttons.actions')
-      %tbody
-        - @my_activities&.each do |activity|
+    - unless @my_activities.empty?
+      %h3.mt-5.text-center.mb-3.team 
+        = t('activities.my_activities')
+      %br
+      %table.activities-table
+        %thead.mb-3
           %tr
-            %td
-              = link_to activity.name, activity_path(activity.id)
-            %td.text-center
-              = activity.activity_type
-            %td.text-center{class: activity.css_class}
-              = activity.status 
-            %td.text-right.activity-actions
-              = link_to image_tag('ic-edit'), edit_activity_path(activity) unless activity.status == 'Aprobado'
-              = link_to image_tag('ic-delete'), activity_path(activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
+            %th 
+              = t('labels.name')
+            %th.text-center
+              = t('labels.type')
+            %th.text-center
+              = t('activities.status')
+            %th.text-right
+              = t('buttons.actions')
+        %tbody
+          - @my_activities&.each do |activity|
+            %tr
+              %td
+                = link_to activity.name, activity_path(activity.id)
+              %td.text-center
+                = activity.activity_type
+              %td.text-center{class: activity.css_class}
+                = activity.status 
+              %td.text-right.activity-actions
+                = link_to image_tag('ic-edit'), edit_activity_path(activity) unless activity.status == 'Aprobado'
+                = link_to image_tag('ic-delete'), activity_path(activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
 
 
     - if @team.users.count < 3
