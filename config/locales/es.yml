@@ -51,6 +51,7 @@ es:
   home: "Inicio"
   labels:
     all: "Todas"
+    approved: "Aprovado"
     admin: 'Lista de usuarios'
     abstract: "Abstract"
     audience: "Audiencia"
@@ -79,6 +80,7 @@ es:
     sign_out: 'Cerrar sesión'
     type: "Tipo:"
     team: "Equipo"
+    unapproved: "Desaprobado"
     waiting: "En espera"
     welcome: '¡Bienvenido'
     welcome-admin: 'Bienvenido admin'

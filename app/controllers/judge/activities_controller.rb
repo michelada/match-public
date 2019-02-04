@@ -13,6 +13,8 @@ module Judge
     def update
       @activity = Activity.find(params[:id])
       @activity.update_attributes(english_approve: !@activity.english_approve)
+      message = @activity.english_approve ? t('labels.approved') : t('labels.unapproved')
+      flash[:notice] = message
       update_activity_score
       redirect_to judge_activity_path(@activity)
     end

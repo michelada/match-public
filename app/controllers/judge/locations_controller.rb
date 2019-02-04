@@ -5,6 +5,8 @@ module Judge
       @location = @activity.locations.where('id = ?', params[:id]).first
       @location.update_attributes(approve: !@location.approve)
       update_score
+      message = @location.approve ? t('labels.approved') : t('labels.unapproved')
+      flash[:notice] = message
       redirect_to judge_activity_path(@activity)
     end
 
