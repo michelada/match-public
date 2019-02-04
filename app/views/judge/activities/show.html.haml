@@ -34,7 +34,7 @@
           %p= @activity.abstract_outline
 
       -if @activity.english
-        %p= t('labels.english')
+        %p= link_to t('labels.english'), judge_activity_path(@activity), method: :patch, class: "approve-#{@activity.english_approve}"
       - unless @activity.locations.empty?
         .tags_box
           %ul
