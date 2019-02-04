@@ -10,21 +10,20 @@ function renderFormBasedOnActivity(){
   var textForLocationLabel = "";
   var textPitchAudience = "";
   var textAbbstractOutline = "";
-  console.log($('#activity_activity_type :selected').text());
   switch($('#activity_activity_type :selected').text()){
     case "Post":
       textForLocationLabel = "Publicación";
       removeLabelsAndInputs();
       break;
-    case "Platica":
-      textForLocationLabel = "Locación";
+    case "Plática":
+      textForLocationLabel = "Evento";
       textPitchAudience = "Pitch";
       textAbbstractOutline = "Abstract";
       changeLabelsValues(textPitchAudience, textAbbstractOutline);
       addRemovedFields();
       break;
     case "Curso":
-      textForLocationLabel = "Locación";
+      textForLocationLabel = "Evento";
       textPitchAudience = "Audiencia";
       textAbbstractOutline = "Guía";
       changeLabelsValues(textPitchAudience, textAbbstractOutline);
