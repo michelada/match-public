@@ -24,20 +24,6 @@ $(document).on('turbolinks:load', function() {
     }
   });
 
-  $('select#activity_locations').on('change', (event) => {
-    var new_location = $('#activity_locations').val();
-    var locString = $('#locations_string').val();
-
-    if(locString.toLowerCase().includes(new_location.toLowerCase())){
-      alert("El elemento que tratas de agregar ya está en la lista")
-    }else{
-      $('#locations_string').val(locString + new_location + "ß");
-      $('.locations_list ul').append('<li id=' + counter + '>' + new_location + '<a id=' + counter + ' >x</a></li>');
-      deleteLI();
-      counter++;
-    }
-  });
-
   function addLocation() {
     var locString = $('#locations_string').val();
     var new_location = $('#other_location input').val();
@@ -56,12 +42,6 @@ $(document).on('turbolinks:load', function() {
       }
     }
   }
-
-  //Handles items added from the text input
-  $('#add_new').on('click', function(ev) {
-    ev.preventDefault();
-    addLocation();
-  });
 
   deleteLI();
 })

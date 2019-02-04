@@ -23,7 +23,7 @@ function renderFormBasedOnActivity(){
       addRemovedFields();
       break;
     case "Curso":
-      textForLocationLabel = "Evento";
+      textForLocationLabel = "Locación";
       textPitchAudience = "Audiencia";
       textAbbstractOutline = "Guía";
       changeLabelsValues(textPitchAudience, textAbbstractOutline);
@@ -33,7 +33,7 @@ function renderFormBasedOnActivity(){
     break;
   }
 
-  $('.location-publication').text(textForLocationLabel);
+  $('#other_location label').text(textForLocationLabel);
 }
 
 function changeLabelsValues(pitchAudienceText, abstractOutlineText) {
@@ -46,7 +46,5 @@ function removeLabelsAndInputs() {
 }
 
 function addRemovedFields(){
-  if ($('.optional-fields').html().trim() == ""){
-    $('#pitch-audience, #abstract-outline, #description').show();
-  }
+  $('#pitch-audience, #abstract-outline, #description').show();
 }

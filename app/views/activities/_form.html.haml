@@ -17,15 +17,9 @@
           = f.input :abstract_outline, label: t("labels.outline"), input_html: { class: 'input-text' }
 
       .row
-        .col-sm-6.col-xs-12.mb-3
-          %label.mt-0
-            .location-publication
-              = t("labels.location")
-          - unless @locations.nil?
-            = f.select :locations, @locations.sort_by{ |loc | loc.name.downcase }.map {|l| l.name}, class: 'location-select', prompt: t('labels.select_location')
-        .col-sm-6.col-xs-12
+        .col-sm-12.col-xs-12.mb-3
           #other_location
-            = f.input :locations, label: t("labels.other_location"), placeholder: t("placeholders.other_location"), input_html: { class: 'input-text add-location' }, label_html: { class: 'mt-0'}
+            = f.input :locations, label: t("labels.location"), placeholder: t("placeholders.other_location"), input_html: { class: 'input-text add-location' }, label_html: { class: 'mt-0'}
 
       .locations_list.tags_box
         %ul
