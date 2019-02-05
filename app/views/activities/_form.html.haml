@@ -42,6 +42,5 @@
 
       - unless @filename.nil?
         = "#{t("labels.selected_file")}: #{@filename}"
-      = f.file_field :activity_file
-
+      = f.file_field :activity_file, class:'inputfile'
       %input{type: "submit", value: t("buttons.submit"), class: 'button'}
