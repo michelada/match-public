@@ -7,7 +7,6 @@ body {
   line-height: 18px;
   min-height: 100vh;
 }
-
 h2 {
   color: $white;
 }
@@ -72,6 +71,7 @@ pre {
 a {
   color: $yellow;
   font-size: $primary-font-size;
+  dd
   &:visited {
     color: $yellow;
   }
