@@ -54,26 +54,30 @@ es:
     admin: 'Lista de usuarios'
     abstract: "Abstract"
     audience: "Audiencia"
-    best: "Best"
+    best: "Mejor"
     comments: "Comentarios"
     create_team: "Crea tu propia"
     description: "Descripción"
     dinasty: 'Dinastía'
     download: "Descargar archivo"
-    effort: "EFFORT"
+    effort: "ESFUERZO"
     english: "Inglés"
     email_uno: "Partner in crime"
     events: "Eventos:"
+    fight: "PELEA"
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
     link: "Enlace"
     location: "Evento"
+    look_who_is: "Mira quien esta en la"
     name: "Título"
+    michelada_score: "Puntaje michelada "
+    notes: "Notas"
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
     role: "Rol"
-    score: "Score:"
+    score: "Puntaje:"
     selected_file: "Archivo seleccionado"
     select_location: 'Escoje una opción'
     sign_out: 'Cerrar sesión'

@@ -1,20 +1,16 @@
 .judge {
   .button-group {
-    display: inline-block;
     list-style: none;
-    margin-left: 13em;
-  }
-  .button-group li {
-    float: left;
+    margin-left: 60%;
   }
   .button.pill {
-    text-transform: none;
+    background-color: $blue;
     border-radius: 0 .7em .7em 0;
     border: 1px solid $light-blue;
     color: $white;
-    display: unset;
-    background-color: $blue;
+    display: inline;
     font-size: $primary-font-size;
+    text-transform: none;
     &:hover{
       background: $light-blue;
       color: $yellow;
