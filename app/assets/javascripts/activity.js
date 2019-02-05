@@ -23,7 +23,7 @@ function renderFormBasedOnActivity(){
       addRemovedFields();
       break;
     case "Curso":
-      textForLocationLabel = "Locación";
+      textForLocationLabel = "Evento";
       textPitchAudience = "Audiencia";
       textAbbstractOutline = "Guía";
       changeLabelsValues(textPitchAudience, textAbbstractOutline);

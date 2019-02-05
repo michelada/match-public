@@ -62,7 +62,6 @@ function addLocation() {
   var locString = $('#locations_string').val();
   var new_location = $('#other_location input').val();
   if (verifyNoDuplicity(new_location)) {
-    console.log(verifyNoDuplicity(new_location))
     $('#locations_string').val(locString+ new_location + "ß");
     $('.locations_list ul').append('<li id=' + counter + '>' + new_location + '<a id=' + counter + ' >x</a></li>');
     $('#other_location input').val("");
