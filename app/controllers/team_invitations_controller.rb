@@ -1,11 +1,6 @@
 class TeamInvitationsController < ApplicationController
-  
-  def new
-    
-  end
-
   def create
-
+    render 
   end
 
   private

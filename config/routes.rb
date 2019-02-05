@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :activities, except: [:index]
   resources :teams
   resources :main, only: [:index]
+  resources :team_invitation, only: [:create]
   devise_for :users, controllers: { invitations: 'users/invitations' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'landing_page#index'
