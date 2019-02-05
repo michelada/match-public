@@ -51,6 +51,7 @@ group :test do
 end
 
 group :production do
+  gem 'aws-sdk'
   gem 'pg'
 end
 

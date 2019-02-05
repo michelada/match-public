@@ -20,48 +20,21 @@ $(document).on('turbolinks:load', function() {
   $('.add-location').on('keypress', function(event) {
     if (event.charCode === 13) {
       event.preventDefault();
-      addLocation();
-    }
-  });
-
-  $('select#activity_locations').on('change', (event) => {
-    var new_location = $('#activity_locations').val();
-    var locString = $('#locations_string').val();
-
-    if(locString.toLowerCase().includes(new_location.toLowerCase())){
-      alert("El elemento que tratas de agregar ya está en la lista")
-    }else{
-      $('#locations_string').val(locString + new_location + "ß");
-      $('.locations_list ul').append('<li id=' + counter + '>' + new_location + '<a id=' + counter + ' >x</a></li>');
-      deleteLI();
-      counter++;
-    }
-  });
-
-  function addLocation() {
-    var locString = $('#locations_string').val();
-    var new_location = $('#other_location input').val();
-
-    if(new_location === ""){
-      alert("El campo \"Otra\" no puede estar en blanco")
-    }else {
-      if(locString.toLowerCase().includes(new_location.toLowerCase())){
-        alert("El elemento que tratas de agregar ya está en la lista")
+      if($('#other_location input').val() === ""){
+        alert("El campo \"" + $('#other_location label').text() + "\" no puede estar en blanco");
       }else{
-        $('#locations_string').val(locString+ new_location + "ß");
-        $('.locations_list ul').append('<li id=' + counter + '>' + new_location + '<a id=' + counter + ' >x</a></li>');
-        $('#other_location input').val("");
-        deleteLI(); 
-        counter++;
+        addLocation();
+      } 
+    }
+  });
+
+  $('.add-location').on('focusout', function(event) {
+      event.preventDefault();
+      if($('#other_location input').val() !== ""){
+        addLocation();
       }
     }
-  }
-
-  //Handles items added from the text input
-  $('#add_new').on('click', function(ev) {
-    ev.preventDefault();
-    addLocation();
-  });
+  );
 
   deleteLI();
 })
@@ -75,9 +48,38 @@ function deleteLI(){
     value = value.replace('\nx','').trim()
     
     if(value !== ""){
+      if (value[value.length - 1] === 'x'){
+        value = value.slice(0, -1)
+      }
       $('#locations_string').val($('#locations_string').val().replace((value + "ß"),''));
     }
 
     $('li, input').remove("#" + this.id);
   })
+}
+
+function addLocation() {
+  var locString = $('#locations_string').val();
+  var new_location = $('#other_location input').val();
+  if (verifyNoDuplicity(new_location)) {
+    $('#locations_string').val(locString+ new_location + "ß");
+    $('.locations_list ul').append('<li id=' + counter + '>' + new_location + '<a id=' + counter + ' >x</a></li>');
+    $('#other_location input').val("");
+    deleteLI(); 
+    counter++;
+  }
+}
+
+function verifyNoDuplicity(newLocation){
+  var locString = $('#locations_string').val();
+  var currentLocations = locString.split('ß');
+  var notDuplicated = true;
+  $.each(currentLocations, function(key, location){
+    if(location.toLowerCase() === newLocation.toLowerCase()){
+      alert("El elemento que tratas de agregar ya está en la lista")
+      $('.add-location').val('');
+      notDuplicated = false;
+    }
+  });
+  return notDuplicated;
 }
