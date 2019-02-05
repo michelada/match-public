@@ -12,10 +12,8 @@
 @import 'layout/footer';
 @import 'layout/application';
 @import 'layout/header';
-@import 'components/button';
-@import 'components/input';
+@import 'components/*';
 @import 'landing_page';
-@import 'components/select';
 @import 'pages/activities';
 @import 'judge/activities';
 @import 'admin/admin';
