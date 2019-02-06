@@ -21,6 +21,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    user_has_permission
     @team = Team.find_by(id: params[:id])
     @activities = Activity.team_activities(params[:id])
     @my_activities = Activity.user_activities(current_user.id)
@@ -55,5 +56,12 @@ class TeamsController < ApplicationController
 
   def user_is_valid
     redirect_to root_path if current_user.role == 'admin'
+  end
+
+  def user_has_permission
+    return if current_user.team.id == params[:id].to_i
+
+    flash[:alert] = t('team.error_accessing')
+    redirect_to root_path
   end
 end
