@@ -59,7 +59,7 @@ class TeamsController < ApplicationController
     user2 = User.find_by(email: params[:user_invitation_2][:email])
     return true if !user1&.team && !user2&.team
 
-    return false
+    false
   end
 
   def validate_user
