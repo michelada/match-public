@@ -50,6 +50,8 @@ class TeamsController < ApplicationController
         end
       else
         User.invite!({ email: user_email }, current_user)
+        new_user = User.find_by_email(user_email)
+        new_user&.update_attributes(team_id: current_user.team_id, role: User.roles[:user])
       end
     end
 
