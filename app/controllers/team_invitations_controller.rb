@@ -1,9 +1,7 @@
 class TeamInvitationsController < ApplicationController
   VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze
 
-  def new
-    render 'new'
-  end
+  def new; end
 
   def create
     if validate_user && invite_user
@@ -26,7 +24,7 @@ class TeamInvitationsController < ApplicationController
     if user.nil?
       User.invite!({ email: user_email }, current_user)
       new_user = User.find_by(email: user_email)
-      new_user&.update_attributes(team_id: current_user.team_id, role: User.roles[:user])
+      new_user.update_attributes(team_id: current_user.team_id, role: User.roles[:user])
     elsif user.team.nil?
       user.update_attributes(team_id: current_user.team_id)
     else
@@ -36,8 +34,8 @@ class TeamInvitationsController < ApplicationController
   end
 
   def validate_user
-    user = params[:email]
-    if user.empty? || !user.match(VALID_EMAIL_REGEX)
+    user_email = params[:email]
+    if user_email.empty? || !user_email.match(VALID_EMAIL_REGEX)
       flash[:alert] = t('team.messages.email_not_valid')
       return false
     end

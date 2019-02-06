@@ -10,7 +10,8 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    if validate_user && @team.save
+    @name = params[:team][:name]
+    if validate_user && users_invitable && @team.save
       current_user.update_attribute(:team, @team)
       if invite_users(params[:user_invitation_1][:email]) && invite_users(params[:user_invitation_2][:email])
         flash[:notice] = t('team.messages.created')
@@ -41,17 +42,24 @@ class TeamsController < ApplicationController
   def invite_users(user_email)
     team_id = current_user.team_id
     user = User.find_by(email: user_email)
-    unless user_email.empty?
-      if user.nil?
-        User.invite!({ email: user_email }, current_user)
-        User.find_by_email(user_email).update_attributes(team_id: current_user.team_id, role: User.roles[:user])
-      elsif user.team.nil?
-        user.update_attributes(team_id: team_id)
-      else
-        return false
-      end
+    return true if user_email.empty?
+
+    if user.nil?
+      User.invite!({ email: user_email }, current_user)
+      User.find_by_email(user_email).update_attributes(team_id: current_user.team_id, role: User.roles[:user])
+    elsif user.team.nil?
+      user.update_attributes(team_id: team_id)
+    else
+      return false
     end
-    true
+  end
+
+  def users_invitable
+    user1 = User.find_by(email: params[:user_invitation_1][:email])
+    user2 = User.find_by(email: params[:user_invitation_2][:email])
+    return true if !user1&.team && !user2&.team
+
+    return false
   end
 
   def validate_user
