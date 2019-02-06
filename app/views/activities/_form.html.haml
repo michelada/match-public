@@ -1,5 +1,5 @@
 .container.center-vertical.activities
-  .main-content.small
+  .main-content.medium.mt-5
     = simple_form_for (@activity) do |f|
       .location_list_elements
         %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}

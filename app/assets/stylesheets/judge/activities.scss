@@ -1,13 +1,14 @@
 .judge {
   .button-group {
     list-style: none;
-    margin-left: 60%;
+    margin-left: 40%;
   }
   .button.pill {
     background-color: $blue;
     border-radius: 0 .7em .7em 0;
     border: 1px solid $light-blue;
     color: $white;
+    cursor: pointer;
     display: inline;
     font-size: $primary-font-size;
     text-transform: none;
