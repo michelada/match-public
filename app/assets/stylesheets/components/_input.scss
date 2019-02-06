@@ -22,4 +22,8 @@
   margin-top: $regular-margin;
   overflow: hidden;
   cursor: pointer;
+  &:focus {
+    color: $white;
+    background: $light-blue;
+  }
 }

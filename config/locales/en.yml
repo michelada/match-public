@@ -89,6 +89,7 @@ en:
     create: "Create a team"
     destroy: "Delete team"
     edit: "Edit team"
+    error_accessing: "You can not see into another team"
     messages:
       created: "Team created"
       deleted: "Team deleted"
