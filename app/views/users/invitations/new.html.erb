@@ -1,8 +1,0 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
-
-<%= form_tag("/team_invitation/new", method: "post") do %>
-  <p><%= label_tag(:mail, "Correo") %><br />
-  <%= text_field_tag(:mail) %></p>
-
-  <p><%= submit_tag(t("devise.invitations.new.submit_button")) %></p>
-<% end %>
