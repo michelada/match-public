@@ -7,7 +7,7 @@ class TeamInvitationsController < ApplicationController
 
   def create
     if validate_user && invite_user
-      flash[:notice] = 'Usuario agregado correctamente'
+      flash[:notice] = t('team.messages.user_invited')
       redirect_to team_path(current_user.team)
     else
       render new_team_path
@@ -30,7 +30,7 @@ class TeamInvitationsController < ApplicationController
     elsif user.team.nil?
       user.update_attributes(team_id: current_user.team_id)
     else
-      flash[:alert] = 'Este usuario ya tiene un equipo'
+      flash[:alert] = t('activerecord.errors.models.user.attributes.email.already_has_team')
       return false
     end
   end
@@ -38,7 +38,7 @@ class TeamInvitationsController < ApplicationController
   def validate_user
     user = params[:email]
     if user.empty? || !user.match(VALID_EMAIL_REGEX)
-      flash[:alert] = 'El email ingresado no es valido'
+      flash[:alert] = t('team.messages.email_not_valid')
       return false
     end
     true

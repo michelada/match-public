@@ -92,11 +92,13 @@ en:
     messages:
       created: "Team created"
       deleted: "Team deleted"
-      updated: "Team updated"
+      email_not_valid: "Email no válido"
       error_creating: "Error creating the team"
       error_deleting: "Error deleting the team"
       error_updating: "Error updating the team"
       no_teams: 'There are no teams'
+      updated: "Team updated"
+      user_invited: "User invited successfully"
   placeholders:
     activity_name: "Activity name"
     comment: "Type a comment"
@@ -160,6 +162,8 @@ en:
         user:
           attributes:
             email:
+              already_has_team: "Éste usuario ya pertenece a un equipo"
               invalid: "Invalid email"
+              taken: "Email already registered"
             password_confirmation:
               confirmation: "Password does not match"

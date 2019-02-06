@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
       if invite_users(params[:user_invitation_1][:email]) && invite_users(params[:user_invitation_2][:email])
         flash[:notice] = t('team.messages.created')
       else
-        flash[:alert] = 'Alguno de los usuarios ya tiene un equipo'
+        flash[:alert] = t('activerecord.errors.models.user.attributes.email.already_has_team')
       end
       redirect_to main_index_path
     else
