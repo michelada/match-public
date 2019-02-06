@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @poll] do |f|
+  .form-group
+    = t('labels.start_date')
+    = f.date_select(:start_date, {class: "form-control"})  
+  .form-group
+    = t('labels.end_date')
+    = f.date_select(:end_date, {class: "form-control"})
+  = f.button :submit, label: "adedead"

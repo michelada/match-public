@@ -1,0 +1,6 @@
+%h2
+  = t('labels.polls')
+  = link_to t('labels.new_poll'), new_admin_poll_path
+  - @polls&.each do |poll|
+    = poll.start_date
+    = poll.end_date

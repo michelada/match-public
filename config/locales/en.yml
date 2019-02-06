@@ -63,7 +63,9 @@ en:
     description: "Description"
     dinasty: 'Dinasty'
     download: "Download file"
+    edit_poll: "Edit poll"
     effort: "EFFORT"
+    end_date: "End date"
     english: "English"
     email_uno: 'Partner in crime'
     events: "Events:"
@@ -72,14 +74,17 @@ en:
     link: 'Link'
     location: "Location"
     name: "Name of your content"
+    new_poll: "New poll"
     other_location: "Add another: "
     outline: "Outline"
     pitch: "Pitch"
+    polls: "Polls"
     role: "Role"
     score: "Score:"
     selected_file: "Selected file"
     select_location: "Select an option"
     sign_out: 'Sign out'
+    start_date: "Start date"
     team: "Team"
     type: "Type"
     waiting: "Waiting"

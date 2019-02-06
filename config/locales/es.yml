@@ -60,7 +60,9 @@ es:
     description: "Descripción"
     dinasty: 'Dinastía'
     download: "Descargar archivo"
+    edit_poll: "Editar votación"
     effort: "EFFORT"
+    end_date: "Fecha final"
     english: "Inglés"
     email_uno: "Partner in crime"
     events: "Eventos:"
@@ -69,14 +71,17 @@ es:
     link: "Enlace"
     location: "Evento"
     name: "Título"
+    new_poll: "Nueva votación"
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
+    polls: "Votaciones"
     role: "Rol"
     score: "Score:"
     selected_file: "Archivo seleccionado"
     select_location: 'Escoje una opción'
     sign_out: 'Cerrar sesión'
+    start_date: "Fecha inicial"
     type: "Tipo:"
     team: "Equipo"
     waiting: "En espera"
