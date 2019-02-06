@@ -69,9 +69,9 @@ en:
     events: "Events:"
     invite_users: "Invite your teammates"
     invite: 'Add member'
+    link: 'Link'
     location: "Location"
     name: "Name of your content"
-    notes: "Notes"
     other_location: "Add another: "
     outline: "Outline"
     pitch: "Pitch"
@@ -89,6 +89,7 @@ en:
     create: "Create a team"
     destroy: "Delete team"
     edit: "Edit team"
+    error_accessing: "You can not see into another team"
     messages:
       created: "Team created"
       deleted: "Team deleted"
@@ -102,7 +103,7 @@ en:
   placeholders:
     activity_name: "Activity name"
     comment: "Type a comment"
-    notes_description: "Link / Aditional information"
+    notes_description: "Evidences, Aditional information"
     other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"

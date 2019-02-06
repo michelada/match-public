@@ -25,29 +25,29 @@
       }
     }
   }
-  
-    label {
-      margin-top: $regular-margin;    
+
+  label {
+    margin-top: $regular-margin;    
+  }
+
+  .button {
+    margin-bottom: $regular-margin;
+  }
+
+  select {
+    padding: 10px $regular-padding;
+  }
+
+  .form-check {
+    align-items: center;
+    display: flex;
+  }
+
+  .label-mobile {
+    @include breakpoint (mobile) {
+      margin-top: $regular-margin;
     }
-  
-    .button {
-      margin-bottom: $regular-margin;
-    }
-  
-    select {
-      padding: 10px $regular-padding;
-    }
-    
-    .form-check {
-      align-items: center;
-      display: flex;
-    }
-    
-    .label-mobile {
-      @include breakpoint (mobile) {
-        margin-top: $regular-margin;
-      }
-    }
+  }
 }
 
 .activities-list {
@@ -60,7 +60,7 @@
       font-weight: 500;
     }
   }
-  
+
   .section {
     border-color: $light-blue;
   }

@@ -50,20 +50,20 @@
       }
     }
   }
-}
-
-span {
-  position: relative;
-  padding-left: 35px;
-  &:before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    height: 24px;
-    width: 24px;
-    background-size: 15px;
-    background-position: 5px 3px;
-    background-repeat: no-repeat;
+  
+  span {
+    position: relative;
+    padding-left: 35px;
+    &:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      height: 24px;
+      width: 24px;
+      background-size: 15px;
+      background-position: 5px 3px;
+      background-repeat: no-repeat;
+    }
   }
 }
