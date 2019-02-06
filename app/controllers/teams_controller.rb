@@ -10,12 +10,12 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    if validate_user && @team.save 
+    if validate_user && @team.save
       current_user.update_attribute(:team, @team)
-      unless invite_users(params[:user_invitation_1][:email]) && invite_users(params[:user_invitation_2][:email])
-        flash[:alert] = "Alguno de los usuarios ya tiene un equipo"
-      else
+      if invite_users(params[:user_invitation_1][:email]) && invite_users(params[:user_invitation_2][:email])
         flash[:notice] = t('team.messages.created')
+      else
+        flash[:alert] = 'Alguno de los usuarios ya tiene un equipo'
       end
       redirect_to main_index_path
     else
@@ -37,25 +37,20 @@ class TeamsController < ApplicationController
     params.require(:team).permit(:name)
   end
 
-  def invite_users user_email
+  def invite_users(user_email)
     team_id = current_user.team_id
     user = User.find_by(email: user_email)
-
     unless user_email.empty?
-      unless user.nil?
-        if user.team.nil?
-          user.update_attributes(team_id: team_id)
-        else
-          return false
-        end
-      else
+      if user.nil?
         User.invite!({ email: user_email }, current_user)
-        new_user = User.find_by_email(user_email)
-        new_user&.update_attributes(team_id: current_user.team_id, role: User.roles[:user])
+        User.find_by_email(user_email).update_attributes(team_id: current_user.team_id, role: User.roles[:user])
+      elsif user.team.nil?
+        user.update_attributes(team_id: team_id)
+      else
+        return false
       end
     end
-
-    return true
+    true
   end
 
   def validate_user
