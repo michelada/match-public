@@ -15,7 +15,7 @@
 
 class Activity < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :locations, dependent: :destroy
+  has_many :locations, dependent: :destroy
   has_many :feedback
   has_many :activity_statuses
   enum activity_type: { Curso: 0, Plática: 1, Post: 2 }
@@ -26,7 +26,7 @@ class Activity < ApplicationRecord
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id).order('name ASC') }
   scope :order_by_name, -> { order('name ASC') }
-  scope :latest_activities, -> { order('created_at DESC limit 3') }
+  scope :latest_activities, ->(limit_number) { order('created_at DESC').limit(limit_number) }
   scope :total_score, -> { where(status: 2).sum('score') }
   scope :top_teams_by_score, (lambda { |team_count|
     where('activities.status = ?', 2)

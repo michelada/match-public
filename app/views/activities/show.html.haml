@@ -4,20 +4,20 @@
       %h2.text.red= @activity.name
       %p= @activity.activity_type
       -if @activity.activity_type == 'Post'
-        %h6.text.red= t('user.judge.activities.description')
+        %h6.text.red= t('user.judge.activities.description') if @activity.description
         %p= @activity.description
       -else
-        %h6.text.red=t('user.judge.activities.description')
+        %h6.text.red=t('user.judge.activities.description') if @activity.description
         %p= @activity.description
         -if @activity.activity_type == "Curso"
-          %h6.text.red= t('user.judge.activities.intended_audence')
+          %h6.text.red= t('user.judge.activities.intended_audence') if @activity.pitch_audience
           %p= @activity.pitch_audience
-          %h6.text.red= t('user.judge.activities.outline')
+          %h6.text.red= t('user.judge.activities.outline') if @activity.abstract_outline
           %p= @activity.abstract_outline
         -else
-          %h6.text.red= t('user.judge.activities.pitch')
+          %h6.text.red= t('user.judge.activities.pitch') if @activity.pitch_audience
           %p= @activity.pitch_audience
-          %h6.text.red= t('user.judge.activities.abstract')
+          %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
       -if @activity.english
         %p= t('labels.english')

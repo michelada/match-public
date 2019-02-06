@@ -53,36 +53,43 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    all: "All"
     admin: 'Users list'
     abstract: "Abstract"
     audience: "Audience"
+    best: "Best"
     comments: "Comments"
     create_team: "Create your own"
     description: "Description"
     dinasty: 'Dinasty'
     download: "Download file"
-    email_uno: 'Partner in crime'
+    effort: "EFFORT"
     english: "English"
+    email_uno: 'Partner in crime'
     events: "Events:"
     invite_users: "Invite your teammates"
     invite: 'Add member'
+    link: 'Link'
     location: "Location"
     name: "Name of your content"
-    notes: "Notes"
     other_location: "Add another: "
     outline: "Outline"
     pitch: "Pitch"
     role: "Role"
+    score: "Score:"
     selected_file: "Selected file"
+    select_location: "Select an option"
     sign_out: 'Sign out'
     team: "Team"
     type: "Type"
+    waiting: "Waiting"
     welcome: 'Welcome'
     welcome-admin: 'Welcome admin'
   team:
     create: "Create a team"
     destroy: "Delete team"
     edit: "Edit team"
+    error_accessing: "You can not see into another team"
     messages:
       created: "Team created"
       deleted: "Team deleted"
@@ -94,7 +101,7 @@ en:
   placeholders:
     activity_name: "Activity name"
     comment: "Type a comment"
-    notes_description: "Link / Aditional information"
+    notes_description: "Evidences, Aditional information"
     other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"

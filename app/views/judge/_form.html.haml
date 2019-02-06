@@ -1,8 +1,10 @@
 
 .judge
   .button-group
-    %a.button.pill{:href => "main#index"} En espera
-    %a.button.pill{:href => "activities#show"} Todas
+    %a.button.pill.px-1{:href => "main#index"}
+      = t('labels.waiting')
+    %a.button.pill.px-1{:href => "activities#show"}
+      = t('labels.all')
   %h3
     = t('user.judge.activities.on_old.remember')
     %span.text.red

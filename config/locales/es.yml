@@ -50,35 +50,49 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    all: "Todas"
+    approved: "Aprovado"
     admin: 'Lista de usuarios'
     abstract: "Abstract"
     audience: "Audiencia"
+    best: "Mejor"
     comments: "Comentarios"
     create_team: "Crea tu propia"
     description: "Descripción"
     dinasty: 'Dinastía'
     download: "Descargar archivo"
+    effort: "ESFUERZO"
     english: "Inglés"
+    email_uno: "Partner in crime"
     events: "Eventos:"
+    fight: "PELEA"
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
-    location: "Locación"
+    link: "Enlace"
+    location: "Evento"
+    look_who_is: "Mira quien esta en la"
     name: "Título"
+    michelada_score: "Puntaje michelada "
     notes: "Notas"
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
     role: "Rol"
+    score: "Puntaje:"
     selected_file: "Archivo seleccionado"
+    select_location: 'Escoje una opción'
     sign_out: 'Cerrar sesión'
     type: "Tipo:"
     team: "Equipo"
+    unapproved: "Desaprobado"
+    waiting: "En espera"
     welcome: '¡Bienvenido'
     welcome-admin: 'Bienvenido admin'
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
     edit: "Editar equipo"
+    error_accessing: "No puedes acceder a otro team"
     messages:
       created: "Equipo creado"
       deleted: "Equipo eliminado"
@@ -90,7 +104,7 @@ es:
   placeholders:
     activity_name: "Nombre de la actividad"
     comment: "Escribe el comentario"
-    notes_description: "Link / Información adicional"
+    notes_description: "Evidencias, Información adicional"
     other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
