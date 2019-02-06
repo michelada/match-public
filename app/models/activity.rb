@@ -18,6 +18,7 @@ class Activity < ApplicationRecord
   has_and_belongs_to_many :locations, dependent: :destroy
   has_many :feedback
   has_many :activity_statuses
+  has_many :votes
   enum activity_type: { Curso: 0, Plática: 1, Post: 2 }
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
   mount_uploader :activity_file, ActivityFileUploader
