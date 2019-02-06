@@ -5,20 +5,46 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+## System Requeriments
 
-* System dependencies
+- Ruby 2.5.1
+- Rails 5.2.1
 
-* Configuration
+## Dependencies
 
-* Database creation
+### Ruby
 
-* Database initialization
+    bundle install
 
-* How to run the test suite
+### System
 
-* Services (job queues, cache servers, search engines, etc.)
+## Database Management
 
-* Deployment instructions
+To setup database yoy either run:
 
-* ...
+    rails db:setup
+
+or:
+
+    rails db:create
+    rails db:migrate
+    rails db:seed
+
+### Running migrations
+
+to run migrations use the following command:
+
+    rails db:migrate
+
+## Tests
+
+You should run the tests with the following command:
+
+    rails test
+    rails test:system
+
+## Linting
+
+You can lint the code running Rubocop:
+
+    rubocop
