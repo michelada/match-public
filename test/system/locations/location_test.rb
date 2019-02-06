@@ -59,14 +59,4 @@ class LocationTest < ApplicationSystemTestCase
     find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
     click_button 'Enviar'
   end
-
-  def create_multiple_activities
-    visit new_activity_path
-    fill_in 'activity[name]', with: 'Test'
-    3.times do |i|
-      fill_in 'activity[locations]', with: "Test_location_#{i + 1}"
-      find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
-    end
-    click_button 'Enviar'
-  end
 end

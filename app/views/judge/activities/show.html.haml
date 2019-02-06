@@ -34,12 +34,12 @@
           %p= @activity.abstract_outline
 
       -if @activity.english
-        %p= t('labels.english')
+        %p= link_to t('labels.english'), judge_activity_path(@activity), method: :patch, class: "approve-#{@activity.english_approve}"
       - unless @activity.locations.empty?
         .tags_box
           %ul
             - @activity.locations&.each do |events|
-              %li= events.name
+              %li= link_to events.name, judge_activity_location_path(@activity, events), method: :patch, class: "approve-#{events.approve}"
     - unless @activity.activity_file.url.nil? 
       = link_to t('labels.download'), @activity.activity_file.url, class:'button'
     - @activity.feedback.each do |feedback|

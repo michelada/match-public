@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_001417) do
+ActiveRecord::Schema.define(version: 2019_02_04_200534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,8 @@ ActiveRecord::Schema.define(version: 2019_01_31_001417) do
     t.text "pitch_audience"
     t.text "abstract_outline"
     t.string "activity_file"
+    t.boolean "english_approve"
     t.index ["user_id"], name: "index_activities_on_user_id"
-  end
-
-  create_table "activities_locations", id: false, force: :cascade do |t|
-    t.bigint "activity_id", null: false
-    t.bigint "location_id", null: false
   end
 
   create_table "activity_statuses", force: :cascade do |t|
@@ -62,6 +58,9 @@ ActiveRecord::Schema.define(version: 2019_01_31_001417) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "approve", default: false
+    t.bigint "activity_id", null: false
+    t.index ["activity_id"], name: "index_locations_on_activity_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -104,5 +103,6 @@ ActiveRecord::Schema.define(version: 2019_01_31_001417) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "locations", "activities"
   add_foreign_key "users", "teams"
 end
