@@ -1,6 +1,18 @@
 %h2
-  = t('labels.polls')
-  = link_to t('labels.new_poll'), new_admin_poll_path
-  - @polls&.each do |poll|
-    = poll.start_date
-    = poll.end_date
+  = t('poll.title')
+  = link_to t('poll.create_new'), new_admin_poll_path
+%table.activities-table
+  %thead.mb-3
+    %tr
+      %th.text-center
+        = t('labels.polls')
+      %th.text-right
+        = t('buttons.actions')
+  %tbody
+    - @polls&.each do |poll|
+      %tr
+        %td
+          = link_to "Votaciones del #{poll.start_date} al #{poll.end_date}", admin_poll_path(poll.id)
+        %td.text-right.activity-actions
+          = link_to image_tag('ic-edit'), edit_admin_poll_path(poll)
+          = link_to image_tag('ic-delete'), admin_poll_path(poll), method: :delete, data: {confirm:t('actions.confirm') }

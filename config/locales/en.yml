@@ -63,7 +63,6 @@ en:
     description: "Description"
     dinasty: 'Dinasty'
     download: "Download file"
-    edit_poll: "Edit poll"
     effort: "EFFORT"
     end_date: "End date"
     english: "English"
@@ -74,7 +73,6 @@ en:
     link: 'Link'
     location: "Location"
     name: "Name of your content"
-    new_poll: "New poll"
     other_location: "Add another: "
     outline: "Outline"
     pitch: "Pitch"
@@ -109,6 +107,14 @@ en:
     other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"
+  poll:
+    create_new: "Create a poll"
+    created: "Poll created"
+    edit_poll: "Edit poll"
+    error_creating: "Error creating poll"
+    error_updating: "Error updating poll]"
+    title: "Polls"
+    updated: "Poll updated"
   user:
     change_password: "Change password"
     confirm_new_password: "Confirm new password"

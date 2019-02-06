@@ -1,0 +1,10 @@
+%p
+  = t('labels.start_date')
+  = @poll.start_date
+%p
+  = t('labels.end_date')
+  = @poll.end_date
+
+//- @poll.votes&.activities&.each do |activity|
+//  = activity.name
+//  = activity.votes.count

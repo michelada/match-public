@@ -60,7 +60,6 @@ es:
     description: "Descripción"
     dinasty: 'Dinastía'
     download: "Descargar archivo"
-    edit_poll: "Editar votación"
     effort: "EFFORT"
     end_date: "Fecha final"
     english: "Inglés"
@@ -71,7 +70,6 @@ es:
     link: "Enlace"
     location: "Evento"
     name: "Título"
-    new_poll: "Nueva votación"
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
@@ -106,6 +104,14 @@ es:
     other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
+  poll: 
+    create_new: "Nueva votación"
+    created: "Votación creada"
+    edit_poll: "Editar votación"
+    error_creating: "La votación no ha sido creada"
+    error_updating: "Error actualizado la votación"
+    title: "Votaciones"
+    updated: "Votación actualizada"
   user:
     change_password: "Cambiar contraseña"
     confirm_new_password: "Confirmar nueva contraseña"
