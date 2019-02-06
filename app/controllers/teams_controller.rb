@@ -13,11 +13,7 @@ class TeamsController < ApplicationController
     @name = params[:team][:name]
     if validate_user && users_invitable && @team.save
       current_user.update_attribute(:team, @team)
-      if invite_users(params[:user_invitation_1][:email]) && invite_users(params[:user_invitation_2][:email])
-        flash[:notice] = t('team.messages.created')
-      else
-        flash[:alert] = t('activerecord.errors.models.user.attributes.email.already_has_team')
-      end
+      flash[:notice] = t('team.messages.created') if invite_users(params[:user_invitation_1][:email]) && invite_users(params[:user_invitation_2][:email])
       redirect_to main_index_path
     else
       flash[:alert] = t('team.messages.error_creating')
