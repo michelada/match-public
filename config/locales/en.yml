@@ -92,14 +92,17 @@ en:
     create: "Create a team"
     destroy: "Delete team"
     edit: "Edit team"
+    error_accessing: "You can not see into another team"
     messages:
       created: "Team created"
       deleted: "Team deleted"
-      updated: "Team updated"
+      email_not_valid: "Invalid email"
       error_creating: "Error creating the team"
       error_deleting: "Error deleting the team"
       error_updating: "Error updating the team"
       no_teams: 'There are no teams'
+      updated: "Team updated"
+      user_invited: "User invited successfully"
   placeholders:
     activity_name: "Activity name"
     comment: "Type a comment"
@@ -172,6 +175,8 @@ en:
         user:
           attributes:
             email:
+              already_has_team: "This user is already in a team"
               invalid: "Invalid email"
+              taken: "Email already registered"
             password_confirmation:
               confirmation: "Password does not match"

@@ -2,7 +2,7 @@ module Admin
   class PollsController < AdminController
     def index
       @polls = Poll.all
-      redirect_to new_poll_path
+      redirect_to new_admin_poll_path if Poll.all.empty?
     end
 
     def new
@@ -25,8 +25,6 @@ module Admin
     end
 
     def show
-      binding.pry
-      Poll.votes_in_activities(params[:id])
       @poll = Poll.find(params[:id])
     end
 

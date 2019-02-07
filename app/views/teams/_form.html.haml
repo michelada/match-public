@@ -17,7 +17,7 @@
       %h5.mt-5.mb-3
         = t('labels.invite_users')
       = simple_fields_for :user_invitation_1, defaults: { required: false } do |u|
-        = u.input :email, label: t('labels.email_uno'), placeholder: t('placeholders.user_email'), input_html: {class: 'input-text'}
+        = u.input :email, label: "#{t('labels.email_uno')} 1", placeholder: t('placeholders.user_email'), input_html: {class: 'input-text'}
       = simple_fields_for :user_invitation_2, defaults: { required: false } do |u|
-        = u.input :email, label: t('labels.email_uno'), placeholder: t('placeholders.user_email'), input_html: {class: 'input-text'}
+        = u.input :email, label: "#{t('labels.email_uno')} 2", placeholder: t('placeholders.user_email'), input_html: {class: 'input-text'}
       = f.button :submit, option, class:'button mb-5'

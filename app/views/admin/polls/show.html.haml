@@ -5,6 +5,8 @@
   = t('labels.end_date')
   = @poll.end_date
 
-//- @poll.votes&.activities&.each do |activity|
-//  = activity.name
-//  = activity.votes.count
+- @poll.activities.each do |activity|
+  %p
+    = activity.name
+  %p
+  = activity.votes.coutn

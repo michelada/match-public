@@ -15,7 +15,7 @@
 
 class Activity < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :locations, dependent: :destroy
+  has_many :locations, dependent: :destroy
   has_many :feedback
   has_many :activity_statuses
   has_many :votes
