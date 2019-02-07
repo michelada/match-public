@@ -1,0 +1,6 @@
+= t("devise.invitations.new.header")
+
+= form_tag(team_invitations_path, method: "post") do
+  = label_tag(:email, t("user.email"))
+  = text_field_tag(:email)
+  = submit_tag(t("devise.invitations.new.submit_button"))
