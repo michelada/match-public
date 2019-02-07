@@ -110,11 +110,14 @@ ActiveRecord::Schema.define(version: 2019_02_06_224048) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "activity_id"
-    t.integer "user_id"
-    t.integer "poll_id"
+    t.bigint "activity_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "poll_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_votes_on_activity_id"
+    t.index ["poll_id"], name: "index_votes_on_poll_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   add_foreign_key "activities", "users"

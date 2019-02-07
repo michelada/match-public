@@ -73,7 +73,7 @@ es:
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
-    polls: "Votaciones"
+    polls: "Votaciónes"
     role: "Rol"
     score: "Score:"
     selected_file: "Archivo seleccionado"
@@ -112,6 +112,7 @@ es:
     error_updating: "Error actualizado la votación"
     title: "Votaciones"
     updated: "Votación actualizada"
+    votes: "Votos"
   user:
     change_password: "Cambiar contraseña"
     confirm_new_password: "Confirmar nueva contraseña"

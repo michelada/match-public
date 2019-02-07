@@ -1,9 +1,9 @@
 class CreateVotes < ActiveRecord::Migration[5.2]
   def change
     create_table :votes do |t|
-      t.integer :activity_id
-      t.integer :user_id
-      t.integer :poll_id
+      t.belongs_to :activity, null: false
+      t.belongs_to :user, null: false
+      t.belongs_to :poll, null: false
 
       t.timestamps
     end

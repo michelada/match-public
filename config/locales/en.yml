@@ -115,6 +115,7 @@ en:
     error_updating: "Error updating poll]"
     title: "Polls"
     updated: "Poll updated"
+    votes: "Votes"
   user:
     change_password: "Change password"
     confirm_new_password: "Confirm new password"
