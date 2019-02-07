@@ -75,7 +75,7 @@ class ActivitiesController < ApplicationController
       @activity.locations << if Location.exists?(['name ILIKE ?', location_name.to_s])
                                Location.where('name ILIKE ?', location_name)
                              else
-                               Location.create(name: location_name)
+                               Location.create(name: location_name, activity_id: @activity)
                              end
     end
   end
