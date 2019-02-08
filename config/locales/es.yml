@@ -70,6 +70,7 @@ es:
     invite: 'Agregar integrante'
     link: "Enlace"
     location: "Evento"
+    not_location: "No hay evento registrado"
     look_who_is: "Mira quien esta en la"
     name: "Título"
     michelada_score: "Puntaje michelada "

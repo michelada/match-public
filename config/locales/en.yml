@@ -71,6 +71,7 @@ en:
     invite: 'Add member'
     link: 'Link'
     location: "Location"
+    not_location: "Location not register"
     name: "Name of your content"
     other_location: "Add another: "
     outline: "Outline"

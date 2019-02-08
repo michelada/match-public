@@ -19,6 +19,9 @@
           %p= @activity.pitch_audience
           %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
+
+        %h6.text.red= t("labels.link") if @activity.notes
+        %p= @activity.notes
       -if @activity.english
         %p= t('labels.english')
       - unless @activity.locations.empty?
@@ -26,6 +29,8 @@
           %ul
             - @activity.locations&.each do |events|
               %li= events.name
+      - else
+        %p= t('labels.not_location')
       - unless @activity.activity_file.url.nil? 
         = link_to t('labels.download'), @activity.activity_file.url, class:'button'
       - @activity.feedback.each do |feedback|
