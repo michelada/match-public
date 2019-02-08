@@ -108,6 +108,12 @@ es:
     other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
+    activity:
+      title: "Algo inspirador..."
+      description: "¿Sobre qué trata?"
+      audience: "¿Cómo dirigirse al  público?"
+      guide: "¿Qué temas se abordan?"
+      event: "¿En qué lugar se impartió?"
   user:
     change_password: "Cambiar contraseña"
     confirm_new_password: "Confirmar nueva contraseña"
@@ -165,6 +171,8 @@ es:
               taken: "El equipo ya existe"
         user:
           attributes:
+            password:
+              blank: "Debes ingresar una contraseña"
             email:
               invalid: "E-mail no valido"
               taken: "E-mail ya registrado"
