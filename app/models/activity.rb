@@ -25,6 +25,7 @@ class Activity < ApplicationRecord
   scope :type_of_activity, ->(activity_id) { where(id: activity_id).select('activities.activity_type as type') }
   scope :user_activities, ->(actual_user) { where(user_id: actual_user).order('name ASC') }
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
+  scope :validated_activities, -> { where(status: 2) }
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id).order('name ASC') }
   scope :order_by_name, -> { order('name ASC') }
