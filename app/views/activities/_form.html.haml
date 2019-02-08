@@ -1,5 +1,5 @@
 .container.center-vertical.activities
-  .main-content.small
+  .main-content.medium.mt-5
     = simple_form_for (@activity) do |f|
       .location_list_elements
         %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
@@ -7,19 +7,19 @@
       %label
         = t('labels.type')
       = f.select :activity_type, Activity.activity_types.keys, include_blank: false
-      = f.input :name, label: t("labels.name"),  input_html: { class: 'input-text' }
+      = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity.title"), input_html: { class: 'input-text' }
       .optional-fields
         #description
-          = f.input :description, label: t("labels.description"), input_html: { class: 'input-text' }
+          = f.input :description, label: t("labels.description"), placeholder: t("placeholders.activity.description"), input_html: { class: 'input-text' }
         #pitch-audience
-          = f.input :pitch_audience, label: t("labels.audience"), input_html: { class: 'input-text' }
+          = f.input :pitch_audience, label: t("labels.audience"), placeholder: t("placeholders.activity.audience"), input_html: { class: 'input-text' }
         #abstract-outline
-          = f.input :abstract_outline, label: t("labels.outline"), input_html: { class: 'input-text' }
+          = f.input :abstract_outline, label: t("labels.outline"), placeholder: t("placeholders.activity.guide"), input_html: { class: 'input-text' }
 
       .row
         .col-sm-12.col-xs-12.mb-3
           #other_location
-            = f.input :locations, label: t("labels.location"), placeholder: t("placeholders.other_location"), input_html: { class: 'input-text add-location' }, label_html: { class: 'mt-0'}
+            = f.input :locations, label: t("labels.location"), placeholder: t("placeholders.activity.event"), input_html: { class: 'input-text add-location' }, label_html: { class: 'mt-0'}
 
       .locations_list.tags_box
         %ul

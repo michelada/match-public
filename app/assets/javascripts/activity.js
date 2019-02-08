@@ -8,15 +8,18 @@ $(document).on('turbolinks:load', function() {
 
 function renderFormBasedOnActivity(){
   var textForLocationLabel = "";
+  var textForLocationPlaceholder = "";
   var textPitchAudience = "";
   var textAbbstractOutline = "";
   switch($('#activity_activity_type :selected').text()){
     case "Post":
       textForLocationLabel = "Publicación";
+      textForLocationPlaceholder = "¿En dónde se publicó?"
       removeLabelsAndInputs();
       break;
     case "Plática":
       textForLocationLabel = "Evento";
+      textForLocationPlaceholder = "¿En dónde se impartió?";
       textPitchAudience = "Pitch";
       textAbbstractOutline = "Abstract";
       changeLabelsValues(textPitchAudience, textAbbstractOutline);
@@ -24,6 +27,7 @@ function renderFormBasedOnActivity(){
       break;
     case "Curso":
       textForLocationLabel = "Evento";
+      textForLocationPlaceholder = "¿En dónde se impartió?";
       textPitchAudience = "Audiencia";
       textAbbstractOutline = "Guía";
       changeLabelsValues(textPitchAudience, textAbbstractOutline);
@@ -32,7 +36,7 @@ function renderFormBasedOnActivity(){
     default:
     break;
   }
-
+  $('#other_location input').attr("placeholder", textForLocationPlaceholder);
   $('#other_location label').text(textForLocationLabel);
 }
 
