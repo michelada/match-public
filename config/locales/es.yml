@@ -157,8 +157,11 @@ es:
           remember: "Recuerda ser"
   votes:
     error_type: "Ya tienes un voto hacia una actividad de este tipo"
+    error_unvoting: "Error elimmnando voto"
     error_voting: "Error votando"
     number: "Votantes"
+    unvote: "Quitar voto"
+    unvoted: "Voto eliminado"
     vote: "Votar"
     voted: "Voto registrado"
   information:

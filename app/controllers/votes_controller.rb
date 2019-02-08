@@ -14,6 +14,16 @@ class VotesController < ApplicationController
     redirect_to polls_path
   end
 
+  def destroy
+    @vote = Vote.find(params[:id])
+    if @vote.destroy
+      flash[:notice] = t('votes.unvoted')
+    else
+      flash[:alert] = t('votes.error_unvoting')
+    end
+    redirect_to polls_path
+  end
+
   private
 
   def user_can_vote

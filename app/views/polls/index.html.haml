@@ -23,4 +23,7 @@
               %td
                 = activity.votes.count
               %td
-                = link_to t('votes.vote'), poll_activity_votes_path(@poll.id, activity), method: :post
+                - if activity.votes.where(user: current_user.id).empty?
+                  = link_to t('votes.vote'), poll_activity_votes_path(@poll.id, activity), method: :post
+                -else
+                  = link_to t('votes.unvote'), poll_activity_vote_path(@poll.id, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.confirm')}
