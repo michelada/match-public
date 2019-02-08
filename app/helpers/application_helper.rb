@@ -10,7 +10,6 @@ module ApplicationHelper
   end
 
   def there_are_not_polls
-    poll = Poll.enabled_polls
-    poll.empty?
+    Poll.enabled_polls.empty?
   end
 end
