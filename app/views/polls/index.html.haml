@@ -1,0 +1,23 @@
+%h3.mb-2
+  = @poll.end_date
+
+= t(' labels.post')
+%br
+%table
+  %thead
+    %tr
+      %td
+        = t('placeholders.activity_name')
+      %td
+        = t('votes.number')
+      %td 
+        = t('buttons.actions')
+  %tbody
+    - @activities.each do |activity|
+      %tr
+        %td
+          = link_to activity.name, activity_path(activity)
+        %td
+          = activity.votes.count
+        %td
+          = link_to t('votes.vote'), poll_activity_votes_path(@poll.id, activity), method: :post

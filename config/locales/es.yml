@@ -79,6 +79,7 @@ es:
     outline: "Outline"
     pitch: "Pitch"
     polls: "Votaciónes"
+    post: "Post"
     role: "Rol"
     score: "Puntaje:"
     selected_file: "Archivo seleccionado"
@@ -154,6 +155,12 @@ es:
         on_old:
           objetive: "Objetivo"
           remember: "Recuerda ser"
+  votes:
+    error_type: "Ya tienes un voto hacia una actividad de este tipo"
+    error_voting: "Error votando"
+    number: "Votantes"
+    vote: "Votar"
+    voted: "Voto registrado"
   information:
     footer:
       copyrights: "Derechos de autor michelada.io 2019"

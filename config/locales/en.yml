@@ -149,6 +149,12 @@ en:
         on_old:
           objetive: "objetive."
           remember: "Remember to be"
+  votes:
+    error_type: "Yau already voted for an activity of this type"
+    error_voting: "Error voting"
+    numer: "Votes"
+    vote: "Vote"
+    voted: "You have voted"
   information:
     footer:
       copyrights: "Copyrights michelada.io 2019"
