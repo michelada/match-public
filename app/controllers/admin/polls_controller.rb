@@ -52,7 +52,7 @@ module Admin
     private
 
     def poll_params
-      params.require(:poll).permit(:end_date, :start_date)
+      params.require(:poll).permit(:end_date, :start_date, :activities_from, :activities_to)
     end
   end
 end

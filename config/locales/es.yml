@@ -50,6 +50,7 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    activities_range: "Aplicaciones que pueden participar"
     all: "Todas"
     approved: "Aprovado"
     admin: 'Lista de usuarios'

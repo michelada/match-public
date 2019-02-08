@@ -53,6 +53,7 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    activities_range: "Select the activitie's date range that can be part"
     all: "All"
     admin: 'Users list'
     abstract: "Abstract"
