@@ -73,6 +73,7 @@ en:
     link: 'Link'
     location: "Location"
     look_who_is: "Look who is in the"
+    not_location: "Location not register"
     name: "Name of your content"
     michelada_score: "michelada score "
     notes: "Notes"
