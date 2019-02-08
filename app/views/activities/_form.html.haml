@@ -37,6 +37,6 @@
 
       - unless @filename.nil?
         = "#{t("labels.selected_file")}: #{@filename}"
-      = f.file_field :activity_file, class:'inputfile'
+      = f.file_field :activity_file, class:'inputfile', :accept => '.pdf,.jpg,.png'
 
       %input{type: "submit", value: t("buttons.submit"), class: 'button'}
