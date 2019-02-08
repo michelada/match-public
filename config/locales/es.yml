@@ -172,6 +172,7 @@ es:
         user:
           attributes:
             password:
+              too_short: "Debes ingresar una contraseña de al menos 6 caracteres"
               blank: "Debes ingresar una contraseña"
             email:
               invalid: "E-mail no valido"
