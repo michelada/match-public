@@ -1,7 +1,8 @@
 .activities {
   .tags_box {
-    background: $light-blue;
+    background: $blue;
     border-radius: $border-radius;
+    border: 2px solid $light-blue;
     display: flex;
     padding: $regular-padding;
     ul {
@@ -12,7 +13,7 @@
       padding: 0;
       width: 100%;
       li {
-        background: $blue;
+        background: $light-blue;
         border-radius: 15px;
         display: flex;            
         font-size: $secondary-font-size;
