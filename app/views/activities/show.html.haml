@@ -32,7 +32,7 @@
       - else
         %p= t('labels.not_location')
       - unless @activity.activity_file.url.nil? 
-        = link_to t('labels.download'), @activity.activity_file.url, class:'button'
+        = link_to t('labels.download'), @activity.activity_file.url, target: :_blank class:'button'
       - @activity.feedback.each do |feedback|
         %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
         %p.gray= feedback.comment
