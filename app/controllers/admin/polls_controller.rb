@@ -2,7 +2,7 @@ module Admin
   class PollsController < AdminController
     def index
       @polls = Poll.all
-      redirect_to new_admin_poll_path if Poll.all.empty?
+      redirect_to new_admin_poll_path if @polls.empty?
     end
 
     def new
@@ -19,7 +19,7 @@ module Admin
         flash[:notice] = t('poll.created')
         redirect_to admin_polls_path
       else
-        flash[:aleert] = t('poll.error_creating')
+        flash[:alert] = t('poll.error_creating')
         render 'new'
       end
     end

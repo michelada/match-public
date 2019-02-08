@@ -165,6 +165,7 @@ es:
     unvoted: "Voto eliminado"
     vote: "Votar"
     voted: "Voto registrado"
+    vote_range: "Votaciones del %{start_date} al %{end_date}"
   information:
     footer:
       copyrights: "Derechos de autor michelada.io 2019"

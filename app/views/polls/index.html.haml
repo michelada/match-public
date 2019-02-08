@@ -1,7 +1,7 @@
 %h3.mb-2
   = @poll.end_date
 %br
-- @activities.group(:activity_type).select(:activity_type).each do |type|
+- @activity_types.each do |type|
   .mb-4
     %h3
       = type.activity_type
