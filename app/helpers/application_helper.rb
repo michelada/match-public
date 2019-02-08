@@ -8,4 +8,9 @@ module ApplicationHelper
     else 'alert alert-danger'
     end
   end
+
+  def there_are_not_polls
+    poll = Poll.enabled_polls
+    poll.empty?
+  end
 end
