@@ -7,9 +7,16 @@ class MainController < ApplicationController
   end
 
   def index
+    user_is_admin
     @top_teams = Activity.top_teams_by_score(3)
     @all_teams = Activity.top_teams_by_score(Team.teams_count)
     @latest_activities = Activity.latest_activities(3)
     @total_score = Activity.total_score
+  end
+
+  private
+
+  def user_is_admin
+    redirect_to admin_user_manager_index_path if current_user.role == 'admin'
   end
 end
