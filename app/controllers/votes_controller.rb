@@ -17,7 +17,7 @@ class VotesController < ApplicationController
   private
 
   def user_can_vote
-    activity_type = Activity.activity_type(params[:activity_id])
+    activity_type = Activity.type_of_activity(params[:activity_id])
     user_has_voted = Vote.has_voted_for_type(current_user.id, activity_type.first.type)
     return true if user_has_voted.empty?
 

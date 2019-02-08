@@ -22,7 +22,7 @@ class Activity < ApplicationRecord
   enum activity_type: { Curso: 0, Plática: 1, Post: 2 }
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
   mount_uploader :activity_file, ActivityFileUploader
-  scope :activity_type, ->(activity_id) { where(id: activity_id).select('activities.activity_type as type') }
+  scope :type_of_activity, ->(activity_id) { where(id: activity_id).select('activities.activity_type as type') }
   scope :user_activities, ->(actual_user) { where(user_id: actual_user).order('name ASC') }
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
