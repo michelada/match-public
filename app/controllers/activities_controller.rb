@@ -29,12 +29,16 @@ class ActivitiesController < ApplicationController
 
   def destroy
     @activity = Activity.find_by(id: params[:id])
-    if @activity.destroy
-      flash[:notice] = t('activities.messages.deleted')
-      redirect_to team_path(current_user.team)
+    if user_can_destroy_activity 
+      if @activity.destroy
+        flash[:notice] = t('activities.messages.deleted')
+        redirect_to team_path(current_user.team)
+      else
+        flash[:alert] = t('activities.messagess.erorr_deleting')
+        render 'index'
+      end
     else
       flash[:alert] = t('activities.messagess.erorr_deleting')
-      render 'index'
     end
   end
 
@@ -101,6 +105,10 @@ class ActivitiesController < ApplicationController
   def vote_for_activity
     activity_statuses = ActivityStatus.new(activity_id: @activity.id, user_id: current_user.id, approve: true)
     activity_statuses.save
+  end
+  
+  def user_can_destroy_activity
+    @activity.status != 'Aprobado'
   end
 
   def user_can_edit_activity
