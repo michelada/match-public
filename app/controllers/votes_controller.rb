@@ -6,6 +6,7 @@ class VotesController < ApplicationController
     @vote.user_id = current_user.id
     if user_can_vote
       if @vote.save
+        assign_points(true)
         flash[:notice] = t('votes.voted')
       else
         flash[:alert] = t('votes.error_voting')
@@ -17,6 +18,7 @@ class VotesController < ApplicationController
   def destroy
     @vote = Vote.find(params[:id])
     if @vote.destroy
+      assign_points(false)
       flash[:notice] = t('votes.unvoted')
     else
       flash[:alert] = t('votes.error_unvoting')
@@ -25,6 +27,13 @@ class VotesController < ApplicationController
   end
 
   private
+
+  def assign_points(add_points)
+    extra_points = add_points ? 10 : -10
+    activity = Activity.find(params[:activity_id])
+    activity.score = activity.score + extra_points
+    activity.update_attributes(score: activity.score)
+  end
 
   def user_can_vote
     activity_type = Activity.type_of_activity(params[:activity_id])
