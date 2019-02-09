@@ -44,7 +44,7 @@ module Admin
       if @poll.destroy
         flash[:notice] = t('polls.deleted')
       else
-        flash[:alert] = t('polls.erorr_deleting')
+        flash[:alert] = t('polls.error_deleting')
       end
       redirect_to admin_polls_path
     end
