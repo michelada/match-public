@@ -1,6 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :user_has_permissions
-  skip_before_action :user_has_permissions, only: [:show, :new]
+  before_action :user_has_permissions, only: [:edit, :update]
   def new
     if current_user.team.nil?
       redirect_to new_team_path
