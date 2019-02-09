@@ -155,7 +155,7 @@ es:
       copyrights: "Derechos de autor michelada.io 2019"
       about: "Acerca de MCM"
     landing:
-      about: "MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los miembros de michelada surgirán con excelentes publicaciones de blogs, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
+      about: "MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blogs, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
   activerecord:
     errors:
       messages:

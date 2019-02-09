@@ -149,7 +149,7 @@ en:
       copyrights: "Copyrights michelada.io 2019"
       about: "About us MCM"
     landing:
-      about: "MCM is a 6 week content development competition where all members of michelada will come up with great blog posts, talks or workshops, without a specific subject to cover, in order to allow all of them to share their ideas and knowledge related to technology."
+      about: "MCM is a 6 week content development competition where all michelada will come up with great blog posts, talks or workshops, without a specific subject to cover, in order to allow all of them to share their ideas and knowledge related to technology."
   activerecord:
     errors:
       messages:
