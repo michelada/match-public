@@ -29,22 +29,18 @@ class ActivitiesController < ApplicationController
 
   def destroy
     @activity = Activity.find_by(id: params[:id])
-    if user_can_destroy_activity 
-      if @activity.destroy
-        flash[:notice] = t('activities.messages.deleted')
-        redirect_to team_path(current_user.team)
-      else
-        flash[:alert] = t('activities.messagess.erorr_deleting')
-        render 'index'
-      end
+    if activity_approved? && @activity.destroy
+      flash[:notice] = t('activities.messages.deleted')
+      redirect_to team_path(current_user.team)
     else
-      flash[:alert] = t('activities.messagess.erorr_deleting')
+      flash[:alert] = t('activities.messagess.error_deleting')
+      render 'index'
     end
   end
 
   def edit
     @activity = Activity.find_by(id: params[:id])
-    redirect_to main_index_path unless user_can_edit_activity
+    redirect_to main_index_path unless activity_approved?
     @locations = Location.all
     @selected_locations = @activity.locations
     @filename = @activity.activity_file.url ? File.basename(@activity.activity_file&.url) : nil
@@ -106,12 +102,8 @@ class ActivitiesController < ApplicationController
     activity_statuses = ActivityStatus.new(activity_id: @activity.id, user_id: current_user.id, approve: true)
     activity_statuses.save
   end
-  
-  def user_can_destroy_activity
-    @activity.status != 'Aprobado'
-  end
 
-  def user_can_edit_activity
+  def activity_approved?
     @activity.status != 'Aprobado'
   end
 end
