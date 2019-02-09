@@ -110,7 +110,6 @@ en:
     activity_name: "Activity name"
     comment: "Type a comment"
     notes_description: "Evidences, Aditional information"
-    other_location: "School, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"
   user:
