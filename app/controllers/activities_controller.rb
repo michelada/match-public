@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  before_action :user_has_permissions
+  skip_before_action :user_has_permissions, only: [:show, :new]
   def new
     if current_user.team.nil?
       redirect_to new_team_path
@@ -23,7 +25,6 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    user_has_permissions
     @feedback = Feedback.new
   end
 
@@ -89,7 +90,11 @@ class ActivitiesController < ApplicationController
   end
 
   def user_has_permissions
-    redirect_to root_path if current_user.team.id != @activity.user.team&.id
+    activity = Activity.find(params[:id])
+    return true if current_user.id == activity.user.id
+
+    flash[:alert] = t('activities.messages.error_accessing')
+    redirect_to root_path
   end
 
   def assing_instance_variables
