@@ -65,7 +65,7 @@ class ActivitiesController < ApplicationController
     @selected_locations = params[:locations_string]
     @activity.locations.destroy_all
     @selected_locations.split('ß').each do |location_name|
-      @activity.locations << Location.create(name: location_name, activity_id: @activity.id)
+      @activity.locations << Location.create(name: location_name)
     end
   end
 
