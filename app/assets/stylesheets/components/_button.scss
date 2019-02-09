@@ -37,4 +37,26 @@ a.login {
   &:visited {
     color: $white;
   }   
-} 
+}
+a.btn_download{
+  background: $blue;
+  border-radius: 1em;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $yellow;
+  color: $white;
+  display: table;
+  font-size: $secondary-font-size;
+  font-weight: 500;
+  line-height: 15px;
+  margin-bottom: $regular-margin;
+  margin-top: $regular-margin;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+  cursor: pointer;
+  &:hover {
+    color: $white;
+  }
+}

@@ -25,7 +25,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'no loged user can not create an activity' do
-    post activities_path, params: { activity: { name: 'Android Studio', activity_type: 'Curso', english: 0 }, locations_string: 'UDEC,TEC' }
+    post activities_path, params: { activity: { id: 2, name: 'Android Studio', activity_type: 'Curso', english: 0 }, locations_string: 'UDEC,TEC' }
     assert_redirected_to new_user_session_path, 'Controller response unexpected'
   end
 
@@ -37,7 +37,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
   test 'users can not created an activity if the activity name is blank' do
     sign_in @user_with_team
-    post activities_path, params: { activity: { name: '', activity_type: 'Curso', english: 0 }, locations_string: '' }
+    post activities_path, params: { activity: { id: 3, name: '', activity_type: 'Curso', english: 0 }, locations_string: '' }
     assert_response :success
     # verify flash[]
   end
