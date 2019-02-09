@@ -72,6 +72,7 @@ es:
     invite: 'Agregar integrante'
     link: "Enlace"
     location: "Evento"
+    not_location: "No hay evento registrado"
     look_who_is: "Mira quien esta en la"
     name: "Título"
     michelada_score: "Puntaje michelada "
@@ -115,6 +116,12 @@ es:
     other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
+    activity:
+      title: "Algo inspirador..."
+      description: "¿Sobre qué trata?"
+      audience: "¿Cómo dirigirse al  público?"
+      guide: "¿Qué temas se abordan?"
+      event: "¿En qué lugar se impartió?"
   poll: 
     create_new: "Nueva votación"
     created: "Votación creada"
@@ -191,6 +198,9 @@ es:
               taken: "El equipo ya existe"
         user:
           attributes:
+            password:
+              too_short: "Debes ingresar una contraseña de al menos 6 caracteres"
+              blank: "Debes ingresar una contraseña"
             email:
               already_has_team: "Éste usuario ya pertenece a un equipo"
               invalid: "E-mail no valido"

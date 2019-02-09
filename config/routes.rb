@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :main, only: [:index]
   resources :team_invitations, only: [:new, :create]
-  resources :polls, only: [:index, :show]
-  devise_for :users, controllers: { invitations: 'users/invitations' }
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'landing_page#index'
   namespace :judge do

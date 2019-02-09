@@ -73,6 +73,7 @@ en:
     invite: 'Add member'
     link: 'Link'
     location: "Location"
+    not_location: "Location not register"
     name: "Name of your content"
     other_location: "Add another: "
     outline: "Outline"
@@ -111,6 +112,12 @@ en:
     other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"
+    activity:
+      title: "Something inspire..."
+      description: "What is it about?"
+      audience: "Which is your audience?"
+      guide: "What are you talking?"
+      event: "Where did you do that?"
   poll:
     create_new: "Create a poll"
     created: "Poll created"
@@ -120,6 +127,7 @@ en:
     title: "Polls"
     updated: "Poll updated"
     votes: "Votes"
+
   user:
     change_password: "Change password"
     confirm_new_password: "Confirm new password"
