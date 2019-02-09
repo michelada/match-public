@@ -130,6 +130,7 @@ es:
     error_updating: "Error actualizado la votación"
     title: "Votaciones"
     updated: "Votación actualizada"
+    vote: "Vota"
     votes: "Votos"
   user:
     change_password: "Cambiar contraseña"
@@ -165,7 +166,7 @@ es:
           remember: "Recuerda ser"
   votes:
     error_type: "Ya tienes un voto hacia una actividad de este tipo"
-    error_unvoting: "Error elimmnando voto"
+    error_unvoting: "Error eliminando voto"
     error_voting: "Error votando"
     number: "Votantes"
     unvote: "Quitar voto"
