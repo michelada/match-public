@@ -53,6 +53,7 @@ en:
     format: "%{message}"
   home: "Home"
   labels:
+    activities_range: "Select the activitie's date range that can be part"
     all: "All"
     admin: 'Users list'
     abstract: "Abstract"
@@ -64,6 +65,7 @@ en:
     dinasty: 'Dinasty'
     download: "Download file"
     effort: "EFFORT"
+    end_date: "End date"
     english: "English"
     email_uno: 'Partner in crime'
     events: "Events:"
@@ -76,11 +78,13 @@ en:
     other_location: "Add another: "
     outline: "Outline"
     pitch: "Pitch"
+    polls: "Polls"
     role: "Role"
     score: "Score:"
     selected_file: "Selected file"
     select_location: "Select an option"
     sign_out: 'Sign out'
+    start_date: "Start date"
     team: "Team"
     type: "Type"
     waiting: "Waiting"
@@ -108,6 +112,22 @@ en:
     other_location: "Schools, Wordpress, Medium, etc..."
     team_name: "Team name"
     user_email: "Insert the user email"
+    activity:
+      title: "Something inspire..."
+      description: "What is it about?"
+      audience: "Which is your audience?"
+      guide: "What are you talking?"
+      event: "Where did you do that?"
+  poll:
+    create_new: "Create a poll"
+    created: "Poll created"
+    edit_poll: "Edit poll"
+    error_creating: "Error creating poll"
+    error_updating: "Error updating poll"
+    title: "Polls"
+    updated: "Poll updated"
+    vote: "Vote"
+    votes: "Votes"
   user:
     change_password: "Change password"
     confirm_new_password: "Confirm new password"
@@ -138,6 +158,16 @@ en:
         on_old:
           objetive: "objetive."
           remember: "Remember to be"
+  votes:
+    error_type: "You already voted for an activity of this type"
+    error_unvoting: "Error deleting vote"
+    error_voting: "Error voting"
+    number: "Votes"
+    unvote: "Unvote"
+    unvoted: "Vote deleted"
+    vote: "Vote"
+    voted: "You have voted"
+    vote_range: "Polls from %{start_date} to %{end_date}"
   information:
     footer:
       copyrights: "Copyrights michelada.io 2019"

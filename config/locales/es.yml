@@ -50,6 +50,7 @@ es:
     format: "%{message}"
   home: "Inicio"
   labels:
+    activities_range: "Aplicaciones que pueden participar"
     all: "Todas"
     approved: "Aprovado"
     admin: 'Lista de usuarios'
@@ -61,7 +62,8 @@ es:
     description: "Descripción"
     dinasty: 'Dinastía'
     download: "Descargar archivo"
-    effort: "ESFUERZO"
+    effort: "EFFORT"
+    end_date: "Fecha final"
     english: "Inglés"
     email_uno: "Partner in crime"
     events: "Eventos:"
@@ -78,11 +80,14 @@ es:
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
+    polls: "Votaciónes"
+    post: "Post"
     role: "Rol"
     score: "Puntaje:"
     selected_file: "Archivo seleccionado"
     select_location: 'Escoje una opción'
     sign_out: 'Cerrar sesión'
+    start_date: "Fecha inicial"
     type: "Tipo:"
     team: "Equipo"
     unapproved: "Desaprobado"
@@ -117,6 +122,16 @@ es:
       audience: "¿Cómo dirigirse al  público?"
       guide: "¿Qué temas se abordan?"
       event: "¿En qué lugar se impartió?"
+  poll: 
+    create_new: "Nueva votación"
+    created: "Votación creada"
+    edit_poll: "Editar votación"
+    error_creating: "La votación no ha sido creada"
+    error_updating: "Error actualizado la votación"
+    title: "Votaciones"
+    updated: "Votación actualizada"
+    vote: "Vota"
+    votes: "Votos"
   user:
     change_password: "Cambiar contraseña"
     confirm_new_password: "Confirmar nueva contraseña"
@@ -149,6 +164,16 @@ es:
         on_old:
           objetive: "Objetivo"
           remember: "Recuerda ser"
+  votes:
+    error_type: "Ya tienes un voto hacia una actividad de este tipo"
+    error_unvoting: "Error eliminando voto"
+    error_voting: "Error votando"
+    number: "Votantes"
+    unvote: "Quitar voto"
+    unvoted: "Voto eliminado"
+    vote: "Votar"
+    voted: "Voto registrado"
+    vote_range: "Votaciones del %{start_date} al %{end_date}"
   information:
     footer:
       copyrights: "Derechos de autor michelada.io 2019"
