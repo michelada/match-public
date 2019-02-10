@@ -1,17 +1,17 @@
 = simple_form_for [:admin, @poll] do |f|
   .form-group
     = t('labels.start_date')
-    = f.date_field :start_date, min: Date.today, class: "form-control"
+    = f.date_select :start_date, start_year: Date.today.year, end_year: Date.today.year+1, class: "form-control"
   .form-group
     = t('labels.end_date')
-    = f.date_field :end_date, min: Date.today, class: "form-control"
+    = f.date_select :end_date, start_year: Date.today.year, end_year:  Date.today.year+1, class: "form-control"
   %h4
     = t('labels.activities_range')
   .form-group
     = t('labels.start_date')
-    = f.date_field :activities_from, class: "form-control"
+    = f.date_select :activities_from, class: "form-control", start_year: Date.today.year, end_year: Date.today.year+1
   .form-group
     = t('labels.end_date')
-    = f.date_field :activities_to, class: "form-control"
+    = f.date_select :activities_to, class: "form-control", start_year: Date.today.year, end_year: Date.today.year+1
            
   = f.button :submit, option

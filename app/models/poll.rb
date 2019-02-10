@@ -4,4 +4,5 @@ class Poll < ApplicationRecord
   scope :enabled_polls, (lambda {
     where('start_date <= ? and end_date > ?', Date.today, Date.today)
   })
+  validates :start_date, :end_date, :activities_from, :activities_to, presence: true
 end
