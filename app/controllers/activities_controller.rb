@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  before_action :user_has_permissions, only: [:edit, :update]
   def new
     if current_user.team.nil?
       redirect_to new_team_path
@@ -23,28 +24,23 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    user_has_permissions
     @feedback = Feedback.new
   end
 
   def destroy
     @activity = Activity.find_by(id: params[:id])
-    if user_can_destroy_activity 
-      if @activity.destroy
-        flash[:notice] = t('activities.messages.deleted')
-        redirect_to team_path(current_user.team)
-      else
-        flash[:alert] = t('activities.messagess.erorr_deleting')
-        render 'index'
-      end
+    if activity_approved? && @activity.destroy
+      flash[:notice] = t('activities.messages.deleted')
+      redirect_to team_path(current_user.team)
     else
-      flash[:alert] = t('activities.messagess.erorr_deleting')
+      flash[:alert] = t('activities.messagess.error_deleting')
+      render 'index'
     end
   end
 
   def edit
     @activity = Activity.find_by(id: params[:id])
-    redirect_to main_index_path unless user_can_edit_activity
+    redirect_to main_index_path unless activity_approved?
     @locations = Location.all
     @selected_locations = @activity.locations
     @filename = @activity.activity_file.url ? File.basename(@activity.activity_file&.url) : nil
@@ -93,7 +89,11 @@ class ActivitiesController < ApplicationController
   end
 
   def user_has_permissions
-    redirect_to root_path if current_user.team.id != @activity.user.team&.id
+    activity = Activity.find(params[:id])
+    return true if current_user.id == activity.user.id
+
+    flash[:alert] = t('activities.messages.error_accessing')
+    redirect_to root_path
   end
 
   def assing_instance_variables
@@ -106,12 +106,8 @@ class ActivitiesController < ApplicationController
     activity_statuses = ActivityStatus.new(activity_id: @activity.id, user_id: current_user.id, approve: true)
     activity_statuses.save
   end
-  
-  def user_can_destroy_activity
-    @activity.status != 'Aprobado'
-  end
 
-  def user_can_edit_activity
+  def activity_approved?
     @activity.status != 'Aprobado'
   end
 end

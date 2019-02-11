@@ -16,14 +16,18 @@
 class Activity < ApplicationRecord
   belongs_to :user
   has_many :locations, dependent: :destroy
-  has_many :feedback
-  has_many :activity_statuses
+  has_many :feedback, dependent: :destroy
+  has_many :activity_statuses, dependent: :destroy
+  has_many :votes, dependent: :destroy
   enum activity_type: { Curso: 0, Plática: 1, Post: 2 }
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
   mount_uploader :activity_file, ActivityFileUploader
+  scope :from_a_poll, (lambda { |start_date, end_date|
+    where('created_at >= ? AND created_at <= ? AND status = ?', start_date, end_date, 2)
+  })
+  scope :type_of_activity, ->(activity_id) { where(id: activity_id).select('activities.activity_type as type') }
   scope :user_activities, ->(actual_user) { where(user_id: actual_user).order('name ASC') }
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
-  scope :unnaprove, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC')}
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id).order('name ASC') }
   scope :order_by_name, -> { order('name ASC') }
@@ -39,7 +43,7 @@ class Activity < ApplicationRecord
   })
   scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
 
-  validates :name, presence: true
+  validates :name,:description, :pitch_audience, :abstract_outline, presence: true
   validates :name, uniqueness: { case_sensitive: false }
 
   def css_class
