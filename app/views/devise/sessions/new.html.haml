@@ -1,17 +1,17 @@
 .center-content-vertical
-  .main-content.container.small
+  .main-content.container.medium.mt-5
     .image-content
       = link_to (image_tag 'michelada_white_one', alt: 'michelada', width: '250', class: 'image-michelada'), root_path
     .information-content
       = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
-          = f.email_field :email, class: 'input-text'
+          = f.email_field :email, label: t('user.email'), class: 'input-text'
         .field
-          = f.password_field :password, class: 'input-text password-field'
+          = f.password_field :password, label: t('user.password'), class: 'input-text password-field'
           = link_to t("user.forgot_password"), new_password_path(resource_name)
         - if devise_mapping.rememberable?
           .field
-            = f.check_box :remember_me, class: 'checkbx'
+            = f.check_box :remember_me, label: t('user.remember_me'), class: 'checkbx'
         .actions
           = f.submit t("user.log_in"), class: 'button'
     %p

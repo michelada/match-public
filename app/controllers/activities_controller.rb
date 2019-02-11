@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  before_action :user_has_permissions, only: [:edit, :update]
   def new
     if current_user.team.nil?
       redirect_to new_team_path
@@ -23,23 +24,23 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    user_has_permissions
     @feedback = Feedback.new
   end
 
   def destroy
     @activity = Activity.find_by(id: params[:id])
-    if @activity.destroy
+    if activity_approved? && @activity.destroy
       flash[:notice] = t('activities.messages.deleted')
       redirect_to team_path(current_user.team)
     else
-      flash[:alert] = t('activities.messagess.erorr_deleting')
+      flash[:alert] = t('activities.messagess.error_deleting')
       render 'index'
     end
   end
 
   def edit
     @activity = Activity.find_by(id: params[:id])
+    redirect_to main_index_path unless activity_approved?
     @locations = Location.all
     @selected_locations = @activity.locations
     @filename = @activity.activity_file.url ? File.basename(@activity.activity_file&.url) : nil
@@ -48,7 +49,6 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find_by(id: params[:id])
     if @activity.update(activity_params)
-      @activity.locations = []
       assign_locations_string
       assign_activity_points
       flash[:notice] = t('activities.messages.updated')
@@ -63,19 +63,9 @@ class ActivitiesController < ApplicationController
 
   def assign_locations_string
     @selected_locations = params[:locations_string]
-    return true if @selected_locations.empty?
-
-    check_if_exists_and_assing
-  end
-
-  def check_if_exists_and_assing
+    @activity.locations.destroy_all
     @selected_locations.split('ß').each do |location_name|
-      location_name[0] = location_name[0].upcase
-      @activity.locations << if Location.exists?(['name ILIKE ?', location_name.to_s])
-                               Location.where('name ILIKE ?', location_name)
-                             else
-                               Location.create(name: location_name)
-                             end
+      @activity.locations << Location.create(name: location_name)
     end
   end
 
@@ -87,11 +77,8 @@ class ActivitiesController < ApplicationController
 
   def obtain_activity_points
     @activity.score = 40 if @activity.activity_type == 'Curso'
-    @activity.score = 25 if @activity.activity_type == 'Platica'
+    @activity.score = 25 if @activity.activity_type == 'Plática'
     @activity.score = 10 if @activity.activity_type == 'Post'
-    @activity.score += 5 if @activity.english
-    events_extra_points = @activity.activity_type == 'Post' ? 5 : 15
-    @activity.score += events_extra_points * @activity.locations.count
   end
 
   def activity_params
@@ -102,8 +89,11 @@ class ActivitiesController < ApplicationController
   end
 
   def user_has_permissions
+    activity = Activity.find(params[:id])
+    return true if current_user.id == activity.user.id
+
     flash[:alert] = t('activities.messages.error_accessing')
-    redirect_to root_path if current_user.team.id != @activity.user.team&.id
+    redirect_to root_path
   end
 
   def assing_instance_variables
@@ -115,5 +105,9 @@ class ActivitiesController < ApplicationController
   def vote_for_activity
     activity_statuses = ActivityStatus.new(activity_id: @activity.id, user_id: current_user.id, approve: true)
     activity_statuses.save
+  end
+
+  def activity_approved?
+    @activity.status != 'Aprobado'
   end
 end

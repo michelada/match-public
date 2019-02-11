@@ -32,6 +32,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :team, optional: true
   has_many :activities
+  has_many :activity_statuses
+  has_many :votes
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, validate_on_invite: true
   VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze

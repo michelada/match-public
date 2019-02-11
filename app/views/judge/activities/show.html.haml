@@ -1,5 +1,5 @@
-.contain.center-vertical
-  .main-content.small
+.main-content.container.medium.mt-5
+  .contain.center-vertical
     .judge
       %h3
         = t('user.judge.activities.on_old.remember')
@@ -23,9 +23,9 @@
         %h6.text.red=t('user.judge.activities.description') if @activity.description
         %p= @activity.description
         -if @activity.activity_type == "Curso"
-          %h6.text.red= t('user.judge.activities.intended_audence') if @activity.description
+          %h6.text.red= t('user.judge.activities.intended_audence') if @activity.pitch_audience
           %p= @activity.pitch_audience
-          %h6.text.red= t('user.judge.activities.outline') if @activity.pitch_audience
+          %h6.text.red= t('user.judge.activities.outline') if @activity.abstract_outline
           %p= @activity.abstract_outline
         -else
           %h6.text.red= t('user.judge.activities.pitch') if @activity.pitch_audience
@@ -34,14 +34,14 @@
           %p= @activity.abstract_outline
 
       -if @activity.english
-        %p= t('labels.english')
+        %p= link_to t('labels.english'), judge_activity_path(@activity), method: :patch, class: "approve-#{@activity.english_approve}"
       - unless @activity.locations.empty?
         .tags_box
           %ul
             - @activity.locations&.each do |events|
-              %li= events.name
+              %li= link_to events.name, judge_activity_location_path(@activity, events), method: :patch, class: "approve-#{events.approve}"
     - unless @activity.activity_file.url.nil? 
-      = link_to t('labels.download'), @activity.activity_file.url, class:'button'
+      = link_to t('labels.download'), @activity.activity_file.url, class:'btn_download'
     - @activity.feedback.each do |feedback|
       %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
       %p.gray= feedback.comment

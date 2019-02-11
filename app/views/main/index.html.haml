@@ -1,8 +1,8 @@
 .main-content.container.medium.mt-5
   .top-players
 
-    .d-flex.justify-content-end.total-score
-      Michelada's score:
+    %h3.d-flex.justify-content-end.total-score
+      =t('labels.michelada_score')
       .text.red.ml-2.increase-3.text= "#{@total_score} pts"
 
     .d-flex.align-items-center.mt-4.mb-5
@@ -20,7 +20,7 @@
             = team.name
             .text.red
               = "#{team.total_score} pts"
-      .collapsed-teams 
+      .collapsed-teams
         -@all_teams.each_with_index do |team, i|
           - if i > 2
             .d-flex.justify-content-between.mb-4
@@ -32,8 +32,8 @@
       = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
 
     %h3.d-flex.justify-content-center.align-items-center
-      Look who is on the
-      .text.red.increase-3.ml-3 FIGHT
+      =t('labels.look_who_is')
+      .text.red.increase-3.ml-3= t('labels.fight')
 
     .latest-activities.mt-5.mb-5
       -@latest_activities.each do |activity|
