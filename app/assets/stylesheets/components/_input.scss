@@ -12,7 +12,11 @@
     background: $light-blue;
     color: $white;
   }
+  &.optional-fields {
+    padding: $regular-padding;
+  }
 }
+
 .inputfile{
   background: $light-blue;
   border-radius: 1em;
