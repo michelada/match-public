@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :main, only: [:index]
   resources :team_invitations, only: [:new, :create]
   devise_for :users
+  as :user do
+    get '/users' => 'devise_invitable/registrations#new', :as => 'new_user_registration_back'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'landing_page#index'
   namespace :judge do
