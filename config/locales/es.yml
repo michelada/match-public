@@ -70,7 +70,7 @@ es:
     invite: 'Agregar integrante'
     link: "Enlace"
     location: "Evento"
-    look_who_is: "Mira quien esta en la"
+    look_who_is: "Mira quién está en la "
     name: "Título"
     michelada_score: "Puntaje michelada "
     notes: "Notas"
@@ -175,6 +175,7 @@ es:
               too_short: "Debes ingresar una contraseña de al menos 6 caracteres"
               blank: "Debes ingresar una contraseña"
             email:
+              blank: "Debes ingresar un E-mail"
               invalid: "E-mail no valido"
               taken: "E-mail ya registrado"
             password_confirmation:
