@@ -4,6 +4,10 @@ $(document).on('turbolinks:load', function() {
   })
 
   renderFormBasedOnActivity();
+
+  validateRequiredFields();
+
+  validateRequiredFields();
 })
 
 function renderFormBasedOnActivity(){
@@ -51,4 +55,63 @@ function removeLabelsAndInputs() {
 
 function addRemovedFields(){
   $('#pitch-audience, #abstract-outline, #description').show();
+}
+
+function validateRequiredFields(){
+  $('#submit_button').on('click', function(e){
+    var error = ""
+    var errorCount = 0;
+    switch($('#activity_activity_type :selected').text()){
+      case "Curso":
+        if($('#activity_description').val() == ""){
+          error += "\nDescripción";
+          errorCount++;
+        }
+        if($('#activity_pitch_audience').val() == ""){
+          error += "\nAudiencia";
+          errorCount++;
+        }
+        if($('#activity_abstract_outline').val() == ""){
+          error += "\nGuía";
+          errorCount++;
+        }
+        if(errorCount > 0){
+          e.preventDefault();
+          showErrorMessage(error, errorCount)
+        }
+      break;
+      case "Plática":
+        if($('#activity_description').val() == ""){
+          error += "\nDescripción";
+          errorCount++;
+        }
+        if($('#activity_pitch_audience').val() == ""){
+          error += "\nPitch";
+          errorCount++;
+        }
+        if($('#activity_abstract_outline').val() == ""){
+          error += "\nAbstract";
+          errorCount++;
+        }
+        if(errorCount > 0){
+          e.preventDefault();
+          showErrorMessage(error, errorCount)
+        }
+      break;
+      case "Post":
+        $('#activity_description').val("");
+        $('#activity_pitch_audience').val("");
+        $('#activity_abstract_outline').val("");
+      default:
+      break;
+    }
+  })
+}
+
+function showErrorMessage(errorString, errorCount){
+  if(errorCount == 1){
+    alert("El siguiente campo no puede estar en blanco: " + errorString);
+  }else{
+    alert("Los siguiente campos no pueden estar en blanco: " + errorString)
+  }
 }
