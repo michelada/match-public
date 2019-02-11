@@ -10,9 +10,10 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    if validate_user && @team.save && current_user.update_attribute(:team, @team)
-      invite_users
-      flash[:notice] = t('team.messages.created')
+    @name = params[:team][:name]
+    if validate_user && users_invitable && @team.save
+      current_user.update_attribute(:team, @team)
+      flash[:notice] = t('team.messages.created') if invite_users(params[:user_invitation_1][:email]) && invite_users(params[:user_invitation_2][:email])
       redirect_to main_index_path
     else
       flash[:alert] = t('team.messages.error_creating')
@@ -21,6 +22,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    user_has_permission
     @team = Team.find_by(id: params[:id])
     @activities = Activity.team_activities(params[:id])
     @my_activities = Activity.user_activities(current_user.id)
@@ -33,14 +35,27 @@ class TeamsController < ApplicationController
     params.require(:team).permit(:name)
   end
 
-  def invite_users
-    user1 = params[:user_invitation_1][:email]
-    user2 = params[:user_invitation_2][:email]
+  def invite_users(user_email)
     team_id = current_user.team_id
-    User.find_by(email: user1).update_attribute(:team_id, team_id) if User.exists?(email: user1)
-    User.find_by(email: user2).update_attribute(:team_id, team_id) if User.exists?(email: user2)
-    User.invite!({ email: user1 }, current_user) unless user1.empty?
-    User.invite!({ email: user2 }, current_user) unless user2.empty?
+    user = User.find_by(email: user_email)
+    return true if user_email.empty?
+
+    if user.nil?
+      User.invite!({ email: user_email }, current_user)
+      User.find_by_email(user_email).update_attributes(team_id: current_user.team_id, role: User.roles[:user])
+    elsif user.team.nil?
+      user.update_attributes(team_id: team_id)
+    else
+      return false
+    end
+  end
+
+  def users_invitable
+    user1 = User.find_by(email: params[:user_invitation_1][:email])
+    user2 = User.find_by(email: params[:user_invitation_2][:email])
+    return true if !user1&.team && !user2&.team
+
+    false
   end
 
   def validate_user
@@ -55,5 +70,12 @@ class TeamsController < ApplicationController
 
   def user_is_valid
     redirect_to root_path if current_user.role == 'admin'
+  end
+
+  def user_has_permission
+    return if current_user.team.id == params[:id].to_i
+
+    flash[:alert] = t('team.error_accessing')
+    redirect_to root_path
   end
 end

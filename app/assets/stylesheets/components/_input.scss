@@ -13,3 +13,17 @@
     color: $white;
   }
 }
+.inputfile{
+  background: $light-blue;
+  border-radius: 1em;
+  border: 1px solid $gray;
+  color: $white;
+  font-size: $secondary-font-size;
+  margin-top: $regular-margin;
+  overflow: hidden;
+  cursor: pointer;
+  &:focus {
+    color: $white;
+    background: $light-blue;
+  }
+}

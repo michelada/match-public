@@ -1,11 +1,13 @@
-.contain.center-vertical
-  .main-content.small
-    .judge
-      = render partial: 'judge/form'
-      - @activities&.each do |activity|
-        %p= activity.name
-        .d-flex.justify-content-between
-          %p
-            = activity.activity_type
-          = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), judge_activity_path(activity)
-        %hr.section
+.main-content.container.medium.mt-5
+  .contain.center-vertical
+    .main-cont
+      .judge
+        = render partial: 'judge/form'
+        - @activities&.each do |activity|
+          %div{id: "activity_#{activity.id}"}
+            %p= activity.name
+            .d-flex.justify-content-between
+              %p
+                = activity.activity_type
+              = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), judge_activity_path(activity), id: "go_to_#{activity.id}"
+            %hr.section

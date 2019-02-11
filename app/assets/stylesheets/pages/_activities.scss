@@ -1,7 +1,8 @@
 .activities {
   .tags_box {
-    background: $light-blue;
+    background: $blue;
     border-radius: $border-radius;
+    border: 2px solid $light-blue;
     display: flex;
     padding: $regular-padding;
     ul {
@@ -12,7 +13,7 @@
       padding: 0;
       width: 100%;
       li {
-        background: $blue;
+        background: $light-blue;
         border-radius: 15px;
         display: flex;            
         font-size: $secondary-font-size;
@@ -25,29 +26,29 @@
       }
     }
   }
-  
-    label {
-      margin-top: $regular-margin;    
+
+  label {
+    margin-top: $regular-margin;    
+  }
+
+  .button {
+    margin-bottom: $regular-margin;
+  }
+
+  select {
+    padding: 10px $regular-padding;
+  }
+
+  .form-check {
+    align-items: center;
+    display: flex;
+  }
+
+  .label-mobile {
+    @include breakpoint (mobile) {
+      margin-top: $regular-margin;
     }
-  
-    .button {
-      margin-bottom: $regular-margin;
-    }
-  
-    select {
-      padding: 10px $regular-padding;
-    }
-    
-    .form-check {
-      align-items: center;
-      display: flex;
-    }
-    
-    .label-mobile {
-      @include breakpoint (mobile) {
-        margin-top: $regular-margin;
-      }
-    }
+  }
 }
 
 .activities-list {
@@ -60,7 +61,7 @@
       font-weight: 500;
     }
   }
-  
+
   .section {
     border-color: $light-blue;
   }
