@@ -21,22 +21,17 @@ ActiveRecord::Schema.define(version: 2019_02_08_184455) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.integer "activity_type", null: false
     t.integer "status", default: 0, null: false
     t.string "notes"
-    t.integer "score"
+    t.integer "score", default: 0
     t.text "description"
     t.text "pitch_audience"
     t.text "abstract_outline"
     t.string "activity_file"
     t.boolean "english_approve"
     t.index ["user_id"], name: "index_activities_on_user_id"
-  end
-
-  create_table "activities_locations", id: false, force: :cascade do |t|
-    t.bigint "activity_id", null: false
-    t.bigint "location_id", null: false
   end
 
   create_table "activity_statuses", force: :cascade do |t|
@@ -69,10 +64,6 @@ ActiveRecord::Schema.define(version: 2019_02_08_184455) do
   end
 
   create_table "polls", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.date "start_date", null: false
     t.date "end_date", null: false
     t.datetime "created_at", null: false
@@ -85,7 +76,6 @@ ActiveRecord::Schema.define(version: 2019_02_08_184455) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "score"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,10 +85,6 @@ ActiveRecord::Schema.define(version: 2019_02_08_184455) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "invitation_token"
