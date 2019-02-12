@@ -71,6 +71,7 @@ en:
     events: "Events:"
     invite_users: "Invite your teammates"
     invite: 'Add member'
+    last_day: "Don't forget to exercise your rights, you've until: "
     link: 'Link'
     location: "Location"
     not_location: "Location not register"
@@ -87,6 +88,7 @@ en:
     start_date: "Start date"
     team: "Team"
     type: "Type"
+    vote: 'Your vote is free and secret'
     waiting: "Waiting"
     welcome: 'Welcome'
     welcome-admin: 'Welcome admin'

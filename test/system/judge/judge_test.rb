@@ -34,6 +34,9 @@ class JudgeTest < ApplicationSystemTestCase
     sign_in user_with_team
     visit new_activity_path
     fill_in 'activity[name]', with: 'Test'
+    fill_in 'activity[description]', with: 'Test location'
+    fill_in 'activity[pitch_audience]', with: 'Test location'
+    fill_in 'activity[abstract_outline]', with: 'Test location'
     fill_in 'activity[locations]', with: 'Test location'
     find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
     click_button 'Enviar'

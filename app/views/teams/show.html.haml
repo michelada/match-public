@@ -1,5 +1,5 @@
 .container.center-vertical.activities-list
-  .main-content.medium
+  .main-content.medium.pb-5
     .text-right
       %p.right-info.mb-0
         %strong 
@@ -65,5 +65,5 @@
 
 
     - if @team.users.count < 3
-      .text-right.mt-5.mb-5
+      .text-right.mt-5
         = link_to t('labels.invite'), new_team_invitation_path
