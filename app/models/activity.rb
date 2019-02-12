@@ -50,4 +50,5 @@ class Activity < ApplicationRecord
     status_class = { "Por validar": 'on-hold', "En revisión": 'review', "Aprobado": 'approved' }
     status_class[status.to_sym]
   end
+
 end
