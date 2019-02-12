@@ -29,3 +29,39 @@
     display: flex;
   }
 }
+
+.admin-poll{
+  .btn-poll{
+    background: $white;
+    margin-top: $regular-margin;
+    margin-bottom: $regular-margin;
+    cursor: pointer;
+    font-size: $primary-font-size;
+    text-transform: uppercase;
+    color: $blue;
+    width: 100%;
+    height: 30px;
+  }
+  .poll{
+    font-size: 20px;
+  }
+
+  .activities-table {
+    width: 100%;
+    thead {
+      color: $white;
+      font-size: $third-font-size;
+      th {
+        font-weight: 500;
+        padding-bottom: $regular-padding;
+      }
+    }
+    .poll-actions {
+      a {
+        img {
+          height: $secondary-icon-size;
+        }
+      }
+    }
+  }
+}

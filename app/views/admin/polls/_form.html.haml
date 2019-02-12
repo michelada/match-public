@@ -1,19 +1,21 @@
-.center-vertical
-  .main-content.medium.container
-    = simple_form_for [:admin, @poll] do |f|
-      .form-group
-        = t('labels.start_date')
-        = f.date_select :start_date, start_year: Date.today.year, end_year: Date.today.year+1, class: "form-control"
-      .form-group
-        = t('labels.end_date')
-        = f.date_select :end_date, start_year: Date.today.year, end_year:  Date.today.year+1, class: "form-control"
-      %h4
-        = t('labels.activities_range')
-      .form-group
-        = t('labels.start_date')
-        = f.date_select :activities_from, class: "form-control", start_year: Date.today.year, end_year: Date.today.year+1
-      .form-group
-        = t('labels.end_date')
-        = f.date_select :activities_to, class: "form-control", start_year: Date.today.year, end_year: Date.today.year+1
+= simple_form_for [:admin, @poll] do |f|
+  .form-group
+    %p
+      = t('labels.start_date')
+      = f.date_select :start_date, start_year: Date.today.year, end_year: Date.today.year+1, class: "form-control"
+  .form-group
+    %p
+      = t('labels.end_date')
+      = f.date_select :end_date, start_year: Date.today.year, end_year:  Date.today.year+1, class: "form-control"
+  %h4
+    = t('labels.activities_range')
+  .form-group
+    %p
+      = t('labels.start_date')
+      = f.date_select :activities_from, class: "form-control", start_year: Date.today.year, end_year: Date.today.year+1
+  .form-group
+    %p
+      = t('labels.end_date')
+      = f.date_select :activities_to, class: "form-control", start_year: Date.today.year, end_year: Date.today.year+1
                
-      = f.button :submit, option, class:'button'
+  = f.button :submit, option, class:'btn-poll'
