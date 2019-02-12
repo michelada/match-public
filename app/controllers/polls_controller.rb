@@ -9,6 +9,9 @@ class PollsController < ApplicationController
   private
 
   def user_can_access
-    redirect_to root_path unless current_user.role == 'user'
+    return if current_user.role == 'user'
+
+    flash[:alert] = t('poll.error_accesing')
+    redirect_to root_path
   end
 end

@@ -126,6 +126,7 @@ es:
     create_new: "Nueva votación"
     created: "Votación creada"
     edit_poll: "Editar votación"
+    error_accesing: "No puedes acceder a este poll"
     error_creating: "La votación no ha sido creada"
     error_updating: "Error actualizado la votación"
     title: "Votaciones"
