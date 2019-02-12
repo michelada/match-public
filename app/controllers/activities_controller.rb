@@ -54,8 +54,8 @@ class ActivitiesController < ApplicationController
       flash[:notice] = t('activities.messages.updated')
       redirect_to team_path(current_user.team.id)
     else
-      flash[:notice] = t('activities.messages.error_updating')
-      render 'edit'
+      flash[:error] = t('alerts.activities.not_black')
+      redirect_to edit_activity_path(@activity)
     end
   end
 

@@ -29,6 +29,7 @@ es:
   alerts:
     activities:
       other_blank: "Este campo no puede estar en blanco"
+      not_black: "Los campos no pueden estar en blanco"
   buttons:
     actions: "Acciones"
     add: "Agregar"
