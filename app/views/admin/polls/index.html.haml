@@ -1,7 +1,5 @@
 .center-vertical.admin-poll
   .main-content.medium.container
-    %h2
-      = link_to t('poll.create_new'), new_admin_poll_path
     - unless @polls.empty?
       %h3.mt-5.text.center.mb-3.poll
         = t('poll.title')
@@ -25,3 +23,5 @@
               %td.text-right.poll-actions
                 = link_to image_tag('ic-edit'), edit_admin_poll_path(poll)
                 = link_to image_tag('ic-delete'), admin_poll_path(poll), method: :delete, data: {confirm:t('actions.confirm') }
+    %br
+    = link_to t('poll.create_new'), new_admin_poll_path, class: 'button_pol'
