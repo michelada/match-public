@@ -23,7 +23,7 @@
               %td
                 = activity.votes.count
               %td
-                - if activity.votes.where(user: current_user.id).empty?
-                  = link_to t('votes.vote'), poll_activity_votes_path(@poll.id, activity), method: :post
+                - if @judge_votes.map(&:activity_id).exclude?(activity.id)
+                  = link_to t('votes.vote'), judge_poll_activity_votes_path(@poll.id, activity), method: :post
                 - else
-                  = link_to t('votes.unvote'), poll_activity_vote_path(@poll.id, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.confirm')}
+                  = link_to t('votes.unvote'), judge_poll_activity_vote_path(@poll.id, activity, @judge_votes.where(activity_id: activity.id).first.id), method: :delete, data: { confirm: t('actions.confirm')}
