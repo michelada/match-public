@@ -66,16 +66,17 @@ es:
     effort: "EFFORT"
     end_date: "Fecha final"
     english: "Inglés"
-    email_uno: "Partner in crime"
+    email_uno: "Compañero de crimen"
     events: "Eventos:"
     fight: "PELEA"
+    information: "Solo se aceptan archivos .pdf, .jpg o .png"
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
     last_day: 'Recuerda ejercer tu derecho a votar, tienes hasta: '
     link: "Enlace"
     location: "Evento"
+    look_who_is: "Mira quién está en la "
     not_location: "No hay evento registrado"
-    look_who_is: "Mira quien esta en la"
     name: "Título"
     michelada_score: "Puntaje michelada "
     notes: "Notas"
@@ -95,7 +96,7 @@ es:
     unapproved: "Desaprobado"
     vote: 'Tu voto es libre y secreto'
     waiting: "En espera"
-    welcome: '¡Bienvenido'
+    welcome: '¡Bienvenido!'
     welcome-admin: 'Bienvenido admin'
   team:
     create: "Crear un equipo"
@@ -184,6 +185,9 @@ es:
       copyrights: "Derechos de autor michelada.io 2019"
       about: "Acerca de MCM"
     landing:
+      let_the: "¡Que el"
+      best_player: "MEJOR JUGADOR"
+      win: "gane!"
       about: "MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blog, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
   activerecord:
     errors:
@@ -192,6 +196,12 @@ es:
       models:
         activity:
           attributes:
+            description:
+              blank: "Debes poner una descripción"
+            pitch_audience:
+              blank: "Debes ingresar la información"
+            abstract_outline:
+              blank: "Debes ingresar la  información"
             name:
               taken: "Ya existe una actividad con ese nombre"
               blank: "Debes de poner un nombre"
@@ -208,7 +218,8 @@ es:
               too_short: "Debes ingresar una contraseña de al menos 6 caracteres"
               blank: "Debes ingresar una contraseña"
             email:
-              already_has_team: "Éste usuario ya pertenece a un equipo"
+              blank: "Debes ingresar un E-mail"
+              already_has_team: "Este usuario ya pertenece a un equipo"
               invalid: "E-mail no valido"
               taken: "E-mail ya registrado"
             password_confirmation:

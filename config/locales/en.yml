@@ -176,6 +176,9 @@ en:
       copyrights: "Copyrights michelada.io 2019"
       about: "About us MCM"
     landing:
+      let_the: "Let the"
+      best_player: "BEST PLAYER"
+      win: "win"
       about: "MCM is a 6 week content development competition where all michelada will came up whit great blog posts, talks or workshops, without an specific subject to cover all open to share their ideas and knowledge."
   activerecord:
     errors:
