@@ -63,45 +63,63 @@ function validateRequiredFields(){
     var errorCount = 0;
     switch($('#activity_activity_type :selected').text()){
       case "Curso":
+        if($('#activity_name').val() == ""){
+          error += "\n-Nombre";
+          errorCount++;
+        }
         if($('#activity_description').val() == ""){
-          error += "\nDescripción";
+          error += "\n-Descripción";
           errorCount++;
         }
         if($('#activity_pitch_audience').val() == ""){
-          error += "\nAudiencia";
+          error += "\n-Audiencia";
           errorCount++;
         }
         if($('#activity_abstract_outline').val() == ""){
-          error += "\nGuía";
+          error += "\n-Guía";
           errorCount++;
         }
         if(errorCount > 0){
           e.preventDefault();
+          e.stopImmediatePropagation();
           showErrorMessage(error, errorCount)
         }
       break;
       case "Plática":
+        if($('#activity_name').val() == ""){
+          error += "\n-Nombre";
+          errorCount++;
+        }
         if($('#activity_description').val() == ""){
-          error += "\nDescripción";
+          error += "\n-Descripción";
           errorCount++;
         }
         if($('#activity_pitch_audience').val() == ""){
-          error += "\nPitch";
+          error += "\n-Pitch";
           errorCount++;
         }
         if($('#activity_abstract_outline').val() == ""){
-          error += "\nAbstract";
+          error += "\n-Abstract";
           errorCount++;
         }
         if(errorCount > 0){
           e.preventDefault();
+          e.stopImmediatePropagation();
           showErrorMessage(error, errorCount)
         }
       break;
       case "Post":
-        $('#activity_description').val("");
-        $('#activity_pitch_audience').val("");
-        $('#activity_abstract_outline').val("");
+        if($('#activity_name').val() == ""){
+          error += "\nNombre";
+          errorCount++;
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          showErrorMessage(error, errorCount)
+        }else{
+          $('#activity_description').val("");
+          $('#activity_pitch_audience').val("");
+          $('#activity_abstract_outline').val("");
+        }
       default:
       break;
     }
