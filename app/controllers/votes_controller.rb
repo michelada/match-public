@@ -29,11 +29,7 @@ class VotesController < ApplicationController
   private
 
   def assign_points(add_points)
-    extra_points = if current_user.role == 'judge'
-                     add_points ? 50 : -50
-                   else
-                     add_points ? 10 : -10
-                   end
+    extra_points = add_points ? 10 : -10
     activity = Activity.find(params[:activity_id])
     activity.score = activity.score + extra_points
     activity.update_attributes(score: activity.score)
@@ -41,11 +37,7 @@ class VotesController < ApplicationController
 
   def user_can_vote
     activity_type = Activity.type_of_activity(params[:activity_id])
-    user_has_voted = if current_user.role == 'judge'
-                       Vote.judge_has_voted_for_type(activity_type.first.type)
-                     else
-                       Vote.has_voted_for_type(current_user.id, activity_type.first.type)
-                     end
+    user_has_voted = Vote.has_voted_for_type(current_user.id, activity_type.first.type)
     return true if user_has_voted.empty?
 
     flash[:alert] = t('votes.error_type')
