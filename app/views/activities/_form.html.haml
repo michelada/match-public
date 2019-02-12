@@ -39,4 +39,4 @@
         = "#{t("labels.selected_file")}: #{@filename}"
       = f.file_field :activity_file, class:'inputfile', :accept => '.pdf,.jpg,.png'
 
-      %input{type: "submit", value: t("buttons.submit"), class: 'button'}
+      %input{type: "submit", id:"submit_button", value: t("buttons.submit"), class: 'button'}
