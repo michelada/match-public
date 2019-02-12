@@ -20,6 +20,12 @@
     fill: $white;
     &.is_active {
       fill: $yellow;
+      &.stroke {
+        stroke: $yellow;
+        * {
+          stroke: $yellow;
+        }
+      }
       * {
         fill: $yellow;
       }

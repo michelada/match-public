@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 2019_02_08_184455) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.integer "activity_type", null: false
     t.integer "status", default: 0, null: false
     t.string "notes"
-    t.integer "score", default: 0
+    t.integer "score"
     t.text "description"
     t.text "pitch_audience"
     t.text "abstract_outline"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_02_08_184455) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "score"
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,6 +95,10 @@ ActiveRecord::Schema.define(version: 2019_02_08_184455) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "invitation_token"
