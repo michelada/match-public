@@ -5,6 +5,7 @@
         = t('user.judge.activities.on_old.remember')
         %span.text.red
           = t('user.judge.activities.on_old.objetive')
+      
       -if @activity_status.nil?
         = link_to t("activities.status_approve"),  judge_activity_activity_status_index_path(@activity), method: :post
       - else
@@ -14,7 +15,7 @@
           = link_to t("activities.status_approve"),  judge_activity_activity_status_path(@activity), method: :patch
       %h3
         = @activity.name
-      %h5
+      %h6
         = @activity.activity_type
       -if @activity.activity_type == 'Post'
         %h6.text.red= t('user.judge.activities.description') if @activity.description
@@ -32,9 +33,15 @@
           %p= @activity.pitch_audience
           %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
-
+      
+      %hr.section
+      %h5
+        ="Puntos extra"
+        %em.text.red= "Evaluar"
       -if @activity.english
         %p= link_to t('labels.english'), judge_activity_path(@activity), method: :patch, class: "approve-#{@activity.english_approve}"
+      
+      %h6.text.red= "Locacion"
       - unless @activity.locations.empty?
         .tags_box
           %ul

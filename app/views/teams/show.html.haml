@@ -1,5 +1,5 @@
 .container.center-vertical.activities-list
-  .main-content.medium
+  .main-content.medium.pb-5
     .text-right
       %p.right-info.mb-0
         %strong 
@@ -59,10 +59,11 @@
               %td.text-center{class: activity.css_class}
                 = activity.status 
               %td.text-right.activity-actions
-                = link_to image_tag('ic-edit'), edit_activity_path(activity) unless activity.status == 'Aprobado'
-                = link_to image_tag('ic-delete'), activity_path(activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
+                - unless activity.status == 'Aprobado'
+                  = link_to image_tag('ic-edit'), edit_activity_path(activity)
+                  = link_to image_tag('ic-delete'), activity_path(activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
 
 
     - if @team.users.count < 3
-      .text-right.mt-5.mb-5
+      .text-right.mt-5
         = link_to t('labels.invite'), new_team_invitation_path

@@ -1,0 +1,23 @@
+.polls {
+  table {
+    width: 100%;
+  }
+  .activity-vote {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background-image: image-url('ic-heart.svg');
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+
+    &.voted {
+      background-image: image-url('ic-michelada-color.svg')
+    }
+  }
+
+  .message {
+    font-size: 18px;
+  }
+}
