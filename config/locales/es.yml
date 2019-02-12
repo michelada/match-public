@@ -158,7 +158,7 @@ es:
   activerecord:
     errors:
       messages:
-        record_invalid: "Resgistro no válido"
+        record_invalid: "Registro no válido"
       models:
         activity:
           attributes:
