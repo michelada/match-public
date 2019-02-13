@@ -31,15 +31,16 @@
           %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
       
-      %hr.section
-      %h5
-        ="Puntos extra"
-        %em.text.red= "Evaluar"
+      - if !@activity.locations.empty? || @activity.english
+        %hr.section
+        %h5
+          ="Puntos extra"
+          %em.text.red= "Evaluar"
       -if @activity.english
         %p= link_to t('labels.english'), judge_activity_path(@activity), method: :patch, class: "approve-#{@activity.english_approve}"
       
-      %h6.text.red= "Locacion"
       - unless @activity.locations.empty?
+        %h6.text.red= "Locaciones"
         .tags_box
           %ul
             - @activity.locations&.each do |events|
