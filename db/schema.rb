@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 2019_02_12_221014) do
     t.boolean "english", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.integer "activity_type", null: false
     t.integer "status", default: 0, null: false
     t.string "notes"
-    t.integer "score"
+    t.integer "score", default: 0
     t.text "description"
     t.text "pitch_audience"
     t.text "abstract_outline"

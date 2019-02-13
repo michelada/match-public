@@ -1,6 +1,16 @@
 %h3.mb-2
   = @poll.end_date
 %br
+%h2= t('poll.best_activity')
+- @best_activities.each_with_index do |activity_type, type|
+  %h3
+    = Activity.activity_types.key(type)
+  - activity_type.each do |activity|
+    %h5
+      = activity.name
+    %p
+      = activity.value
+
 - @activity_types.each do |type|
   .mb-4
     %h3
