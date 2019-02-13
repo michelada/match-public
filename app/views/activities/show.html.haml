@@ -30,7 +30,6 @@
             - @activity.locations&.each do |events|
               %li
                 = events.name
-                = image_tag 'icons/approvado'
       - else
         %p= t('labels.not_location')
       - unless @activity.activity_file.url.nil? 
