@@ -4,7 +4,7 @@
 %h2= t('poll.best_activity')
 - @best_activities.each_with_index do |activity_type, type|
   %h3
-    = Activity.activity_types.key(type)
+    = Activity.activity_types.key(type) unless activity_type.empty?
   - activity_type.each do |activity|
     %h5
       = activity.name
