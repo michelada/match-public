@@ -41,9 +41,7 @@ a.login {
 a.btn_download{
   background: $blue;
   border-radius: 1em;
-  border-width: 1px;
-  border-style: solid;
-  border-color: $yellow;
+  border-width: 1px solid $yellow;
   color: $white;
   display: table;
   font-size: $secondary-font-size;
@@ -59,4 +57,19 @@ a.btn_download{
   &:hover {
     color: $white;
   }
+}
+a.button_pol{
+  border-radius: 2px;
+  color: $blue;
+  cursor: pointer;
+  display: table;
+  background: $white;
+  font-size: $secondary-font-size;
+  font-weight: 500;
+  margin-bottom: $regular-margin;
+  margin-top: $regular-margin;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
 }

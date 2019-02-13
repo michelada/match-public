@@ -24,10 +24,6 @@ module Admin
       end
     end
 
-    def show
-      @poll = Poll.find(params[:id])
-    end
-
     def update
       @poll = Poll.find(params[:id])
       if @poll.update(poll_params)

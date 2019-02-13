@@ -1,22 +1,27 @@
-%h2
-  = t('poll.title')
-  = link_to t('poll.create_new'), new_admin_poll_path
-%table.activities-table
-  %thead.mb-3
-    %tr
-      %th.text-center
-        = t('labels.polls')
-      %th
-        = t('poll.votes')
-      %th.text-right
-        = t('buttons.actions')
-  %tbody
-    - @polls&.each do |poll|
-      %tr
-        %td
-          = link_to t('votes.vote_range', start_date: poll.start_date, end_date: poll.end_date), admin_poll_path(poll.id)
-        %td
-          = poll.votes.count
-        %td.text-right.activity-actions
-          = link_to image_tag('ic-edit'), edit_admin_poll_path(poll)
-          = link_to image_tag('ic-delete'), admin_poll_path(poll), method: :delete, data: {confirm:t('actions.confirm') }
+.main-content.container.medium.mt-5
+  .contain.center-vertical.admin-poll
+    - unless @polls.empty?
+      %h3.mt-5.text.center.mb-3.poll
+        = t('poll.title')
+      %br
+      %table.activities-table
+        %thead.mb-3
+          %tr
+            %th
+              = t('labels.polls')
+            %th.text-center
+              = t('poll.votes')
+            %th.text-right
+              = t('buttons.actions')
+        %tbody
+          - @polls&.each do |poll|
+            %tr
+              %td
+                = t('votes.vote_range', start_date: poll.start_date, end_date: poll.end_date)
+              %td.text-center
+                = poll.votes.count
+              %td.text-right.poll-actions
+                = link_to image_tag('ic-edit'), edit_admin_poll_path(poll)
+                = link_to image_tag('ic-delete'), admin_poll_path(poll), method: :delete, data: {confirm:t('actions.confirm') }
+    %br
+    = link_to t('poll.create_new'), new_admin_poll_path, class: 'button_pol'

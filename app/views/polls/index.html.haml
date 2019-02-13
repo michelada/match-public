@@ -19,16 +19,12 @@
                 %td
                   = t('placeholders.activity_name')
                 %td.text-center
-                  = t('votes.number')
-                %td.text-center
                   = t('buttons.actions')
               - @activities.each do |activity|
                 -if activity.activity_type == type.activity_type
                   %tr
                     %td
                       = link_to activity.name, activity_path(activity)
-                    %td.text-center
-                      = activity.votes.count
                     %td.text-center
                       - if activity.votes.where(user: current_user.id).empty?
                         = link_to '', poll_activity_votes_path(@poll.id, activity), method: :post, class:'activity-vote'
