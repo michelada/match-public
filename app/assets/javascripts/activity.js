@@ -53,3 +53,4 @@ function removeLabelsAndInputs() {
 function addRemovedFields(){
   $('#pitch-audience, #abstract-outline, #description').show();
 }
+
