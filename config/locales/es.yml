@@ -30,6 +30,7 @@ es:
   alerts:
     activities:
       other_blank: "Este campo no puede estar en blanco"
+      not_black: "Los campos no pueden estar en blanco"
     status_approve: "Aprobada"
     status_unapprove: "Desaprobada"
   buttons:
