@@ -193,6 +193,12 @@ en:
       models:
         activity:
           attributes:
+            description:
+              blank: "A description is required"
+            pitch_audience:
+              blank: "This field is required"
+            abstract_outline:
+              blank: "This field is required"
             name:
               taken: "Activity name already taken"
               blank: "A name is required"

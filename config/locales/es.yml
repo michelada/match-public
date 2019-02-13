@@ -199,11 +199,11 @@ es:
         activity:
           attributes:
             description:
-              blank: "Debes poner una descripción"
+              blank: "Debes de poner una descripción"
             pitch_audience:
-              blank: "Debes ingresar la información"
+              blank: "Debes de ingresar la información"
             abstract_outline:
-              blank: "Debes ingresar la  información"
+              blank: "Debes de ingresar la información"
             name:
               taken: "Ya existe una actividad con ese nombre"
               blank: "Debes de poner un nombre"
