@@ -10,7 +10,7 @@
       = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity.title"), input_html: { class: 'input-text' }
       .optional-fields
         #description
-          = f.input :description, label: t("labels.description"), placeholder: t("placeholders.activity.description"), input_html: { class: 'input-text optional-fields' }
+          = f.input :description, label: t("labels.description"), placeholder: t("placeholders.activity.description"), input_html: { class: 'input-text optional-fields' }, required: true
         #pitch-audience
           = f.input :pitch_audience, label: t("labels.audience"), placeholder: t("placeholders.activity.audience"), input_html: { class: 'input-text optional-fields' }
         #abstract-outline
@@ -32,7 +32,7 @@
               - loaded_locations += (location[:name]+"ß")
           %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
 
-      = f.input :notes, label: t("labels.link"), placeholder: t("placeholders.notes_description"), input_html: { class: 'input-text' }
+      = f.input :notes, label: t("labels.link"), placeholder: t("placeholders.link"), input_html: { class: 'input-text' }
       = f.input :english, label: t("labels.english"), input_html: {class: 'mt-0'} , label_html: { class: 'mt-0'}
 
       - unless @filename.nil?
