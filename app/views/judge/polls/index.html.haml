@@ -1,0 +1,39 @@
+%h3.mb-2
+  = @poll.end_date
+%br
+%h2= t('poll.best_activity')
+- @best_activities.each_with_index do |activity_type, type|
+  %h3
+    = Activity.activity_types.key(type)
+  - activity_type.each do |activity|
+    %h5
+      = activity.name
+    %p
+      = activity.value
+
+- @activity_types.each do |type|
+  .mb-4
+    %h3
+      = type.activity_type
+    %table
+      %thead
+        %tr
+          %td
+            = t('placeholders.activity_name')
+          %td
+            = t('votes.number')
+          %td 
+            = t('buttons.actions')
+      %tbody
+        - @activities.each do |activity|
+          -if activity.activity_type == type.activity_type
+            %tr
+              %td
+                = link_to activity.name, activity_path(activity)
+              %td
+                = activity.votes.count
+              %td
+                - if @judge_votes.map(&:activity_id).exclude?(activity.id)
+                  = link_to t('votes.vote'), judge_poll_activity_votes_path(@poll.id, activity), method: :post
+                - else
+                  = link_to t('votes.unvote'), judge_poll_activity_vote_path(@poll.id, activity, @judge_votes.where(activity_id: activity.id).first.id), method: :delete, data: { confirm: t('actions.confirm')}

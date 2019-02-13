@@ -10,11 +10,11 @@
       = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity.title"), input_html: { class: 'input-text' }
       .optional-fields
         #description
-          = f.input :description, label: t("labels.description"), placeholder: t("placeholders.activity.description"), input_html: { class: 'input-text' }
+          = f.input :description, label: t("labels.description"), placeholder: t("placeholders.activity.description"), input_html: { class: 'input-text optional-fields' }
         #pitch-audience
-          = f.input :pitch_audience, label: t("labels.audience"), placeholder: t("placeholders.activity.audience"), input_html: { class: 'input-text' }
+          = f.input :pitch_audience, label: t("labels.audience"), placeholder: t("placeholders.activity.audience"), input_html: { class: 'input-text optional-fields' }
         #abstract-outline
-          = f.input :abstract_outline, label: t("labels.outline"), placeholder: t("placeholders.activity.guide"), input_html: { class: 'input-text' }
+          = f.input :abstract_outline, label: t("labels.outline"), placeholder: t("placeholders.activity.guide"), input_html: { class: 'input-text optional-fields' }
 
       .row
         .col-sm-12.col-xs-12.mb-3
@@ -38,5 +38,6 @@
       - unless @filename.nil?
         = "#{t("labels.selected_file")}: #{@filename}"
       = f.file_field :activity_file, class:'inputfile', :accept => '.pdf,.jpg,.png'
+      %em= t('labels.information')
 
-      %input{type: "submit", value: t("buttons.submit"), class: 'button'}
+      %input{type: "submit", id:"submit_button", value: t("buttons.submit"), class: 'button'}
