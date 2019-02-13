@@ -12,13 +12,14 @@ module Judge
       redirect_to judge_activity_path(@activity_status.activity_id)
     end
 
-    def update
-      change_activity_status
-      if @activity_status.update_attribute(:approve, @activity_status.approve) && verify_activity_general_status
-        flash[:notice] = @activity_status.approve ? t('activities.messages.approved') : t('activities.messages.unapproved')
+    def destroy
+      @activity_status = ActivityStatus.user_approve_status_activity(current_user.id, params[:activity_id])
+      if @activity_status.destroy && verify_activity_general_status
+        flash[:notice] = t('activities.messages.unapproved')
       else
-        flash[:alert] = @activity_status.approve ? t('activities.messages.error_approving') : t('activities.messages.error_unapproving')
+        flash[:alert] = t('activities.messages.error_unapproving')
       end
+
       redirect_to judge_activity_path(@activity_status.activity_id)
     end
 

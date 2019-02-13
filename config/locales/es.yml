@@ -18,11 +18,11 @@ es:
       approved: "Actividad aprobada"
       error_accessing: "No puedes acceder a esta actividad"
       error_creating: "Error creando la actividad"
-      erro_approving: "Error aprobando la actividad"
+      error_approving: "Error aprobando la actividad"
       error_deleting: "Error eliminando la actividad"
       error_unapproving: "Error desaprobando la actividad"
-      error_update: "Error actualizando actividad"
-      error_upload: "Error cargando actividad"
+      error_update: "Error actualizando la actividad"
+      error_upload: "Error cargando la actividad"
       deleted: "Actividad eliminada"
       unapproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
@@ -30,6 +30,9 @@ es:
   alerts:
     activities:
       other_blank: "Este campo no puede estar en blanco"
+      not_black: "Los campos no pueden estar en blanco"
+    status_approve: "Aprobada"
+    status_unapprove: "Desaprobada"
   buttons:
     actions: "Acciones"
     add: "Agregar"
@@ -107,7 +110,7 @@ es:
       created: "Equipo creado"
       deleted: "Equipo eliminado"
       email_not_valid: "Email no válido"
-      error_creating: "Error creado el equipo"
+      error_creating: "Error creando el equipo"
       error_deleting: "Error eliminando al equipo"
       error_updating: "Error actualizando el equipo"
       no_teams: 'No hay equipos'
@@ -117,7 +120,6 @@ es:
     activity_name: "Nombre de la actividad"
     comment: "Escribe el comentario"
     notes_description: "Evidencias, Información adicional"
-    other_location: "Escuela, Wordpress, Medium, etc..."
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
     activity:
@@ -127,9 +129,11 @@ es:
       guide: "¿Qué temas se abordan?"
       event: "¿En qué lugar se impartió?"
   poll: 
+    best_activity: "Lo mejor de lo mejor"
     create_new: "Nueva votación"
     created: "Votación creada"
     edit_poll: "Editar votación"
+    empty_activities: "Aún no existen actividades por las cuales votar"
     error_accesing: "No puedes acceder a esta votación"
     error_creating: "La votación no ha sido creada"
     error_updating: "Error actualizado la votación"
@@ -158,7 +162,6 @@ es:
     registrado: 'Ya tengo una cuenta.'
     remember_me: "Recordarme"
     role_updated: "Rol actualizado"
-    password_requirement: "(Al menos 6 caracteres)"
     judge:
       activities:
         abstract: "Resumen:"
@@ -167,7 +170,7 @@ es:
         outline: "Outline:"
         pitch: "Pitch:"
         on_old:
-          objetive: "Objetivo"
+          objetive: "Objetivo."
           remember: "Recuerda ser"
   votes:
     error_type: "Ya tienes un voto hacia una actividad de este tipo"
@@ -188,20 +191,20 @@ es:
       let_the: "¡Que el"
       best_player: "MEJOR JUGADOR"
       win: "gane!"
-      about: "MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blog, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
+      about: "MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blogs, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
   activerecord:
     errors:
       messages:
-        record_invalid: "Record invalid"
+        record_invalid: "Registro no válido"
       models:
         activity:
           attributes:
             description:
-              blank: "Debes poner una descripción"
+              blank: "Debes de poner una descripción"
             pitch_audience:
-              blank: "Debes ingresar la información"
+              blank: "Debes de ingresar la información"
             abstract_outline:
-              blank: "Debes ingresar la  información"
+              blank: "Debes de ingresar la información"
             name:
               taken: "Ya existe una actividad con ese nombre"
               blank: "Debes de poner un nombre"
