@@ -30,7 +30,6 @@
             - @activity.locations&.each do |events|
               %li
                 = events.name
-                = image_tag 'icons/approvado'
       - else
         %p= t('labels.not_location')
       - unless @activity.activity_file.url.nil? 
@@ -45,3 +44,4 @@
       = simple_form_for [ @activity, @feedback] do |f|
         = f.input :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
         = f.button :submit, t('comments.create'), class: 'button'
+
