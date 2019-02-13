@@ -24,16 +24,16 @@ function renderFormBasedOnActivity(){
     case "Plática":
       textForLocationLabel = "Evento";
       textForLocationPlaceholder = "¿En dónde se impartió?";
-      textPitchAudience = "Pitch";
-      textAbbstractOutline = "Abstract";
+      textPitchAudience = "Pitch *";
+      textAbbstractOutline = "Resumen *";
       changeLabelsValues(textPitchAudience, textAbbstractOutline);
       addRemovedFields();
       break;
     case "Curso":
       textForLocationLabel = "Evento";
       textForLocationPlaceholder = "¿En dónde se impartió?";
-      textPitchAudience = "Audiencia";
-      textAbbstractOutline = "Guía";
+      textPitchAudience = "Audiencia *";
+      textAbbstractOutline = "Guía *";
       changeLabelsValues(textPitchAudience, textAbbstractOutline);
       addRemovedFields();
       break;
