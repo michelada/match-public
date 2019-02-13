@@ -124,6 +124,7 @@ en:
     create_new: "Create a poll"
     created: "Poll created"
     edit_poll: "Edit poll"
+    error_accesing: "You can not access to this poll"
     error_creating: "Error creating poll"
     error_updating: "Error updating poll"
     title: "Polls"
