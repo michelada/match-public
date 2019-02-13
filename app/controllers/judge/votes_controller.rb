@@ -1,13 +1,9 @@
 module Judge
   class VotesController < ApplicationController
     def create
-      @vote = Vote.new
-      @vote.poll_id = params[:poll_id]
-      @vote.activity_id = params[:activity_id]
-      @vote.user_id = current_user.id
+      assign_vote_value
       if user_can_vote
         if @vote.save
-          assign_points(true)
           flash[:notice] = t('votes.voted')
         else
           flash[:alert] = t('votes.error_voting')
@@ -19,7 +15,6 @@ module Judge
     def destroy
       @vote = Vote.find(params[:id])
       if @vote.destroy
-        assign_points(false)
         flash[:notice] = t('votes.unvoted')
       else
         flash[:alert] = t('votes.error_unvoting')
@@ -29,11 +24,12 @@ module Judge
 
     private
 
-    def assign_points(add_points)
-      extra_points = add_points ? 50 : -50
-      activity = Activity.find(params[:activity_id])
-      activity.score = activity.score + extra_points
-      activity.update_attributes(score: activity.score)
+    def assign_vote_value
+      @vote = Vote.new
+      @vote.poll_id = params[:poll_id]
+      @vote.activity_id = params[:activity_id]
+      @vote.user_id = current_user.id
+      @vote.value = 50
     end
 
     def user_can_vote

@@ -30,7 +30,7 @@ class LocationTest < ApplicationSystemTestCase
 
     find(:css, 'img[src*="/assets/ic-edit-2ceeb8e85845ac2f003993010690b1ae7205f737bec2f021547c8b1fc3879688.svg"]').click
 
-    assert_equal true, page.has_content?('Example location')
+    assert_equal true, page.has_content?('Example location2')
   end
 
   def create_simple_activity

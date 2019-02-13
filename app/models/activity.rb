@@ -28,6 +28,7 @@ class Activity < ApplicationRecord
   scope :type_of_activity, ->(activity_id) { where(id: activity_id).select('activities.activity_type as type') }
   scope :user_activities, ->(actual_user) { where(user_id: actual_user).order('name ASC') }
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
+  scope :unapproved, ->(actual_user) { where('activities.id IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id).order('name ASC') }
   scope :order_by_name, -> { order('name ASC') }
@@ -42,12 +43,24 @@ class Activity < ApplicationRecord
       .limit(team_count)
   })
   scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
-
+  scope :best_activities, (lambda { |poll_id, type|
+    joins(:votes)
+    .where('votes.poll_id = ?', poll_id)
+    .where('activities.activity_type = ?', type)
+    .group('activities.name')
+    .select('activities.name, sum(votes.value) as value')
+    .order('sum(votes.value) desc').limit(1)
+  })
+  validates :pitch_audience, :abstract_outline, :description, presence: true, if: :activity_type_is?
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
 
   def css_class
     status_class = { "Por validar": 'on-hold', "En revisión": 'review', "Aprobado": 'approved' }
     status_class[status.to_sym]
+  end
+
+  def activity_type_is?
+    activity_type == 'Curso' || activity_type == 'Plática'
   end
 end

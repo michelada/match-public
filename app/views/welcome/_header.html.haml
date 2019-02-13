@@ -16,5 +16,7 @@
           = link_to  judge_polls_path do
             = render partial: 'icons/ic_poll', locals: {is_active: controller_path == 'judge/polls' }
         - else
-          = link_to  polls_path unless there_are_not_polls do
-            = render partial: 'icons/ic_poll', locals: {is_active: controller_path == 'polls' }
+          - unless there_are_not_polls
+            = link_to  polls_path do
+              = render partial: 'icons/ic_poll', locals: {is_active: controller_path == 'polls' }
+
