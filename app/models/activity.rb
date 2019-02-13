@@ -43,9 +43,17 @@ class Activity < ApplicationRecord
       .limit(team_count)
   })
   scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
+  scope :best_activities, (lambda { |poll_id, type|
+    joins(:votes)
+    .where('votes.poll_id = ?', poll_id)
+    .where('activities.activity_type = ?', type)
+    .group('activities.name')
+    .select('activities.name, sum(votes.value) as value')
+    .order('sum(votes.value) desc').limit(1)
+  })
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
-  
+
   def css_class
     status_class = { "Por validar": 'on-hold', "En revisión": 'review', "Aprobado": 'approved' }
     status_class[status.to_sym]

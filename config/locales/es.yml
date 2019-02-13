@@ -127,6 +127,7 @@ es:
       guide: "¿Qué temas se abordan?"
       event: "¿En qué lugar se impartió?"
   poll: 
+    best_activity: "Lo mejor de lo mejor"
     create_new: "Nueva votación"
     created: "Votación creada"
     edit_poll: "Editar votación"

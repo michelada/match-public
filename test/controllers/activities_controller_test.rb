@@ -21,7 +21,10 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test 'loged user with team can create an activity' do
     team = teams(:team3)
     sign_in @user_with_team
-    post activities_path, params: { activity: { name: 'Android Studio',description: 'prueba de Android', pitch_audience: 'prueba de campos requeridos', abstract_outline: 'prueba abstrac', activity_type: 'Curso', english: 0 }, locations_string: 'UDEC,TEC' }
+    post activities_path, params: { activity: { name: 'Android Studio', description: 'prueba de Android',
+                                                pitch_audience: 'prueba de campos requeridos',
+                                                abstract_outline: 'prueba abstrac', activity_type: 'Curso',
+                                                english: 0 }, locations_string: 'UDEC,TEC' }
     assert_redirected_to team_path(team), 'Controller response unexpected'
     assert_equal flash[:notice], I18n.t('activities.messages.uploaded')
   end
