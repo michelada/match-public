@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root 'landing_page#index'
   namespace :judge do
     resources :activities, only: [:index, :show, :update] do
-      resources :activity_status, only: [:create, :update]
+      resources :activity_status, only: [:create, :destroy]
       resources :feedbacks, only: [:index, :create]
       resources :locations, only: [:update]
     end

@@ -9,10 +9,7 @@
       -if @activity_status.nil?
         = link_to t("activities.status_approve"),  judge_activity_activity_status_index_path(@activity), method: :post
       - else
-        - if @activity_status.approve
-          = link_to t("activities.status_unapprove"),  judge_activity_activity_status_path(@activity), method: :patch
-        - else
-          = link_to t("activities.status_approve"),  judge_activity_activity_status_path(@activity), method: :patch
+        = link_to t('activities.status_unapprove'), judge_activity_activity_status_path(@activity), method: :delete, data: {confirm: t('actions.confirm')}
       %h3
         = @activity.name
       %h6
