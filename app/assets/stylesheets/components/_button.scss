@@ -59,14 +59,15 @@ a.btn_download{
   }
 }
 a.button_pol{
-  background: $white;
+  border-radius: 2px;
   color: $blue;
-  display: table;
   cursor: pointer;
+  display: table;
+  background: $white;
   font-size: $secondary-font-size;
   font-weight: 500;
-  margin-top: $regular-margin;
   margin-bottom: $regular-margin;
+  margin-top: $regular-margin;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
