@@ -125,6 +125,7 @@ en:
       guide: "What are you talking?"
       event: "Where did you do that?"
   poll:
+    best_activity: "The best of the best"
     create_new: "Create a poll"
     created: "Poll created"
     edit_poll: "Edit poll"
