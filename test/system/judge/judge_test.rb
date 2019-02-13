@@ -6,6 +6,7 @@ class JudgeTest < ApplicationSystemTestCase
     @judge = users(:judge_user)
     sign_in @judge
     visit judge_main_index_path
+    binding.pry
     activity = Activity.find_by(name: 'Test')
     within "#activity_#{activity.id}" do
       find("#go_to_#{activity.id}").click
@@ -19,6 +20,7 @@ class JudgeTest < ApplicationSystemTestCase
     @judge = users(:judge_user)
     sign_in @judge
     visit judge_main_index_path
+    binding.pry
     activity = Activity.find_by(name: 'Test')
     within "#activity_#{activity.id}" do
       find("#go_to_#{activity.id}").click
