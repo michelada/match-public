@@ -34,13 +34,13 @@
       - if !@activity.locations.empty? || @activity.english
         %hr.section
         %h5
-          ="Puntos extra"
-          %em.text.red= "Evaluar"
+          =t('labels.extra_points')
+          %em.text.red= t('labels.evaluate')
       -if @activity.english
         %p= link_to t('labels.english'), judge_activity_path(@activity), method: :patch, class: "approve-#{@activity.english_approve}"
       
       - unless @activity.locations.empty?
-        %h6.text.red= "Locaciones"
+        %h6.text.red= t('labels.location')
         .tags_box
           %ul
             - @activity.locations&.each do |events|

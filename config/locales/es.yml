@@ -70,7 +70,9 @@ es:
     end_date: "Fecha final"
     english: "Inglés"
     email_uno: "Compañero de crimen"
+    evaluate: "Evaluar"
     events: "Eventos:"
+    extra_points: "Puntos extra"
     fight: "PELEA"
     information: "Solo se aceptan archivos .pdf, .jpg o .png"
     invite_users: "Invita a tus compañeros"
@@ -99,7 +101,7 @@ es:
     unapproved: "Desaprobado"
     vote: 'Tu voto es libre y secreto'
     waiting: "En espera"
-    welcome: '¡Bienvenido!'
+    welcome: '¡Bienvenido'
     welcome-admin: 'Bienvenido admin'
   team:
     create: "Crear un equipo"
@@ -119,7 +121,7 @@ es:
   placeholders:
     activity_name: "Nombre de la actividad"
     comment: "Escribe el comentario"
-    notes_description: "Evidencias, Información adicional"
+    link: "https://"
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
     activity:
@@ -223,7 +225,7 @@ es:
             email:
               blank: "Debes ingresar un E-mail"
               already_has_team: "Este usuario ya pertenece a un equipo"
-              invalid: "E-mail no valido"
+              invalid: "E-mail no válido"
               taken: "E-mail ya registrado"
             password_confirmation:
               confirmation: "Error en la contraseña"

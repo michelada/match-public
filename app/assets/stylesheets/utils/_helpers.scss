@@ -8,7 +8,7 @@
     height: 100%;
 }
 
-.text {
+.text, a, a.button:visited{
     &.red {
         color: $red;
     }
