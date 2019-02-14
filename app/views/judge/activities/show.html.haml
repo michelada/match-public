@@ -31,6 +31,10 @@
           %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
       
+      - unless @activity.notes&.empty?
+        %h6.text= t("labels.link")
+        %p= @activity.notes
+      
       - if !@activity.locations.empty? || @activity.english
         %hr.section
         %h5
@@ -38,18 +42,14 @@
           %em.text.red= t('labels.evaluate')
       -if @activity.english
         %p= link_to t('labels.english'), judge_activity_path(@activity), method: :patch, class: "approve-#{@activity.english_approve}"
-      
+
+
       - unless @activity.locations.empty?
         %h6.text.red= t('labels.location')
         .tags_box
           %ul
             - @activity.locations&.each do |events|
               %li= link_to events.name, judge_activity_location_path(@activity, events), method: :patch, class: "approve-#{events.approve}"
-
-    - if @activity.notes
-      %h6.text= t("labels.link")
-      %p= link_to t('placeholders.activity_link'), @activity.notes, target: :_blank
-
     - unless @activity.activity_file.url.nil? 
       = link_to t('labels.download'), @activity.activity_file.url, class:'btn_download'
     - @activity.feedback.each do |feedback|

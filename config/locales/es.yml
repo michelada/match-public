@@ -119,7 +119,6 @@ es:
       updated: "Equipo actualizado"
       user_invited: "El usuario ha sido agregado a tu equipo"
   placeholders:
-    activity_link: "Click para ver contenido"
     activity_name: "Nombre de la actividad"
     comment: "Escribe el comentario"
     link: "https://"
