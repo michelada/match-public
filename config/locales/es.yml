@@ -74,7 +74,7 @@ es:
     events: "Eventos:"
     extra_points: "Puntos extra"
     fight: "PELEA"
-    information: "Solo se aceptan archivos .pdf, .jpg o .png"
+    information: "Solo .jpg, .jpeg, .key o .pdf"
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
     last_day: 'Recuerda ejercer tu derecho a votar, tienes hasta: '
@@ -130,7 +130,7 @@ es:
       audience: "¿Cómo dirigirse al  público?"
       guide: "¿Qué temas se abordan?"
       event: "¿En qué lugar se impartió?"
-  poll: 
+  poll:
     best_activity: "Lo mejor de lo mejor"
     create_new: "Nueva votación"
     created: "Votación creada"
