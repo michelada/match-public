@@ -56,7 +56,7 @@ es:
   labels:
     activities_range: "Aplicaciones que pueden participar"
     all: "Todas"
-    approved: "Aprovado"
+    approved: "Aprobado"
     admin: 'Lista de usuarios'
     abstract: "Abstract"
     audience: "Audiencia"
