@@ -3,7 +3,7 @@
     .main-cont
       .judge
         = render partial: 'judge/form'
-        - @activities&.each do |activity|
+        - @activities&.sort_by{|activity| activity.created_at}.reverse.each do |activity|
           %div{id: "activity_#{activity.id}"}
             %p= activity.name
             .d-flex.justify-content-between
