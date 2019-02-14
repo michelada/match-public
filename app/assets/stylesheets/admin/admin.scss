@@ -45,15 +45,21 @@
   
   select{
     text-align-last: center;
+    width: 23%;
+    font-size: $secondary-font-size;
+    margin-left: 25px; 
+    @include breakpoint(mobile){
+      display: block;
+      margin-left: auto;
+      width: 100%;
+    }
   }
- 
+
   .form-group{
-  display: inline-block;
   margin-top: $regular-margin;
-  margin-left: 30px;
-  text-align: center;
-  @include breakpoint(mobile){
-    margin-left: 15px;
+  text-align: end;
+  @include breakpoint(mobile) {
+    text-align: center;
   }
 }
 

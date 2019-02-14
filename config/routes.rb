@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :user_manager, only: [:index, :update]
-    resources :polls
+    resources :polls, except: [:show]
   end
 
   resources :activities, only: [:show] do
