@@ -20,8 +20,9 @@
           %h6.text= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
 
-        %h6.text= t("labels.link") if @activity.notes
-        %p= @activity.notes
+        - if @activity.notes
+          %h6.text= t("labels.link")
+          %p= link_to t('placeholders.activity_link'), @activity.notes, target: :_blank
       -if @activity.english
         %p= t('labels.english')
       - unless @activity.locations.empty?
