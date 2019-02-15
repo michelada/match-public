@@ -55,10 +55,10 @@
         = link_to t('labels.download'), @activity.activity_file.url, class:'btn_download'
       %hr.mt-5
         %h5.mt-5.mb-5
-          Comentarios
+          = t("comments.all")
       - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
         %div{:id => "com_#{i}", class: 'comment'}
-          %h6.gray.d-flex.justify-content-between{class: feedback.user.role ? 'judge' : 'regular'}
+          %h6.gray.d-flex.justify-content-between{class: feedback.user.role == 'judge' ? 'judge' : 'regular'}
             = feedback.user.name? ? feedback.user.name : feedback.user.email
             - if feedback.user_id == current_user.id
               .edit_comment
