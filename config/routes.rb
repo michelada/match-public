@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :teams, only: [:index]
   end
   resources :activities, except: [:index]
-  resources :teams
+  resources :teams, except: [:index, :update]
   resources :main, only: [:index]
   resources :team_invitations, only: [:new, :create]
   devise_for :users
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :user_manager, only: [:index, :update]
-    resources :polls
+    resources :polls, except: [:show]
   end
 
   resources :activities, only: [:show] do
