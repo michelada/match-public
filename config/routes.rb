@@ -3,8 +3,6 @@ Rails.application.routes.draw do
     resources :activities, only: [:index]
     resources :teams, only: [:index]
   end
-
-  resources :invitation, only: [:index]
   resources :activities, except: [:index]
   resources :teams, except: [:index, :update]
   resources :main, only: [:index]
@@ -21,7 +19,7 @@ Rails.application.routes.draw do
   namespace :judge do
     resources :activities, only: [:index, :show, :update] do
       resources :activity_status, only: [:create, :destroy]
-      resources :feedbacks, only: [:index, :create]
+      resources :feedbacks, only: [:index, :create, :update]
       resources :locations, only: [:update]
     end
     resources :main, only: [:index]
@@ -32,6 +30,6 @@ Rails.application.routes.draw do
   end
 
   resources :activities, only: [:show] do
-    resources :feedbacks, only: [:index, :create]
+    resources :feedbacks, only: [:index, :create, :update]
   end
 end
