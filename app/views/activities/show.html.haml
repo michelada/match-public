@@ -37,10 +37,18 @@
       %hr.mt-5
       %h5.mt-5
         Comentarios
-      - @activity.feedback.each do |feedback|
-        %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
-        %p.gray= feedback.comment
-        %hr.section
+      - @activity.feedback.each_with_index do |feedback, i|
+        %div{:id => "com_#{i}"}
+          %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
+          %p{:class => "gray", :id => "comment_#{i}"}
+            = feedback.comment
+          %input{:type=>"text", :value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}"}
+          - if feedback.user_id == current_user.id
+            .edit_comment
+              = link_to "Editar", "#", :id => "#{i}"
+            .delete_comment
+              = link_to "Eliminar", activity_feedback_path(feedback), method: :delete, data: {confirm: t('actions.confirm')}, :id => "#{i}"
+          %hr.section
       = simple_form_for [ @activity, @feedback] do |f|
         = f.input :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
         = f.button :submit, t('comments.create'), class: 'button'

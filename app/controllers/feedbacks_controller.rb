@@ -10,6 +10,20 @@ class FeedbacksController < ApplicationController
     redirect_to activity_path(@activity)
   end
 
+  def edit
+  end
+
+  def destroy
+    @feedback = Feedback.find_by(id: params[:activity_id])
+    if @feedback.destroy
+      flash[:notice] = t('activities.messages.deleted')
+      redirect_to activity_path(@feedback.activity)
+    else
+      flash[:alert] = t('activities.messagess.error_deleting')
+      redirect_to activity_path(@feedback.activity)
+    end
+  end
+
   private
 
   def generate_comment
