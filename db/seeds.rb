@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Team.find_or_create_by(name: 'distortable_intonation')
 Team.find_or_create_by(name: 'convertible_baggage')
 Team.find_or_create_by(name: 'rakish_weave')
