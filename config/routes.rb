@@ -3,14 +3,16 @@ Rails.application.routes.draw do
     resources :activities, only: [:index]
     resources :teams, only: [:index]
   end
+ 
+  resources :invitation, only: [:index]
   resources :activities, except: [:index]
-  resources :teams
+  resources :teams, except: [:index]
   resources :main, only: [:index]
   resources :team_invitations, only: [:new, :create]
-  devise_for :users
+  devise_for :users, controler: {invitation: 'invitation'}
   as :user do
     get '/users' => 'devise_invitable/registrations#new'
-    get '/teams' => 'teams#new'
+    get '/teams' => 'activities#new'
     get '/team_invitation' => 'team_invitations#new'
     get '/activities' => 'activities#new'
   end

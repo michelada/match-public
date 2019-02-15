@@ -8,9 +8,11 @@
       - if f.object.class.require_password_on_accepting
         %p= f.label :password, t('user.password')
         = f.password_field :password, class: 'input-text'
+        = f.label t("activerecord.errors.models.user.attributes.password_confirmation.confirmation"),id: 'label-password',:hidden => true
         - if @minimum_password_length
           %em
             = t("user.password_requirement")
         %p= f.label :password_confirmation, t('user.password_confirmation'), class: 'mt-4'
         = f.password_field :password_confirmation, class: 'input-text'
-      = f.submit t("devise.invitations.edit.submit_button"), class: 'button'
+        = f.label t("activerecord.errors.models.user.attributes.password_confirmation.confirmation"),id: 'label-password-confirmation', :hidden => true
+      = f.submit t("devise.invitations.edit.submit_button"), class: 'button', id: 'validation-button'
