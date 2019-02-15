@@ -48,9 +48,9 @@
               %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
               %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
             .edit_comment
-              = link_to "Editar", "#", :id => "#{i}"
+              = link_to t("buttons.edit"), "#", :id => "#{i}"
             .delete_comment
-              = link_to "Eliminar", activity_feedback_path(feedback), method: :delete, data: {confirm: t('actions.confirm')}, :id => "#{i}"
+              = link_to t("buttons.delete"), activity_feedback_path(feedback), method: :delete, data: {confirm: t('actions.confirm')}, :id => "#{i}"
           %hr.section
       = simple_form_for [ @activity, @feedback] do |f|
         = f.input :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false

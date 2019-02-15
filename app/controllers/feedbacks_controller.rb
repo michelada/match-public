@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_action :load_activity
+  before_action :load_activity, except: [:update, :destroy]
   def create
     generate_comment
     if @comment.save
@@ -13,23 +13,21 @@ class FeedbacksController < ApplicationController
   def update
     @feedback = Feedback.find_by(id: params[:id])
     if @feedback.update_attributes(comment: params[:comment])
-      flash[:notice] = t('activities.messages.updated')
-      redirect_to activity_path(@feedback.activity)
+      flash[:notice] = t('activities.messages.feedback_updated')
     else
       flash[:alert] = t('alerts.activities.not_black')
-      redirect_to activity_path(@feedback.activity)
     end
+    redirect_to activity_path(@feedback.activity)
   end
 
   def destroy
     @feedback = Feedback.find_by(id: params[:activity_id])
     if @feedback.destroy
-      flash[:notice] = t('activities.messages.deleted')
-      redirect_to activity_path(@feedback.activity)
+      flash[:notice] = t('activities.messages.feedback_deleted')
     else
       flash[:alert] = t('activities.messagess.error_deleting')
-      redirect_to activity_path(@feedback.activity)
     end
+    redirect_to activity_path(@feedback.activity)
   end
 
   private
