@@ -53,7 +53,7 @@
     - unless @activity.activity_file.url.nil? 
       = link_to t('labels.download'), @activity.activity_file.url, class:'btn_download'
     - @activity.feedback.each do |feedback|
-      %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
+      %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email.remove('@michelada.io').capitalize
       %p.gray= feedback.comment
       %hr.section
       
