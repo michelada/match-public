@@ -13,9 +13,9 @@
   }
 
   .btn-admin {
-    width: 100px;
-    height: 30px;
     line-height: 15px;
+    height: 30px;
+    width: 100px;
     @include breakpoint(mobile){
       font-size: $secondary-font-size;
       width: 80px;
@@ -25,9 +25,9 @@
   .user-mail {
     @include  breakpoint(mobile) {
       text-overflow: ellipsis;
-      white-space: nowrap;
       overflow: hidden;
       width: 100px;
+      white-space: nowrap;
     }
   }
 
@@ -44,10 +44,10 @@
   }
   
   select{
-    text-align-last: center;
-    width: 23%;
     font-size: $secondary-font-size;
     margin-left: 25px; 
+    text-align-last: center;
+    width: calc(25% - 25px);
     @include breakpoint(mobile){
       display: block;
       margin-left: auto;
