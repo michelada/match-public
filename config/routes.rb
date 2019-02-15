@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :activities, except: [:index]
   resources :teams, except: [:index, :update]
   resources :main, only: [:index]
-  resources :team_invitations, only: [:new, :create]
+  resources :team_invitations, only: [:new, :create, :index]
   devise_for :users
   as :user do
     get '/users' => 'devise_invitable/registrations#new'
@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     get '/team_invitation' => 'team_invitations#new'
     get '/activities' => 'activities#new'
   end
+  as :team_invitations do
+    get '/users/invitation' => 'landing_page#index'
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'landing_page#index'
   namespace :judge do
