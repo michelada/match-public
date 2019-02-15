@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :teams, except: [:index, :update]
   resources :main, only: [:index]
   resources :team_invitations, only: [:new, :create]
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'invitation' }
   as :user do
     get '/users' => 'devise_invitable/registrations#new'
     get '/teams' => 'teams#new'
