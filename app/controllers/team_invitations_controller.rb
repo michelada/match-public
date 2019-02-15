@@ -8,7 +8,7 @@ class TeamInvitationsController < ApplicationController
       flash[:notice] = t('team.messages.user_invited')
       redirect_to team_path(current_user.team)
     else
-      redirect_to accept_user_invitation_path
+      redirect_to new_team_invitation_path
     end
   end
 

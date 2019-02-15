@@ -23,3 +23,7 @@ test:
 production:
   <<: *default
   database: mcm_production
+
+staging:
+  <<: *default
+  database: mcm_staging

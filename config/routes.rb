@@ -3,13 +3,13 @@ Rails.application.routes.draw do
     resources :activities, only: [:index]
     resources :teams, only: [:index]
   end
- 
+
   resources :invitation, only: [:index]
   resources :activities, except: [:index]
-  resources :teams, except: [:index]
+  resources :teams, except: [:index, :update]
   resources :main, only: [:index]
   resources :team_invitations, only: [:new, :create]
-  devise_for :users, controler: {invitation: 'invitation'}
+  devise_for :users, controler: { invitation: 'invitation' }
   as :user do
     get '/users' => 'devise_invitable/registrations#new'
     get '/teams' => 'activities#new'
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :user_manager, only: [:index, :update]
-    resources :polls
+    resources :polls, except: [:show]
   end
 
   resources :activities, only: [:show] do
