@@ -39,7 +39,7 @@
       %h5.mt-5
         Comentarios
       - @activity.feedback.each do |feedback|
-        %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
+        %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email.remove('@michelada.io').capitalize
         %p.gray= feedback.comment
         %hr.section
       = simple_form_for [ @activity, @feedback] do |f|
