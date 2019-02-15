@@ -38,18 +38,17 @@
       %h5.mt-5
         Comentarios
       - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
-        %div{:id => "com_#{i}"}
-          %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
-          %p{:class => "gray", :id => "comment_#{i}"}
-            = feedback.comment
-          %input{:type=>"text", :value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}"}
-          - if feedback.user_id == current_user.id
-            .form_data
-              %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
-              %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
-            .edit_comment
-              = link_to t("buttons.edit"), "#", :id => "#{i}"
-          %hr.section
+        %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
+        %p{:class => "gray", :id => "comment_#{i}"}
+          = feedback.comment
+        %input{:type=>"text", :value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}"}
+        - if feedback.user_id == current_user.id
+          .form_data
+            %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
+            %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
+          .edit_comment
+            = link_to t("buttons.edit"), "#", :id => "#{i}"
+        %hr.section
       = simple_form_for [ @activity, @feedback] do |f|
         = f.input :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
         = f.button :submit, t('comments.create'), class: 'button'
