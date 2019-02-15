@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :teams, only: [:index]
   end
   resources :activities, except: [:index]
-  resources :teams, except: [:index]
+  resources :teams, except: [:index, :update]
   resources :main, only: [:index]
   resources :team_invitations, only: [:new, :create]
   devise_for :users
