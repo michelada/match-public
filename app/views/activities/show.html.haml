@@ -42,8 +42,9 @@
         %div{:id => "com_#{i}", class: 'comment'}
           %h6.gray.d-flex.justify-content-between{class: feedback.user.role ? 'judge' : 'regular'}
             = feedback.user.name? ? feedback.user.name : feedback.user.email
-            .edit_comment
-              = link_to t("buttons.edit"), "#", :id => "#{i}"
+            - if feedback.user_id == current_user.id
+              .edit_comment
+                = link_to t("buttons.edit"), "#", :id => "#{i}"
           %p{:class => "gray", :id => "comment_#{i}", class: 'comment-content mt-3'}
             = feedback.comment
           %input{:type=>"text", :value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}

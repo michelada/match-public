@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_action :load_activity, except: [:update, :destroy]
+  before_action :load_activity, except: [:update]
   def create
     generate_comment
     if @comment.save
@@ -16,16 +16,6 @@ class FeedbacksController < ApplicationController
       flash[:notice] = t('activities.messages.feedback_updated')
     else
       flash[:alert] = t('alerts.activities.not_black')
-    end
-    redirect_to activity_path(@feedback.activity)
-  end
-
-  def destroy
-    @feedback = Feedback.find_by(id: params[:activity_id])
-    if @feedback.destroy
-      flash[:notice] = t('activities.messages.feedback_deleted')
-    else
-      flash[:alert] = t('activities.messagess.error_deleting')
     end
     redirect_to activity_path(@feedback.activity)
   end
