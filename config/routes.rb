@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :activities, only: [:index]
     resources :teams, only: [:index]
   end
+
+  resources :invitation, only: [:index]
   resources :activities, except: [:index]
   resources :teams, except: [:index, :update]
   resources :main, only: [:index]
