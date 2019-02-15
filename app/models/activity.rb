@@ -18,7 +18,6 @@ class Activity < ApplicationRecord
   has_many :locations, dependent: :destroy
   has_many :feedback, dependent: :destroy
   has_many :activity_statuses, dependent: :destroy
-  has_many :votes, dependent: :destroy
   enum activity_type: { Curso: 0, Plática: 1, Post: 2 }
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
   mount_uploader :activity_file, ActivityFileUploader
@@ -43,14 +42,6 @@ class Activity < ApplicationRecord
       .limit(team_count)
   })
   scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
-  scope :best_activities, (lambda { |poll_id, type|
-    joins(:votes)
-    .where('votes.poll_id = ?', poll_id)
-    .where('activities.activity_type = ?', type)
-    .group('activities.name')
-    .select('activities.name, sum(votes.value) as value')
-    .order('sum(votes.value) desc').limit(1)
-  })
   validates :pitch_audience, :abstract_outline, :description, presence: true, if: :activity_type_is?
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
