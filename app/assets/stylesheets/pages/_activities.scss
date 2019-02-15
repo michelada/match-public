@@ -15,7 +15,7 @@
       li {
         background: $light-blue;
         border-radius: 15px;
-        display: flex;            
+        display: flex;
         font-size: $secondary-font-size;
         margin: 0 5px 5px 0;
         padding: 3px $regular-padding;
@@ -28,7 +28,7 @@
   }
 
   label {
-    margin-top: $regular-margin;    
+    margin-top: $regular-margin;
   }
 
   .button {
@@ -47,6 +47,51 @@
   .label-mobile {
     @include breakpoint (mobile) {
       margin-top: $regular-margin;
+    }
+  }
+  .comment {
+    position: relative;
+    .judge, .regular {
+      position: relative;
+      padding-left: 70px;
+      text-transform: uppercase;
+      &:before {
+        position: absolute;
+        width: 60px;
+        height: 20px;
+        content: "JUDGE";
+        top: 0;
+        left: 0;
+        text-align: center;
+        font-size: 12px;
+        border-radius: 10px;
+        background: $yellow;
+        color: $blue;
+        line-height: 20px;
+        font-weight: bold;
+      }
+    }
+    .regular {
+      &:before {
+        background: $orange;
+        content: "PLAYER"
+      }
+    }
+    .comment-content {
+      border-left: 3px solid #292C52;
+      padding: 11px 0 11px 25px;
+      margin-left: 15px;
+      width: calc(100% - 15px);
+    }
+    .edit_comment {
+      opacity: 0;
+      transition: 0.5s;
+    }
+    &:hover {
+      .edit_comment {
+        opacity: 1;
+        transition: 0.5s;
+      }
     }
   }
 }

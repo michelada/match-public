@@ -25,7 +25,7 @@ class JudgeTest < ApplicationSystemTestCase
     end
     fill_in 'feedback[comment]', with: 'Test comment'
     click_button 'Comentar'
-    assert has_content?('judge_user@michelada.io')
+    assert has_content?('JUDGE_USER@MICHELADA.IO')
     assert has_content?('Test comment')
   end
 
