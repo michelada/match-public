@@ -19,7 +19,7 @@ es:
       invitation_instructions:
         subject: "Instrucciones de invitación"
         hello: "Hola %{email}"
-        someone_invited_you: "Alguien te ha invitado a: %{url}, puedes aceptarlo a travéz del siguiente enlace."
+        someone_invited_you: "Alguien te ha invitado a: %{url}, puedes aceptarlo a través del siguiente enlace."
         accept: "Aceptar invitación"
         accept_until: "Esta invitación será enviada hasta  %{due_date}."
         ignore: "Si no desea aceptar la invitación, por favor ignore este correo. Tu cuenta no será creada hasta que ingreses al enlace y configures una contraseña."
