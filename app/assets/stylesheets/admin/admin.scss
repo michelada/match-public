@@ -45,12 +45,13 @@
   
   select{
     text-align-last: center;
-    width: 23%;
+    width: calc(25% - 25px);
     font-size: $secondary-font-size;
     margin-left: 25px; 
     @include breakpoint(mobile){
       display: block;
       margin-left: auto;
+      margin-bottom: 10px;
       width: 100%;
     }
   }
