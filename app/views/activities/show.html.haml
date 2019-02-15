@@ -37,7 +37,7 @@
       %hr.mt-5
       %h5.mt-5
         Comentarios
-      - @activity.feedback.each_with_index do |feedback, i|
+      - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
         %div{:id => "com_#{i}"}
           %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
           %p{:class => "gray", :id => "comment_#{i}"}
