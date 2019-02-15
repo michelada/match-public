@@ -3,11 +3,13 @@ Rails.application.routes.draw do
     resources :activities, only: [:index]
     resources :teams, only: [:index]
   end
+
+  resources :invitation, only: [:index]
   resources :activities, except: [:index]
   resources :teams, except: [:index, :update]
   resources :main, only: [:index]
   resources :team_invitations, only: [:new, :create]
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'invitation' }
   as :user do
     get '/users' => 'devise_invitable/registrations#new'
     get '/teams' => 'teams#new'
@@ -22,26 +24,14 @@ Rails.application.routes.draw do
       resources :feedbacks, only: [:index, :create, :update]
       resources :locations, only: [:update]
     end
-    resources :polls, only: [:index, :show] do
-      resources :activities, only: [:index] do
-        resources :votes, only: [:create, :destroy]
-      end
-    end
     resources :main, only: [:index]
   end
 
   namespace :admin do
     resources :user_manager, only: [:index, :update]
-    resources :polls, except: [:show]
   end
 
   resources :activities, only: [:show] do
     resources :feedbacks, only: [:index, :create, :update]
-  end
-
-  resources :polls, only: [:index, :show] do
-    resources :activities, only: [:index] do
-      resources :votes, only: [:create, :destroy]
-    end
   end
 end
