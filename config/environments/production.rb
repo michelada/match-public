@@ -71,15 +71,14 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   ActionMailer::Base.smtp_settings = {
-    address: ENV['MAILGUN_SMTP_SERVER'],
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    domain: 'mcm-production.herokuapp.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
     authentication: :plain,
-    domain: ENV['MAILGUN_DOMAIN'],
-    port: ENV['MAILGUN_SMTP_PORT'],
-    password: ENV['MAILGUN_SMTP_PASSWORD'],
-    user_name: ENV['MAILGUN_SMTP_LOGIN']
+    enable_starttls_auto: true
   }
-
-  ActionMailer::Base.delivery_method = :smtp
 
   Raven.configure do |config|
     config.dsn = ENV['SENTRY_DSN']
