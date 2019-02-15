@@ -6,16 +6,13 @@ Rails.application.routes.draw do
   resources :activities, except: [:index]
   resources :teams, except: [:index, :update]
   resources :main, only: [:index]
-  resources :team_invitations, only: [:new, :create, :index]
-  devise_for :users
+  resources :team_invitations, only: [:new, :create]
+  devise_for :users, controllers: { registrations: 'invitation' }
   as :user do
     get '/users' => 'devise_invitable/registrations#new'
     get '/teams' => 'teams#new'
     get '/team_invitation' => 'team_invitations#new'
     get '/activities' => 'activities#new'
-  end
-  as :team_invitations do
-    get '/users/invitation' => 'landing_page#index'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
