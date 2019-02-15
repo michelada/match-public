@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function(){
     var editBtn = $('.edit_comment a#' + id);
     var commentEditor = $('input#editor_' + id);
     var commentText = $('p#comment_' + id);
-    
+
     if(currentEdition === null){
       ev.preventDefault();
       currentEdition = id;
