@@ -50,9 +50,10 @@ group :test do
   gem 'simplecov'
 end
 
-group :production do
+group :production, :staging do
   gem 'aws-sdk'
   gem 'pg'
+  gem 'sentry-raven'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

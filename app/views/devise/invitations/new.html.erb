@@ -1,0 +1,13 @@
+<div class= 'center-content-vertical'>
+  <div class= 'main-content container'>
+    <h2><%= t "devise.invitations.new.header" %></h2>
+    <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+      <%= devise_error_messages! %>
+      <% resource.class.invite_key_fields.each do |field| -%>
+        <p class='mb-0'><%= f.label t('user.email')%><br />
+        <%= f.text_field field, class:'input-text'%></p>
+      <% end %>
+      <%= f.submit t("devise.invitations.new.submit_button"), class:'button' %>
+    <% end %>
+  </div>
+</div>
