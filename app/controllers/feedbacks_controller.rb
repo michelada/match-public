@@ -10,7 +10,15 @@ class FeedbacksController < ApplicationController
     redirect_to activity_path(@activity)
   end
 
-  def edit
+  def update
+    @feedback = Feedback.find_by(id: params[:id])
+    if @feedback.update_attributes(comment: params[:comment])
+      flash[:notice] = t('activities.messages.updated')
+      redirect_to activity_path(@feedback.activity)
+    else
+      flash[:alert] = t('alerts.activities.not_black')
+      redirect_to activity_path(@feedback.activity)
+    end
   end
 
   def destroy

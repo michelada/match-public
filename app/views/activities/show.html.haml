@@ -44,6 +44,9 @@
             = feedback.comment
           %input{:type=>"text", :value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}"}
           - if feedback.user_id == current_user.id
+            .form_data
+              %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
+              %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
             .edit_comment
               = link_to "Editar", "#", :id => "#{i}"
             .delete_comment

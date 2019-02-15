@@ -11,31 +11,30 @@ $(document).on('turbolinks:load', function(){
       ev.preventDefault();
       currentEdition = id;
 
-      console.log("edit" + id);
-      editBtn.text("Aceptar");
+      editBtn.text('Aceptar');
       commentText.hide();
       commentEditor.removeAttr('hidden');
     }else{
       if(currentEdition === id){
-        $.ajax({
-          type: "PUT",
-          url: '/activities/1/feedbacks',
-          data: {
-            "comment": 'SOMETHING'
-          },
-          success: function() {
-            console.log('SUCCESS');
-          },
-          dataType: 'json'
-        });
         currentEdition = null;
         var text = commentEditor.val();
-
-        editBtn.text("Editar");
+        var authenticityToken = $("meta[name='csrf-token']").attr('content');
+        editBtn.text('Editar');
         commentEditor.attr('hidden', 'true');
         commentText.show();
         commentText.text(text);
-        console.log("Comment updated");
+        var activityId = $('.form_data #acId' + id).val();
+        var feedbackId = $('.form_data #fbId' + id).val();
+
+        $.ajax({
+          type: 'PUT',
+          url: (activityId + '/feedbacks/' + feedbackId),
+          data: {
+            "authenticity_token": authenticityToken,
+            "comment": text},
+          dataType: "json"
+        });
+
         ev.preventDefault();
       }else{
         alert("Estas editando otro comentario");
