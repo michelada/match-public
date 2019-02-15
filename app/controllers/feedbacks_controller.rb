@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_action :load_activity
+  before_action :load_activity, except: [:update]
   def create
     generate_comment
     if @comment.save
@@ -8,6 +8,16 @@ class FeedbacksController < ApplicationController
       flash[:alert] = t('comments.error_creating')
     end
     redirect_to activity_path(@activity)
+  end
+
+  def update
+    @feedback = Feedback.find_by(id: params[:id])
+    if @feedback.update_attributes(comment: params[:comment])
+      flash[:notice] = t('activities.messages.feedback_updated')
+    else
+      flash[:alert] = t('alerts.activities.not_black')
+    end
+    redirect_to activity_path(@feedback.activity)
   end
 
   private
