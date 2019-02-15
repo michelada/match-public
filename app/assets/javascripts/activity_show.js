@@ -22,10 +22,13 @@ $(document).on('turbolinks:load', function(){
         editBtn.text('Editar');
         commentEditor.attr('hidden', 'true');
         commentText.show();
-        commentText.text(text);
         var activityId = $('.form_data #acId' + id).val();
         var feedbackId = $('.form_data #fbId' + id).val();
-
+        
+        if(text != ""){
+          commentText.text(text);
+        }
+        
         $.ajax({
           type: 'PUT',
           url: (activityId + '/feedbacks/' + feedbackId),
@@ -38,6 +41,7 @@ $(document).on('turbolinks:load', function(){
         ev.preventDefault();
       }else{
         alert("Estas editando otro comentario");
+        ev.stopImmediatePropagation();
         ev.preventDefault();
       }
     }

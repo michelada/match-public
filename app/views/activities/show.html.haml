@@ -20,8 +20,9 @@
           %h6.text= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
 
-        %h6.text= t("labels.link") if @activity.notes
-        %p= @activity.notes
+        - unless @activity.notes&.empty?
+          %h6.text= t("labels.link")
+          %p= @activity.notes
       -if @activity.english
         %p= t('labels.english')
       - unless @activity.locations.empty?
@@ -37,7 +38,7 @@
       %hr.mt-5
       %h5.mt-5.mb-5
         Comentarios
-      - @activity.feedback.each_with_index do |feedback, i|
+      - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
         %div{:id => "com_#{i}", class: 'comment'}
           %h6.gray.d-flex.justify-content-between{class: feedback.user.role ? 'judge' : 'regular'}
             = feedback.user.name? ? feedback.user.name : feedback.user.email
