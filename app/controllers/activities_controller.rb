@@ -105,6 +105,7 @@ class ActivitiesController < ApplicationController
   def vote_for_activity
     activity_statuses = ActivityStatus.new(activity_id: @activity.id, user_id: current_user.id, approve: true)
     activity_statuses.save
+    @activity.update_attribute(:status, 1)
   end
 
   def activity_approved?
