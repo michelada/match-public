@@ -25,11 +25,6 @@ module Judge
 
     private
 
-    def change_activity_status
-      @activity_status = ActivityStatus.user_approve_status_activity(current_user.id, params[:activity_id])
-      @activity_status.approve = !@activity_status.approve
-    end
-
     def activity_status_params
       params.permit(:activity_id)
     end
