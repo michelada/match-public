@@ -115,8 +115,11 @@ en:
       email_not_valid: "Invalid email"
       error_creating: "Error creating the team"
       error_deleting: "Error deleting the team"
+      error_leaving: "Error leaving the team"
       error_updating: "Error updating the team"
       no_teams: 'There are no teams'
+      leave_team: "Leave team"
+      left: "You left the team"
       updated: "Team updated"
       user_invited: "User invited successfully"
   placeholders:
