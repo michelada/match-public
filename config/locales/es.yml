@@ -121,7 +121,7 @@ es:
       error_leaving: "Error abandonando el equipo"
       error_updating: "Error actualizando el equipo"
       leave_team: "Abandonar equipo"
-      leaved: "Abandonaste el equipo"
+      left: "Abandonaste el equipo"
       no_teams: 'No hay equipos'
       updated: "Equipo actualizado"
       user_invited: "El usuario ha sido agregado a tu equipo"

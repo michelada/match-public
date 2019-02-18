@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @team = Team.find(current_user.team_id)
     if current_user.update_attribute(:team, nil)
       verify_team_members
-      flash[:notice] = t('team.messages.leaved')
+      flash[:alert] = t('team.messages.left')
       redirect_to main_index_path
     else
       flash[:alert] = t('team.messages.error_leaving')
