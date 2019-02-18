@@ -78,7 +78,7 @@ es:
     events: "Eventos:"
     extra_points: "Puntos extra"
     fight: "PELEA"
-    information: "Solo .jpg, .jpeg, .key o .pdf"
+    information: "Sólo .jpg, .jpeg, .png, .key o .pdf"
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
     last_day: 'Recuerda ejercer tu derecho a votar, tienes hasta: '
@@ -92,7 +92,7 @@ es:
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
-    polls: "Votaciónes"
+    polls: "Votaciones"
     post: "Post"
     role: "Rol"
     score: "Puntaje:"
@@ -118,7 +118,10 @@ es:
       email_not_valid: "Email no válido"
       error_creating: "Error creando el equipo"
       error_deleting: "Error eliminando al equipo"
+      error_leaving: "Error abandonando el equipo"
       error_updating: "Error actualizando el equipo"
+      leave_team: "Abandonar equipo"
+      left: "Abandonaste el equipo"
       no_teams: 'No hay equipos'
       updated: "Equipo actualizado"
       user_invited: "El usuario ha sido agregado a tu equipo"
