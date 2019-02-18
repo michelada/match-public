@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :user_manager, only: [:index, :update]
+    resources :user_manager, only: [:index, :update, :destroy]
+    resources :polls, except: [:show]
   end
 
   resources :activities, only: [:show] do

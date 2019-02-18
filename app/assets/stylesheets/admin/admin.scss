@@ -26,7 +26,7 @@
     @include  breakpoint(mobile) {
       text-overflow: ellipsis;
       overflow: hidden;
-      width: 100px;
+      width: 70px;
       white-space: nowrap;
     }
   }
@@ -74,12 +74,12 @@
         padding-bottom: $regular-padding;
       }
     }
-    .poll-actions {
-      a {
-        img {
-          height: $secondary-icon-size;
-        }
-      }
+  }
+}
+.poll-actions {
+  a {
+    img {
+      height: $secondary-icon-size;
     }
   }
 }
