@@ -74,7 +74,7 @@ es:
     events: "Eventos:"
     extra_points: "Puntos extra"
     fight: "PELEA"
-    information: "Solo .jpg, .jpeg, .key o .pdf"
+    information: "Solo .jpg, .jpeg, png, .key o .pdf"
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
     last_day: 'Recuerda ejercer tu derecho a votar, tienes hasta: '
@@ -88,7 +88,7 @@ es:
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
-    polls: "Votaciónes"
+    polls: "Votaciones"
     post: "Post"
     role: "Rol"
     score: "Puntaje:"
