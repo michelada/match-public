@@ -13,12 +13,12 @@ module Admin
       end
       redirect_to admin_user_manager_index_path
     end
-    
+
     def destroy
       @user = User.find(params[:id])
       if @user.destroy
         flash[:notice] = t('user.destroy')
-      else 
+      else
         flash[:alert] = t('user.error_destroy')
       end
       redirect_to admin_user_manager_index_path
