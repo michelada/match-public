@@ -154,7 +154,7 @@ es:
     destroy: "El usuario ha sido eliminado"
     email: "E-mail"
     error_updating_role: "Error actualizando rol"
-    error_destroy: "Erro eliminando al usuario"
+    error_destroy: "Error: eliminando al usuario"
     forgot_password_submit: "Restablecer contraseña"
     forgot_password: "Olvidé mi contraseña"
     log_in: "Iniciar sesión"
