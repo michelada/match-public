@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def update
     @team = Team.find(current_user.team_id)
     if current_user.update_attribute(:team, nil)
-      verify_team_memebers
+      verify_team_members
       flash[:notice] = t('team.messages.leaved')
       redirect_to main_index_path
     else
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   private
 
-  def verify_team_memebers
+  def verify_team_members
     return if @team.users.count.positive?
 
     @team.destroy

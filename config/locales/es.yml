@@ -118,7 +118,7 @@ es:
       email_not_valid: "Email no válido"
       error_creating: "Error creando el equipo"
       error_deleting: "Error eliminando al equipo"
-      error_leaving: "Error abandonando el equipoa"
+      error_leaving: "Error abandonando el equipo"
       error_updating: "Error actualizando el equipo"
       leave_team: "Abandonar equipo"
       leaved: "Abandonaste el equipo"

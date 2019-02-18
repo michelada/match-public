@@ -119,7 +119,7 @@ en:
       error_updating: "Error updating the team"
       no_teams: 'There are no teams'
       leave_team: "Leave team"
-      leaved: "You leave the team"
+      leaved: "You leaved the team"
       updated: "Team updated"
       user_invited: "User invited successfully"
   placeholders:
