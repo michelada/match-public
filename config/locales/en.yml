@@ -151,7 +151,7 @@ en:
     destroy: "User deleted"
     email: "E-mail"
     error_updating_role: "Error updating role"
-    error_destroy: "User can't destroy"
+    error_destroy: "Error deleting user"
     forgot_password_submit: "Reset password"
     forgot_password: "Forgot password"
     log_in: "Log in"
