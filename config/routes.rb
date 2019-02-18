@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :teams, except: [:index, :update]
   resources :main, only: [:index]
   resources :team_invitations, only: [:new, :create]
+  resource :user, only: [:update]
   devise_for :users, controllers: { registrations: 'invitation' }
   as :user do
     get '/users' => 'devise_invitable/registrations#new'
@@ -26,7 +27,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :user_manager, only: [:index, :update]
+    resources :user_manager, only: [:index, :update, :destroy]
+    resources :polls, except: [:show]
   end
 
   resources :activities, only: [:show] do
