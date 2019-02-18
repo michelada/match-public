@@ -33,15 +33,28 @@
                 = events.name
       - else
         %p= t('labels.not_location')
-      - unless @activity.activity_file.url.nil? 
+      - unless @activity.activity_file.url.nil?
         = link_to t('labels.download'), @activity.activity_file.url, target: :_blank, class:'button'
       %hr.mt-5
-      %h5.mt-5
-        Comentarios
-      - @activity.feedback.each do |feedback|
-        %h6.gray= feedback.user.name? ? feedback.user.name : feedback.user.email
-        %p.gray= feedback.comment
-        %hr.section
+
+      %h5.mt-5.mb-5
+        = t("comments.all")
+      - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
+        %div{:id => "com_#{i}", class: 'comment'}
+          %h6.gray.d-flex.justify-content-between{class: feedback.user.role == 'judge' ? 'judge' : 'regular'}
+            = feedback.user.name? ? feedback.user.name : feedback.user.email.remove('@michelada.io').capitalize
+            - if feedback.user_id == current_user.id
+              .edit_comment
+                = link_to t("buttons.edit"), "#", :id => "#{i}"
+          %p{:class => "gray", :id => "comment_#{i}", class: 'comment-content mt-3'}
+            = feedback.comment
+          %input{:type=>"text", :value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}
+          - if feedback.user_id == current_user.id
+            .form_data
+              %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
+              %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
+
+          %hr.section
       = simple_form_for [ @activity, @feedback] do |f|
         = f.input :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
         = f.button :submit, t('comments.create'), class: 'button'
