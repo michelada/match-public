@@ -24,6 +24,7 @@ gem 'simple_form', '~>4.0.1'
 gem 'spicy-proton'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'activity_notification'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
