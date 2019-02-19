@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function(){
   $('.edit_comment a').on('click', function(ev){
     var id = $(this).attr('id');
     var editBtn = $('.edit_comment a#' + id);
-    var commentEditor = $('input#editor_' + id);
+    var commentEditor = $('textarea#editor_' + id);
     var commentText = $('p#comment_' + id);
 
     if(currentEdition === null){
@@ -14,6 +14,7 @@ $(document).on('turbolinks:load', function(){
       editBtn.text('Aceptar');
       commentText.hide();
       commentEditor.removeAttr('hidden');
+      commentEditor.val(commentText.text());
     }else{
       if(currentEdition === id){
         currentEdition = null;
