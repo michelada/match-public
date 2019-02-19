@@ -22,9 +22,10 @@ class TeamInvitationsController < ApplicationController
     user_email = params[:email]
     user = User.find_by(email: user_email)
     if user.nil?
-      User.invite!({ email: user_email }, current_user)
-      new_user = User.find_by(email: user_email)
-      new_user.update_attributes(team_id: current_user.team_id, role: User.roles[:user])
+      if User.invite!({ email: user_email }, current_user)
+        new_user = User.find_by(email: user_email)
+        new_user.update_attributes(team_id: current_user.team_id, role: User.roles[:user])
+      end
     elsif user.team.nil?
       user.update_attributes(team_id: current_user.team_id)
     else

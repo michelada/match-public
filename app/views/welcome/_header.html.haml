@@ -13,11 +13,3 @@
         - if current_user.role == 'judge'
           = link_to judge_main_index_path  do
             = render partial: 'icons/ic_judge', locals: {is_active: (controller_path.include?('judge') && controller_path != 'judge/polls') }
-          - unless there_are_not_polls
-            = link_to  judge_polls_path do
-              = render partial: 'icons/ic_poll', locals: {is_active: controller_path == 'judge/polls' }
-        - else
-          - unless there_are_not_polls
-            = link_to  polls_path do
-              = render partial: 'icons/ic_poll', locals: {is_active: controller_path == 'polls' }
-
