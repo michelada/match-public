@@ -66,13 +66,13 @@
                 = link_to t("buttons.edit"), "#", :id => "#{i}"
           %p{:class => "gray", :id => "comment_#{i}", class: 'comment-content mt-3'}
             = feedback.comment
-          %input{:type=>"text", :value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}
+          %textarea{:value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}
           - if feedback.user_id == current_user.id
             .form_data
               %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
               %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
         
       = simple_form_for [:judge, @activity, @feedback] do |f|
-        = f.input :comment, label: t('comments.create') , placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
+        = f.text_area :comment, label: t('comments.create') , placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
         = f.button :submit, t('comments.create'), class: 'button'
 
