@@ -20,9 +20,9 @@
           %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
 
-        - unless @activity.notes&.empty?
-          %h6.text.red= t("labels.link")
-          %p= @activity.notes
+      - unless @activity.notes&.empty?
+        %h6.text= t("labels.link")
+        %p= @activity.notes
       -if @activity.english
         %h6.text.red= t('labels.english')
         %p 
