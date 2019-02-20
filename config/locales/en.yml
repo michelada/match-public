@@ -100,6 +100,7 @@ en:
     start_date: "Start date"
     team: "Team"
     type: "Type"
+    tentative_score: "Aspires to"
     unapproved: "Unapproved"
     vote: 'Your vote is free and secret'
     waiting: "Waiting"

@@ -103,6 +103,7 @@ es:
     start_date: "Fecha inicial"
     type: "Tipo:"
     team: "Equipo"
+    tentative_score: "Aspira a"
     unapproved: "Desaprobado"
     vote: 'Tu voto es libre y secreto'
     waiting: "En espera"
