@@ -12,7 +12,9 @@
         = link_to t('activities.status_unapprove'), judge_activity_activity_status_path(@activity), method: :delete, data: {confirm: t('actions.confirm')}
       %h3
         = @activity.name
-      %h6
+      %p.points
+        = "#{@activity.score} #{t('labels.points')}"
+      %h6.mt-4
         = @activity.activity_type
       -if @activity.activity_type == 'Post'
         %h6.text.red= t('user.judge.activities.description') if @activity.description
