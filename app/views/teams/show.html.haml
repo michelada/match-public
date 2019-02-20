@@ -16,14 +16,18 @@
         = "#{@team_score || 0}"
     %hr
     %h3.mt-5.center-info.mb-3 
-      = t('labels.best')
+      = t('labels.activities')
       %span
-        = t('labels.effort')
+        = t('labels.team')
     - @activities&.each do |activity|
       %div{id: "activity_#{activity.id}"}
         .d-flex.justify-content-between
           %p
             = activity.name
+          %p.points
+            = t('labels.aspire_to')
+            = activity.score
+            = t('labels.points')
         %p{class: activity.css_class}
           = activity.status
         .d-flex.justify-content-between
