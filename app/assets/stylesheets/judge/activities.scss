@@ -21,6 +21,14 @@
       margin-right: -4px;
     }
   }
+  .icon-detail {
+    fill: $yellow;
+    height: $primary-icon-size;
+    transform: rotate(-90deg);
+  }
+  .points{
+    color: $red
+  }
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -32,6 +40,7 @@
   li {
     background: $blue;
     border-radius: 15px;
+    display: flex;            
     font-size: $secondary-font-size;
     margin: 0 5px 5px 0;
     padding: 3px $regular-padding;
@@ -40,19 +49,11 @@
       margin-left: $regular-margin;
     }
   }
-  img.approve-true{
+  a.approve-true{
         margin-left: 0;
-        background-color: $green;
+        color: $green;
     }.approve-false{
       margin-left: 0;
-      background-color: $warning;
-      padding: 8px;
     }
-  }
-  img.check-activity {
-    height: $secondary-icon-size;
-    border-radius: 50%;
-    padding: 3px;
-    margin: 5px;
-  }
+}
 

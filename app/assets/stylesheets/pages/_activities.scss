@@ -129,6 +129,14 @@
     }
   }
 }
+.icon-detail {
+  fill: $yellow;
+  height: $primary-icon-size;
+  transform: rotate(-90deg);
+}
+.points{
+  color: $red
+}
 ul {
   display: flex;
   flex-wrap: wrap;
