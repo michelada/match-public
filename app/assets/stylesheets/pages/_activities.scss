@@ -1,35 +1,4 @@
 .activities {
-  .tags_box {
-    background: $blue;
-    border-radius: $border-radius;
-    border: 2px solid $light-blue;
-    display: flex;
-    padding: $regular-padding;
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      li {
-        background: $light-blue;
-        border-radius: 15px;
-        display: flex;
-        font-size: $secondary-font-size;
-        margin: 0 5px 5px 0;
-        padding: 3px $regular-padding;
-        a {
-          cursor: pointer;
-          margin-left: $regular-margin;
-        }
-      }
-    }
-  }
-
-  label {
-    margin-top: $regular-margin;
-  }
 
   .button {
     margin-bottom: $regular-margin;
@@ -159,4 +128,45 @@
       }
     }
   }
+}
+.icon-detail {
+  fill: $yellow;
+  height: $primary-icon-size;
+  transform: rotate(-90deg);
+}
+.points{
+  color: $red
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+li {
+  background: $blue;
+  border-radius: 15px;
+  font-size: $secondary-font-size;
+  margin: 0 5px 5px 0;
+  padding: 3px $regular-padding;
+  a {
+    cursor: pointer;
+    margin-left: $regular-margin;
+  }
+}
+img.approve-true{
+      margin-left: 0;
+      background-color: $green;
+  }.approve-false{
+    margin-left: 0;
+    background-color: $warning;
+    padding: 8px;
+  }
+img.check-activity {
+  height: $secondary-icon-size;
+  border-radius: 50%;
+  padding: 3px;
+  margin: 5px;
 }

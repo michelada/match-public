@@ -43,15 +43,17 @@
           =t('labels.extra_points')
           %em.text.red= t('labels.evaluate')
       -if @activity.english
-        %p= link_to t('labels.english'), judge_activity_path(@activity), method: :patch, class: "approve-#{@activity.english_approve}"
-
+        %p 
+          = link_to image_tag('ic-checked', :class => "check-activity approve-#{@activity.english_approve}"), judge_activity_path(@activity), method: :patch
+          %label= t('labels.english')
 
       - unless @activity.locations.empty?
         %h6.text.red= t('labels.location')
-        .tags_box
-          %ul
-            - @activity.locations&.each do |events|
-              %li= link_to events.name, judge_activity_location_path(@activity, events), method: :patch, class: "approve-#{events.approve}"
+        %ul
+          - @activity.locations&.each do |events|
+            %li
+              = link_to image_tag('ic-checked', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch
+              %label= "#{events.name}"
 
     .activities  
       - unless @activity.activity_file.url.nil? 
