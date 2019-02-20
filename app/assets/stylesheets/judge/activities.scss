@@ -26,6 +26,9 @@
     height: $primary-icon-size;
     transform: rotate(-90deg);
   }
+  .points{
+    color: $red
+  }
   .tags_box {
     background: $light-blue;
     border-radius: $border-radius;
