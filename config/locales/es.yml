@@ -64,6 +64,7 @@ es:
     approved: "Aprobado"
     admin: 'Lista de usuarios'
     abstract: "Abstract"
+    aspire_to: "Aspira a "
     audience: "Audiencia"
     comments: "Comentarios"
     create_team: "Crea tu propia"
@@ -100,7 +101,6 @@ es:
     select_location: 'Escoje una opción'
     sign_out: 'Cerrar sesión'
     start_date: "Fecha inicial"
-    tentative_points: "Puntaje tentativo: "
     type: "Tipo:"
     team: "Equipo"
     tentative_score: "Aspira a"

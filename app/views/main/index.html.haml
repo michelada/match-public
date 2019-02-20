@@ -27,9 +27,11 @@
               = team.name
               .text.red
                 = "#{team.total_score} pts"
-
-    .text-center
-      = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
+    - if @top_teams.length != 0
+      .text-center
+        = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
+    - else
+      %br
 
     %h3.d-flex.justify-content-center.align-items-center
       =t('labels.look_who_is')
@@ -42,4 +44,4 @@
           .mb-3= activity.user.team&.name
           .d-flex.mb-3.justify-content-between
             = activity.activity_type
-            .text.red= "#{t('labels.tentative_score')} #{activity.score}pts"
+            .text.red= "#{t('labels.aspire_to')} #{activity.score} #{t('labels.points')}"

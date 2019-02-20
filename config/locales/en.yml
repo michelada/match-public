@@ -62,6 +62,7 @@ en:
     approved: "Approved"
     admin: 'Users list'
     abstract: "Abstract"
+    aspire_to: "Aspire to"
     audience: "Audience"
     comments: "Comments"
     create_team: "Create your own"
@@ -98,7 +99,6 @@ en:
     sign_out: 'Sign out'
     start_date: "Start date"
     team: "Team"
-    tentative_points: "Tentative points: "
     type: "Type"
     tentative_score: "Aspires to"
     unapproved: "Unapproved"
