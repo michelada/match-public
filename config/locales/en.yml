@@ -57,18 +57,17 @@ en:
   home: "Home"
   labels:
     activities_range: "Select the activitie's date range that can be part"
+    activities: "Activities on"
     all: "All"
     approved: "Approved"
     admin: 'Users list'
     abstract: "Abstract"
     audience: "Audience"
-    best: "Best"
     comments: "Comments"
     create_team: "Create your own"
     description: "Description"
     dinasty: 'Dinasty'
     download: "Download file"
-    effort: "EFFORT"
     end_date: "End date"
     english: "English"
     email_uno: 'Partner in crime'
@@ -98,6 +97,7 @@ en:
     sign_out: 'Sign out'
     start_date: "Start date"
     team: "Team"
+    tentative_points: "Tentative points: "
     type: "Type"
     unapproved: "Unapproved"
     vote: 'Your vote is free and secret'

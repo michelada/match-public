@@ -59,18 +59,17 @@ es:
   home: "Inicio"
   labels:
     activities_range: "Aplicaciones que pueden participar"
+    activities: "Actividades del"
     all: "Todas"
     approved: "Aprobado"
     admin: 'Lista de usuarios'
     abstract: "Abstract"
     audience: "Audiencia"
-    best: "Mejor"
     comments: "Comentarios"
     create_team: "Crea tu propia"
     description: "Descripción"
     dinasty: 'Dinastía'
     download: "Descargar archivo"
-    effort: "ESFUERZO"
     end_date: "Fecha final"
     english: "Inglés"
     email_uno: "Compañero de crimen"
@@ -100,6 +99,7 @@ es:
     select_location: 'Escoje una opción'
     sign_out: 'Cerrar sesión'
     start_date: "Fecha inicial"
+    tentative_points: "Puntaje tentativo: "
     type: "Tipo:"
     team: "Equipo"
     unapproved: "Desaprobado"
