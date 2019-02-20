@@ -57,18 +57,18 @@ en:
   home: "Home"
   labels:
     activities_range: "Select the activitie's date range that can be part"
+    activities: "Activities on"
     all: "All"
     approved: "Approved"
     admin: 'Users list'
     abstract: "Abstract"
+    aspire_to: "Aspire to"
     audience: "Audience"
-    best: "Best"
     comments: "Comments"
     create_team: "Create your own"
     description: "Description"
     dinasty: 'Dinasty'
     download: "Download file"
-    effort: "EFFORT"
     end_date: "End date"
     english: "English"
     email_uno: 'Partner in crime'
