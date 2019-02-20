@@ -26,11 +26,8 @@
     height: $primary-icon-size;
     transform: rotate(-90deg);
   }
-  .tags_box {
-    background: $light-blue;
-    border-radius: $border-radius;
-    display: flex;
-    padding: $regular-padding;
+  .points{
+    color: $red
   }
   ul {
     display: flex;
