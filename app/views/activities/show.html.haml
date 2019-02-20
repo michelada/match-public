@@ -4,33 +4,37 @@
       %h3.text.red= @activity.name
       %h5.mb-5= @activity.activity_type
       -if @activity.activity_type == 'Post'
-        %h6.text= t('user.judge.activities.description') if @activity.description
+        %h6.text.red= t('user.judge.activities.description') if @activity.description
         %p= @activity.description
       -else
-        %h6.text=t('user.judge.activities.description') if @activity.description
+        %h6.text.red=t('user.judge.activities.description') if @activity.description
         %p= @activity.description
         -if @activity.activity_type == "Curso"
-          %h6.text= t('user.judge.activities.intended_audence') if @activity.pitch_audience
+          %h6.text.red= t('user.judge.activities.intended_audence') if @activity.pitch_audience
           %p= @activity.pitch_audience
-          %h6.text= t('user.judge.activities.outline') if @activity.abstract_outline
+          %h6.text.red= t('user.judge.activities.outline') if @activity.abstract_outline
           %p= @activity.abstract_outline
         -else
-          %h6.text= t('user.judge.activities.pitch') if @activity.pitch_audience
+          %h6.text.red= t('user.judge.activities.pitch') if @activity.pitch_audience
           %p= @activity.pitch_audience
-          %h6.text= t('user.judge.activities.abstract') if @activity.abstract_outline
+          %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
 
       - unless @activity.notes&.empty?
         %h6.text= t("labels.link")
         %p= @activity.notes
       -if @activity.english
-        %p= t('labels.english')
+        %h6.text.red= t('labels.english')
+        %p 
+          = image_tag('ic-checked', :class => "check-activity approve-#{@activity.english_approve}")
+          %label= t('labels.english')
+      %h6.text.red= t('labels.events')
       - unless @activity.locations.empty?
-        .tags_box
-          %ul
-            - @activity.locations&.each do |events|
-              %li
-                = events.name
+        %ul
+          - @activity.locations&.each do |events|
+            %li
+              = image_tag('ic-checked', :class => "check-activity approve-#{events.approve}")
+              %label= "#{events.name}"
       - else
         %p= t('labels.not_location')
       - unless @activity.activity_file.url.nil?
