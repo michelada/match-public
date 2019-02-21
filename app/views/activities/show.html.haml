@@ -2,6 +2,8 @@
   .main-content.medium
     .activities
       %h3.text.red= @activity.name
+      %p.points
+        = "#{@activity.score} #{t('labels.points')}"
       %h5.mb-5= @activity.activity_type
       -if @activity.activity_type == 'Post'
         %h6.text.red= t('user.judge.activities.description') if @activity.description
@@ -21,7 +23,7 @@
           %p= @activity.abstract_outline
 
       - unless @activity.notes&.empty?
-        %h6.text= t("labels.link")
+        %h6.text.red= t("labels.link")
         %p= @activity.notes
       -if @activity.english
         %h6.text.red= t('labels.english')
