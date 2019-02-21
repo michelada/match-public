@@ -13,18 +13,14 @@ module Api
     end
 
     def last_activity_format(activity)
-      if !activity.nil?
-        activity_type = activity.activity_type == 'Post' ? 'Post' : get_activity_type_en(activity.activity_type)
-        response = obtain_label_object.clone
-        response['data'] = []
-        response['postfix'] = "Team #{activity.user.team.name} - #{activity_type}"
-        response['data'] = {
-          value: activity.name
-        }
-        response.to_json
-      else
-        not_activity_object
-      end
+      activity_type = activity.activity_type == 'Post' ? 'Post' : get_activity_type_en(activity.activity_type)
+      response = obtain_label_object.clone
+      response['data'] = []
+      response['postfix'] = "Team #{activity.user.team.name} - #{activity_type}"
+      response['data'] = {
+        value: activity.name
+      }
+      response.to_json
     end
 
     private
@@ -49,16 +45,6 @@ module Api
           }
         ]
       }
-    end
-
-    def not_activity_object
-      response = obtain_label_object.clone
-      response['data'] = []
-      response['postfix'] = 'No activities yet'
-      response['data'] = {
-        value: 'No activities yet'
-      }
-      response.to_json
     end
 
     def obtain_label_object
