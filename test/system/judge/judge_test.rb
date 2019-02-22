@@ -10,7 +10,7 @@ class JudgeTest < ApplicationSystemTestCase
     within "#activity_#{activity.id}" do
       find("#go_to_#{activity.id}").click
     end
-    find(:css, "img#approve").click
+    find(:css, 'img#approve').click
     assert has_content?('Aprobada')
   end
 
