@@ -33,7 +33,24 @@ h3 {
     }
   }
 }
-
+.long-line {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 350px;
+    white-space: nowrap;
+  @include  breakpoint(mobile) {
+    width: 70px;
+  }
+}
+.long-line2 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 350px;
+    white-space: nowrap;
+  @include  breakpoint(mobile) {
+    width: 200px;
+  }
+}
 h5 {
   color: $white;
 }

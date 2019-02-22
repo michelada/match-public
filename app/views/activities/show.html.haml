@@ -2,9 +2,9 @@
   .main-content.medium
     .activities
       %h3.text.red= @activity.name
-      %p.points
-        = "#{@activity.score} #{t('labels.points')}"
-      %h5.mb-5= @activity.activity_type
+      %h5.mb-5
+        = @activity.activity_type
+        %em.points= "#{@activity.score} #{t('labels.points')}"
       -if @activity.activity_type == 'Post'
         %h6.text.red= t('user.judge.activities.description') if @activity.description
         %p= @activity.description
