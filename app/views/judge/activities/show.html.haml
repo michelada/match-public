@@ -56,8 +56,8 @@
               %label= "#{events.name}"
 
     .activities  
-      - unless @activity.activity_file.url.nil? 
-        = link_to t('labels.download'), @activity.activity_file.url, class:'button', target: :_blank
+      - if @activity.file.attached? 
+        = link_to t('labels.download'), rails_blob_path(@activity.file, disposition: "attachment"), class:'button', target: :_blank
       %hr.mt-5
         %h5.mt-5.mb-5
           = t("comments.all")
