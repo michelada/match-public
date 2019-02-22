@@ -5,7 +5,7 @@
         = render partial: 'judge/form'
         - @activities&.sort_by{|activity| activity.created_at}.each do |activity|
           %div{id: "activity_#{activity.id}"}
-            %p= activity.name
+            %p.long-line2= activity.name
             .d-flex.justify-content-between
               %p
                 = activity.activity_type

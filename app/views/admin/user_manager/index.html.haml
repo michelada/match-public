@@ -12,7 +12,7 @@
         - @users.each do |user|
           %tr
             %td
-              .user-mail= user.email.remove('@michelada.io').capitalize
+              .long-line= user.email.remove('@michelada.io').capitalize
             %td.text-right
               = simple_form_for(user, url: admin_user_manager_path(user)) do |f|
                 = f.select :role, User.roles.keys, include_blank: false, label: false

@@ -110,15 +110,6 @@
     color: $red;
   }
 
-  .activity-name {
-    @include  breakpoint(mobile) {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      width: 70px;
-      white-space: nowrap;
-    }
-  }
-
   .activities-table {
     width: 100%;
     thead {
