@@ -28,10 +28,10 @@
               .text.red
                 = "#{team.total_score} pts"
     - unless @top_teams.empty?
-        .text-center
-            = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
+      .text-center
+        = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
     - else
-        %br
+      %br
           
     %h3.d-flex.justify-content-center.align-items-center
       =t('labels.look_who_is')
