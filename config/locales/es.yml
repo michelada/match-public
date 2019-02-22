@@ -12,6 +12,7 @@ es:
     pending: "Actividades por revisar"
     status: "Estado"
     status_approve: "Aprobar"
+    status_approved: "Aprobada"
     status_unapprove: "Desaprobar"
     title: "Actividades"
     messages:
