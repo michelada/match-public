@@ -61,7 +61,8 @@
               %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
 
           %hr.section
-      = simple_form_for [ @activity, @feedback] do |f|
-        = f.text_area :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
-        = f.button :submit, t('comments.create'), class: 'button'
+      .mt-4
+        = simple_form_for [ @activity, @feedback] do |f|
+          = f.text_area :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text mt-4'}, required: false
+          = f.button :submit, t('comments.create'), class: 'button'
 
