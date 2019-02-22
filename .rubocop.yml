@@ -16,3 +16,7 @@ Documentation:
 
 Metrics/ClassLength:
   Max: 120
+
+Metrics/MethodLength:
+  Exclude:
+  - 'db/migrate/*.rb'
