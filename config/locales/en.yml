@@ -11,7 +11,7 @@ en:
     pending: "Pendinig activities"
     status: "Status"
     status_approve: "Approve"
-    status_approved: "Aprobada"
+    status_approved: "Approved"
     status_unapprove: "Unapprove"
     title: "Activities"
     messages:
