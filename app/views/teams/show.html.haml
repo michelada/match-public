@@ -22,7 +22,7 @@
     - @activities&.each do |activity|
       %div{id: "activity_#{activity.id}"}
         .d-flex.justify-content-between
-          %p.activity-name
+          %p.long-line
             = activity.name
           %p.points
             = t('labels.aspire_to')
@@ -55,7 +55,7 @@
           - @my_activities&.each do |activity|
             %tr
               %td
-                %p.activity-name= link_to activity.name, activity_path(activity.id)
+                %p.long-line= link_to activity.name, activity_path(activity.id)
               %td.text-center
                 = activity.activity_type
               %td.text-center{class: activity.css_class}

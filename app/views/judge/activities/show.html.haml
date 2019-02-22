@@ -14,10 +14,9 @@
         %label= "#{t('activities.status_approved')}"
       %h3
         = @activity.name
-      %p.points
-        = "#{@activity.score} #{t('labels.points')}"
       %h6.mt-4
         = @activity.activity_type
+        %em.points= "#{@activity.score} #{t('labels.points')}"
       -if @activity.activity_type == 'Post'
         %h6.text.red= t('user.judge.activities.description') if @activity.description
         %p= @activity.description
