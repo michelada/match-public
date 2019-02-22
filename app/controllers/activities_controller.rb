@@ -43,7 +43,7 @@ class ActivitiesController < ApplicationController
     redirect_to main_index_path unless activity_approved?
     @locations = Location.all
     @selected_locations = @activity.locations
-    @filename = @activity.activity_file.url ? File.basename(@activity.activity_file&.url) : nil
+    @filename = @activity.file.attached? ? @activity.file.filename : nil
   end
 
   def update
@@ -85,7 +85,7 @@ class ActivitiesController < ApplicationController
     params.require(:activity).permit(:name, :english, :location,
                                      :activity_type, :locations_string,
                                      :description, :pitch_audience,
-                                     :abstract_outline, :notes, :activity_file)
+                                     :abstract_outline, :notes, :file)
   end
 
   def user_has_permissions
