@@ -3,7 +3,7 @@
     .judge
       = render partial: 'judge/form'
       - @activities&.sort_by{|activity| activity.name.capitalize}.each do |activity|
-        %p= activity.name
+        %p.long-line2= activity.name
         .d-flex.justify-content-between
           %p
             = activity.activity_type

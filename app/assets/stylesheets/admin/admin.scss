@@ -22,15 +22,6 @@
     }
   }
 
-  .user-mail {
-    @include  breakpoint(mobile) {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      width: 70px;
-      white-space: nowrap;
-    }
-  }
-
   .simple_form {
     justify-content: flex-end;
     display: flex;
