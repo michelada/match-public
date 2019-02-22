@@ -10,8 +10,8 @@ class JudgeTest < ApplicationSystemTestCase
     within "#activity_#{activity.id}" do
       find("#go_to_#{activity.id}").click
     end
-    click_link 'Aprobar'
-    assert has_content?('Desaprobar')
+    find(:css, 'img#approve').click
+    assert has_content?('Aprobada')
   end
 
   test 'Judge can comment an activity' do
