@@ -62,7 +62,7 @@
         %h5.mt-5.mb-5
           = t("comments.all")
       - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
-        %div{:id => "com_#{i}", class: 'comment'}
+        %div{:id => "com_#{i}", class: 'comment mt-4'}
           %h6.gray.d-flex.justify-content-between{class: feedback.user.role == 'judge' ? 'judge' : 'regular'}
             = feedback.user.name? ? feedback.user.name : feedback.user.email.remove('@michelada.io').capitalize
             - if feedback.user_id == current_user.id
@@ -75,8 +75,9 @@
             .form_data
               %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
               %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
-        
-      = simple_form_for [:judge, @activity, @feedback] do |f|
-        = f.text_area :comment, label: t('comments.create') , placeholder: t('placeholders.comment'), input_html: { class: 'input-text'}, required: false
-        = f.button :submit, t('comments.create'), class: 'button'
+        %hr.section
+      .mt-4
+        = simple_form_for [:judge, @activity, @feedback] do |f|
+          = f.text_area :comment, label: t('comments.create') , placeholder: t('placeholders.comment'), input_html: { class: 'input-text mt-4'}, required: false
+          = f.button :submit, t('comments.create'), class: 'button', id: 'btn-comment'
 
