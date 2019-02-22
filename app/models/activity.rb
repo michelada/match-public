@@ -20,8 +20,7 @@ class Activity < ApplicationRecord
   has_many :activity_statuses, dependent: :destroy
   enum activity_type: { Curso: 0, Plática: 1, Post: 2 }
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
-  has_one_attached :file
-  # mount_uploader :activity_file, ActivityFileUploader
+  has_one_attached :file, dependent: :destroy
 
   scope :from_a_poll, (lambda { |start_date, end_date|
     where('created_at >= ? AND created_at <= ? AND status = ?', start_date, end_date, 2)
