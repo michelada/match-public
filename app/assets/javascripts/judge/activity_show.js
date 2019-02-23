@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function(){
       editBtn.text('Aceptar');
       commentText.hide();
       commentEditor.removeAttr('hidden');
-      commentEditor.val(commentText.text());
+      commentEditor.val(commentText.text().trim());
     }else{
       if(currentEdition === id){
         currentEdition = null;
@@ -29,16 +29,15 @@ $(document).on('turbolinks:load', function(){
         
         if(text != ""){
           commentText.text(text);
-        }
-        
-        $.ajax({
-          type: 'PUT',
-          url: (activityId + '/feedbacks/' + feedbackId),
-          data: {
-            "authenticity_token": authenticityToken,
-            "comment": text},
-          dataType: "json"
-        });
+          $.ajax({
+            type: 'PUT',
+            url: (activityId + '/feedbacks/' + feedbackId),
+            data: {
+              "authenticity_token": authenticityToken,
+              "comment": text},
+            dataType: "json"
+          });
+        }        
 
         ev.preventDefault();
       }else{
