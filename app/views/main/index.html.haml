@@ -10,7 +10,7 @@
       %h1
         Top
         %strong.text.yellow 3
-    - if @top_teams.empty?
+    - if @all_teams.empty?
       %h3.text-center.mt5
         = t("team.messages.no_teams")
     - else
@@ -27,7 +27,7 @@
                 = team.name
                 .text.red
                   = "#{team.total_score} pts"
-    - unless @top_teams.empty?
+    - unless @all_teams.empty?
       .text-center
         = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
     - else
