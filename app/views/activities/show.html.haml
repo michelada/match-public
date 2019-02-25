@@ -5,10 +5,7 @@
       %h5.mb-5
         = @activity.activity_type
         %em.points= "#{@activity.score} #{t('labels.points')}"
-      -if @activity.activity_type == 'Post'
-        %h6.text.red= t('user.judge.activities.description') if @activity.description
-        %p= @activity.description
-      -else
+      -unless @activity.activity_type == 'Post'
         %h6.text.red=t('user.judge.activities.description') if @activity.description
         %p= @activity.description
         -if @activity.activity_type == "Curso"
