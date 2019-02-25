@@ -7,9 +7,11 @@
           = t('user.judge.activities.on_old.objetive')
       
       -if @activity_status.nil?
-        = link_to t("activities.status_approve"),  judge_activity_activity_status_index_path(@activity), method: :post
+        = link_to image_tag('ic-not-approved', :class => "check-activity approve-false", :id => "approve"),  judge_activity_activity_status_index_path(@activity), method: :post
+        %label= "#{t('activities.status_approve')}"
       - else
-        = link_to t('activities.status_unapprove'), judge_activity_activity_status_path(@activity), method: :delete, data: {confirm: t('actions.confirm')}
+        = link_to image_tag('ic-checked', :class => "check-activity approve-true", :id => "disapprove"), judge_activity_activity_status_path(@activity), method: :delete, data: {confirm: t('actions.confirm')}
+        %label= "#{t('activities.status_approved')}"
       %h3
         = @activity.name
       %h6.mt-4
@@ -33,7 +35,7 @@
           %p= @activity.abstract_outline
       
       - unless @activity.notes&.empty?
-        %h6.text= t("labels.link")
+        %h6.text.red= t("labels.link")
         %p= @activity.notes
       
       - if !@activity.locations.empty? || @activity.english
@@ -43,7 +45,10 @@
           %em.text.red= t('labels.evaluate')
       -if @activity.english
         %p 
-          = link_to image_tag('ic-checked', :class => "check-activity approve-#{@activity.english_approve}"), judge_activity_path(@activity), method: :patch
+          - if @activity.english_approve
+            = link_to image_tag('ic-checked', :class => "check-activity approve-#{@activity.english_approve}"), judge_activity_path(@activity), method: :patch
+          - else 
+            = link_to image_tag('ic-not-approved', :class => "check-activity approve-#{@activity.english_approve}"), judge_activity_path(@activity), method: :patch
           %label= t('labels.english')
 
       - unless @activity.locations.empty?
@@ -51,7 +56,10 @@
         %ul
           - @activity.locations&.each do |events|
             %li
-              = link_to image_tag('ic-checked', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch
+              -if events.approve 
+                = link_to image_tag('ic-checked', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch
+              -else 
+                = link_to image_tag('ic-not-approved', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch  
               %label= "#{events.name}"
 
     .activities  

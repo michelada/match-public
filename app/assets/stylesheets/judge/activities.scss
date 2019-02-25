@@ -1,3 +1,31 @@
+.tags_box {
+  background: $blue;
+  border-radius: $border-radius;
+  border: 2px solid $light-blue;
+  margin-bottom: 20px;
+  display: flex;
+  padding: $regular-padding;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    li {
+      background: $light-blue;
+      border-radius: 15px;
+      display: flex;
+      font-size: $secondary-font-size;
+      margin: 0 5px 5px 0;
+      padding: 3px $regular-padding;
+      a {
+        cursor: pointer;
+        margin-left: $regular-margin;
+      }
+    }
+  }
+}
 .judge {
   .button-group {
     list-style: none;
@@ -40,7 +68,6 @@
   li {
     background: $blue;
     border-radius: 15px;
-    display: flex;            
     font-size: $secondary-font-size;
     margin: 0 5px 5px 0;
     padding: 3px $regular-padding;
@@ -49,11 +76,20 @@
       margin-left: $regular-margin;
     }
   }
-  a.approve-true{
-        margin-left: 0;
-        color: $green;
-    }.approve-false{
-      margin-left: 0;
-    }
+  img.approve-true{
+    background-color: $green;
+    padding: 3px;
+  }
+  img.approve-false{
+    margin-left: 0;
+    background-color: $light-blue;
+  }
+  img.check-activity {
+    height: $secondary-icon-size;
+    width: $secondary-icon-size;
+    border-radius: 50%;
+    margin: 5px;
+  }
 }
+
 
