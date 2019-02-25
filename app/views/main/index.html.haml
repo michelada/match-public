@@ -10,28 +10,26 @@
       %h1
         Top
         %strong.text.yellow 3
-    - if @top_teams.empty?
+    - if @top_teams.length == 0
       %h3.text-center.mt5
         = t("team.messages.no_teams")
     - else
       %p.top-three.mb-5
         -@top_teams.each do |team|
           .d-flex.justify-content-between.mb-4
-            .long-line2= team.name
+            = team.name
             .text.red
               = "#{team.total_score} pts"
       .collapsed-teams
         -@all_teams.each_with_index do |team, i|
           - if i > 2
             .d-flex.justify-content-between.mb-4
-              .long-line2= team.name
+              = team.name
               .text.red
                 = "#{team.total_score} pts"
-    - unless @top_teams.empty?
-      .text-center
-        = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
-    - else
-      %br
+
+    .text-center
+      = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
 
     %h3.d-flex.justify-content-center.align-items-center
       =t('labels.look_who_is')
@@ -40,8 +38,8 @@
     .latest-activities.mt-5.mb-5
       -@latest_activities.each do |activity|
         .activity
-          .long-line2.mb-3= activity.name
+          .mb-3= activity.name
           .mb-3= activity.user.team&.name
           .d-flex.mb-3.justify-content-between
             = activity.activity_type
-            .text.red= "#{t('labels.aspire_to')} #{activity.score} #{t('labels.points')}"
+            .text.red= "#{t('labels.tentative_score')} #{activity.score}pts"
