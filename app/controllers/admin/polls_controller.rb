@@ -15,11 +15,16 @@ module Admin
 
     def create
       @poll = Poll.new(poll_params)
-      if @poll.save
+      if user_can_create_poll? && @poll.save
         flash[:notice] = t('poll.created')
         redirect_to admin_polls_path
       else
-        flash[:alert] = t('poll.error_creating')
+
+        if !Poll.enabled_polls.empty?
+          flash[:error] = t('poll.error_actual_poll')
+        else
+          flash[:alert] = t('poll.error_creating')
+        end
         render 'new'
       end
     end
@@ -30,7 +35,7 @@ module Admin
         flash[:notice] = t('polls.updated')
         redirect_to admin_polls_path
       else
-        flash[:alert] = t('polls.error_updating')
+        flash[:alert] = t('poll.error_updating')
         render 'edit'
       end
     end
@@ -38,9 +43,9 @@ module Admin
     def destroy
       @poll = Poll.find(params[:id])
       if @poll.destroy
-        flash[:notice] = t('polls.deleted')
+        flash[:notice] = t('poll.deleted')
       else
-        flash[:alert] = t('polls.error_deleting')
+        flash[:alert] = t('poll.error_deleting')
       end
       redirect_to admin_polls_path
     end
@@ -49,6 +54,10 @@ module Admin
 
     def poll_params
       params.require(:poll).permit(:end_date, :start_date, :activities_from, :activities_to)
+    end
+
+    def user_can_create_poll?
+      Poll.enabled_polls.empty?
     end
   end
 end

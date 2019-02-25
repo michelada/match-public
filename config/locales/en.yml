@@ -143,6 +143,7 @@ en:
     created: "Poll created"
     edit_poll: "Edit poll"
     empty_activities: "There is no activities to vote"
+    error_actual_poll: "You can not create a new poll while you are un voting date"
     error_accesing: "You can not access to this poll"
     error_creating: "Error creating poll"
     error_updating: "Error updating poll"
