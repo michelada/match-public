@@ -17,10 +17,7 @@
       %h6.mt-4
         = @activity.activity_type
         %em.points= "#{@activity.score} #{t('labels.points')}"
-      -if @activity.activity_type == 'Post'
-        %h6.text.red= t('user.judge.activities.description') if @activity.description
-        %p= @activity.description
-      -else
+      -unless @activity.activity_type == 'Post'
         %h6.text.red=t('user.judge.activities.description') if @activity.description
         %p= @activity.description
         -if @activity.activity_type == "Curso"
@@ -51,8 +48,8 @@
             = link_to image_tag('ic-not-approved', :class => "check-activity approve-#{@activity.english_approve}"), judge_activity_path(@activity), method: :patch
           %label= t('labels.english')
 
+      %h6.text.red= t('labels.events')
       - unless @activity.locations.empty?
-        %h6.text.red= t('labels.location')
         %ul
           - @activity.locations&.each do |events|
             %li
@@ -61,6 +58,9 @@
               -else 
                 = link_to image_tag('ic-not-approved', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch  
               %label= "#{events.name}"
+      - else
+        %p= t('labels.not_location')
+
 
     .activities  
       - if @activity.file.attached? 
