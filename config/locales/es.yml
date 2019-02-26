@@ -79,7 +79,7 @@ es:
     events: "Eventos:"
     extra_points: "Puntos extra"
     fight: "PELEA"
-    information: "Sólo .jpg, .jpeg, .png, .key o .pdf"
+    information: "Sólo .zip, .jpg, .jpeg, .png, .key o .pdf"
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
     last_day: 'Recuerda ejercer tu derecho a votar, tienes hasta: '
