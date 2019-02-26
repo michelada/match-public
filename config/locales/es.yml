@@ -96,6 +96,7 @@ es:
     points: "pts"
     polls: "Votaciones"
     post: "Post"
+    reviewing: "En revisión"
     role: "Rol"
     score: "Puntaje:"
     selected_file: "Archivo seleccionado"
