@@ -3,10 +3,12 @@
     .judge
       = render partial: 'judge/form'
       - @activities&.sort_by{|activity| activity.name.capitalize}.each do |activity|
-        %p.long-line2= activity.name
-        .d-flex.justify-content-between
-          %p
-            = activity.activity_type
-          = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), judge_activity_path(activity)
-        %p= activity.status
+        %div{id: "activity_#{activity.id}"}
+          %p.long-line2= activity.name
+          .d-flex.justify-content-between
+            %p
+              = activity.activity_type
+            = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), judge_activity_path(activity)
+          %p{class: activity.css_class}
+            = activity.status
         %hr.section
