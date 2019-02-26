@@ -7,7 +7,7 @@
   .form-group
     %p
       = t('labels.end_date')
-      = f.date_select :end_date, start_year: Date.today.year, end_year:  Date.today.year+1, class: "form-control"
+      = f.date_select :end_date, start_year: Date.today.year,  end_year:  Date.today.year+1, class: "form-control"
   %h4
     = t('labels.activities_range')
   .form-group

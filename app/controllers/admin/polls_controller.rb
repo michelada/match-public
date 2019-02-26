@@ -19,12 +19,7 @@ module Admin
         flash[:notice] = t('poll.created')
         redirect_to admin_polls_path
       else
-
-        if !Poll.enabled_polls.empty?
-          flash[:error] = t('poll.error_actual_poll')
-        else
-          flash[:alert] = t('poll.error_creating')
-        end
+        flash[:alert] = Poll.enabled_polls.empty? ? t('poll.error_creating') : t('poll.error_actual_poll')
         render 'new'
       end
     end
@@ -57,7 +52,8 @@ module Admin
     end
 
     def user_can_create_poll?
-      Poll.enabled_polls.empty?
+      binding.pry
+      Poll.polls_in_range(@poll.start_date, @poll.end_date).empty?
     end
   end
 end

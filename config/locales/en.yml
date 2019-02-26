@@ -146,6 +146,7 @@ en:
     error_actual_poll: "You can not create a new poll while you are un voting date"
     error_accesing: "You can not access to this poll"
     error_creating: "Error creating poll"
+    error_dates: "End date can not be minor than start date"
     error_updating: "Error updating poll"
     title: "Polls"
     updated: "Poll updated"

@@ -150,6 +150,8 @@ es:
     error_accesing: "No puedes acceder a esta votación"
     error_actual_poll: "No puedes crear una nueva votación mientras estás en fecha de votaciones"
     error_creating: "La votación no ha sido creada"
+    error_date_start: "Las votaciones no pueden iniciar antes de la fecha actual"
+    erros_dates: "La fecha final no puede ser menor a la fecha inicial"
     error_updating: "Error actualizado la votación"
     title: "Votaciones"
     updated: "Votación actualizada"
