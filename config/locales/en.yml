@@ -93,6 +93,7 @@ en:
     pitch: "Pitch"
     points: "pts"
     polls: "Polls"
+    reviewing: "On review"
     role: "Role"
     score: "Score:"
     selected_file: "Selected file"
