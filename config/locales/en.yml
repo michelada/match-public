@@ -233,3 +233,5 @@ en:
               taken: "Email already registered"
             password_confirmation:
               confirmation: "Password does not match"
+            reset_password_token:
+              invalid: "Invalid token"

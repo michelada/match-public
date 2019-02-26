@@ -234,6 +234,8 @@ es:
             password:
               too_short: "Debes ingresar una contraseña de al menos 6 caracteres"
               blank: "Debes ingresar una contraseña"
+            reset_password_token:
+              invalid: "Token invalido"
             email:
               blank: "Debes ingresar un E-mail"
               already_has_team: "Este usuario ya pertenece a un equipo"
