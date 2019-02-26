@@ -24,9 +24,9 @@ module Admin
 
     test 'admin user can create a poll' do
       sign_in @admin_user
-      post admin_polls_path, params: { poll: { start_date: '2019-02-10', end_date: '2019-04-10',
-                                               activities_from: '2019-01-10',
-                                               activities_to: '2019-09-01' } }
+      post admin_polls_path, params: { poll: { start_date: Date.today, end_date: Date.today + 2.weeks,
+                                               activities_from: '2019-09-10',
+                                               activities_to: '2019-01-01' } }
       assert_redirected_to admin_polls_path
       assert_equal flash[:notice], I18n.t('poll.created')
     end
