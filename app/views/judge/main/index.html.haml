@@ -25,7 +25,8 @@
           - @all_activities&.sort_by{|activity| activity.created_at}.each do |activity|
             %div{id: "activity_#{activity.id}"}
               %p.long-line2= activity.name
-              %p= activity.status
+              %p{class: activity.css_class}
+                = activity.status
               .d-flex.justify-content-between
                 %p
                   = activity.activity_type
