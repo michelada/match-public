@@ -26,6 +26,7 @@
     }
   }
 }
+
 .judge {
   .button-group {
     list-style: none;
@@ -51,12 +52,9 @@
       background: $light-blue;
       color: $yellow;
     }
-    .activePill{
-      background-color: $warning;
-    }
-    .inactivePill {
-      background-color: $white;
-    }
+  }
+  .button.activePill{
+    color: $warning;
   }
   .icon-detail {
     fill: $yellow;
