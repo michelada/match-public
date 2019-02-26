@@ -6,6 +6,7 @@ module Admin
     end
 
     def new
+      redirect_to admin_polls_path unless available_to_create_poll
       @poll = Poll.new
     end
 
@@ -14,12 +15,13 @@ module Admin
     end
 
     def create
+      redirect_to admin_polls_path unless available_to_create_poll
       @poll = Poll.new(poll_params)
-      if user_can_create_poll? && @poll.save
+      if @poll.save
         flash[:notice] = t('poll.created')
         redirect_to admin_polls_path
       else
-        flash[:alert] = Poll.enabled_polls.empty? ? t('poll.error_creating') : t('poll.error_actual_poll')
+        flash[:alert] = Poll.pending_polls(Date.today).empty? ? t('poll.error_creating') : t('poll.error_actual_poll')
         render 'new'
       end
     end
@@ -49,11 +51,6 @@ module Admin
 
     def poll_params
       params.require(:poll).permit(:end_date, :start_date, :activities_from, :activities_to)
-    end
-
-    def user_can_create_poll?
-      binding.pry
-      Poll.polls_in_range(@poll.start_date, @poll.end_date).empty?
     end
   end
 end

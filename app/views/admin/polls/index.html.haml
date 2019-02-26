@@ -24,4 +24,4 @@
                 = link_to image_tag('ic-edit'), edit_admin_poll_path(poll)
                 = link_to image_tag('ic-delete'), admin_poll_path(poll), method: :delete, data: {confirm:t('actions.confirm') }
     %br
-    = link_to t('poll.create_new'), new_admin_poll_path, class: 'button'
+    = link_to t('poll.create_new'), new_admin_poll_path, class: 'button' if available_to_create_poll
