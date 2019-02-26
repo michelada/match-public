@@ -30,15 +30,11 @@
 .judge {
   .button-group {
     list-style: none;
-    margin-left: 25%;
     .button.pill:first-child {
       border-radius: .7em 0  0 .7em;
     }
     .button.pill:last-child {
       border-radius: 0 .7em .7em 0;
-    }
-    @include breakpoint(mobile){
-    margin-left: 0;
     }
   }
   .button.pill {
