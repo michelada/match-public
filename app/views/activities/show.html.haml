@@ -46,7 +46,7 @@
       - else
         %p= t('labels.not_location')
       - if @activity.file.attached?
-        = link_to t('labels.download'), rails_blob_path(@activity.file, disposition: "attachment"), target: :_blank, class:'button'
+        = link_to t('labels.download'), @activity.file, disposition: "attachment", class:'button', target: :_blank
       %hr.mt-5
 
       %h5.mt-5.mb-5
