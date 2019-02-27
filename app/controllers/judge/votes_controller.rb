@@ -1,13 +1,13 @@
 module Judge
   class VotesController < ApplicationController
+    before_action :user_can_vote?, only: [:create]
+
     def create
       assign_vote_value
-      if user_can_vote
-        if @vote.save
-          flash[:notice] = t('votes.voted')
-        else
-          flash[:alert] = t('votes.error_voting')
-        end
+      if @vote.save
+        flash[:notice] = t('votes.voted')
+      else
+        flash[:alert] = t('votes.error_voting')
       end
       redirect_to judge_polls_path
     end
@@ -32,13 +32,13 @@ module Judge
       @vote.value = 50
     end
 
-    def user_can_vote
+    def user_can_vote?
       activity_type = Activity.type_of_activity(params[:activity_id])
       user_has_voted = Vote.judge_has_voted_for_type(activity_type.first.type)
       return true if user_has_voted.empty?
 
       flash[:alert] = t('votes.error_type')
-      false
+      redirect_to judge_polls_path
     end
   end
 end

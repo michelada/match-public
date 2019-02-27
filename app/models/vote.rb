@@ -15,5 +15,15 @@ class Vote < ApplicationRecord
     .where('users.role = ?', 1)
   })
 
+  scope :top_activities, (lambda { |poll|
+    where(poll_id: poll)
+    .joins(:activity)
+      .group('activities.activity_type, activities.name')
+    .select('activities.activity_type as type')
+      .select('activities.activity_type as type, activities.name as name, sum(votes.value) as points')
+      .order('points desc')
+    distinct('activities.activity_type')
+  })
+
   scope :judge_activities_votes, -> { joins(:user).where('users.role = ?', 1).select('votes.id as id, votes.activity_id as activity_id') }
 end
