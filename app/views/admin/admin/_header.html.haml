@@ -1,7 +1,8 @@
-%header.header{ class: controller_name }
+%header
   - if user_signed_in?
     .container.header
       = link_to admin_user_manager_index_path do
-        = image_tag 'michelada_white_one', alt: 'company-logo', height: 60, class: 'company-logo'
-    - if controller_name != "polls"
-      = link_to t('labels.polls'), admin_polls_path
+        = image_tag 'mcm-logo', alt: 'mcm-logo', height: 60, class: 'company-logo'
+      .nav
+        = link_to  admin_polls_path do
+          = render partial: 'icons/ic_poll', locals: {is_active: controller_path == 'admin/polls' }

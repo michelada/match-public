@@ -3,9 +3,8 @@
     display: block;
     height: 120px;
     margin: auto;
-    margin-bottom: $regular-margin;
+    margin-bottom: calc(#{$regular-margin} * 3);
     margin-top: $regular-margin;
-    width: 120px;
   }
   .container-information {
     text-align: center;
@@ -22,7 +21,7 @@
       display: inline-block;
       text-transform: uppercase;
       font-weight: 500;
-      font-size: 18px;
+      font-size: $third-font-size;
     }
     .magic span:first-letter {
       color: $red;
