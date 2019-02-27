@@ -152,9 +152,11 @@ en:
     error_dates: "End date can not be minor than start date"
     error_updating: "Error updating poll"
     title: "Polls"
-    updated: "Poll updated"
     vote: "Vote"
     votes: "Votes"
+  polls:
+    deleted: "Poll deleted"
+    updated: "Poll updated"
   user:
     change_password: "Change password"
     confirm_new_password: "Confirm new password"

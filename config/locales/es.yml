@@ -155,9 +155,11 @@ es:
     error_dates: "La fecha final debe ser mayor a la fecha inicial"
     error_updating: "Error actualizado la votación"
     title: "Votaciones"
-    updated: "Votación actualizada"
     vote: "Vota"
     votes: "Votos"
+  polls:
+    deleted: "Votación eliminada"
+    updated: "Votación actualizada"
   user:
     change_password: "Cambiar contraseña"
     confirm_new_password: "Confirmar nueva contraseña"

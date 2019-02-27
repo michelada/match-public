@@ -20,13 +20,13 @@
             .d-flex.justify-content-between.mb-4
               = team.name
               .text.red
-                = "#{team.total_score} pts"
+                = "#{team.total_score} #{t('labels.points')}"
           -else 
             .collapsed-teams
               .d-flex.justify-content-between.mb-4
                 = team.name
                 .text.red
-                  = "#{team.total_score} pts"
+                  = "#{team.total_score} #{t('labels.points')}"
     - unless @all_teams.empty?
       .text-center
         = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
@@ -40,7 +40,7 @@
     .latest-activities.mt-5.mb-5
       -@latest_activities.each do |activity|
         .activity
-          .long-line2.mb-3= activity.name
+          .mb-3= activity.name
           .mb-3= activity.user.team&.name
           .d-flex.mb-3.justify-content-between
             = activity.activity_type
