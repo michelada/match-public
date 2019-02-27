@@ -9,7 +9,7 @@ module Judge
       else
         flash[:alert] = t('votes.error_voting')
       end
-      redirect_to judge_polls_path
+      redirect_to polls_path
     end
 
     def destroy
@@ -19,7 +19,7 @@ module Judge
       else
         flash[:alert] = t('votes.error_unvoting')
       end
-      redirect_to judge_polls_path
+      redirect_to polls_path
     end
 
     private
@@ -38,7 +38,7 @@ module Judge
       return true if user_has_voted.empty?
 
       flash[:alert] = t('votes.error_type')
-      redirect_to judge_polls_path
+      redirect_to polls_path
     end
   end
 end

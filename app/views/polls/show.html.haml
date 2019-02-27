@@ -26,10 +26,16 @@
                     %td
                       = link_to activity.name, activity_path(activity)
                     %td.text-center
-                      - if activity.votes.where(user: current_user.id).empty?
-                        = link_to '', poll_activity_votes_path(@poll.id, activity), method: :post, class:'activity-vote'
+                      - if @activities_votes.map(&:activity_id).exclude?(activity.id)
+                        -if current_user.role == 'judge'
+                          = link_to '', judge_poll_activity_votes_path(@poll.id, activity), method: :post, class:'activity-vote'
+                        -else
+                          = link_to '', poll_activity_votes_path(@poll.id, activity), method: :post, class:'activity-vote'
                       -else
-                        = link_to '', poll_activity_vote_path(@poll.id, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+                        -if current_user.role == 'judge'
+                          = link_to '', judge_poll_activity_vote_path(@poll.id, activity, activity.votes.where(activity_id: activity.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+                        -else
+                          = link_to '', poll_activity_vote_path(@poll.id, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
                           
     %br
     %h2.text.red.text-center.mb-5

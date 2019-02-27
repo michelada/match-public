@@ -25,5 +25,16 @@ class Vote < ApplicationRecord
     distinct('activities.activity_type')
   })
 
-  scope :judge_activities_votes, -> { joins(:user).where('users.role = ?', 1).select('votes.id as id, votes.activity_id as activity_id') }
+  scope :judge_activities_votes, (lambda { |poll_id|
+    where('votes.poll_id = ?', poll_id)
+    .joins(:user).where('users.role = ?', 1)
+    .select('votes.id as id, votes.activity_id as activity_id')
+  })
+
+  scope :user_activities_votes, (lambda { |poll_id, user_id|
+    where('votes.poll_id = ?', poll_id)
+    .joins(:user)
+    .where('users.id = ?', user_id)
+    .select('votes.id as id, votes.activity_id as activity_id')
+  })
 end
