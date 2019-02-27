@@ -34,7 +34,7 @@
 
   @include breakpoint(mobile) {
     .company-logo {
-      width: 100px;
+      height: 35px;
       object-fit: cover;
       object-position: left;
     }
