@@ -50,8 +50,8 @@ class Activity < ApplicationRecord
     .where('votes.poll_id = ?', poll_id)
     .where('activities.activity_type = ?', type)
     .group('activities.name')
-    .select('activities.name, sum(votes.value) as value')
-    .order('sum(votes.value) desc').limit(1)
+    .select('activities.name, sum(votes.value) as points')
+    .order('points desc').limit(1)
   })
   validates :pitch_audience, :abstract_outline, :description, presence: true, if: :activity_type_is?
   validates :name, presence: true

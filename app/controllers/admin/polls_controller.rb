@@ -29,7 +29,7 @@ module Admin
     def update
       @poll = Poll.find(params[:id])
       if @poll.update(poll_params)
-        flash[:notice] = t('polls.updated')
+        flash[:notice] = t('poll.updated')
         redirect_to admin_polls_path
       else
         flash[:alert] = t('poll.error_updating')
