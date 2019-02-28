@@ -55,7 +55,7 @@ group :production, :staging do
   gem 'pg'
 end
 
-group :produciton do
+group :production do
   gem 'sentry-raven'
 end
 
