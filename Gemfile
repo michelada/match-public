@@ -53,6 +53,9 @@ end
 group :production, :staging do
   gem 'aws-sdk'
   gem 'pg'
+end
+
+group :produciton do
   gem 'sentry-raven'
 end
 
