@@ -1,0 +1,62 @@
+.container.center-vertical.polls
+  .main-content.medium.mt-5
+    %h2.text.red.text-center.mb-5
+      = t('labels.vote')
+    .mb-2
+      %p.message.text-center
+        = t('labels.last_day')
+      %p.message.text-center
+        = @poll.end_date
+    %br
+      .mb-1
+        %table
+          %tbody
+            - @activity_types.each do |type|
+              %tr
+                %td{colspan: 3}
+                  %h2.mt-4= type.activity_type
+              %tr
+                %td
+                  = t('placeholders.activity_name')
+                %td.text-center
+                  = t('buttons.actions')
+              - @activities.each do |activity|
+                -if activity.activity_type == type.activity_type
+                  %tr
+                    %td
+                      = link_to activity.name, activity_path(activity)
+                    %td.text-center
+                      - if @activities_votes.map(&:activity_id).exclude?(activity.id)
+                        -if current_user.role == 'judge'
+                          = link_to '', judge_poll_activity_votes_path(@poll.id, activity), method: :post, class:'activity-vote'
+                        -else
+                          = link_to '', poll_activity_votes_path(@poll.id, activity), method: :post, class:'activity-vote'
+                      -else
+                        -if current_user.role == 'judge'
+                          = link_to '', judge_poll_activity_vote_path(@poll.id, activity, activity.votes.where(activity_id: activity.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+                        -else
+                          = link_to '', poll_activity_vote_path(@poll.id, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+                          
+    %br
+    %h2.text.red.text-center.mb-5
+      = 'Mejores actividades'
+
+    .mb-1
+      %table
+        %thead
+          %tr
+            %td
+              = t('activities.type')
+            %td
+              = t('activities.name')
+            %td
+              = t('activities.points')
+        %tbody
+          - @best_activities.each_with_index do |activities_type, index|
+            %tr
+              %td
+                = Activity.activity_types.keys[index]
+              %td
+                = activities_type.first&.name
+              %td
+                .text-red= "#{activities_type.first&.points} #{t('labels.points')}"

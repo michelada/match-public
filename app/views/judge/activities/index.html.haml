@@ -2,7 +2,7 @@
   .contain.center-vertical
     .judge
       = render partial: 'judge/form'
-      - @activities&.sort_by{|activity| activity.name.capitalize}.each do |activity|
+      - @all_activities&.sort_by{|activity| activity.name.capitalize}.each do |activity|
         %p.long-line2= activity.name
         .d-flex.justify-content-between
           %p

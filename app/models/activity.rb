@@ -43,6 +43,14 @@ class Activity < ApplicationRecord
       .limit(team_count)
   })
   scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
+  scope :best_activities, (lambda { |poll_id, type|
+    joins(:votes)
+    .where('votes.poll_id = ?', poll_id)
+    .where('activities.activity_type = ?', type)
+    .group('activities.name')
+    .select('activities.name, sum(votes.value) as points')
+    .order('points desc').limit(1)
+  })
   validates :pitch_audience, :abstract_outline, :description, presence: true, if: :activity_type_is?
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }

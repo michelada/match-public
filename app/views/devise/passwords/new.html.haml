@@ -1,7 +1,7 @@
 .center-content-vertical
   .main-content.container.medium.mt-5
     .image-content
-      = link_to (image_tag 'michelada_white_one', alt: 'michelada', width: '250', class: 'image-michelada'), root_path
+      = link_to (image_tag 'mcm-logo', alt: 'mcm-logo', width: '250', class: 'michelada-icon'), root_path
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       = devise_error_messages!
       .field
