@@ -1,7 +1,7 @@
 .center-content-vertical
   .container.main-content.medium
     .image-content
-      = image_tag 'michelada_white_one', alt: 'michelada', width: '250', class: 'image-michelada'
+      = image_tag 'mcm-logo', alt: 'michelada', width: '250', class: 'michelada-icon'
     .information-content
       = bootstrap_form_for(resource, as: resource_name, url:  invitation_path(resource_name), html: { method: :put }) do |f|
         = f.hidden_field :invitation_token, readonly: true
