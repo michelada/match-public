@@ -18,6 +18,7 @@ class Activity < ApplicationRecord
   has_many :locations, dependent: :destroy
   has_many :feedback, dependent: :destroy
   has_many :activity_statuses, dependent: :destroy
+  has_many :votes, dependent: :destroy
   enum activity_type: { Curso: 0, Plática: 1, Post: 2 }
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
   has_one_attached :file, dependent: :destroy
