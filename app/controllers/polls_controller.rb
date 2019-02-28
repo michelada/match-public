@@ -12,7 +12,6 @@ class PollsController < ApplicationController
                         else
                           Vote.user_activities_votes(@poll.id, current_user.id)
                         end
-
     @activity_types = @activities.group(:activity_type).select(:activity_type)
     @best_activities = []
     3.times { |i| @best_activities << Activity.best_activities(@poll.id, i) }

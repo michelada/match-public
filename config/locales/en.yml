@@ -155,6 +155,7 @@ en:
     error_dates: "End date can not be minor than start date"
     error_updating: "Error updating poll"
     title: "Polls"
+    updated: "Poll updated"
     vote: "Vote"
     votes: "Votes"
   polls:

@@ -158,6 +158,7 @@ es:
     error_dates: "La fecha final debe ser mayor a la fecha inicial"
     error_updating: "Error actualizado la votación"
     title: "Votaciones"
+    updated: "Votación actualizada correctamente"
     vote: "Vota"
     votes: "Votos"
   polls:
