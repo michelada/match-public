@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :user_has_permissions, only: [:edit, :update]
   def new
     d = DateTime.now.in_time_zone('Mexico City')
-    d2 = DateTime.new(2019, 3, 1, 16, 50, 0)
+    d2 = DateTime.new(2019, 3, 1, 18, 0, 0)
     if d.strftime('%d/%m/%Y %H:%M') < d2.strftime('%d/%m/%Y %H:%M')
       if current_user.team.nil?
         redirect_to new_team_path
