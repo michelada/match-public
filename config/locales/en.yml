@@ -6,6 +6,7 @@ en:
   activities:
     add: "Add activity"
     all: "All activities"
+    closed: "The time for uploading activities is over."
     edit_activity: "Edit activity"
     my_activities: "My activities"
     name: "Name"
