@@ -4,6 +4,10 @@ class Poll < ApplicationRecord
   scope :pending_polls, (lambda { |date|
     where('(polls.start_date > ?) OR polls.end_date > ? ', date, date)
   })
+  scope :lasted_ended_poll, (lambda { |date|
+    where('polls.end_date < ?', date)
+    .order('polls.end_date des')
+  })
   validates :start_date, :end_date, :activities_from, :activities_to, presence: true
   validate :valid_date_range
 end
