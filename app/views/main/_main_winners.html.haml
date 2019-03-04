@@ -1,0 +1,22 @@
+.d-flex.align-items-center.mt-4.mb-5
+  = image_tag 'ic-prize', alt: 'prize', height: '90', class: 'mr-3'
+  %h1
+    %strong
+      = t('team.winner')
+%h2
+  = @winner_team.first.name
+  .text-red
+    = "#{@winner_team.first.total_score} #{t('labels.points')}"
+%br
+%h3.d-flex.justify-content-center.align-items-center
+  =t('activities.best')
+  .text.red.increase-3.ml-3= t('activities.label')
+
+
+.latest-activities.mt-5.mb-5
+  -@last_activities.each_with_index do |activity, index|
+    .activity
+      .mb-3= activity.first.name
+      .d-flex.mb-3.justify-content-between
+        = Activity.activity_types.keys[index]
+      .text-red= "#{activity.first&.points} #{t('labels.points')}"

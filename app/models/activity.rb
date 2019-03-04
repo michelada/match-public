@@ -43,6 +43,18 @@ class Activity < ApplicationRecord
       .order('total_score DESC')
       .limit(team_count)
   })
+
+  scope :last_team_winner, (lambda { |poll|
+    where('activities.status = ?', 2)
+      .joins(:user).joins('INNER JOIN teams ON users.team_id = teams.id')
+      .joins(:votes)
+      .where('votes.poll_id = ?', poll)
+      .group('teams.name')
+      .select('teams.name as name, sum(activities.score) as total_score')
+      .order('total_score DESC')
+      .limit(1)
+  })
+
   scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
   scope :best_activities, (lambda { |poll_id, type|
     joins(:votes)
