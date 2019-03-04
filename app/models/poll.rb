@@ -7,7 +7,7 @@ class Poll < ApplicationRecord
 
   scope :last_ended_poll, (lambda { |date|
     where('polls.end_date < ?', date)
-    .order('polls.end_date des')
+    .order('end_date desc')
   })
 
   scope :users_can_vote, (lambda { |date|
