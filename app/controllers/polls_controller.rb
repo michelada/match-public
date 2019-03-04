@@ -1,4 +1,6 @@
 class PollsController < ApplicationController
+  before_action :user_can_acces?
+
   def index
     @poll = Poll.last
     redirect_to poll_path(@poll.id)
@@ -19,5 +21,12 @@ class PollsController < ApplicationController
 
     flash[:alert] = t('poll.empty_activities')
     redirect_to main_index_path
+  end
+
+  def user_can_acces?
+    return unless Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).empty?
+    
+    flash[:alert] = t('poll.error_accesing')
+    redirect_to team_path
   end
 end
