@@ -21,7 +21,6 @@ module Api
       }
       response.to_json
     end
-    
 
     def last_activity_format(activity)
       activity_type = activity.activity_type == 'Post' ? 'Post' : get_activity_type_en(activity.activity_type)
@@ -38,7 +37,7 @@ module Api
       response = obtain_base_object.clone
       response['data'] = []
       response['valueNameHeader'] = 'Activities'
-      response["valueHeader"] = 'TOP 3'
+      response['valueHeader'] = 'TOP 3'
       activity.each_with_index do |activities, index|
         response['data'].push(
           name: "#{Activity.activity_types.keys[index]}-#{activities.first.name}",

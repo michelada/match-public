@@ -6,7 +6,7 @@ module Api
         @response = ::Api::ApiService.new.top_teams_format(@top_five_teams)
         render json: @response
       else
-       api
+        api
       end
     end
 
