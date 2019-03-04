@@ -12,6 +12,17 @@ module Api
       response.to_json
     end
 
+    def winner_team(team)
+      response = obtain_label_object.clone
+      response['data'] = []
+      response['postfix'] = "Winner Team #{team.name}"
+      response['data'] = {
+        value: team.name
+      }
+      response.to_json
+    end
+    
+
     def last_activity_format(activity)
       activity_type = activity.activity_type == 'Post' ? 'Post' : get_activity_type_en(activity.activity_type)
       response = obtain_label_object.clone
