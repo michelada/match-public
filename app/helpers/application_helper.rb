@@ -10,6 +10,6 @@ module ApplicationHelper
   end
 
   def there_are_not_polls
-    Poll.users_can_vote(Date.today).empty?
+    Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).empty?
   end
 end
