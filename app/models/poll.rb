@@ -4,6 +4,12 @@ class Poll < ApplicationRecord
   scope :pending_polls, (lambda { |date|
     where('(polls.start_date > ?) OR polls.end_date > ? ', date, date)
   })
+
+  scope :last_ended_poll, (lambda { |date|
+    where('polls.end_date < ?', date)
+    .order('polls.end_date des')
+  })
+
   scope :users_can_vote, (lambda { |date|
     where('polls.start_date <= ?', date)
   })
