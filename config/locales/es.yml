@@ -7,8 +7,10 @@ es:
   activities:
     add: "Agregar actividad"
     all: "Todas las actividades"
+    best: "Mejores"
     closed: "El tiempo para subir actividades ha terminado."
     edit_activity: "Editar actividad"
+    label: "ACTIVIDADES"
     my_activities: "Mis actividades"
     name: "Nombre"
     pending: "Actividades por revisar"
@@ -120,6 +122,7 @@ es:
     destroy: "Eliminar equipo"
     edit: "Editar equipo"
     error_accessing: "No puedes acceder a otro team"
+    winner: "Equipo ganador"
     messages:
       created: "Equipo creado"
       deleted: "Equipo eliminado"

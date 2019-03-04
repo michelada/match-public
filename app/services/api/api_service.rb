@@ -15,9 +15,9 @@ module Api
     def winner_team(team)
       response = obtain_label_object.clone
       response['data'] = []
-      response['postfix'] = "Winner Team #{team.name}"
+      response['postfix'] = "Score #{team.first.total_score}"
       response['data'] = {
-        value: team.name
+        value: team.first.name
       }
       response.to_json
     end
@@ -31,6 +31,20 @@ module Api
       response['data'] = {
         value: activity.name
       }
+      response.to_json
+    end
+
+    def top_activities_format(activity)
+      response = obtain_base_object.clone
+      response['data'] = []
+      response['valueNameHeader'] = 'Activities'
+      response["valueHeader"] = 'TOP 3'
+      activity.each_with_index do |activities, index|
+        response['data'].push(
+          name: "#{Activity.activity_types.keys[index]}-#{activities.first.name}",
+          value: activities.first.points
+        )
+      end
       response.to_json
     end
 
