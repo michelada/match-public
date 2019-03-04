@@ -19,7 +19,6 @@ class MainController < ApplicationController
       @latest_activities = []
       3.times { |i| @latest_activities << Activity.best_activities(Poll.last, i) }
     end
-
   end
 
   private
