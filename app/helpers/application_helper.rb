@@ -10,6 +10,6 @@ module ApplicationHelper
   end
 
   def there_are_not_polls
-    Poll.pending_polls(Date.today).empty?
+    Poll.users_can_vote(Date.today).empty?
   end
 end

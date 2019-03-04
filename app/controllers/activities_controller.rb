@@ -1,20 +1,15 @@
 class ActivitiesController < ApplicationController
-  before_action :user_has_permissions, only: [:edit, :update]
+  before_action :user_has_permissions?, only: [:edit, :update]
+  before_action :user_can_upload_activity?, only: [:new, :create]
+
   def new
-    d = DateTime.now.in_time_zone('Mexico City')
-    d2 = DateTime.new(2019, 3, 1, 18, 0, 0)
-    if d.strftime('%d/%m/%Y %H:%M') < d2.strftime('%d/%m/%Y %H:%M')
-      if current_user.team.nil?
-        redirect_to new_team_path
-      else
-        @activity = Activity.new
-        @feedback = Feedback.new
-        @locations = Location.all
-        @selected_locations = []
-      end
+    if current_user.team.nil?
+      redirect_to new_team_path
     else
-      redirect_to team_path(current_user.team)
-      flash[:alert] = t('activities.closed')
+      @activity = Activity.new
+      @feedback = Feedback.new
+      @locations = Location.all
+      @selected_locations = []
     end
   end
 
@@ -95,12 +90,21 @@ class ActivitiesController < ApplicationController
                                      :abstract_outline, :notes, :file)
   end
 
-  def user_has_permissions
+  def user_has_permissions?
     activity = Activity.find(params[:id])
     return true if current_user.id == activity.user.id
 
     flash[:alert] = t('activities.messages.error_accessing')
     redirect_to root_path
+  end
+
+  def user_can_upload_activity?
+    actual_date = DateTime.now.in_time_zone('Mexico City')
+    limit_date = DateTime.new(2019, 3, 1, 18, 0, 0)
+    return if actual_date < limit_date
+
+    redirect_to team_path(current_user.team)
+    flash[:alert] = t('activities.closed')
   end
 
   def assing_instance_variables
