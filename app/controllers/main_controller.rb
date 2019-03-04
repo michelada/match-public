@@ -16,8 +16,8 @@ class MainController < ApplicationController
       @total_score = Activity.total_score
     else
       @winner_team = Activity.last_team_winner(Poll.last)
-      @best_activities = []
-      3.times { |i| @best_activities << Activity.best_activities(Poll.last, i) }
+      @latest_activities = []
+      3.times { |i| @latest_activities << Activity.best_activities(Poll.last, i) }
     end
 
   end
