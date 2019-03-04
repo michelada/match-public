@@ -5,7 +5,7 @@ class Poll < ApplicationRecord
     where('(polls.start_date > ?) OR polls.end_date > ? ', date, date)
   })
 
-  scope :lasted_ended_poll, (lambda { |date|
+  scope :last_ended_poll, (lambda { |date|
     where('polls.end_date < ?', date)
     .order('polls.end_date des')
   })

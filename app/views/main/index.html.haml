@@ -1,73 +1,11 @@
 .main-content.container.medium.mt-5
   .top-players
 
-    - if @winner_team.nil?
-      %h3.d-flex.justify-content-end.total-score
-        =t('labels.michelada_score')
-        .text.red.ml-2.increase-3.text= "#{@total_score} pts"
+    %h3.d-flex.justify-content-end.total-score
+      =t('labels.michelada_score')
+      .text.red.ml-2.increase-3.text= "#{@total_score} pts"
 
-    -# WINNER SECTION
     - if @winner_team.nil?
-      .d-flex.align-items-center.mt-4.mb-5
-        = image_tag 'ic-prize', alt: 'prize', height: '90', class: 'mr-3'
-        %h1
-          Top
-          %strong.text.yellow 3
-      - if @all_teams.empty?
-        %h3.text-center.mt5
-          = t("team.messages.no_teams")
-      - else
-        %p.top-three.mb-5
-          -@all_teams.each_with_index do |team, i|
-            -if i < 3
-              .d-flex.justify-content-between.mb-4
-                = team.name
-                .text.red
-                  = "#{team.total_score} #{t('labels.points')}"
-            -else 
-              .collapsed-teams
-                .d-flex.justify-content-between.mb-4
-                  = team.name
-                  .text.red
-                    = "#{team.total_score} #{t('labels.points')}"
-      - unless @all_teams.empty?
-        .text-center
-          = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
+      = render partial: 'main'
     - else
-      .d-flex.align-items-center.mt-4.mb-5
-        = image_tag 'ic-prize', alt: 'prize', height: '90', class: 'mr-3'
-        %h1
-          %strong.text.yellow
-            = t('team.winner')
-      %h2
-        = @winner_team.first.name
-        .text-red
-          = "#{@winner_team.first.total_score} #{t('labels.points')}"
-
-    %br
-    -#END WINNER SECTION
-    - if @winner_team.nil?
-      %h3.d-flex.justify-content-center.align-items-center
-        =t('labels.look_who_is')
-        .text.red.increase-3.ml-3= t('labels.fight')
-
-      .latest-activities.mt-5.mb-5
-        -@latest_activities.each do |activity|
-          .activity
-            .mb-3= activity.name
-            .mb-3= activity.user.team&.name
-            .d-flex.mb-3.justify-content-between
-              = activity.activity_type
-              .text.red= "#{t('labels.aspire_to')} #{activity.score} #{t('labels.points')}"
-    - else
-      %h3.d-flex.justify-content-center.align-items-center
-        .text.red.increase-3.ml-3
-          = t('activities.best')
-
-      .latest-activities.mt-5.mb-5
-        -@latest_activities.each_with_index do |activity, index|
-          .activity
-            .mb-3= activity.first.name
-            .d-flex.mb-3.justify-content-between
-              = Activity.activity_types.keys[index]
-            .text-red= "#{activity.first&.points} #{t('labels.points')}"
+      = render partial: 'main_winners'
