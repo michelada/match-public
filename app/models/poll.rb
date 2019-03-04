@@ -11,7 +11,7 @@ class Poll < ApplicationRecord
   })
 
   scope :users_can_vote, (lambda { |date|
-    where('polls.start_date <= ?', date)
+    where('polls.end_date >= ? and polls.start_date <= ?', date, date)
   })
   validates :start_date, :end_date, :activities_from, :activities_to, presence: true
   validate :valid_date_range
