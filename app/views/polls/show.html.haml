@@ -36,27 +36,4 @@
                           = link_to '', judge_poll_activity_vote_path(@poll.id, activity, @activities_votes.select{ |vote| vote.activity_id == activity.id }), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
                         -else
                           = link_to '', poll_activity_vote_path(@poll.id, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
-                          
-    %br
-    %h2.text.red.text-center.mb-5
-      = 'Mejores actividades'
-
-    .mb-1
-      %table
-        %thead
-          %tr
-            %td
-              = t('activities.type')
-            %td
-              = t('activities.name')
-            %td
-              = t('activities.points')
-        %tbody
-          - @best_activities.each_with_index do |activities_type, index|
-            %tr
-              %td
-                = Activity.activity_types.keys[index]
-              %td
-                = activities_type.first&.name
-              %td
-                .text-red= "#{activities_type.first&.points} #{t('labels.points')}"
+                         
