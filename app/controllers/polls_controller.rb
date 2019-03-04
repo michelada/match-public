@@ -25,7 +25,7 @@ class PollsController < ApplicationController
 
   def user_can_acces?
     return unless Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).empty?
-    
+
     flash[:alert] = t('poll.error_accesing')
     redirect_to team_path
   end
