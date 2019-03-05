@@ -22,8 +22,12 @@ module Judge
     private
 
     def update_activity_score
-      score = @activity.english_approve ? 5 : -5
-      @activity.score = @activity.score + score
+      @activity.score = 40 if @activity.activity_type == 'Curso'
+      @activity.score = 25 if @activity.activity_type == 'Plática'
+      @activity.score = 10 if @activity.activity_type == 'Post'
+      @activity.score += 5 if @activity.english_approve
+      events_extra_points = @activity.activity_type == 'Post' ? 5 : 15
+      @activity.score += events_extra_points * @activity.locations.where('approve = true').count
       @activity.update_attributes(score: @activity.score)
     end
   end
