@@ -100,7 +100,7 @@ class ActivitiesController < ApplicationController
 
   def user_can_upload_activity?
     actual_date = DateTime.now.in_time_zone('Mexico City')
-    limit_date = DateTime.new(2019, 3, 1, 18, 0, 0)
+    limit_date = DateTime.new(2019, 4, 1, 18, 0, 0)
     return if actual_date < limit_date
 
     redirect_to team_path(current_user.team)
