@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :team_invitations, only: [:new, :create]
   resource :user, only: [:update]
   devise_for :users, controllers: { registrations: 'invitation' }
+
   as :user do
     get '/users' => 'devise_invitable/registrations#new'
     get '/teams' => 'teams#new'
