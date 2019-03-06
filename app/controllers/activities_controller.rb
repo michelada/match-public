@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :user_has_permissions?, only: [:edit, :update]
   before_action :user_can_upload_activity?, only: [:new, :create]
+
   def new
     if current_user.team.nil?
       redirect_to new_team_path
@@ -24,12 +25,13 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = Activity.find(params[:id])
+    @activity = Activity.friendly.find(params[:id])
     @feedback = Feedback.new
+
   end
 
   def destroy
-    @activity = Activity.find_by(id: params[:id])
+    @activity = Activity.friendly.find(params[:id])
     if activity_approved? && @activity.destroy
       flash[:notice] = t('activities.messages.deleted')
       redirect_to team_path(current_user.team)
@@ -40,7 +42,7 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-    @activity = Activity.find_by(id: params[:id])
+    @activity = Activity.friendly.find(params[:id])
     redirect_to main_index_path unless activity_approved?
     @locations = Location.all
     @selected_locations = @activity.locations
@@ -48,7 +50,7 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    @activity = Activity.find_by(id: params[:id])
+    @activity = Activity.friendly.find(params[:id])
     if @activity.update(activity_params)
       assign_locations_string
       assign_activity_points
@@ -90,7 +92,7 @@ class ActivitiesController < ApplicationController
   end
 
   def user_has_permissions?
-    activity = Activity.find(params[:id])
+    activity = Activity.friendly.find(params[:id])
     return true if current_user.id == activity.user.id
 
     flash[:alert] = t('activities.messages.error_accessing')
@@ -99,7 +101,7 @@ class ActivitiesController < ApplicationController
 
   def user_can_upload_activity?
     actual_date = DateTime.now.in_time_zone('Mexico City')
-    limit_date = DateTime.new(2019, 3, 1, 18, 0, 0)
+    limit_date = DateTime.new(2019, 5, 1, 18, 0, 0)
     return if actual_date < limit_date
 
     redirect_to team_path(current_user.team)
