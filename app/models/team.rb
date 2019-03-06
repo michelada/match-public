@@ -11,6 +11,9 @@
 
 # Teams of mcm
 class Team < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   has_many :users, dependent: :nullify
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }

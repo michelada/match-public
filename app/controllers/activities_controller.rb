@@ -27,7 +27,6 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.friendly.find(params[:id])
     @feedback = Feedback.new
-
   end
 
   def destroy

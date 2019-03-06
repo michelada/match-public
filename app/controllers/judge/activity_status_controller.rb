@@ -1,6 +1,7 @@
 module Judge
   class ActivityStatusController < JudgeController
     def create
+      
       @activity_status = ActivityStatus.new(activity_status_params)
       @activity_status.user_id = current_user.id
       @activity_status.approve = true
@@ -9,6 +10,7 @@ module Judge
       else
         flash[:alert] = t('activities.messages.error_approving')
       end
+      binding.pry
       redirect_to judge_activity_path(@activity_status.activity_id)
     end
 
@@ -30,8 +32,10 @@ module Judge
     end
 
     def verify_activity_general_status
-      activity_statuses = ActivityStatus.approves_in_activity(params[:activity_id])
-      activity = Activity.find(params[:activity_id])
+      
+      activity = Activity.friendly.find(params[:activity_id])
+      activity_statuses = ActivityStatus.approves_in_activity(activity.id)
+    
       if activity_statuses.count == 3
         activity.update_attribute(:status, 2)
       else

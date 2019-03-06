@@ -23,10 +23,10 @@ class TeamsController < ApplicationController
 
   def show
     user_has_permission
-    @team = Team.find_by(id: params[:id])
-    @activities = Activity.team_activities(params[:id])
+    @team = Team.friendly.find(params[:id])
+    @activities = Activity.team_activities(@team.id)
     @my_activities = Activity.user_activities(current_user.id)
-    @team_score = Activity.team_activities_score(params[:id])
+    @team_score = Activity.team_activities_score(@team.id)
   end
 
   private
@@ -73,8 +73,7 @@ class TeamsController < ApplicationController
   end
 
   def user_has_permission
-    return if current_user.team&.id == params[:id].to_i
-
+    return if current_user.team&.slug == params[:id] || current_user.team&.id == params[:id].to_i
     flash[:alert] = t('team.error_accessing')
     redirect_to root_path
   end
