@@ -33,6 +33,6 @@ class FeedbacksController < ApplicationController
   end
 
   def load_activity
-    @activity = Activity.find(params[:activity_id])
+    @activity = Activity.friendly.find(params[:activity_id])
   end
 end

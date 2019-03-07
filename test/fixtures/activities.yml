@@ -22,6 +22,7 @@ activity1:
   user: user_test1
   status: 2
   score: 20
+  slug: "poo-java"
 
 activity2:
   id: 3
@@ -30,6 +31,7 @@ activity2:
   activity_type: 1
   user: user_test2
   score: 10
+  slug: "poo-ruby"
 
 android_studio:
   id: 1
@@ -39,3 +41,4 @@ android_studio:
   status: 2
   score: 120
   user: user_test2
+  slug: "Android"

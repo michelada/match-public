@@ -1,7 +1,7 @@
 module Judge
   class LocationsController < ApplicationController
     def update
-      @activity = Activity.find(params[:activity_id])
+      @activity = Activity.friendly.find(params[:activity_id])
       @location = @activity.locations.where('id = ?', params[:id]).first
       @location.update_attributes(approve: !@location.approve)
       update_score

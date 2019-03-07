@@ -55,7 +55,7 @@
           - @my_activities&.each do |activity|
             %tr
               %td
-                %p.long-line= link_to activity.name, activity_path(activity.id)
+                %p.long-line= link_to activity.name, activity_path(activity)
               %td.text-center
                 = activity.activity_type
               %td.text-center{class: activity.css_class}

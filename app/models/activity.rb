@@ -10,10 +10,12 @@
 #  updated_at    :datetime         not null
 #  user_id       :bigint(8)
 #  activity_type :integer          not null
-#  status        :integer          default("Por validar"), not null
-#
+#  status        :integer          default("Por validar"), not nu
 
 class Activity < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   belongs_to :user
   has_many :locations, dependent: :destroy
   has_many :feedback, dependent: :destroy
@@ -75,5 +77,13 @@ class Activity < ApplicationRecord
 
   def activity_type_is?
     activity_type == 'Curso' || activity_type == 'Plática'
+  end
+
+  def to_param
+    slug
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed?
   end
 end
