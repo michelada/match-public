@@ -12,7 +12,7 @@ class FeedbackControllerTest < ActionDispatch::IntegrationTest
     post activity_feedbacks_path(activity_android.id), params: { feedback: { comment: feedback.comment,
                                                                              user_id: feedback.user_id,
                                                                              activity_id: feedback.activity_id } }
-    assert_redirected_to activity_path(feedback.activity_id)
+    assert_redirected_to activity_path(activity_android.slug)
     assert_equal flash[:notice], I18n.t('comments.created')
   end
 
@@ -22,7 +22,7 @@ class FeedbackControllerTest < ActionDispatch::IntegrationTest
     activity_android = activities(:android_studio)
     post activity_feedbacks_path(activity_android.id), params: { feedback: { user_id: feedback.user_id,
                                                                              activity_id: feedback.activity_id } }
-    assert_redirected_to activity_path(feedback.activity_id)
+    assert_redirected_to activity_path(activity_android.slug)
     assert_equal flash[:alert], I18n.t('comments.error_creating')
   end
 end

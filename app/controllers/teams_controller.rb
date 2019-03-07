@@ -74,6 +74,7 @@ class TeamsController < ApplicationController
 
   def user_has_permission
     return if current_user.team&.slug == params[:id] || current_user.team&.id == params[:id].to_i
+
     flash[:alert] = t('team.error_accessing')
     redirect_to root_path
   end
