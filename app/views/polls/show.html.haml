@@ -20,7 +20,7 @@
                   = t('placeholders.activity_name')
                 %td.text-center
                   = t('buttons.actions')
-              - @activities.each do |activity|
+              - @activities.sort_by{|act| act.name.capitalize}.each do |activity|
                 -if activity.activity_type == type.activity_type
                   %tr
                     %td
