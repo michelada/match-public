@@ -11,8 +11,9 @@ module Api
     end
 
     def api
-      @winner_team = Activity.last_team_winner(Poll.last)
-      @response = ::Api::ApiService.new.winner_team(@winner_team)
+      @best_activities = []
+      3.times { |i| @best_activities << Activity.best_activities(Poll.last, i) }
+      @response = ::Api::ApiService.new.top_activities_format(@best_activities)
       render json: @response
     end
   end
