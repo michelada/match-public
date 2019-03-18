@@ -44,11 +44,10 @@ class Activity < ApplicationRecord
       .limit(team_count)
   })
 
-  scope :last_team_winner, (lambda { |poll|
+  scope :last_team_winner, (lambda {
     where('activities.status = ?', 2)
-      .joins(:user).joins('INNER JOIN teams ON users.team_id = teams.id')
-      .joins(:votes)
-      .where('votes.poll_id = ?', poll)
+      .joins(:user)
+      .joins('INNER JOIN teams ON users.team_id = teams.id')
       .group('teams.name')
       .select('teams.name as name, sum(activities.score) as total_score')
       .order('total_score DESC')
