@@ -3,7 +3,7 @@ class ApplicationController < ::ActionController::Base
   before_action :authenticate_user!
 
   def after_sign_in_path_for(_users)
-    if current_user.team.nil? && current_user.role != 'admin'
+    if current_user.has_team? && !current_user.is_admin?
       new_team_path
     else
       redirect_user
@@ -11,10 +11,10 @@ class ApplicationController < ::ActionController::Base
   end
 
   def redirect_user
-    if current_user.role == 'judge'
+    if current_user.is_judge?
       judge_main_index_path
     else
-      current_user.role == 'admin' ? admin_user_manager_index_path : new_activity_path
+      current_user.is_admin? ? admin_user_manager_index_path : new_activity_path
     end
   end
 end

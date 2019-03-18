@@ -74,7 +74,7 @@ class ActivitiesController < ApplicationController
   def assign_activity_points
     obtain_activity_points
     @activity.update_attribute(:score, @activity.score)
-    current_user.role == 'judge' ? vote_for_activity : true
+    current_user.is_judge? ? vote_for_activity : true
   end
 
   def obtain_activity_points
@@ -100,7 +100,7 @@ class ActivitiesController < ApplicationController
 
   def user_can_upload_activity?
     actual_date = DateTime.now.in_time_zone('Mexico City')
-    limit_date = DateTime.new(2019, 3, 1, 18, 0, 0)
+    limit_date = DateTime.new(2019, 5, 1, 18, 0, 0)
     return if actual_date < limit_date
 
     redirect_to team_path(current_user.team)

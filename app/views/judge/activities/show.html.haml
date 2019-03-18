@@ -5,7 +5,7 @@
         = t('user.judge.activities.on_old.remember')
         %span.text.red
           = t('user.judge.activities.on_old.objetive')
-      
+
       -if @activity_status.nil?
         = link_to image_tag('ic-not-approved', :class => "check-activity approve-false", :id => "approve"),  judge_activity_activity_status_index_path(@activity), method: :post
         %label= "#{t('activities.status_approve')}"
@@ -30,21 +30,21 @@
           %p= @activity.pitch_audience
           %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
           %p= @activity.abstract_outline
-      
+
       - unless @activity.notes&.empty?
         %h6.text.red= t("labels.link")
         %p= @activity.notes
-      
+
       - if !@activity.locations.empty? || @activity.english
         %hr.section
         %h5
           =t('labels.extra_points')
           %em.text.red= t('labels.evaluate')
       -if @activity.english
-        %p 
+        %p
           - if @activity.english_approve
             = link_to image_tag('ic-checked', :class => "check-activity approve-#{@activity.english_approve}"), judge_activity_path(@activity), method: :patch
-          - else 
+          - else
             = link_to image_tag('ic-not-approved', :class => "check-activity approve-#{@activity.english_approve}"), judge_activity_path(@activity), method: :patch
           %label= t('labels.english')
 
@@ -53,24 +53,24 @@
         %ul
           - @activity.locations&.each do |events|
             %li
-              -if events.approve 
+              -if events.approve
                 = link_to image_tag('ic-checked', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch
-              -else 
-                = link_to image_tag('ic-not-approved', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch  
+              -else
+                = link_to image_tag('ic-not-approved', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch
               %label= "#{events.name}"
       - else
         %p= t('labels.not_location')
 
 
-    .activities  
-      - if @activity.file.attached? 
+    .activities
+      - if @activity.file.attached?
         = link_to t('labels.download'), @activity.file, disposition: "attachment", class:'button', target: :_blank
       %hr.mt-5
         %h5.mt-5.mb-5
           = t("comments.all")
       - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
         %div{:id => "com_#{i}", class: 'comment mt-4'}
-          %h6.gray.d-flex.justify-content-between{class: feedback.user.role == 'judge' ? 'judge' : 'regular'}
+          %h6.gray.d-flex.justify-content-between{class: feedback.user.is_judge? ? 'judge' : 'regular'}
             = feedback.user.name? ? feedback.user.name : feedback.user.email.remove('@michelada.io').capitalize
             - if feedback.user_id == current_user.id
               .edit_comment

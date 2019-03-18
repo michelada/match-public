@@ -69,7 +69,7 @@ class TeamsController < ApplicationController
   end
 
   def user_is_valid
-    redirect_to root_path if current_user.role == 'admin'
+    redirect_to root_path if current_user.is_admin?
   end
 
   def user_has_permission

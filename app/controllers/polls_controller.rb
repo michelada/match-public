@@ -9,7 +9,7 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find(params[:id])
     @activities = Activity.from_a_poll(@poll.activities_from, @poll.activities_to)
-    @activities_votes = if current_user.role == 'judge'
+    @activities_votes = if current_user.is_judge?
                           Vote.judge_activities_votes(@poll.id)
                         else
                           Vote.user_activities_votes(@poll.id, current_user.id)

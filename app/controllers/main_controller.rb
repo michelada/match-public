@@ -24,6 +24,6 @@ class MainController < ApplicationController
   private
 
   def user_is_admin
-    redirect_to admin_user_manager_index_path if current_user.role == 'admin'
+    redirect_to admin_user_manager_index_path if current_user.is_admin?
   end
 end
