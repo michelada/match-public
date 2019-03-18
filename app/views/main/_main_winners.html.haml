@@ -16,7 +16,7 @@
 .latest-activities.mt-5.mb-5
   -@last_activities.each_with_index do |activity, index|
     .activity
-      .mb-3= activity.first.name
+      .mb-3= activity&.first&.name
       .d-flex.mb-3.justify-content-between
         = Activity.activity_types.keys[index]
       .text-red= "#{activity.first&.points} #{t('labels.points')}"
