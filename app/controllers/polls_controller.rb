@@ -27,6 +27,6 @@ class PollsController < ApplicationController
     return unless Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).empty?
 
     flash[:alert] = t('poll.error_accesing')
-    redirect_to team_path
+    redirect_to main_index_path
   end
 end

@@ -103,7 +103,7 @@ class ActivitiesController < ApplicationController
     limit_date = DateTime.new(2019, 3, 1, 18, 0, 0)
     return if actual_date < limit_date
 
-    redirect_to team_path(current_user.team)
+    redirect_to main_index_path
     flash[:alert] = t('activities.closed')
   end
 
