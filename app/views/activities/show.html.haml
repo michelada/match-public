@@ -24,10 +24,10 @@
         %p= @activity.notes
       -if @activity.english
         %h6.text.red= t('labels.english')
-        %p 
+        %p
           - if @activity.english_approve
             = image_tag('ic-checked', :class => "check-activity approve-#{@activity.english_approve}")
-          - else 
+          - else
             = image_tag('ic-not-approved', :class => "check-activity approve-#{@activity.english_approve}")
           %label= t('labels.english')
       %h6.text.red= t('labels.events')
@@ -35,9 +35,9 @@
         %ul
           - @activity.locations&.each do |events|
             %li
-              -if events.approve 
+              -if events.approve
                 = image_tag('ic-checked', :class => "approve-#{events.approve} check-activity")
-              -else 
+              -else
                 = image_tag('ic-not-approved', :class => "approve-#{events.approve} check-activity")
               %label= "#{events.name}"
       - else
@@ -50,7 +50,7 @@
         = t("comments.all")
       - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
         %div{:id => "com_#{i}", class: 'comment'}
-          %h6.gray.d-flex.justify-content-between{class: feedback.user.role == 'judge' ? 'judge' : 'regular'}
+          %h6.gray.d-flex.justify-content-between{class: feedback.user.judge? ? 'judge' : 'regular'}
             = feedback.user.name? ? feedback.user.name : feedback.user.email.remove('@michelada.io').capitalize
             - if feedback.user_id == current_user.id
               .edit_comment

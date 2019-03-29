@@ -1,14 +1,7 @@
 class MainController < ApplicationController
-  skip_before_action :authenticate_user!
-  before_action :check_auth
-
-  def check_auth
-    redirect_to controller: :landing_page unless user_signed_in?
-  end
+  before_action :user_is_admin?
 
   def index
-    user_is_admin
-
     @total_score = Activity.total_score
     if Poll.last_ended_poll(DateTime.now).empty?
       # VALIDATE THAT THERE IS NO A MCM VERSION
@@ -19,11 +12,5 @@ class MainController < ApplicationController
       @last_activities = []
       3.times { |i| @last_activities << Activity.best_activities(Poll.last, i) }
     end
-  end
-
-  private
-
-  def user_is_admin
-    redirect_to admin_user_manager_index_path if current_user.role == 'admin'
   end
 end

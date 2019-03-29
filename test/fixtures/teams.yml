@@ -13,12 +13,16 @@
 
 team1:
   name: halcones
+  slug: halcones
 
 team2:
   name: tigres
+  slug: tigres
 
 team3:
   name: chivos
+  slug: chivos
 
 team4:
   name: fullteam
+  slug: fullteam
