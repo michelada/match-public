@@ -2,7 +2,7 @@
   .main-content.medium.pb-5
     .text-right
       %p.right-info.mb-0
-        %strong 
+        %strong
           = "#{t('labels.welcome')},"
         = "#{current_user.email.remove('@michelada.io')}!"
       = link_to  destroy_user_session_path, method: :delete do
@@ -12,14 +12,14 @@
       %span.team=@team.name
     %p
       = t('labels.score')
-      %span 
-        = "#{@team_score || 0}"
+      %span
+        = "#{@team.score || 0}"
     %hr
-    %h3.mt-5.center-info.mb-3 
+    %h3.mt-5.center-info.mb-3
       = t('labels.activities')
       %span
         = t('labels.team')
-    - @activities&.each do |activity|
+    - @team.activities&.each do |activity|
       %div{id: "activity_#{activity.id}"}
         .d-flex.justify-content-between
           %p.long-line
@@ -36,14 +36,14 @@
           = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail', custom_color: '#F9CF26'}), activity_path(activity), id: "go_to_#{activity.id}"
         %hr.section
 
-    - unless @my_activities.empty?
-      %h3.mt-5.text-center.mb-3.team 
+    - unless current_user.activities.empty?
+      %h3.mt-5.text-center.mb-3.team
         = t('activities.my_activities')
       %br
       %table.activities-table
         %thead.mb-3
           %tr
-            %th 
+            %th
               = t('labels.name')
             %th.text-center
               = t('labels.type')
@@ -52,14 +52,14 @@
             %th.text-right
               = t('buttons.actions')
         %tbody
-          - @my_activities&.each do |activity|
+          - current_user.activities&.each do |activity|
             %tr
               %td
                 %p.long-line= link_to activity.name, activity_path(activity)
               %td.text-center
                 = activity.activity_type
               %td.text-center{class: activity.css_class}
-                = activity.status 
+                = activity.status
               %td.text-right.activity-actions
                 - unless activity.status == 'Aprobado'
                   = link_to image_tag('ic-edit'), edit_activity_path(activity)

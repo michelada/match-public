@@ -7,7 +7,7 @@ class MainControllerTest < ActionDispatch::IntegrationTest
 
   test 'no logged user can not visit main index' do
     get main_index_path
-    assert_redirected_to root_path, 'Controller response unexpected'
+    assert_redirected_to new_user_session_path, 'Controller response unexpected'
   end
 
   test 'logged user can visit main index' do

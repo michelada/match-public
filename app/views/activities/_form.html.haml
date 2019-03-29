@@ -1,8 +1,6 @@
 .container.center-vertical.activities
   .main-content.medium.mt-5
     = simple_form_for (@activity) do |f|
-      .location_list_elements
-        %input{:type=>"text", :hidden => true, :name => "locations_string", :value => "", :id => "locations_string"}
 
       %label
         = t('labels.type')
@@ -18,25 +16,27 @@
 
       .row
         .col-sm-12.col-xs-12.mb-3
+          %label=t("labels.location")
           #other_location
-            = f.input :locations, label: t("labels.location"), placeholder: t("placeholders.activity.event"), input_html: { class: 'input-text add-location' }, label_html: { class: 'mt-0'}
+            %input{type: 'text', placeholder: t("placeholders.activity.event"), class: 'input-text add-location mt-2', id: 'add_location_input'}
+
+          #location_inputs
+            = f.simple_fields_for :locations do |l|
+              = l.input :name, as: :hidden, class: 'locations_attribute'
 
       .locations_list.tags_box
         %ul
-          - loaded_locations = ""
-          - unless @selected_locations.nil?
-            - @selected_locations.each_with_index do |location|
-              %li{id: location[:id]}
-                = location[:name]
-                %a{id: location[:id]} x
-              - loaded_locations += (location[:name]+"ß")
-          %input{:type=>"text", :hidden=>"true", :id=>"loaded_locations", :value=>loaded_locations}
+          - @activity.locations.each_with_index do |location, index|
+            - unless location.name.nil?
+              %li{id: index}<
+                =location.name
+                %a>='x'
 
       = f.input :notes, label: t("labels.link"), placeholder: t("placeholders.link"), input_html: { class: 'input-text' }
       = f.input :english, label: t("labels.english"), input_html: {class: 'mt-0'} , label_html: { class: 'mt-0'}
 
-      - unless @filename.nil?
-        = "#{t("labels.selected_file")}: #{@filename}"
+      - if @activity.file.attached?
+        = "#{t("labels.selected_file")}: #{@activity.file.filename}"
       = f.file_field :file, class:'inputfile', :accept => '.pdf,.jpg,.png,.key,.jpeg,.zip'
       %em= t('labels.information')
 

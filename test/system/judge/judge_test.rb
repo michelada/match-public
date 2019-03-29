@@ -37,8 +37,8 @@ class JudgeTest < ApplicationSystemTestCase
     fill_in 'activity[description]', with: 'Test location'
     fill_in 'activity[pitch_audience]', with: 'Test location'
     fill_in 'activity[abstract_outline]', with: 'Test location'
-    fill_in 'activity[locations]', with: 'Test location'
-    find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
+    fill_in 'add_location_input', with: 'Test location'
+    find(:css, "input[id$='add_location_input']").native.send_keys(:enter)
     click_button 'Enviar'
     click_link 'Cerrar sesión'
   end
