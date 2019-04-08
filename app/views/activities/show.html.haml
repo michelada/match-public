@@ -50,7 +50,7 @@
         = t("comments.all")
       - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
         %div{:id => "com_#{i}", class: 'comment'}
-          %h6.gray.d-flex.justify-content-between{class: feedback.user.is_judge? ? 'judge' : 'regular'}
+          %h6.gray.d-flex.justify-content-between{class: feedback.user.judge? ? 'judge' : 'regular'}
             = feedback.user.name? ? feedback.user.name : feedback.user.email.remove('@michelada.io').capitalize
             - if feedback.user_id == current_user.id
               .edit_comment

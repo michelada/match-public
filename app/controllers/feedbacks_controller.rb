@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_action :load_activity, except: [:update]
+  before_action :load_activity, only: [:create]
   def create
     generate_comment
     if @comment.save
@@ -12,7 +12,7 @@ class FeedbacksController < ApplicationController
 
   def update
     @feedback = Feedback.find_by(id: params[:id])
-    if @feedback.update_attributes(comment: params[:comment])
+    if @feedback.update_attributes(feedback_params)
       flash[:notice] = t('activities.messages.feedback_updated')
     else
       flash[:alert] = t('alerts.activities.not_black')

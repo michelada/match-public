@@ -18,12 +18,14 @@ class Activity < ApplicationRecord
 
   belongs_to :user
   has_many :locations, dependent: :destroy
+  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
   has_many :feedback, dependent: :destroy
   has_many :activity_statuses, dependent: :destroy
   has_many :votes, dependent: :destroy
-  enum activity_type: { Curso: 0, Plática: 1, Post: 2 }
+  enum activity_type: %i[Curso Plática Post]
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
   has_one_attached :file, dependent: :destroy
+  before_update :mark_locations_for_removal
 
   scope :from_a_poll, (lambda { |start_date, end_date|
     where('created_at >= ? AND created_at <= ? AND status = ?', start_date, end_date, 2)
@@ -78,11 +80,41 @@ class Activity < ApplicationRecord
     activity_type == 'Curso' || activity_type == 'Plática'
   end
 
+  def approved?
+    status == 'Aprobado'
+  end
+
   def to_param
     slug
   end
 
   def should_generate_new_friendly_id?
     name_changed?
+  end
+
+  def workshop?
+    Curso?
+  end
+
+  def talk?
+    Plática?
+  end
+
+  def post?
+    Post?
+  end
+
+  def can_edit?(user_id)
+    user.id == user_id
+  end
+
+  def created_whithout_name(location)
+    location[:name].blank? && new_record?
+  end
+
+  def mark_locations_for_removal
+    locations.each do |location|
+      location.mark_for_destruction if location.name.blank?
+    end
   end
 end

@@ -15,17 +15,17 @@ class LocationTest < ApplicationSystemTestCase
   test 'Users cant add the same location twice ' do
     create_simple_activity
     find(:css, 'img[src*="/assets/ic-edit-2ceeb8e85845ac2f003993010690b1ae7205f737bec2f021547c8b1fc3879688.svg"]').click
-    fill_in 'activity[locations]', with: 'Test location'
-    find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
+    fill_in 'add_location_input', with: 'Test location'
+    find(:css, "input[id$='add_location_input']").native.send_keys(:enter)
     message = accept_alert
-    assert_equal message, 'El elemento que tratas de agregar ya está en la lista'
+    assert_equal message, 'Esta opción ya ha sido seleccionada'
   end
 
   test 'Users can create a new location when editing an activity' do
     create_simple_activity
     find(:css, 'img[src*="/assets/ic-edit-2ceeb8e85845ac2f003993010690b1ae7205f737bec2f021547c8b1fc3879688.svg"]').click
-    fill_in 'activity[locations]', with: 'Example location2'
-    find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
+    fill_in 'add_location_input', with: 'Example location2'
+    find(:css, "input[id$='add_location_input']").native.send_keys(:enter)
     click_button 'Enviar'
 
     find(:css, 'img[src*="/assets/ic-edit-2ceeb8e85845ac2f003993010690b1ae7205f737bec2f021547c8b1fc3879688.svg"]').click
@@ -39,8 +39,9 @@ class LocationTest < ApplicationSystemTestCase
     fill_in 'activity[description]', with: 'Test location'
     fill_in 'activity[pitch_audience]', with: 'Test location'
     fill_in 'activity[abstract_outline]', with: 'Test location'
-    fill_in 'activity[locations]', with: 'Test location'
-    find(:css, "input[id$='activity_locations']").native.send_keys(:enter)
+
+    fill_in 'add_location_input', with: 'Test location'
+    find(:css, "input[id$='add_location_input']").native.send_keys(:enter)
     click_button 'Enviar'
   end
 end
