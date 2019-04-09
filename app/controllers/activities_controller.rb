@@ -3,9 +3,13 @@ class ActivitiesController < ApplicationController
   before_action :user_can_upload_activity?, only: [:new, :create]
 
   def new
-    @activity = Activity.new
-    @activity.locations.build
-    @feedback = Feedback.new
+    if current_user.team.nil?
+      redirect_to new_team_path
+    else
+      @activity = Activity.new
+      @activity.locations.build
+      @feedback = Feedback.new
+    end
   end
 
   def create
