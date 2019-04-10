@@ -87,12 +87,12 @@ FriendlyId.defaults do |config|
   # is included after the anonymous module defined in the initializer, so it
   # overrides the `should_generate_new_friendly_id?` method from the anonymous module.
   #
-  config.use :slugged
-  config.use(Module.new do
-    def should_generate_new_friendly_id?
-      slug.blank? || activities_changed?
-    end
-  end)
+  # config.use :slugged
+  # config.use(Module.new do
+  #   def should_generate_new_friendly_id?
+  #     slug.blank? || activities_changed?
+  #   end
+  # end)
   #
   # FriendlyId uses Rails's `parameterize` method to generate slugs, but for
   # languages that don't use the Roman alphabet, that's not usually sufficient.
