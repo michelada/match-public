@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_165614) do
+ActiveRecord::Schema.define(version: 2019_04_10_180654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,24 @@ ActiveRecord::Schema.define(version: 2019_03_06_165614) do
     t.index ["activity_id"], name: "index_locations_on_activity_id"
   end
 
+  create_table "match_products", force: :cascade do |t|
+    t.integer "deliverable_id"
+    t.string "deliverable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_match_products_on_match_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "match_type"
+    t.integer "version"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "polls", force: :cascade do |t|
     t.date "start_date", null: false
     t.date "end_date", null: false
@@ -103,6 +121,15 @@ ActiveRecord::Schema.define(version: 2019_03_06_165614) do
     t.datetime "updated_at", null: false
     t.date "activities_from", null: false
     t.date "activities_to", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "repositories"
+    t.text "features"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|
@@ -155,5 +182,6 @@ ActiveRecord::Schema.define(version: 2019_03_06_165614) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "users"
   add_foreign_key "locations", "activities"
+  add_foreign_key "match_products", "matches"
   add_foreign_key "users", "teams"
 end

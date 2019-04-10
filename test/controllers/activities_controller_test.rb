@@ -39,7 +39,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test 'users with no team can not access create activity view' do
     sign_in @user
     get new_activity_path
-    assert_redirected_to main_index_path, 'Controller response unexpected'
+    assert_redirected_to new_team_path, 'Controller response unexpected'
   end
 
   test 'users can not created an activity if the activity name is blank' do
@@ -52,6 +52,6 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test 'users without teams redirect to create team.' do
     sign_in @user
     get new_activity_path
-    assert_redirected_to main_index_path
+    assert_redirected_to new_team_path
   end
 end

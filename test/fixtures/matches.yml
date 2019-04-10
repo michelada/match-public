@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: matches
+#
+#  id         :bigint(8)        not null, primary key
+#  match_type :integer
+#  version    :integer
+#  start_date :datetime
+#  end_date   :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+content_match:
+  match_type: content
+  start_date: "2019-04-10"
+  end_date: "2019-04-10"
+
+project_match:
+  match_type: content
+  start_date: "2019-04-10"
+  end_date: "2019-04-10"

@@ -2,14 +2,22 @@
 #
 # Table name: activities
 #
-#  id            :bigint(8)        not null, primary key
-#  name          :string           not null
-#  english       :boolean          not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  user_id       :bigint(8)
-#  activity_type :integer          not null
-#  status        :integer          default("Por validar"), not null
+#  id               :bigint(8)        not null, primary key
+#  name             :string           not null
+#  english          :boolean          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :bigint(8)        not null
+#  activity_type    :integer          not null
+#  status           :integer          default("Por validar"), not null
+#  notes            :string
+#  score            :integer          default(0)
+#  description      :text
+#  pitch_audience   :text
+#  abstract_outline :text
+#  activity_file    :string
+#  english_approve  :boolean
+#  slug             :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -42,3 +50,19 @@ android_studio:
   score: 120
   user: user_test2
   slug: "Android"
+
+simple_activity: 
+  id: 4
+  activity_type: 2
+  name: 'sample post'
+  english: ture
+  status: 0
+  user: user_test2
+
+simple_activity2:
+  id: 5
+  activity_type: 2
+  name: 'sample post'
+  english: ture
+  status: 0
+  user: user_test2
