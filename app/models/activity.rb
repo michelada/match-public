@@ -31,7 +31,6 @@ class Activity < ApplicationRecord
     where('created_at >= ? AND created_at <= ? AND status = ?', start_date, end_date, 2)
   })
   scope :type_of_activity, ->(activity_id) { where(id: activity_id).select('activities.activity_type as type') }
-  scope :user_activities, ->(actual_user) { where(user_id: actual_user).order('name ASC') }
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
   scope :unapproved, ->(actual_user) { where('activities.id IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
