@@ -29,7 +29,7 @@
 
 
 admin_user:
-  email: 'admin_user@mmichelada.io'
+  email: 'admin_user@michelada.io'
   role: 2
   encrypted_password: <%= Devise::Encryptor.digest(User, 'adminUser') %>
 
