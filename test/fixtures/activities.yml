@@ -14,8 +14,7 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-activity1:
-  id: 2
+activity_workshop:
   name: POO Java
   english: false
   activity_type: 0
@@ -23,18 +22,27 @@ activity1:
   status: 2
   score: 20
   slug: "poo-java"
+  status: 2
 
-activity2:
-  id: 3
+activity_talk:
   name: POO ruby
   english: true
   activity_type: 1
   user: user_test2
   score: 10
   slug: "poo-ruby"
+  status: 0
+
+activity_post:
+  name: POO Kotlin
+  english: true
+  activity_type: 2
+  user: user_test2
+  score: 10
+  slug: "poo-kotlin"
+  status: 1
 
 android_studio:
-  id: 1
   activity_type: 0
   name: "Android Studio Curso"
   english: true
@@ -42,3 +50,4 @@ android_studio:
   score: 120
   user: user_test2
   slug: "Android"
+  status: 0
