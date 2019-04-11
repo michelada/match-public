@@ -43,10 +43,6 @@ class User < ApplicationRecord
 
   after_invitation_accepted :initialize_user
 
-  def activities
-    Activity.user_activities(id)
-  end
-
   def team?
     !team_id.nil?
   end
