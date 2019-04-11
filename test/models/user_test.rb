@@ -93,4 +93,9 @@ class UserTest < ActiveSupport::TestCase
                     password_confirmation: 'normalUser')
     assert user.can_be_invited?
   end
+
+  test 'user with team can not be invited' do
+    user = users(:user_with_team)
+    refute user.can_be_invited?
+  end
 end

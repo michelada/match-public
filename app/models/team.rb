@@ -15,13 +15,10 @@ class Team < ApplicationRecord
   friendly_id :name, use: :slugged
 
   has_many :users, dependent: :nullify
+  has_many :activities, through: :users
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
   scope :teams_count, -> { count }
-
-  def activities
-    Activity.team_activities(id)
-  end
 
   def score
     Activity.team_activities_score(id)
