@@ -7,7 +7,7 @@ module Api
       assert_response :success
       last_activity = Activity.last
       json_response = JSON.parse(response.body)
-      assert_equal last_activity.name, json_response['data']['value']
+      assert_equal last_activity&.name, json_response['data']['value']
     end
   end
 end

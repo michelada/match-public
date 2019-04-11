@@ -3,8 +3,8 @@ require 'application_system_test_case'
 class JudgeTest < ApplicationSystemTestCase
   test 'Judge can validate an activity' do
     create_simple_activity
-    @judge = users(:judge_user)
-    sign_in @judge
+    judge = users(:judge_user)
+    sign_in judge
     visit judge_main_index_path
     activity = Activity.find_by(name: 'Test')
     within "#activity_#{activity.id}" do
@@ -16,8 +16,8 @@ class JudgeTest < ApplicationSystemTestCase
 
   test 'Judge can comment an activity' do
     create_simple_activity
-    @judge = users(:judge_user)
-    sign_in @judge
+    judge = users(:judge_user)
+    sign_in judge
     visit judge_main_index_path
     activity = Activity.find_by(name: 'Test')
     within "#activity_#{activity.id}" do

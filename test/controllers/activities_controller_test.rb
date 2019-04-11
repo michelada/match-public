@@ -12,7 +12,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_equal flash[:alert], I18n.t('devise.failure.unauthenticated')
   end
 
-  test 'logged user can access to new_activity path' do
+  test 'logged user with team can access to new_activity path' do
     sign_in @user_with_team
     get new_activity_path
     assert_response :success
@@ -31,7 +31,10 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'no loged user can not create an activity' do
-    post activities_path, params: { activity: { id: 2, name: 'Android Studio', activity_type: 'Curso', english: 0 } }
+    post activities_path, params: { activity: { id: 2,
+                                                name: 'Android Studio',
+                                                activity_type: 'Curso',
+                                                english: 0 } }
     assert_redirected_to new_user_session_path, 'Controller response unexpected'
     assert_equal flash[:alert], I18n.t('devise.failure.unauthenticated')
   end
@@ -49,7 +52,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_equal flash[:alert], I18n.t('activities.messages.error_creating')
   end
 
-  test 'users without teams redirect to create team.' do
+  test 'user with no team is redirected to create team path' do
     sign_in @user
     get new_activity_path
     assert_redirected_to new_team_path
