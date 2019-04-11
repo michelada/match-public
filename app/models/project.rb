@@ -12,5 +12,4 @@
 #
 
 class Project < ApplicationRecord
-      
 end

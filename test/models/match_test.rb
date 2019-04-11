@@ -32,8 +32,8 @@ class MatchTest < ActiveSupport::TestCase
   end
 
   test 'has many projects through match_products' do
-    deliverable1 = @content_match.match_products.create(deliverable: @activity)
-    deliverable2 = @content_match.match_products.create(deliverable: @activity2)
+    @content_match.match_products.create(deliverable: @activity)
+    @content_match.match_products.create(deliverable: @activity2)
 
     assert_equal(@content_match.activities.length, 2)
     assert_equal(@content_match.activities.first, @activity)

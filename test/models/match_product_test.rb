@@ -22,7 +22,6 @@ class MatchProductTest < ActiveSupport::TestCase
   test 'can have different deliverables' do
     match_product1 = MatchProduct.new(deliverable: @activity)
 
-    project = Project.new
     match_product2 = MatchProduct.new(deliverable: @project)
 
     assert_equal(match_product1.deliverable, @activity)

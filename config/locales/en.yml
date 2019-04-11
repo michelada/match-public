@@ -53,6 +53,7 @@ en:
     edit: "Edit"
     invite: "Invite"
     new: "New"
+    show: 'Show'
     submit: "Submit"
     upload: "Upload"
     update: "Update"
@@ -89,11 +90,14 @@ en:
     invite_users: "Invite your teammates"
     invite: 'Add member'
     last_day: "Don't forget to exercise your rights, you've until: "
+    leader: "Leader"
     link: 'Link'
     location: "Location"
     look_who_is: "Look who is in the"
     not_location: "Location not register"
     name: "Name of your content"
+    match: "Match"
+    match_type: "Match type"
     michelada_score: "michelada score "
     notes: "Notes"
     other_location: "Add another one: "
@@ -112,10 +116,18 @@ en:
     type: "Type"
     tentative_score: "Aspires to"
     unapproved: "Unapproved"
+    version: "Version"
     vote: 'Your vote is free and secret'
     waiting: "Waiting"
     welcome: 'Welcome'
     welcome-admin: 'Welcome admin'
+  match:
+    create: "Match created"
+    delete: "Match deleted"
+    error_creating: "Error creating match"
+    error_deleting: "Error deleting match"
+    error_updating: "Error updating match"
+    update: "Match updated"
   team:
     create: "Create a team"
     destroy: "Delete team"
@@ -239,6 +251,10 @@ en:
               blank: "A name is required"
             location:
               blank: "Location needed"
+        match:
+          attributes:
+            match_type:
+              blank: "Match type can't be blank"
         team:
           attributes:
             name:

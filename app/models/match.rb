@@ -14,7 +14,7 @@
 class Match < ApplicationRecord
   enum match_type: %i[Content Project]
 
-  has_many :match_products
+  has_many :match_products, dependent: :destroy
   has_many :projects, through: :match_products, source: :deliverable, source_type: 'Project'
   has_many :activities, through: :match_products, source: :deliverable, source_type: 'Activity'
 
