@@ -16,6 +16,9 @@
 
 activity_workshop:
   name: POO Java
+  description: 'We use Rails every single day'
+  pitch_audience: 'All the people from michelada'
+  abstract_outline: 'Start, development, finish'
   english: false
   activity_type: 0
   user: user_test1
@@ -23,9 +26,13 @@ activity_workshop:
   score: 20
   slug: "poo-java"
   status: 2
+  id: 120
 
 activity_talk:
   name: POO ruby
+  description: 'We use Rails every single day'
+  pitch_audience: 'All the people from michelada'
+  abstract_outline: 'Start, development, finish'
   english: true
   activity_type: 1
   user: user_test2
@@ -35,6 +42,9 @@ activity_talk:
 
 activity_post:
   name: POO Kotlin
+  description: 'We use Rails every single day'
+  pitch_audience: 'All the people from michelada'
+  abstract_outline: 'Start, development, finish'
   english: true
   activity_type: 2
   user: user_test2
@@ -45,6 +55,9 @@ activity_post:
 android_studio:
   activity_type: 0
   name: "Android Studio Curso"
+  description: 'We use Rails every single day'
+  pitch_audience: 'All the people from michelada'
+  abstract_outline: 'Start, development, finish'
   english: true
   status: 2
   score: 120

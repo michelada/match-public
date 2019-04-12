@@ -37,6 +37,7 @@ judge_user:
   email: 'judge_user@michelada.io'
   role: 1
   encrypted_password: <%= Devise::Encryptor.digest(User, 'normalUser') %>
+  id: 32
 
 user:
   email: 'normal_user@michelada.io'
