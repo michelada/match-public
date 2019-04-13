@@ -9,6 +9,8 @@
 #  features     :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  match_id     :bigint(8)
+#  team_id      :bigint(8)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -18,4 +20,18 @@ simple_project:
   description: MyText
   repositories: MyText
   features: MyText
+  team_id: 1
 
+simple_project2:
+  name: Simple project
+  description: Description
+  repositories: <<~ HEREDOC
+                repository1.com
+                repository2.io
+                HEREDOC
+  features: <<~ HEREDOC
+            looks cool
+            is tall
+            and tan
+            HEREDOC 
+  tem_id: 1

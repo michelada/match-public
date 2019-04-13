@@ -14,29 +14,53 @@
 require 'test_helper'
 
 class MatchTest < ActiveSupport::TestCase
-  def setup
-    @content_match = matches(:content_match)
-    @project_match = matches(:project_match)
-    @activity = activities(:simple_activity)
-    @activity2 = activities(:simple_activity2)
-    @project = projects(:simple_project)
+  setup do
+    @match = matches(:project_match)
+  end
+  
+  test "matches can have activities" do
+    activity1 = activities(:simple_activity)
+    activity2 = activities(:simple_activity2)
+
+    @match.activities << activity1
+    activity2.update_attribute(:match_id, @match.id)
+
+    assert_equal(@match.activities.length, 2)
+    assert_equal(activity2, @match.activities.first)
+    assert_equal(activity1, @match.activities.last)
+    assert_equal(activity1.match, @match)
   end
 
-  test 'has many match products' do
-    deliverable1 = @content_match.match_products.new
-    deliverable2 = @content_match.match_products.new
+  test "matches can have teams" do
+    team1 = teams(:team1)
+    team2 = teams(:team2)
 
-    assert_equal(@content_match.match_products.length, 2)
-    assert_equal(@content_match.match_products.first, deliverable1)
-    assert_equal(@content_match.match_products.last, deliverable2)
+    @match.teams << team1
+    team2.update_attribute(:match_id, @match.id)
+
+    assert_equal(@match.teams.length, 2)
+    assert_equal(team1, @match.teams.first)
+    assert_equal(team2, @match.teams.last)
+    assert_equal(team1.match, @match)
   end
 
-  test 'has many projects through match_products' do
-    @content_match.match_products.create(deliverable: @activity)
-    @content_match.match_products.create(deliverable: @activity2)
+  test 'matches can have projects' do
+    project1 = projects(:simple_project)
+    project2 = projects(:simple_project2)
 
-    assert_equal(@content_match.activities.length, 2)
-    assert_equal(@content_match.activities.first, @activity)
-    assert_equal(@content_match.activities.last, @activity2)
+    @match.projects << project1
+    project2.update_attribute(:match_id, @match.id)
+
+    assert_equal(@match.projects.length, 2)
+    assert_equal(project1, @match.projects.first)
+    assert_equal(project2, @match.projects.last)
+    assert_equal(project1.match, @match)
+  end
+
+  test 'matches cannot be created if required fields are not present' do
+    assert_raises(ActiveRecord::RecordInvalid) { Match.create!(match_type: 'Content', start_date: '2019-04-12') }
+    assert_raises(ActiveRecord::RecordInvalid) { Match.create!(match_type: 'Content', end_date: '2019-04-12') }
+    assert_raises(ActiveRecord::RecordInvalid) { Match.create!(start_date: '2019-04-12', end_date: '2019-04-12') }
+    assert(Match.create(match_type: 'Content', start_date: '2019-04-12', end_date: '2019-04-12'))
   end
 end

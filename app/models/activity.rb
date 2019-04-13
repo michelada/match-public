@@ -18,11 +18,13 @@
 #  activity_file    :string
 #  english_approve  :boolean
 #  slug             :string
+#  match_id         :bigint(8)
 #
 
 class Activity < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
+  belongs_to :match
   belongs_to :user
   has_many :locations, dependent: :destroy
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name

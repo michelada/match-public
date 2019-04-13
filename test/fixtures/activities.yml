@@ -18,6 +18,7 @@
 #  activity_file    :string
 #  english_approve  :boolean
 #  slug             :string
+#  match_id         :bigint(8)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -31,6 +32,7 @@ activity1:
   status: 2
   score: 20
   slug: "poo-java"
+  match_id: 1
 
 activity2:
   id: 3
@@ -40,6 +42,7 @@ activity2:
   user: user_test2
   score: 10
   slug: "poo-ruby"
+  match_id: 1
 
 android_studio:
   id: 1
@@ -50,6 +53,7 @@ android_studio:
   score: 120
   user: user_test2
   slug: "Android"
+  match_id: 1
 
 simple_activity: 
   id: 4
@@ -58,6 +62,7 @@ simple_activity:
   english: ture
   status: 0
   user: user_test2
+  match_id: 1
 
 simple_activity2:
   id: 5
@@ -66,3 +71,4 @@ simple_activity2:
   english: ture
   status: 0
   user: user_test2
+  match_id: 1

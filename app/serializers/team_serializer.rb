@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug       :string
+#  match_id   :bigint(8)
 #
 
 class TeamSerializer < ActiveModel::Serializer

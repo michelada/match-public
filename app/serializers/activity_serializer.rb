@@ -18,6 +18,7 @@
 #  activity_file    :string
 #  english_approve  :boolean
 #  slug             :string
+#  match_id         :bigint(8)
 #
 
 class ActivitySerializer < ActiveModel::Serializer

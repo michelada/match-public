@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug       :string
+#  match_id   :bigint(8)
 #
 
 # Teams of mcm
@@ -14,6 +15,8 @@ class Team < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  belongs_to :match
+  has_many :projects
   has_many :users, dependent: :nullify
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
