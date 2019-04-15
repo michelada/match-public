@@ -123,7 +123,9 @@ es:
     welcome: '¡Bienvenido'
     welcome-admin: 'Bienvenido admin'
   match:
+    edit: 'Editar Match'
     create: "Match creado"
+    create_new: "Nuevo match"
     delete: "Match eliminado"
     error_creating: "Error creando el match"
     error_deleting: "Error eliminando el match"

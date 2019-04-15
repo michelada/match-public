@@ -28,7 +28,7 @@
   }
 }
 
-.admin-poll{
+.admin-poll, .admin-matches{
   
   .poll{
     font-size: 20px;
@@ -48,12 +48,31 @@
   }
 
   .form-group{
-  margin-top: $regular-margin;
-  text-align: end;
-  @include breakpoint(mobile) {
-    text-align: center;
+    margin-top: $regular-margin;
+    text-align: end;
+    @include breakpoint(mobile) {
+      text-align: center;
+    }
   }
-}
+
+  .form-match-group {
+    .match_center {
+      text-align: center;
+      width: 100%;
+    }
+    select {
+      font-size: $secondary-font-size;
+      margin-left: 0px; 
+      text-align-last: center;
+      width: 100%;
+      @include breakpoint(mobile){
+        display: block;
+        margin-left: auto;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+    }
+  }
 
   .activities-table {
     width: 100%;
@@ -67,6 +86,68 @@
     }
   }
 }
+
+.match-list {
+  .left-info {
+    text-align: left;
+    padding: 25px 50px 75px 100px;
+    font-size: $third-font-size;
+    text-transform: uppercase;
+    margin-right: 100px;
+  }
+  .right-info {
+    text-align: end;
+    font-size: $third-font-size;
+    text-transform: uppercase;
+    
+    strong {
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+  }
+
+  .section {
+    border-color: $light-blue;
+  }
+
+  .team {
+    font-size: 20px;
+  }
+
+  .center-info {
+    text-align: center;
+  }
+
+  .icon-detail {
+    fill: $yellow;
+    height: $primary-icon-size;
+    transform: rotate(-90deg);
+  }
+
+  .points {
+    color: $red;
+  }
+
+  .match-table {
+    width: 100%;
+    thead {
+      color: $white;
+      font-size: $third-font-size;
+      th {
+        font-weight: 500;
+        padding-bottom: $regular-padding;
+      }
+    }
+    .match-actions {
+      a {
+        img {
+          height: $secondary-icon-size;
+        }
+      }
+    }
+  }
+}
+
 .poll-actions {
   a {
     img {
