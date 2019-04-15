@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fres at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 content_match:
   id: 1

@@ -25,8 +25,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  belongs_to :team
-  belongs_to :match
+  belongs_to :team, optional: true
+  belongs_to :match, optional: true
   has_many :activities, dependent: :destroy
   has_many :activity_statuses
   has_many :feedback, dependent: :destroy
@@ -39,16 +39,16 @@ class User < ApplicationRecord
 
   after_invitation_accepted :initialize_user
 
-  def activities
-    Activity.user_activities(id)
+  def normal_user?
+    user?
   end
 
   def team?
     !team_id.nil?
   end
 
-  def part_of_team?(team_id)
-    team&.slug == team_id
+  def part_of_team?(team_slug)
+    team&.slug == team_slug
   end
 
   def can_be_invited?

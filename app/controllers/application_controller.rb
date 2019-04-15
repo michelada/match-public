@@ -42,11 +42,11 @@ class ApplicationController < ::ActionController::Base
       redirect_to new_team_path
     else
       actual_date = DateTime.now.in_time_zone('Mexico City')
-      limit_date = DateTime.new(2019, 3, 1, 18, 0, 0)
-      return if actual_date < limit_date || current_user.team
+      limit_date = Poll.last&.end_date
+      return if  !Poll.last || actual_date < limit_date
 
-      redirect_to main_index_path
       flash[:alert] = t('activities.closed')
+      redirect_to main_index_path
     end
   end
 end
