@@ -40,4 +40,18 @@ class ActivityTest < ApplicationSystemTestCase
     page.driver.browser.switch_to.alert.accept
     assert page.has_content?(I18n.t('activities.messages.deleted'))
   end
+
+  test 'user can vote for an activity' do
+    visit poll_path(Poll.last)
+    find("a[href='/polls/#{Poll.last.id}/activities/poo-java/votes']").click
+    assert page.has_content?(I18n.t('votes.voted'))
+  end
+
+  test 'user can delete its vote for an activity' do
+    visit poll_path(Poll.last)
+    vote = votes(:java_vote)
+    find("a[href='/polls/#{Poll.last.id}/activities/poo-kotlin/votes/#{vote.id}']").click
+    page.driver.browser.switch_to.alert.accept
+    assert page.has_content?(I18n.t('votes.unvoted'))
+  end
 end

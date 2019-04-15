@@ -51,6 +51,7 @@ activity_post:
   score: 10
   slug: "poo-kotlin"
   status: 2
+  id: 234423
 
 android_studio:
   activity_type: 0
