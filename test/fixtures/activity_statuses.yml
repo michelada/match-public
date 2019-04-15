@@ -9,3 +9,8 @@ two:
   activity_id: 1
   user_id: 1
   approve: false
+
+poo_java:
+  user_id: 32
+  activity_id: 120
+  approve: true

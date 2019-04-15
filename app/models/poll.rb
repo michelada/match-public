@@ -13,6 +13,7 @@ class Poll < ApplicationRecord
   scope :users_can_vote, (lambda { |date|
     where('polls.end_date >= ? and polls.start_date <= ?', date, date)
   })
+
   validates :start_date, :end_date, :activities_from, :activities_to, presence: true
   validate :valid_date_range
 
@@ -21,6 +22,11 @@ class Poll < ApplicationRecord
          .joins(:activity)
          .where(activities: { activity_type: activity.activity_type })
          .any?
+  end
+
+  def can_vote?
+    actual_date = Time.now.in_time_zone('Mexico City').to_date
+    end_date >= actual_date && start_date <= actual_date
   end
 end
 

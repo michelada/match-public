@@ -3,7 +3,9 @@ module Admin
   class PollsControllerTest < ActionDispatch::IntegrationTest
     setup do
       @admin_user = users(:admin_user)
+      Poll.delete_all
     end
+
     test 'no logged user can no acces to poll index' do
       get admin_polls_path
       assert_redirected_to new_user_session_path, 'Controller response unexpected'
