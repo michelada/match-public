@@ -17,8 +17,8 @@ class MatchTest < ActiveSupport::TestCase
   setup do
     @match = matches(:project_match)
   end
-  
-  test "matches can have activities" do
+
+  test 'matches can have activities' do
     activity1 = activities(:simple_activity)
     activity2 = activities(:simple_activity2)
 
@@ -31,7 +31,7 @@ class MatchTest < ActiveSupport::TestCase
     assert_equal(activity1.match, @match)
   end
 
-  test "matches can have teams" do
+  test 'matches can have teams' do
     team1 = teams(:team1)
     team2 = teams(:team2)
 

@@ -26,5 +26,4 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal(@project, @team.projects.first)
     assert_equal(@team, @project.team)
   end
-
 end

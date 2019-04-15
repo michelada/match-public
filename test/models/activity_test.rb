@@ -117,7 +117,7 @@ class ActivityTest < ActiveSupport::TestCase
     activity = Activity.new(name: 'Android Studio',
                             activity_type: 2,
                             english: false,
-                            user: user, 
+                            user: user,
                             match_id: @match.id)
     assert activity.valid?
   end

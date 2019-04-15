@@ -40,8 +40,8 @@ class UserTest < ActiveSupport::TestCase
 
   test 'user must be valid' do
     user = User.new(email: 'miguel.urbina@michelada.io',
-      password: 'normalUser',
-      password_confirmation: 'normalUser')
+                    password: 'normalUser',
+                    password_confirmation: 'normalUser')
     assert user.valid?
   end
 
