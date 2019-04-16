@@ -51,6 +51,10 @@ class User < ApplicationRecord
     team&.slug == team_slug
   end
 
+  def project
+    team.project
+  end
+
   def can_be_invited?
     return true if email.empty?
     return false if User.find_by_email(email)&.team?

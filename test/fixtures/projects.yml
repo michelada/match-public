@@ -22,6 +22,7 @@ simple_project:
   features: MyText
   team_id: 2
   created_at: <%= Date.today - 1.week%>
+  match_id: 1
 
 simple_project2:
   name: Simple project
@@ -35,5 +36,6 @@ simple_project2:
             is tall
             and tan
             HEREDOC
-  team_id: 2
+  team_id: 1
   created_at: <%= Date.today - 1.week%>
+  match_id: 1

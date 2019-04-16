@@ -16,7 +16,7 @@ class Team < ApplicationRecord
   friendly_id :name, use: :slugged
 
   belongs_to :match
-  has_many :projects
+  has_one :project
   has_many :users, dependent: :nullify
   has_many :activities, through: :users
   validates :name, presence: true

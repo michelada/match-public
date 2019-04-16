@@ -52,6 +52,13 @@ user_test2:
   team_id: 2
   id: 266512
 
+user_test3:
+  email: 'test3@michelada.io'
+  role: 0
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
+  team_id: 2
+  id: 266515
+
 user_with_team:
   email: 'team_user@michelada.io'
   role: 0
