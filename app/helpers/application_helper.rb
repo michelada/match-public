@@ -12,4 +12,9 @@ module ApplicationHelper
   def there_are_polls
     Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).any?
   end
+
+  def markdown(content)
+    @_markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    sanitize(@_markdown.render(content || "").gsub("<p>", "").gsub("</p>", ""))
+  end
 end

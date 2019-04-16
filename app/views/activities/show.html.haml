@@ -7,17 +7,17 @@
         %em.points= "#{@activity.score} #{t('labels.points')}"
       -unless @activity.activity_type == 'Post'
         %h6.text.red=t('user.judge.activities.description') if @activity.description
-        %p= @activity.description
+        %p= markdown(@activity.description)
         -if @activity.activity_type == "Curso"
           %h6.text.red= t('user.judge.activities.intended_audence') if @activity.pitch_audience
-          %p= @activity.pitch_audience
+          %p= markdown(@activity.pitch_audience)
           %h6.text.red= t('user.judge.activities.outline') if @activity.abstract_outline
-          %p= @activity.abstract_outline
+          %p= markdown(@activity.abstract_outline)
         -else
           %h6.text.red= t('user.judge.activities.pitch') if @activity.pitch_audience
-          %p= @activity.pitch_audience
+          %p= markdown(@activity.pitch_audience)
           %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
-          %p= @activity.abstract_outline
+          %p= markdown(@activity.abstract_outline)
 
       - unless @activity.notes&.empty?
         %h6.text.red= t("labels.link")
@@ -56,7 +56,7 @@
               .edit_comment
                 = link_to t("buttons.edit"), "#", :id => "#{i}"
           %p{:class => "gray", :id => "comment_#{i}", class: 'comment-content mt-3'}
-            = feedback.comment
+            = markdown(feedback.comment)
           %textarea{:value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}
           - if feedback.user_id == current_user.id
             .form_data
