@@ -2,14 +2,23 @@
 #
 # Table name: activities
 #
-#  id            :bigint(8)        not null, primary key
-#  name          :string           not null
-#  english       :boolean          not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  user_id       :bigint(8)
-#  activity_type :integer          not null
-#  status        :integer          default("Por validar"), not null
+#  id               :bigint(8)        not null, primary key
+#  name             :string           not null
+#  english          :boolean          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :bigint(8)        not null
+#  activity_type    :integer          not null
+#  status           :integer          default("Por validar"), not null
+#  notes            :string
+#  score            :integer          default(0)
+#  description      :text
+#  pitch_audience   :text
+#  abstract_outline :text
+#  activity_file    :string
+#  english_approve  :boolean
+#  slug             :string
+#  match_id         :bigint(8)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -21,11 +30,11 @@ activity_workshop:
   abstract_outline: 'Start, development, finish'
   english: false
   activity_type: 0
-  user: user_test1
+  user_id: 187671
   status: 2
   score: 20
   slug: "poo-java"
-  status: 2
+  match_id: 1
   id: 120
 
 activity_talk:
@@ -35,10 +44,11 @@ activity_talk:
   abstract_outline: 'Start, development, finish'
   english: true
   activity_type: 1
-  user: user_test2
+  user_id: 266512
   score: 10
   slug: "poo-ruby"
   status: 0
+  match_id: 1
 
 activity_post:
   name: POO Kotlin
@@ -47,10 +57,11 @@ activity_post:
   abstract_outline: 'Start, development, finish'
   english: true
   activity_type: 2
-  user: user_test2
+  user_id: 266512
   score: 10
   slug: "poo-kotlin"
   status: 2
+  match_id: 1
   id: 234423
 
 android_studio:
@@ -63,8 +74,26 @@ android_studio:
   status: 2
   score: 120
   user: user_test2
+  slug: android-studio-curso
+  match_id: 1
+
+simple_activity:
+  id: 4
+  activity_type: 2
+  name: 'sample post'
+  english: ture
+  status: 0
+  user: user_test2
+  match_id: 1
+
+simple_activity2:
+  id: 5
+  activity_type: 2
+  name: 'sample post'
+  english: ture
   slug: "android"
   status: 0
+  user: user_test1
 
 ruby_as_day_to_day:
   activity_type: 0
@@ -78,3 +107,5 @@ ruby_as_day_to_day:
   user: user_with_teammates
   slug: "rails-as-a-day-to-day"
   status: 0
+  user: user_with_teammates
+  match_id: 1

@@ -7,7 +7,7 @@ module Judge
       update_score
       message = @location.approve ? t('labels.approved') : t('labels.unapproved')
       flash[:notice] = message
-      redirect_to judge_activity_path(@activity)
+      redirect_to match_judge_activity_path(@match, @activity)
     end
 
     private

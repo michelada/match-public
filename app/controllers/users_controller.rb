@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if current_user.update_attribute(:team, nil)
       verify_team_members
       flash[:notice] = t('team.messages.left')
-      redirect_to main_index_path
+      redirect_to match_main_index_path(@match)
     else
       flash[:alert] = t('team.messages.error_leaving')
       redirect_to teams_path(ccurrent_user.team_id)

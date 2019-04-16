@@ -6,7 +6,7 @@ class TeamInvitationsController < ApplicationController
     if !user&.team && valid_email(params[:email])
       User.invite!({ email: params[:email] }, current_user)
       flash[:notice] = t('team.messages.user_invited')
-      redirect_to team_path(current_user.team)
+      redirect_to match_team_path(@match, current_user.team)
     else
       flash[:alert] = t('team.messages.error_inviting')
       redirect_to new_team_invitation_path

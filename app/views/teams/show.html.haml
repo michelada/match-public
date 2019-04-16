@@ -33,7 +33,7 @@
         .d-flex.justify-content-between
           %p
             = activity.activity_type
-          = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail', custom_color: '#F9CF26'}), activity_path(activity), id: "go_to_#{activity.id}"
+          = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail', custom_color: '#F9CF26'}), match_activity_path(@match, activity), id: "go_to_#{activity.id}"
         %hr.section
 
     - unless current_user.activities.empty?
@@ -55,15 +55,15 @@
           - current_user.activities&.each do |activity|
             %tr
               %td
-                %p.long-line= link_to activity.name, activity_path(activity)
+                %p.long-line= link_to activity.name, match_activity_path(@match, activity)
               %td.text-center
                 = activity.activity_type
               %td.text-center{class: activity.css_class}
                 = activity.status
               %td.text-right.activity-actions
                 - unless activity.status == 'Aprobado'
-                  = link_to image_tag('ic-edit'), edit_activity_path(activity)
-                  = link_to image_tag('ic-delete'), activity_path(activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
+                  = link_to image_tag('ic-edit'), edit_match_activity_path(@match, activity)
+                  = link_to image_tag('ic-delete'), match_activity_path(@match, activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
 
 
 
@@ -71,4 +71,4 @@
       = link_to t('team.messages.leave_team'), user_path(current_user.id), method: :patch, data: {confirm: t('actions.confirm')}
     - if @team.users.count < 3
       .text-right.mb-5.mt-2
-        = link_to t('labels.invite'), new_team_invitation_path
+        = link_to t('labels.invite'), new_match_team_invitation_path

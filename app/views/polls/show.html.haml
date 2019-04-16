@@ -24,16 +24,16 @@
                 -if activity.activity_type == type.activity_type
                   %tr
                     %td
-                      = link_to activity.name, activity_path(activity)
+                      = link_to activity.name, match_activity_path(@match, activity)
                     %td.text-center
                       - if @activities_votes.map(&:activity_id).exclude?(activity.id)
                         -if current_user.judge?
-                          = link_to '', judge_poll_activity_votes_path(@poll.id, activity), method: :post, class:'activity-vote'
+                          = link_to '', match_judge_poll_activity_votes_path(@match, @poll.id, activity), method: :post, class:'activity-vote'
                         -else
-                          = link_to '', poll_activity_votes_path(@poll.id, activity), method: :post, class:'activity-vote'
+                          = link_to '', match_poll_activity_votes_path(@match, @poll.id, activity), method: :post, class:'activity-vote'
                       -else
                         -if current_user.judge?
-                          = link_to '', judge_poll_activity_vote_path(@poll.id, activity, @activities_votes.select{ |vote| vote.activity_id == activity.id }), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+                          = link_to '', match_judge_poll_activity_vote_path(@match, @poll.id, activity, @activities_votes.select{ |vote| vote.activity_id == activity.id }), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
                         -else
-                          = link_to '', poll_activity_vote_path(@poll.id, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+                          = link_to '', match_poll_activity_vote_path(@match, @poll.id, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
 

@@ -66,7 +66,7 @@
           %hr.section
       .mt-4
         - if user_can_comment?(@activity)
-          = simple_form_for [ @activity, @feedback] do |f|
+          = simple_form_for [ @match, @activity, @feedback] do |f|
             = f.text_area :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text mt-4'}, required: false
             = f.button :submit, t('comments.create'), class: 'button'
 

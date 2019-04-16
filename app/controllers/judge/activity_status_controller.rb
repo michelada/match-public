@@ -7,7 +7,7 @@ module Judge
       else
         flash[:alert] = t('activities.messages.error_approving')
       end
-      redirect_to judge_activity_path(activity)
+      redirect_to match_judge_activity_path(@match, activity)
     end
 
     def destroy
@@ -18,7 +18,7 @@ module Judge
         flash[:alert] = t('activities.messages.error_unapproving')
       end
 
-      redirect_to judge_activity_path(activity)
+      redirect_to match_judge_activity_path(@match, activity)
     end
 
     private

@@ -4,7 +4,7 @@ module Admin
 
     def index
       @polls = Poll.all
-      redirect_to new_admin_poll_path if @polls.empty?
+      redirect_to new_admin_match_poll_path(@match) if @polls.empty?
     end
 
     def new
@@ -19,7 +19,7 @@ module Admin
       @poll = Poll.new(poll_params)
       if @poll.save
         flash[:notice] = t('poll.created')
-        redirect_to admin_polls_path
+        redirect_to admin_match_polls_path(@match)
       else
         flash[:alert] = @poll.end_date <= @poll.start_date ? t('poll.error_dates') : t('poll.error_creating')
         render 'new'
@@ -44,7 +44,7 @@ module Admin
       else
         flash[:alert] = t('poll.error_deleting')
       end
-      redirect_to admin_polls_path
+      redirect_to admin_match_polls_path(@match)
     end
 
     private

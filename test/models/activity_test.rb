@@ -2,27 +2,40 @@
 #
 # Table name: activities
 #
-#  id            :bigint(8)        not null, primary key
-#  name          :string           not null
-#  english       :boolean          not null
-#  location      :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  user_id       :bigint(8)
-#  activity_type :integer          not null
-#  status        :integer          default('Por validar'), not null
+#  id               :bigint(8)        not null, primary key
+#  name             :string           not null
+#  english          :boolean          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :bigint(8)        not null
+#  activity_type    :integer          not null
+#  status           :integer          default("Por validar"), not null
+#  notes            :string
+#  score            :integer          default(0)
+#  description      :text
+#  pitch_audience   :text
+#  abstract_outline :text
+#  activity_file    :string
+#  english_approve  :boolean
+#  slug             :string
+#  match_id         :bigint(8)
 #
 
 require 'test_helper'
 
 class ActivityTest < ActiveSupport::TestCase
+  setup do
+    @match = matches(:content_match)
+  end
+
   test 'workshop and talk must be invalid without user' do
     activity = Activity.new(name: 'Android Studio',
                             activity_type: 0,
                             english: false,
                             description: 'The ofician Android Studio IDE',
                             pitch_audience: 'Estudiantes de tecnologias moviles y responsivas',
-                            abstract_outline: 'Intro, getttin-started, activities, MVC')
+                            abstract_outline: 'Intro, getttin-started, activities, MVC',
+                            match_id: @match.id)
     refute activity.valid?
   end
 
@@ -33,7 +46,8 @@ class ActivityTest < ActiveSupport::TestCase
                             description: 'The ofician Android Studio IDE',
                             pitch_audience: 'Estudiantes de tecnologias moviles y responsivas',
                             abstract_outline: 'Intro, getttin-started, activities, MVC',
-                            user: user)
+                            user: user,
+                            match_id: @match.id)
     refute activity.valid?
   end
 
@@ -44,7 +58,8 @@ class ActivityTest < ActiveSupport::TestCase
                             english: false,
                             pitch_audience: 'Estudiantes de tecnologias moviles y responsivas',
                             abstract_outline: 'Intro, getttin-started, activities, MVC',
-                            user: user)
+                            user: user,
+                            match_id: @match.id)
     refute activity.valid?
   end
 
@@ -55,7 +70,8 @@ class ActivityTest < ActiveSupport::TestCase
                             english: false,
                             description: 'The ofician Android Studio IDE',
                             abstract_outline: 'Intro, getttin-started, activities, MVC',
-                            user: user)
+                            user: user,
+                            match_id: @match.id)
     refute activity.valid?
   end
 
@@ -66,6 +82,19 @@ class ActivityTest < ActiveSupport::TestCase
                             english: false,
                             description: 'The ofician Android Studio IDE',
                             pitch_audience: 'Estudiantes de tecnologias moviles y responsivas',
+                            user: user,
+                            match_id: @match.id)
+    refute activity.valid?
+  end
+
+  test 'activity must be invalid without match id' do
+    user = users(:user_test1)
+    activity = Activity.new(name: 'Android Studio',
+                            activity_type: 0,
+                            english: false,
+                            description: 'The ofician Android Studio IDE',
+                            pitch_audience: 'Estudiantes de tecnologias moviles y responsivas',
+                            abstract_outline: 'Intro, getttin-started, activities, MVC',
                             user: user)
     refute activity.valid?
   end
@@ -78,7 +107,8 @@ class ActivityTest < ActiveSupport::TestCase
                             description: 'The ofician Android Studio IDE',
                             pitch_audience: 'Estudiantes de tecnologias moviles y responsivas',
                             abstract_outline: 'Intro, getttin-started, activities, MVC',
-                            user: user)
+                            user: user,
+                            match_id: @match.id)
     assert activity.valid?
   end
 
@@ -87,7 +117,8 @@ class ActivityTest < ActiveSupport::TestCase
     activity = Activity.new(name: 'Android Studio',
                             activity_type: 2,
                             english: false,
-                            user: user)
+                            user: user,
+                            match_id: @match.id)
     assert activity.valid?
   end
 

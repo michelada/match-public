@@ -90,7 +90,7 @@ FriendlyId.defaults do |config|
   # config.use :slugged
   # config.use(Module.new do
   #   def should_generate_new_friendly_id?
-  #     slug.blank? || activities_changed?
+  #     slug.blank?
   #   end
   # end)
   #

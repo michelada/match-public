@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: votes
+#
+#  id          :bigint(8)        not null, primary key
+#  activity_id :bigint(8)        not null
+#  user_id     :bigint(8)        not null
+#  poll_id     :bigint(8)        not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  value       :integer          not null
+#
+
 class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :activity

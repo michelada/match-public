@@ -8,11 +8,6 @@
 #  name                   :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  invitation_token       :string
@@ -31,6 +26,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :team, optional: true
+  belongs_to :match, optional: true
   has_many :activities, dependent: :destroy
   has_many :activity_statuses
   has_many :feedback, dependent: :destroy
@@ -53,6 +49,10 @@ class User < ApplicationRecord
 
   def part_of_team?(team_slug)
     team&.slug == team_slug
+  end
+
+  def project
+    team.project
   end
 
   def can_be_invited?

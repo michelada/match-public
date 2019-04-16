@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id           :bigint(8)        not null, primary key
+#  name         :string
+#  description  :text
+#  repositories :text
+#  features     :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  match_id     :bigint(8)
+#  team_id      :bigint(8)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+simple_project:
+  name: MyString
+  description: MyText
+  repositories: MyText
+  features: MyText
+  team_id: 2
+  created_at: <%= Date.today - 1.week%>
+  match_id: 1
+
+simple_project2:
+  name: Simple project
+  description: Description
+  repositories: <<~ HEREDOC
+                repository1.com
+                repository2.io
+                HEREDOC
+  features: <<~ HEREDOC
+            looks cool
+            is tall
+            and tan
+            HEREDOC
+  team_id: 1
+  created_at: <%= Date.today - 1.week%>
+  match_id: 1

@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
     assing_instance_variables
     if @activity.save
       flash[:notice] = t('activities.messages.uploaded')
-      redirect_to team_path(current_user.team)
+      redirect_to match_team_path(params[:match_id], current_user.team)
     else
       @activity.locations.build if @activity.locations.blank?
       flash.now[:alert] = t('activities.messages.error_creating')
@@ -32,7 +32,7 @@ class ActivitiesController < ApplicationController
     else
       flash[:alert] = t('activities.messages.error_deleting')
     end
-    redirect_to team_path(current_user.team)
+    redirect_to match_team_path(params[:match_id], current_user.team)
   end
 
   def edit
@@ -44,7 +44,7 @@ class ActivitiesController < ApplicationController
     assign_score
     if @activity.update(activity_params)
       flash[:notice] = t('activities.messages.updated')
-      redirect_to team_path(current_user.team)
+      redirect_to match_team_path(params[:match_id], current_user.team)
     else
       flash.now[:alert] = t('alerts.activities.not_black')
       render 'edit'
@@ -54,12 +54,14 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :english,
-                                     :activity_type,
-                                     :description, :pitch_audience,
-                                     :abstract_outline, :notes,
-                                     :file,
-                                     locations_attributes: [:name, :id, :_destroy])
+    params.require(:activity)
+          .permit(:name, :english,
+                  :activity_type,
+                  :description, :pitch_audience,
+                  :abstract_outline, :notes,
+                  :file,
+                  locations_attributes: [:name, :id, :_destroy])
+          .merge(match_id: params[:match_id])
   end
 
   def assing_instance_variables

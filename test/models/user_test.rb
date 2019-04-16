@@ -8,11 +8,6 @@
 #  name                   :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  invitation_token       :string
@@ -80,7 +75,6 @@ class UserTest < ActiveSupport::TestCase
     team = teams(:team3)
     assert user.part_of_team?(team.slug)
   end
-  # user judge admin]
 
   test 'user with no team can be invited to one' do
     user = users(:user)

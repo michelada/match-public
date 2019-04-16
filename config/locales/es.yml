@@ -53,6 +53,7 @@ es:
     edit: "Editar"
     invite: "Invitar"
     new: "Nuevo"
+    show: "Ver"
     submit: "Enviar"
     upload: "Cargar"
     update: "Actualizar"
@@ -78,7 +79,7 @@ es:
     description: "Descripción"
     dinasty: 'Dinastía'
     download: "Descargar archivo"
-    end_date: "Fecha final"
+    end_date: "Fecha de término"
     english: "Inglés"
     email_uno: "Compañero de crimen"
     evaluate: "Evaluar"
@@ -89,11 +90,14 @@ es:
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
     last_day: 'Recuerda ejercer tu derecho a votar, tienes hasta: '
+    leader: "Líder"
     link: "Enlace"
     location: "Evento"
     look_who_is: "Mira quién está en la "
     not_location: "No hay evento registrado"
     name: "Título"
+    match: "Match"
+    match_type: "Tipo de match"
     michelada_score: "Puntaje michelada "
     notes: "Notas"
     other_location: "Otra:"
@@ -108,15 +112,25 @@ es:
     selected_file: "Archivo seleccionado"
     select_location: 'Escoje una opción'
     sign_out: 'Cerrar sesión'
-    start_date: "Fecha inicial"
+    start_date: "Fecha de inicio"
     type: "Tipo:"
     team: "Equipo"
     tentative_score: "Aspira a"
     unapproved: "Desaprobado"
+    version: "Versión"
     vote: 'Tu voto es libre y secreto'
     waiting: "En espera"
     welcome: '¡Bienvenido'
     welcome-admin: 'Bienvenido admin'
+  match:
+    edit: 'Editar Match'
+    create: "Match creado"
+    create_new: "Nuevo match"
+    delete: "Match eliminado"
+    error_creating: "Error creando el match"
+    error_deleting: "Error eliminando el match"
+    error_updating: "Error actualizando el match"
+    update: "Match actualizado"
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
@@ -241,6 +255,10 @@ es:
               blank: "Debes de poner un nombre"
             location:
               blank: "Necesitas agregar una locación"
+        match:
+          attributes:
+            match_type:
+              blank: "Debes seleccionar un tipo de match"
         team:
           attributes:
             name:

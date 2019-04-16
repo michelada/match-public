@@ -4,6 +4,7 @@ class LocationTest < ApplicationSystemTestCase
   before do
     @team_user = users(:user_with_team)
     sign_in @team_user
+    @match = Match.last
   end
 
   test 'Users can create a new location from new_activity view' do
@@ -34,7 +35,7 @@ class LocationTest < ApplicationSystemTestCase
   end
 
   def create_simple_activity
-    visit new_activity_path
+    visit new_match_activity_path(@match)
     fill_in 'activity[name]', with: 'Test'
     fill_in 'activity[description]', with: 'Test location'
     fill_in 'activity[pitch_audience]', with: 'Test location'
