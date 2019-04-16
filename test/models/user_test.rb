@@ -75,6 +75,7 @@ class UserTest < ActiveSupport::TestCase
     team = teams(:team3)
     assert user.part_of_team?(team.slug)
   end
+
   test 'user with no team can be invited to one' do
     user = users(:user)
     assert user.can_be_invited?

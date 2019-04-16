@@ -18,7 +18,7 @@ require 'test_helper'
 class ProjectTest < ActiveSupport::TestCase
   setup do
     @match = matches(:content_match)
-    @team = teams(:team1)
+    @team = teams(:team2)
     @project = projects(:simple_project)
   end
 

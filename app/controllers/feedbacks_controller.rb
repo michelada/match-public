@@ -1,13 +1,13 @@
 class FeedbacksController < ApplicationController
   before_action :load_activity, only: [:create]
   def create
-    generate_comment
+    @comment = Feedback.new(feedback_params)
     if @comment.save
       flash[:notice] = t('comments.created')
     else
       flash[:alert] = t('comments.error_creating')
     end
-    redirect_to activity_path(@activity)
+    redirect_to match_activity_path(@match, @activity)
   end
 
   def update
@@ -17,19 +17,16 @@ class FeedbacksController < ApplicationController
     else
       flash[:alert] = t('alerts.activities.not_black')
     end
-    redirect_to activity_path(@feedback.activity)
+    redirect_to match_activity_path(@match, @feedback.activity)
   end
 
   private
 
-  def generate_comment
-    @comment = Feedback.new(feedback_params)
-    @comment.user_id = current_user.id
-    @comment.activity_id = @activity.id
-  end
-
   def feedback_params
-    params.require(:feedback).permit(:comment)
+    params.require(:feedback)
+          .permit(:comment)
+          .merge(user_id: current_user.id,
+                 activity_id: @activity.id)
   end
 
   def load_activity

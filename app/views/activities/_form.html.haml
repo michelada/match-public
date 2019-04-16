@@ -1,6 +1,6 @@
 .container.center-vertical.activities
   .main-content.medium.mt-5
-    = simple_form_for (@activity) do |f|
+    = simple_form_for([@match, @activity]) do |f|
 
       %label
         = t('labels.type')

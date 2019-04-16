@@ -3,7 +3,7 @@ class PollsController < ApplicationController
 
   def index
     @poll = Poll.last
-    redirect_to poll_path(@poll.id)
+    redirect_to match_poll_path(@match, @poll.id)
   end
 
   def show
@@ -20,13 +20,13 @@ class PollsController < ApplicationController
     return unless @activities.empty?
 
     flash[:alert] = t('poll.empty_activities')
-    redirect_to main_index_path
+    redirect_to match_main_index_path(@match)
   end
 
   def user_can_access?
     return unless Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).empty?
 
     flash[:alert] = t('poll.error_accesing')
-    redirect_to main_index_path
+    redirect_to match_main_index_path(@match)
   end
 end

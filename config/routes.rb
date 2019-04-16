@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  resource :user, only: [:update]
+  resources :location, only: [:new]
 
   resources :match, only: [:show] do
     resources :teams, except: [:index, :update]
     resources :main, only: [:index]
     resources :team_invitations, only: [:new, :create]
-    resource :user, only: [:update]
-    resources :location, only: [:new]
 
     resources :activities, except: [:index] do
       resources :feedbacks, only: [:index, :create, :update]
@@ -21,13 +21,6 @@ Rails.application.routes.draw do
       resources :activities, only: [:index] do
         resources :votes, only: [:create, :destroy]
       end
-    end
-
-    as :user do
-      get '/users' => 'devise_invitable/registrations#new'
-      get '/teams' => 'teams#new'
-      get '/team_invitation' => 'team_invitations#new'
-      get '/activities' => 'activities#new'
     end
 
     namespace :judge do
@@ -43,6 +36,13 @@ Rails.application.routes.draw do
       end
       resources :main, only: [:index]
     end
+
+    as :user do
+      get '/users' => 'devise_invitable/registrations#new'
+      get '/teams' => 'teams#new'
+      get '/team_invitation' => 'team_invitations#new'
+      get '/activities' => 'activities#new'
+    end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -50,7 +50,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :user_manager, only: [:index, :update, :destroy]
-    resources :polls, except: [:show]
-    resources :matches
+    resources :matches do
+      resources :polls, except: [:show]
+    end
   end
 end

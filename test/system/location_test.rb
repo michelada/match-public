@@ -4,12 +4,13 @@ class LocationTest < ApplicationSystemTestCase
   before do
     @team_user = users(:user_with_team)
     sign_in @team_user
+    @match = Match.last
   end
 
   test 'Users can create a new location from new_activity view' do
     create_simple_activity
     find(:css, 'img[src*="/assets/ic-edit-2ceeb8e85845ac2f003993010690b1ae7205f737bec2f021547c8b1fc3879688.svg"]').click
-    assert_equal true, page.has_content?('Test location')
+    assert page.has_content?('Test location')
   end
 
   test 'Users cant add the same location twice ' do
@@ -30,11 +31,11 @@ class LocationTest < ApplicationSystemTestCase
 
     find(:css, 'img[src*="/assets/ic-edit-2ceeb8e85845ac2f003993010690b1ae7205f737bec2f021547c8b1fc3879688.svg"]').click
 
-    assert_equal true, page.has_content?('Example location2')
+    assert page.has_content?('Example location2')
   end
 
   def create_simple_activity
-    visit new_activity_path
+    visit new_match_activity_path(@match)
     fill_in 'activity[name]', with: 'Test'
     fill_in 'activity[description]', with: 'Test location'
     fill_in 'activity[pitch_audience]', with: 'Test location'

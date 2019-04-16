@@ -31,6 +31,7 @@ judge_user:
   email: 'judge_user@michelada.io'
   role: 1
   encrypted_password: <%= Devise::Encryptor.digest(User, 'normalUser') %>
+  id: 32
 
 user:
   email: 'normal_user@michelada.io'
@@ -41,13 +42,15 @@ user_test1:
   email: 'test@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team: team1
+  team_id: 1
+  id: 187671
 
 user_test2:
   email: 'test2@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team: team2
+  team_id: 2
+  id: 266512
 
 user_with_team:
   email: 'team_user@michelada.io'

@@ -1,10 +1,15 @@
 # Main controller
 class ApplicationController < ::ActionController::Base
   before_action :authenticate_user!
+  before_action :assign_match
+
+  def assign_match
+    @match = Match.last
+  end
 
   def after_sign_in_path_for(_users)
     if current_user.team? && !current_user.admin?
-      new_team_path
+      new_match_team_path(@match)
     else
       redirect_user
     end
@@ -14,7 +19,7 @@ class ApplicationController < ::ActionController::Base
     if current_user.judge?
       judge_main_index_path
     else
-      current_user.admin? ? admin_user_manager_index_path : new_activity_path
+      current_user.admin? ? admin_user_manager_index_path : new_match_activity_path(@match)
     end
   end
 
@@ -39,7 +44,7 @@ class ApplicationController < ::ActionController::Base
 
   def user_can_upload_activity?
     if current_user.team.nil?
-      redirect_to new_team_path
+      redirect_to new_match_team_path(@match)
     else
       actual_date = DateTime.now.in_time_zone('Mexico City')
       limit_date = Poll.last&.end_date

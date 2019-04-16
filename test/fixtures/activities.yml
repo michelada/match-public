@@ -25,19 +25,26 @@
 
 activity_workshop:
   name: POO Java
+  description: 'We use Rails every single day'
+  pitch_audience: 'All the people from michelada'
+  abstract_outline: 'Start, development, finish'
   english: false
   activity_type: 0
-  user: user_test1
+  user_id: 187671
   status: 2
   score: 20
   slug: "poo-java"
   match_id: 1
+  id: 120
 
 activity_talk:
   name: POO ruby
+  description: 'We use Rails every single day'
+  pitch_audience: 'All the people from michelada'
+  abstract_outline: 'Start, development, finish'
   english: true
   activity_type: 1
-  user: user_test2
+  user_id: 266512
   score: 10
   slug: "poo-ruby"
   status: 0
@@ -45,25 +52,32 @@ activity_talk:
 
 activity_post:
   name: POO Kotlin
+  description: 'We use Rails every single day'
+  pitch_audience: 'All the people from michelada'
+  abstract_outline: 'Start, development, finish'
   english: true
   activity_type: 2
-  user: user_test2
+  user_id: 266512
   score: 10
   slug: "poo-kotlin"
-  status: 1
+  status: 2
   match_id: 1
+  id: 234423
 
 android_studio:
   activity_type: 0
   name: "Android Studio Curso"
+  description: 'We use Rails every single day'
+  pitch_audience: 'All the people from michelada'
+  abstract_outline: 'Start, development, finish'
   english: true
   status: 2
   score: 120
   user: user_test2
-  slug: "Android"
+  slug: android-studio-curso
   match_id: 1
 
-simple_activity: 
+simple_activity:
   id: 4
   activity_type: 2
   name: 'sample post'
@@ -77,6 +91,21 @@ simple_activity2:
   activity_type: 2
   name: 'sample post'
   english: ture
+  slug: "android"
   status: 0
-  user: user_test2
+  user: user_test1
+
+ruby_as_day_to_day:
+  activity_type: 0
+  name: "Rails as a Day to Day"
+  description: 'We use Rails every single day'
+  pitch_audience: 'All the people from michelada'
+  abstract_outline: 'Start, development, finish'
+  english: true
+  status: 2
+  score: 120
+  user: user_with_teammates
+  slug: "rails-as-a-day-to-day"
+  status: 0
+  user: user_with_teammates
   match_id: 1

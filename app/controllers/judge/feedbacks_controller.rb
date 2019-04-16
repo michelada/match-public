@@ -8,7 +8,7 @@ module Judge
       else
         flash[:alert] = t('comments.error_creating')
       end
-      redirect_to judge_activity_path(@activity)
+      redirect_to match_judge_activity_path(@match, @activity)
     end
 
     def update
@@ -18,7 +18,7 @@ module Judge
       else
         flash[:alert] = t('alerts.activities.not_black')
       end
-      redirect_to judge_activity_path(@feedback.activity)
+      redirect_to match_judge_activity_path(@match, @feedback.activity)
     end
 
     private

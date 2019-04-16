@@ -57,10 +57,22 @@ class MatchTest < ActiveSupport::TestCase
     assert_equal(project1.match, @match)
   end
 
-  test 'matches cannot be created if required fields are not present' do
-    assert_raises(ActiveRecord::RecordInvalid) { Match.create!(match_type: 'Content', start_date: '2019-04-12') }
-    assert_raises(ActiveRecord::RecordInvalid) { Match.create!(match_type: 'Content', end_date: '2019-04-12') }
-    assert_raises(ActiveRecord::RecordInvalid) { Match.create!(start_date: '2019-04-12', end_date: '2019-04-12') }
-    assert(Match.create(match_type: 'Content', start_date: '2019-04-12', end_date: '2019-04-12'))
+  test 'match is invalid with no match type' do
+    @match.match_type = nil
+    refute @match.valid?
+  end
+
+  test 'match is invalid with no start date' do
+    @match.start_date = nil
+    refute @match.valid?
+  end
+
+  test 'match is invalid with no end date' do
+    @match.end_date = nil
+    refute @match.valid?
+  end
+
+  test 'match is valid with all atteibutes' do
+    assert @match.valid?
   end
 end

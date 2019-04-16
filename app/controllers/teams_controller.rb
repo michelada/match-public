@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   before_action :valid_users_invitations?, only: [:create]
 
   def new
-    redirect_to team_path(current_user.team) unless current_user.team.nil?
+    redirect_to match_team_path(@match, current_user.team) unless current_user.team.nil?
     @team = Team.new
     @team.name = "#{Spicy::Proton.adjective}_#{Spicy::Proton.noun}"
   end
@@ -15,10 +15,10 @@ class TeamsController < ApplicationController
       current_user.update_attribute(:team, @team)
       invite_users
       flash[:notice] = t('team.messages.created')
-      redirect_to main_index_path
+      redirect_to match_main_index_path(@match)
     else
       flash.now[:alert] = t('team.messages.error_creating')
-      render new_team_path
+      render 'new'
     end
   end
 
@@ -29,7 +29,9 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team)
+          .permit(:name)
+          .merge(match_id: params[:match_id])
   end
 
   def invite_users
@@ -46,6 +48,6 @@ class TeamsController < ApplicationController
     return if user1.can_be_invited? && user2.can_be_invited?
 
     flash[:alert] = t('team.messages.error_users')
-    redirect_to new_team_path
+    redirect_to new_match_team_path(@match)
   end
 end

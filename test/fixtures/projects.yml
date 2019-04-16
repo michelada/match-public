@@ -20,7 +20,8 @@ simple_project:
   description: MyText
   repositories: MyText
   features: MyText
-  team_id: 1
+  team_id: 2
+  created_at: <%= Date.today - 1.week%>
 
 simple_project2:
   name: Simple project
@@ -33,5 +34,6 @@ simple_project2:
             looks cool
             is tall
             and tan
-            HEREDOC 
-  team_id: 1
+            HEREDOC
+  team_id: 2
+  created_at: <%= Date.today - 1.week%>
