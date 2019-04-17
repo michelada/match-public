@@ -63,7 +63,9 @@ es:
     created: "Comentario realizado"
     error_creating: "Error guardando comentario"
   errors:
+    end_date_invalid: "La fecha de inicio no puede ser posterior a la fecha de término"
     format: "%{message}"
+    overlapped_dates: "Hay un match activo en ese rango de fechas: id: %{match_id} fechas: %{start_date} - %{end_date}"
   home: "Inicio"
   labels:
     activities_range: "Aplicaciones que pueden participar"

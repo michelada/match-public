@@ -9,6 +9,6 @@
       = t('labels.end_date')
       = f.date_select :end_date, start_year: Date.today.year, end_year: Date.today.year+1, class: "form-control"
   .form-match-group
-    = f.input :match_type, label: t('labels.match_type'), label_html: { class: 'match_center' } ,collection: Match.match_types.keys
+    = f.input :match_type, label: t('labels.match_type'), label_html: { class: 'match_center' }, include_blank: false, collection: Match.match_types.keys
 
   = f.button :submit, option, class: 'button'

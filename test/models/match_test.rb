@@ -62,17 +62,17 @@ class MatchTest < ActiveSupport::TestCase
     refute @match.valid?
   end
 
-  test 'match is invalid with no start date' do
-    @match.start_date = nil
-    refute @match.valid?
-  end
-
-  test 'match is invalid with no end date' do
-    @match.end_date = nil
-    refute @match.valid?
-  end
-
-  test 'match is valid with all atteibutes' do
+  test 'match is valid with all attributes' do
     assert @match.valid?
+  end
+
+  test 'match is not valid if start_date is bigger than end_date' do
+    match = Match.new(match_type: 'Content', start_date: Date.today, end_date: Date.today - 1)
+    refute match.save
+  end
+
+  test 'match cannot be created if it overlaps with another match' do
+    match = Match.new(match_type: 'Content', start_date: '2019-04-24', end_date: '2019-04-30')
+    refute match.save
   end
 end
