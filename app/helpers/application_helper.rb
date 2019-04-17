@@ -8,7 +8,7 @@ module ApplicationHelper
     else 'alert alert-danger'
     end
   end
-  
+
   def markdown(content)
     @_renderer ||= Redcarpet::Render::HTML.new(hard_wrap: true)
     @_markdown ||= Redcarpet::Markdown.new(@_renderer)
