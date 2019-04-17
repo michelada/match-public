@@ -17,7 +17,7 @@ class ApplicationController < ::ActionController::Base
 
   def redirect_user
     if current_user.judge?
-      judge_main_index_path
+      match_judge_main_index_path(@match)
     else
       current_user.admin? ? admin_user_manager_index_path : new_match_activity_path(@match)
     end
@@ -51,7 +51,7 @@ class ApplicationController < ::ActionController::Base
       return if  !Poll.last || actual_date < limit_date
 
       flash[:alert] = t('activities.closed')
-      redirect_to main_index_path
+      redirect_to match_main_index_path(@match)
     end
   end
 end
