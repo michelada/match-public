@@ -15,7 +15,7 @@
 #  description      :text
 #  pitch_audience   :text
 #  abstract_outline :text
-#  activity_file    :string
+#  files            :string
 #  english_approve  :boolean
 #  slug             :string
 #  match_id         :bigint(8)
