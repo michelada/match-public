@@ -8,13 +8,14 @@ module ApplicationHelper
     else 'alert alert-danger'
     end
   end
+  
+  def markdown(content)
+    @_renderer ||= Redcarpet::Render::HTML.new(hard_wrap: true)
+    @_markdown ||= Redcarpet::Markdown.new(@_renderer)
+    sanitize(@_markdown.render(content || '')[3..-5])
+  end
 
   def there_are_polls
     Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).any?
-  end
-
-  def markdown(content)
-    @_markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    sanitize(@_markdown.render(content || "").gsub("<p>", "").gsub("</p>", ""))
   end
 end

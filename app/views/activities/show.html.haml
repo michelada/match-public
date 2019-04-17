@@ -60,8 +60,8 @@
           %textarea{:value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}
           - if feedback.user_id == current_user.id
             .form_data
-              %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
-              %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
+              %input{type: "hidden", id: "acId#{i}", value: "#{@activity.id}"}
+              %input{type: "hidden", id: "fbId#{i}", value: "#{feedback.id}"}
 
           %hr.section
       .mt-4
