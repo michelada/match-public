@@ -1,4 +1,4 @@
-class ActivitiesController < ApplicationController
+class ActivitiesController < MatchesController
   before_action :user_can_edit_activity?, only: [:edit, :update, :destroy]
   before_action :user_can_upload_activity?, only: [:new, :create]
 

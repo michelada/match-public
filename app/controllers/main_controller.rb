@@ -1,4 +1,4 @@
-class MainController < ApplicationController
+class MainController < MatchesController
   before_action :user_is_admin?
 
   def index

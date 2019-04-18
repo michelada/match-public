@@ -1,4 +1,4 @@
-class PollsController < ApplicationController
+class PollsController < MatchesController
   before_action :user_can_access?
 
   def index
