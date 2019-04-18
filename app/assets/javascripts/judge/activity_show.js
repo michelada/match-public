@@ -34,7 +34,8 @@ $(document).on('turbolinks:load', function(){
             url: (activityId + '/feedbacks/' + feedbackId),
             data: {
               "authenticity_token": authenticityToken,
-              "comment": text},
+              "feedback": {"comment": text}
+            },
             dataType: "json"
           });
         }        

@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_action :load_activity, only: [:create]
+  before_action :load_activity, only: [:create, :update]
   def create
     @comment = Feedback.new(feedback_params)
     if @comment.save
@@ -12,6 +12,7 @@ class FeedbacksController < ApplicationController
 
   def update
     @feedback = Feedback.find_by(id: params[:id])
+    @feedback.activity_id = params[:id]
     if @feedback.update_attributes(feedback_params)
       flash[:notice] = t('activities.messages.feedback_updated')
     else
