@@ -34,7 +34,7 @@ class Activity < ApplicationRecord
   enum activity_type: %i[Curso Plática Post]
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
   has_one_attached :file, dependent: :destroy
-  before_update :mark_locations_for_removal
+  before_update :mark_locations_for_removal, :match_valid?
 
   scope :from_a_poll, (lambda { |start_date, end_date|
     where('created_at >= ? AND created_at <= ? AND status = ?', start_date, end_date, 2)
@@ -77,6 +77,11 @@ class Activity < ApplicationRecord
   validates :pitch_audience, :abstract_outline, :description, presence: true, unless: :post?
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
+  validate :belongs_to_content_match?
+
+  def belongs_to_content_match?
+    errors.add(:match_id, I18n.t('errors.no_content_match')) if match&.match_type != 'Content'
+  end
 
   def css_class
     status_class = { "Por validar": 'on-hold', "En revisión": 'review', "Aprobado": 'approved' }
@@ -119,5 +124,9 @@ class Activity < ApplicationRecord
     locations.each do |location|
       location.mark_for_destruction if location.name.blank?
     end
+  end
+
+  def match_valid?
+    raise 'Activity can only exist in project matches' if match.match_type != 'Content'
   end
 end

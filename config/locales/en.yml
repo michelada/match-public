@@ -65,6 +65,8 @@ en:
   errors:
     end_date_invalid: "Start date can't be supperior than end date"
     format: "%{message}"
+    no_content_match: "Current match is not 'Content' type, therefore activities cannot be uploaded"
+    no_project_match: "Current match is not 'Project' type, therefore activities cannot be uploaded"
     overlapped_dates: "There is another match in the specified range of dates: id: %{match_id} dates: %{start_date} - %{end_date}"
   home: "Home"
   labels:

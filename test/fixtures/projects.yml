@@ -22,7 +22,7 @@ simple_project:
   features: MyText
   team_id: 2
   created_at: <%= Date.today - 1.week%>
-  match_id: 1
+  match_id: 2
 
 simple_project2:
   name: Simple project
@@ -38,4 +38,4 @@ simple_project2:
             HEREDOC
   team_id: 1
   created_at: <%= Date.today - 1.week%>
-  match_id: 1
+  match_id: 2

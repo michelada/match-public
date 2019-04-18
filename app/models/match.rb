@@ -14,10 +14,10 @@
 class Match < ApplicationRecord
   enum match_type: %i[Content Project]
 
-  has_many :activities
-  has_many :projects
+  has_many :activities, dependent: :delete_all
+  has_many :projects, dependent: :delete_all
 
-  has_many :teams
+  has_many :teams, dependent: :delete_all
 
   validates :match_type, :start_date, :end_date, presence: true
   validate :dates_match?, :no_overlaps?
@@ -29,11 +29,9 @@ class Match < ApplicationRecord
   def no_overlaps?
     dates = Match.all.select(:id, :start_date, :end_date)
     dates.each do |d|
-      if (start_date..end_date).overlaps?(d.start_date..d.end_date) && d.id != id
-        errors.add(:start_date, I18n.t('errors.overlapped_dates') % {match_id: d.id, 
-                                                                    start_date: d.start_date, 
-                                                                    end_date: d.end_date})
-      end
+      next unless (start_date..end_date).overlaps?(d.start_date..d.end_date) && d.id != id
+
+      errors.add(:start_date, format(I18n.t('errors.overlapped_dates'), match_id: d.id, start_date: d.start_date, end_date: d.end_date))
     end
   end
 end

@@ -27,7 +27,7 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   test 'Project belongs to a match' do
-    match = matches(:content_match)
+    match = matches(:project_match)
     assert_equal(match, @project.match)
     assert_equal(@project, match.projects.first)
   end
