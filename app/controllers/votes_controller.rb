@@ -1,4 +1,4 @@
-class VotesController < ApplicationController
+class VotesController < MatchesController
   before_action :user_can_vote?, only: [:create]
 
   def create

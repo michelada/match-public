@@ -1,4 +1,4 @@
-class FeedbacksController < ApplicationController
+class FeedbacksController < MatchesController
   before_action :load_activity, only: [:create, :update]
   def create
     @comment = Feedback.new(feedback_params)
