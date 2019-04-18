@@ -154,6 +154,7 @@ es:
       leave_team: "Abandonar equipo"
       left: "Abandonaste el equipo"
       no_teams: 'No hay equipos'
+      no_leader: 'No hay equipo líder'
       updated: "Equipo actualizado"
       user_invited: "El usuario ha sido agregado a tu equipo"
   placeholders:

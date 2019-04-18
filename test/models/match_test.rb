@@ -91,4 +91,9 @@ class MatchTest < ActiveSupport::TestCase
     match = Match.new(match_type: 'Content', start_date: '2019-04-24', end_date: '2019-04-30')
     refute match.save
   end
+
+  test 'match version is assigned automatically when a match is created' do
+    match = Match.create(match_type: 'Content', start_date: '2019-05-01', end_date: '2019-05-02')
+    assert(3, match.version)
+  end
 end

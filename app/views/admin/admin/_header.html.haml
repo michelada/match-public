@@ -4,7 +4,5 @@
       = link_to admin_user_manager_index_path do
         = image_tag 'mcm-logo', alt: 'mcm-logo', height: 60, class: 'company-logo'
       .nav
-        = link_to  admin_match_polls_path(@match) do
-          = render partial: 'icons/ic_poll', locals: {is_active: controller_path == 'admin/polls' }
         = link_to admin_matches_path do
           = render partial: 'icons/ic_top', locals: {is_active: controller_path == 'admin/matches' }

@@ -21,6 +21,7 @@ class Match < ApplicationRecord
 
   validates :match_type, :start_date, :end_date, presence: true
   validate :dates_match?, :no_overlaps?
+  before_save :assign_version
 
   def dates_match?
     errors.add(:end_date, I18n.t('errors.end_date_invalid')) if start_date > end_date
@@ -28,18 +29,24 @@ class Match < ApplicationRecord
 
   def no_overlaps?
     dates = Match.all.select(:id, :start_date, :end_date)
-    dates.each do |d|
-      next unless (start_date..end_date).overlaps?(d.start_date..d.end_date) && d.id != id
+    dates.each do |date|
+      next unless (start_date..end_date).overlaps?(date.start_date..date.end_date) && date.id != id
 
-      errors.add(:start_date, format(I18n.t('errors.overlapped_dates'), match_id: d.id, start_date: d.start_date, end_date: d.end_date))
+      errors.add(:start_date, format(I18n.t('errors.overlapped_dates'), match_id: date.id,
+                                                                        start_date: date.start_date, end_date: date.end_date))
     end
   end
 
   def leader_team
-    Team.where(match_id: id).max_by(&:score)
+    teams.max_by(&:score)
   end
 
   def top_teams(teams_number)
-    Team.where(match_id: id).sort_by(&:score).first(teams_number)
+    teams.sort_by(&:score).first(teams_number)
+  end
+
+  def assign_version
+    latest_version = Match.where(match_type: match_type).max_by(&:version).version || 0
+    self.version = latest_version + 1
   end
 end

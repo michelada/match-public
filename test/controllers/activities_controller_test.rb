@@ -76,5 +76,6 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
     get new_match_activity_path(@match)
     assert_redirected_to match_main_index_path(@match)
+    assert_equal(flash[:alert], I18n.t('activities.closed'))
   end
 end
