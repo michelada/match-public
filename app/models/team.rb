@@ -26,4 +26,8 @@ class Team < ApplicationRecord
   def score
     Activity.team_activities_score(id)
   end
+
+  def total_score
+    activities.where(status: 2).sum('score')
+  end
 end

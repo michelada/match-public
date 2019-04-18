@@ -3,7 +3,7 @@
 
     %h3.d-flex.justify-content-end.total-score
       =t('labels.michelada_score')
-      .text.red.ml-2.increase-3.text= "#{@total_score} pts"
+      .text.red.ml-2.increase-3.text= "#{@winner_team&.total_score} pts"
 
     - if @winner_team.nil?
       = render partial: 'main'

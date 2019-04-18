@@ -32,7 +32,8 @@ class Activity < ApplicationRecord
   has_many :activity_statuses, dependent: :destroy
   has_many :votes, dependent: :destroy
   enum activity_type: %i[Curso Plática Post]
-  enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
+
+  enum status: %i[Por\ validar En\ revisión Aprobado]
   has_many_attached :files, dependent: :destroy
   before_update :mark_locations_for_removal, :update_score
   before_save :assign_score
@@ -45,27 +46,6 @@ class Activity < ApplicationRecord
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id).order('name ASC') }
   scope :order_by_name, -> { order('name ASC') }
-  scope :latest_activities, ->(limit_number) { order('created_at DESC').limit(limit_number) }
-  scope :total_score, -> { where(status: 2).sum('score') }
-  scope :top_teams_by_score, (lambda { |team_count|
-    where('activities.status = ?', 2)
-      .joins(:user).joins('INNER JOIN teams ON users.team_id = teams.id')
-      .group('teams.name')
-      .select('teams.name as name, sum(activities.score) as total_score')
-      .order('total_score DESC')
-      .limit(team_count)
-  })
-
-  scope :last_team_winner, (lambda {
-    where('activities.status = ?', 2)
-      .joins(:user)
-      .joins('INNER JOIN teams ON users.team_id = teams.id')
-      .group('teams.name')
-      .select('teams.name as name, sum(activities.score) as total_score')
-      .order('total_score DESC')
-      .limit(1)
-  })
-
   scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
   scope :best_activities, (lambda { |poll_id, type|
     joins(:votes)
@@ -85,7 +65,7 @@ class Activity < ApplicationRecord
   end
 
   def approved?
-    status == 'Aprobado'
+    Aprobado?
   end
 
   def assign_score

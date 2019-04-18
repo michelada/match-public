@@ -16,7 +16,7 @@ class Match < ApplicationRecord
 
   has_many :activities
   has_many :projects
-
+  has_one :poll
   has_many :teams
 
   validates :match_type, :start_date, :end_date, presence: true

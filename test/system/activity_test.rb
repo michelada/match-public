@@ -68,9 +68,8 @@ class ActivityTest < ApplicationSystemTestCase
 
   test 'user can vote for an activity' do
     visit match_poll_path(@match, Poll.last)
-
-    find("a[href='/match/#{@match.id}/polls/#{Poll.last.id}/activities/poo-java/votes']").click
-
+    activity = activities(:activity_workshop)
+    find("a[href='/match/#{@match.id}/polls/#{Poll.last.id}/activities/#{activity.id}/votes']").click
     assert page.has_content?(I18n.t('votes.voted'))
   end
 
@@ -78,8 +77,7 @@ class ActivityTest < ApplicationSystemTestCase
     visit match_poll_path(@match, Poll.last)
     vote = votes(:java_vote)
     activity = activities(:activity_post)
-
-    find("a[href='/match/#{@match.id}/polls/#{Poll.last.id}/activities/#{activity.slug}/votes/#{vote.id}']").click
+    find("a[href='/match/#{@match.id}/polls/#{Poll.last.id}/activities/#{activity.id}/votes/#{vote.id}']").click
     page.driver.browser.switch_to.alert.accept
 
     assert page.has_content?(I18n.t('votes.unvoted'))

@@ -12,8 +12,12 @@
 #
 
 class Poll < ApplicationRecord
+  belongs_to :match
   has_many :votes, dependent: :destroy
-  has_many :activities, through: :votes
+  has_many :activities, through: :match
+  has_many :users, through: :activities
+  has_many :teams, through: :users
+
   scope :pending_polls, (lambda { |date|
     where('(polls.start_date > ?) OR polls.end_date > ? ', date, date)
   })
@@ -40,6 +44,21 @@ class Poll < ApplicationRecord
   def can_vote?
     actual_date = Time.now.in_time_zone('Mexico City').to_date
     end_date >= actual_date && start_date <= actual_date
+  end
+
+  def teams_by_score
+    teams.includes(users: :activities)
+         .where(activities: { status: 2 })
+         .group(:id)
+         .order(Arel.sql('sum(activities.score) desc'))
+  end
+
+  def winner_team
+    teams_by_score.first
+  end
+
+  def last_tree_activities
+    activities.order(created_at: :desc).limit(3)
   end
 end
 
