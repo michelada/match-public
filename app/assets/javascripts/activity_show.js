@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', function(){
         if(text != ""){
           commentText.text(text);
           $.ajax({
-            type: 'PATCH',
+            type: 'PUT',
             url: (activityId + '/feedbacks/' + feedbackId),
             data: {
               "authenticity_token": authenticityToken,

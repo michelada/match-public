@@ -12,7 +12,6 @@ class FeedbacksController < ApplicationController
 
   def update
     @feedback = Feedback.find_by(id: params[:id])
-    @feedback.activity_id = params[:id]
     if @feedback.update_attributes(feedback_params)
       flash[:notice] = t('activities.messages.feedback_updated')
     else
