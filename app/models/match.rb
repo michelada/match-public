@@ -36,7 +36,7 @@ class Match < ApplicationRecord
   end
 
   def leader_team
-    Team.where(match_id: id).max_by(&:score) || ''
+    Team.where(match_id: id).max_by(&:score)
   end
 
   def top_teams(teams_number)

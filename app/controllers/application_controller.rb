@@ -47,8 +47,10 @@ class ApplicationController < ::ActionController::Base
       redirect_to new_match_team_path(@match)
     else
       actual_date = DateTime.now.in_time_zone('Mexico City')
-      limit_date = Poll.last&.end_date
-      return if  !Poll.last || actual_date < limit_date
+      limit_date = Match.last&.end_date
+      start_date = Match.last&.start_date
+
+      return if Match.last && (start_date..limit_date).cover?(actual_date)
 
       flash[:alert] = t('activities.closed')
       redirect_to match_main_index_path(@match)

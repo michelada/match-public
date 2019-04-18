@@ -10,6 +10,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     @user = users(:user)
     @user_with_team = users(:user_with_team)
     @match = matches(:content_match)
+    @match.update_attributes(start_date: Date.today - 2, end_date: Date.today + 2)
   end
 
   test 'no logged user can not acces to new_activity path' do
@@ -67,5 +68,13 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     get new_match_activity_path(@match)
     assert_redirected_to new_match_team_path(@match)
+  end
+
+  test 'users cannot create an activity if no poll is active' do
+    @match.update_attribute(:end_date, Date.today - 1)
+    sign_in @user_with_team
+
+    get new_match_activity_path(@match)
+    assert_redirected_to match_main_index_path(@match)
   end
 end
