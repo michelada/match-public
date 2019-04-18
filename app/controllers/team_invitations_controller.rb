@@ -1,4 +1,4 @@
-class TeamInvitationsController < ApplicationController
+class TeamInvitationsController < MatchesController
   def new; end
 
   def create

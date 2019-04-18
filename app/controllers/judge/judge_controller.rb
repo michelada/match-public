@@ -1,5 +1,5 @@
 module Judge
-  class JudgeController < ActionController::Base
+  class JudgeController < MatchesController
     before_action :authenticate_user!
     before_action :load_match
     before_action :user_is_judge

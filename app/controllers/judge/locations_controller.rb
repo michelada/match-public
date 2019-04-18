@@ -1,5 +1,5 @@
 module Judge
-  class LocationsController < ApplicationController
+  class LocationsController < MatchesController
     def update
       @activity = Activity.friendly.find(params[:activity_id])
       @location = @activity.locations.where('id = ?', params[:id]).first

@@ -2,7 +2,6 @@ class AddMatchToTeams < ActiveRecord::Migration[5.2]
   def change
     add_reference :teams, :match, foreign_key: true
     add_reference :projects, :team, foreign_key: true
-
     reversible do |change|
       change.up do
         match = Match.find_or_create_by(match_type: 'Content',

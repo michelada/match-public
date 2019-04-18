@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  resource :user, only: [:update]
   resources :location, only: [:new]
 
   resources :match, only: [:show] do
     resources :teams, except: [:index, :update]
     resources :main, only: [:index]
     resources :team_invitations, only: [:new, :create]
+    resource :user, only: [:update]
 
     resources :activities, except: [:index] do
       resources :feedbacks, only: [:index, :create, :update]
