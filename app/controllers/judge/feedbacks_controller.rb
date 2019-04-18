@@ -13,7 +13,7 @@ module Judge
 
     def update
       @feedback = Feedback.find_by(id: params[:id])
-      if @feedback.update_attributes(comment: params[:comment])
+      if @feedback.update_attributes(feedback_params)
         flash[:notice] = t('activities.messages.feedback_updated')
       else
         flash[:alert] = t('alerts.activities.not_black')

@@ -25,7 +25,7 @@ $(document).on('turbolinks:load', function(){
         commentText.show();
         var activityId = $('.form_data #acId' + id).val();
         var feedbackId = $('.form_data #fbId' + id).val();
-        
+
         if(text != ""){
           commentText.text(text);
           $.ajax({
@@ -33,7 +33,8 @@ $(document).on('turbolinks:load', function(){
             url: (activityId + '/feedbacks/' + feedbackId),
             data: {
               "authenticity_token": authenticityToken,
-              "comment": text},
+              "feedback": {"comment": text}
+            },
             dataType: "json"
           });
         }

@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_action :load_activity, only: [:create]
+  before_action :load_activity, only: [:create, :update]
   def create
     @comment = Feedback.new(feedback_params)
     if @comment.save
