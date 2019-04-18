@@ -34,4 +34,12 @@ class Match < ApplicationRecord
       errors.add(:start_date, format(I18n.t('errors.overlapped_dates'), match_id: d.id, start_date: d.start_date, end_date: d.end_date))
     end
   end
+
+  def leader_team
+    Team.where(match_id: id).max_by(&:score) || ''
+  end
+
+  def top_teams(teams_number)
+    Team.where(match_id: id).sort_by(&:score).first(teams_number)
+  end
 end

@@ -11,6 +11,7 @@
 #  updated_at   :datetime         not null
 #  match_id     :bigint(8)
 #  team_id      :bigint(8)
+#  score        :integer          default(0)
 #
 
 require 'test_helper'
