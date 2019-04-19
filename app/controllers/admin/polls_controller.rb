@@ -1,6 +1,7 @@
 module Admin
   class PollsController < AdminController
     before_action :allowed_to_create_poll, only: [:create, :new]
+    before_action :assign_match
 
     def index
       @polls = Poll.all
@@ -49,8 +50,8 @@ module Admin
 
     private
 
-    def poll_params
-      params.require(:poll).permit(:end_date, :start_date, :activities_from, :activities_to)
+    def assign_match
+      @match = Match.find(params[:match_id])
     end
 
     def allowed_to_create_poll
@@ -58,6 +59,10 @@ module Admin
 
       flash[:alert] = t('poll.error_actual_polls')
       redirect_to admin_polls_path
+    end
+
+    def poll_params
+      params.require(:poll).permit(:end_date, :start_date, :activities_from, :activities_to)
     end
   end
 end

@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < MatchesController
   def update
     @team = Team.find(current_user.team_id)
     if current_user.update_attribute(:team, nil)

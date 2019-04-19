@@ -1,4 +1,4 @@
-class TeamsController < ApplicationController
+class TeamsController < MatchesController
   before_action :user_is_admin?
   before_action :user_has_permission?, only: [:show]
   before_action :valid_users_invitations?, only: [:create]

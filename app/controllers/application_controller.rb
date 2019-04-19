@@ -1,15 +1,10 @@
 # Main controller
 class ApplicationController < ::ActionController::Base
   before_action :authenticate_user!
-  before_action :assign_match
-
-  def assign_match
-    @match = Match.last
-  end
 
   def after_sign_in_path_for(_users)
     if current_user.team? && !current_user.admin?
-      new_match_team_path(@match)
+      new_match_team_path(Match.last)
     else
       redirect_user
     end
