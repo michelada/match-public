@@ -33,7 +33,8 @@ class Match < ApplicationRecord
       next unless (start_date..end_date).overlaps?(date.start_date..date.end_date) && date.id != id
 
       errors.add(:start_date, format(I18n.t('errors.overlapped_dates'), match_id: date.id,
-                                                                        start_date: date.start_date, end_date: date.end_date))
+                                                                        start_date: date.start_date,
+                                                                        end_date: date.end_date))
     end
   end
 
