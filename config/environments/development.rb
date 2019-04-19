@@ -32,4 +32,7 @@ Rails.application.configure do
   config.assets.debug = true
   config.assets.quiet = true
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  Rails.application.configure do
+    config.active_storage.service = :test
+  end
 end

@@ -36,6 +36,7 @@ en:
       deleted: "Activity deleted"
       feedback_updated: "Comment updated"
       feedback_deleted: "Comment deleted"
+      no_permitted: 'Operation not permited'
       unapproved: "The activity was unapproved"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
@@ -69,6 +70,7 @@ en:
     activities_range: "Select the activitie's date range that can be part"
     activities: "Activities on"
     all: "All"
+    archives: 'Files:'
     approved: "Approved"
     admin: 'Users list'
     abstract: "Abstract"
@@ -181,6 +183,9 @@ en:
   polls:
     deleted: "Poll deleted"
     updated: "Poll updated"
+  uploads:
+    deleted: 'File deleted'
+    error_deleting: 'Error deleting file'
   user:
     change_password: "Change password"
     confirm_new_password: "Confirm new password"

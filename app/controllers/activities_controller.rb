@@ -58,7 +58,7 @@ class ActivitiesController < MatchesController
                   :activity_type,
                   :description, :pitch_audience,
                   :abstract_outline, :notes,
-                  :file,
+                  files: [],
                   locations_attributes: [:name, :id, :_destroy])
           .merge(match_id: params[:match_id], user: current_user)
   end

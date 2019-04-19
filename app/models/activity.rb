@@ -33,7 +33,7 @@ class Activity < ApplicationRecord
   has_many :votes, dependent: :destroy
   enum activity_type: %i[Curso Plática Post]
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
-  has_one_attached :file, dependent: :destroy
+  has_many_attached :files, dependent: :destroy
   before_update :mark_locations_for_removal, :update_score
   before_save :assign_score
 

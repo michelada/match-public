@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :location, only: [:new]
+  resources :activities, only: [] do
+    resources :uploads, only: [:destroy]
+  end
 
   resources :match, only: [:show] do
     resources :teams, except: [:index, :update]

@@ -63,8 +63,10 @@
 
 
     .activities
-      - if @activity.file.attached?
-        = link_to t('labels.download'), @activity.file, disposition: "attachment", class:'button', target: :_blank
+      - if @activity.files.attached?
+        %h6.text.red= t('labels.archives')
+        - @activity.files.each do |file|
+          %p= "#{t("labels.selected_file")}: #{file.filename}"
       %hr.mt-5
         %h5.mt-5.mb-5
           = t("comments.all")
