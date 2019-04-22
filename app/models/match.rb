@@ -43,11 +43,11 @@ class Match < ApplicationRecord
   end
 
   def top_teams(teams_number)
-    teams.sort_by(&:score).first(teams_number)
+    teams.sort_by(&:score)&.reverse.first(teams_number)
   end
 
   def assign_version
-    latest_version = Match.where(match_type: match_type).max_by(&:version).version || 0
+    latest_version = Match.where(match_type: match_type).max_by(&:version)&.version || 0
     self.version = latest_version + 1
   end
 end

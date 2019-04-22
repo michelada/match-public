@@ -144,7 +144,7 @@ class ActivityTest < ActiveSupport::TestCase
     assert activity.approved?
   end
 
-  test 'activity cannot be uploaded in a not content match' do
+  test 'activity is invalid if it belongs to a Project match type' do
     activity = activities(:simple_activity)
     activity.match_id = 2
 

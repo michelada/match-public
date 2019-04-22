@@ -48,6 +48,8 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   test 'retrieves top teams from content match' do
+    assert_includes(@match.top_teams(2), teams(:team1))
+    assert_includes(@match.top_teams(2), teams(:team2))
     assert(@match.top_teams(2), [teams(:team1), teams(:team2)])
   end
 end

@@ -65,7 +65,7 @@ class MatchTest < ActiveSupport::TestCase
     end
   end
 
-  test 'project matches cannot have activities' do
+  test 'activities can only exist in content matches' do
     activity = activities(:simple_activity)
     assert_raises 'Activity can only exist in project matches' do
       activity.update_attribute(match_id: @content_match.id)
@@ -84,12 +84,12 @@ class MatchTest < ActiveSupport::TestCase
 
   test 'match is not valid if start_date is bigger than end_date' do
     match = Match.new(match_type: 'Content', start_date: Date.today, end_date: Date.today - 1)
-    refute match.save
+    refute match.valid?
   end
 
   test 'match cannot be created if it overlaps with another match' do
     match = Match.new(match_type: 'Content', start_date: '2019-04-24', end_date: '2019-04-30')
-    refute match.save
+    refute match.valid?
   end
 
   test 'match version is assigned automatically when a match is created' do
