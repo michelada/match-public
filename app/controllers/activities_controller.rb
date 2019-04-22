@@ -41,7 +41,6 @@ class ActivitiesController < MatchesController
 
   def update
     @activity = Activity.friendly.find(params[:id])
-    # assign_score
     if @activity.update(activity_params)
       flash[:notice] = t('activities.messages.updated')
       redirect_to match_team_path(params[:match_id], current_user.team)
