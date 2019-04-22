@@ -24,10 +24,13 @@ class Team < ApplicationRecord
   scope :teams_count, -> { count }
 
   def score
-    Activity.team_activities_score(id)
-  end
-
-  def total_score
-    activities.where(status: 2).sum('score')
+    case match.match_type
+    when 'Content'
+      activities.where(status: 2).sum('score')
+    when 'Project'
+      project.score
+    else
+      raise 'Invalid match type'
+    end
   end
 end

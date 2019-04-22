@@ -6,7 +6,7 @@
 %h2
   = @winner_team.name
   .text-red
-    = "#{@winner_team.total_score} #{t('labels.points')}"
+    = t('labels.points') % { score: @winner_team.score }
 %br
 %h3.d-flex.justify-content-center.align-items-center
   =t('activities.best')
@@ -19,4 +19,4 @@
       .mb-3= activity&.first&.name
       .d-flex.mb-3.justify-content-between
         = activity.type
-      .text-red= "#{activity.score} #{t('labels.points')}"
+      .text-red= t('labels.points') % { score: activity.score }

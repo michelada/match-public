@@ -44,9 +44,7 @@ class Activity < ApplicationRecord
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
   scope :unapproved, ->(actual_user) { where('activities.id IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
-  scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id).order('name ASC') }
   scope :order_by_name, -> { order('name ASC') }
-  scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
   scope :best_activities, (lambda { |poll_id, type|
     joins(:votes)
     .where('votes.poll_id = ?', poll_id)

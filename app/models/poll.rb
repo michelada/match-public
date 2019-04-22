@@ -46,19 +46,11 @@ class Poll < ApplicationRecord
     end_date >= actual_date && start_date <= actual_date
   end
 
-  def teams_by_score
-    teams.includes(users: :activities)
-         .where(activities: { status: 2 })
-         .group(:id)
-         .order(Arel.sql('sum(activities.score) desc'))
-  end
-
-  def winner_team
-    teams_by_score.first
-  end
-
-  def last_tree_activities
-    activities.order(created_at: :desc).limit(3)
+  def activities_by_type
+    activities.includes(:votes)
+              .where(status: 2)
+              .order(:name)
+              .group_by(&:activity_type)
   end
 end
 

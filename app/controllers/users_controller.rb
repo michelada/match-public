@@ -14,7 +14,7 @@ class UsersController < MatchesController
   private
 
   def verify_team_members
-    return if @team.users.any? || !@team.project.nil?
+    return if @team.users.any? || @team.project
 
     @team.destroy
   end
