@@ -24,12 +24,12 @@ Rails.application.routes.draw do
     end
 
     namespace :judge do
-      resources :activities, only: [:index, :show, :update] do
+      resources :activities, only: [:show, :update] do
         resources :activity_status, only: [:create, :destroy]
         resources :feedbacks, only: [:index, :create, :update]
         resources :locations, only: [:update]
       end
-      resources :polls, only: [:index, :show] do
+      resources :polls, only: [:show] do
         resources :activities, only: [:index] do
           resources :votes, only: [:create, :destroy]
         end
