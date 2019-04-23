@@ -9,7 +9,7 @@ module Judge
       else
         flash[:alert] = t('votes.error_voting')
       end
-      redirect_to polls_path
+      redirect_to match_polls_path(params[:match_id], params[:poll_id])
     end
 
     def destroy
@@ -19,7 +19,7 @@ module Judge
       else
         flash[:alert] = t('votes.error_unvoting')
       end
-      redirect_to polls_path
+      redirect_to match_polls_path(params[:match_id], params[:poll_id])
     end
 
     private
@@ -37,7 +37,7 @@ module Judge
       return unless poll.voted_for_type?(activity, current_user)
 
       flash[:alert] = t('votes.error_type')
-      redirect_to polls_path
+      redirect_to match_polls_path(params[:match_id], params[:poll_id])
 
       # activity_type = Activity.type_of_activity(params[:activity_id])
       # user_has_voted = Vote.judge_has_voted_for_type(activity_type.first.type)

@@ -25,9 +25,7 @@
           %p.long-line
             = activity.name
           %p.points
-            = t('labels.aspire_to')
-            = activity.score
-            = t('labels.points')
+            = t('labels.tentative_score', score: activity.score)
         %p{class: activity.css_class}
           = activity.status
         .d-flex.justify-content-between
@@ -61,7 +59,7 @@
               %td.text-center{class: activity.css_class}
                 = activity.status
               %td.text-right.activity-actions
-                - unless activity.status == 'Aprobado'
+                - unless activity.Aprobado?
                   = link_to image_tag('ic-edit'), edit_match_activity_path(@match, activity)
                   = link_to image_tag('ic-delete'), match_activity_path(@match, activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
 

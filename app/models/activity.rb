@@ -33,7 +33,7 @@ class Activity < ApplicationRecord
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
   friendly_id :name, use: :slugged
   enum activity_type: %i[Curso Plática Post]
-  enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
+  enum status: %i[Por\ validar En\ revisión Aprobado]
   before_save :assign_score
   before_update :mark_locations_for_removal, :match_valid?, :update_score
 
@@ -43,30 +43,7 @@ class Activity < ApplicationRecord
   scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
   scope :unapproved, ->(actual_user) { where('activities.id IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
-  scope :team_activities, ->(team_id) { joins(:user).where('users.team_id = ?', team_id).order('name ASC') }
   scope :order_by_name, -> { order('name ASC') }
-  scope :latest_activities, ->(limit_number) { order('created_at DESC').limit(limit_number) }
-  scope :total_score, -> { where(status: 2).sum('score') }
-  scope :top_teams_by_score, (lambda { |team_count|
-    where('activities.status = ?', 2)
-      .joins(:user).joins('INNER JOIN teams ON users.team_id = teams.id')
-      .group('teams.name')
-      .select('teams.name as name, sum(activities.score) as total_score')
-      .order('total_score DESC')
-      .limit(team_count)
-  })
-
-  scope :last_team_winner, (lambda {
-    where('activities.status = ?', 2)
-      .joins(:user)
-      .joins('INNER JOIN teams ON users.team_id = teams.id')
-      .group('teams.name')
-      .select('teams.name as name, sum(activities.score) as total_score')
-      .order('total_score DESC')
-      .limit(1)
-  })
-
-  scope :team_activities_score, ->(team_id) { team_activities(team_id).where(status: 2).sum('score') }
   scope :best_activities, (lambda { |poll_id, type|
     joins(:votes)
     .where('votes.poll_id = ?', poll_id)
@@ -90,7 +67,7 @@ class Activity < ApplicationRecord
   end
 
   def approved?
-    status == 'Aprobado'
+    Aprobado?
   end
 
   def assign_score

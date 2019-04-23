@@ -12,8 +12,12 @@
 #
 
 class Poll < ApplicationRecord
+  belongs_to :match
   has_many :votes, dependent: :destroy
-  has_many :activities, through: :votes
+  has_many :activities, through: :match
+  has_many :users, through: :activities
+  has_many :teams, through: :users
+
   scope :pending_polls, (lambda { |date|
     where('(polls.start_date > ?) OR polls.end_date > ? ', date, date)
   })
@@ -40,6 +44,13 @@ class Poll < ApplicationRecord
   def can_vote?
     actual_date = Time.now.in_time_zone('Mexico City').to_date
     end_date >= actual_date && start_date <= actual_date
+  end
+
+  def activities_by_type
+    activities.includes(:votes)
+              .where(status: 2)
+              .order(:name)
+              .group_by(&:activity_type)
   end
 end
 

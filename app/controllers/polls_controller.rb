@@ -3,16 +3,15 @@ class PollsController < MatchesController
 
   def show
     @poll = Poll.find(params[:id])
-    @activities = Activity.from_a_poll(@poll.activities_from, @poll.activities_to)
     @activities_votes = if current_user.judge?
                           Vote.judge_activities_votes(@poll.id)
                         else
                           Vote.user_activities_votes(@poll.id, current_user.id)
                         end
-    @activity_types = @activities.group(:activity_type).select(:activity_type)
+    @activity_types = @poll.activities.group(:activity_type).select(:activity_type)
     @best_activities = []
     3.times { |i| @best_activities << Activity.best_activities(@poll.id, i) }
-    return unless @activities.empty?
+    return unless @poll.activities.empty?
 
     flash[:alert] = t('poll.empty_activities')
     redirect_to match_main_index_path(@match)

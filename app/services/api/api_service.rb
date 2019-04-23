@@ -6,7 +6,7 @@ module Api
       teams.each do |team|
         response['data'].push(
           name: team.name,
-          value: team.total_score
+          value: team.score
         )
       end
       response.to_json
@@ -15,7 +15,7 @@ module Api
     def winner_team(team)
       response = obtain_label_object.clone
       response['data'] = []
-      response['postfix'] = "Score #{team&.first&.total_score}"
+      response['postfix'] = "Score #{team&.first&.score}"
       response['data'] = {
         value: team.first.name
       }

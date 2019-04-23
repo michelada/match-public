@@ -18,6 +18,7 @@ module Admin
 
     def create
       @poll = Poll.new(poll_params)
+      @poll.match = Match.last
       if @poll.save
         flash[:notice] = t('poll.created')
         redirect_to admin_match_polls_path(@match)

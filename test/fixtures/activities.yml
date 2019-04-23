@@ -66,6 +66,7 @@ activity_post:
 
 android_studio:
   activity_type: 0
+  created_at: <%= Date.today + 2.days%>
   name: "Android Studio Curso"
   description: 'We use Rails every single day'
   pitch_audience: 'All the people from michelada'
@@ -73,17 +74,18 @@ android_studio:
   english: true
   status: 2
   score: 120
-  user: user_test2
+  user_id: 266512
   slug: android-studio-curso
   match_id: 1
 
 simple_activity:
   id: 4
+  created_at: <%= Date.today + 2.days%>
   activity_type: 2
   name: 'sample post'
   english: true
   status: 0
-  user: user_test2
+  user_id: 266512
   match_id: 1
 
 simple_activity2:
@@ -96,6 +98,7 @@ simple_activity2:
   user: user_test1
 
 ruby_as_day_to_day:
+  created_at: <%= Date.today + 2.days%>
   activity_type: 0
   name: "Rails as a Day to Day"
   description: 'We use Rails every single day'

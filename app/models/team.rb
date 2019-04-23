@@ -26,7 +26,7 @@ class Team < ApplicationRecord
   def score
     case match.match_type
     when 'Content'
-      Activity.team_activities_score(id)
+      activities.where(status: 2).sum('score')
     when 'Project'
       project.score
     else
