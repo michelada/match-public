@@ -121,3 +121,4 @@ actity_with_lots_of_points:
   score: 800
   user: user_test1
   match_id: 1
+  slug: "farming-points"
