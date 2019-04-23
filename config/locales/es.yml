@@ -35,6 +35,7 @@ es:
       deleted: "Actividad eliminada"
       feedback_updated: "Comentario editado"
       feedback_deleted: "Comentario eliminado"
+      no_permitted: "Operación no permitida"
       unapproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
@@ -73,6 +74,7 @@ es:
     activities_range: "Aplicaciones que pueden participar"
     activities: "Actividades del"
     all: "Todas"
+    archives: 'Archivos:'
     approved: "Aprobado"
     admin: 'Lista de usuarios'
     abstract: "Abstract"
@@ -189,6 +191,9 @@ es:
   polls:
     deleted: "Votación eliminada"
     updated: "Votación actualizada"
+  uploads:
+    deleted: 'Archivo eliminado'
+    error_deleting: 'Error eliminando el archivo'
   user:
     change_password: "Cambiar contraseña"
     confirm_new_password: "Confirmar nueva contraseña"

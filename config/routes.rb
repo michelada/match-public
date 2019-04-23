@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :location, only: [:new]
+  resources :activities, only: [] do
+    resources :uploads, only: [:destroy]
+  end
 
   resources :match, only: [:show] do
     resources :teams, except: [:index, :update]
@@ -24,12 +27,12 @@ Rails.application.routes.draw do
     end
 
     namespace :judge do
-      resources :activities, only: [:index, :show, :update] do
+      resources :activities, only: [:show, :update] do
         resources :activity_status, only: [:create, :destroy]
         resources :feedbacks, only: [:index, :create, :update]
         resources :locations, only: [:update]
       end
-      resources :polls, only: [:index, :show] do
+      resources :polls, only: [:show] do
         resources :activities, only: [:index] do
           resources :votes, only: [:create, :destroy]
         end

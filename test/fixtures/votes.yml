@@ -15,4 +15,4 @@ java_vote:
   user: user_with_teammates
   activity_id: 234423
   value: 10
-  poll: poll
+  poll_id: 776

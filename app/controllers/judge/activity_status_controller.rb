@@ -2,7 +2,7 @@ module Judge
   class ActivityStatusController < JudgeController
     def create
       @activity_status = activity.activity_statuses.build(user_id: current_user.id, approve: true)
-      if @activity_status.save && verify_activity_general_status
+      if @activity_status.save
         flash[:notice] = t('activities.messages.approved')
       else
         flash[:alert] = t('activities.messages.error_approving')
@@ -12,7 +12,7 @@ module Judge
 
     def destroy
       @activity_status = ActivityStatus.user_approve_status_activity(current_user.id, activity.id)
-      if @activity_status.destroy && verify_activity_general_status
+      if @activity_status.destroy
         flash[:notice] = t('activities.messages.unapproved')
       else
         flash[:alert] = t('activities.messages.error_unapproving')
@@ -29,15 +29,6 @@ module Judge
 
     def activity
       @activity ||= Activity.friendly.find(params[:activity_id])
-    end
-
-    def verify_activity_general_status
-      activity_statuses = ActivityStatus.approves_in_activity(activity.id)
-      if activity_statuses.count == 3
-        activity.update_attribute(:status, 2)
-      else
-        activity.update_attribute(:status, 1)
-      end
     end
   end
 end

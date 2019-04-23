@@ -23,18 +23,19 @@
 
 class Activity < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: :slugged
   belongs_to :match
   belongs_to :user
   has_many :locations, dependent: :destroy
-  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
   has_many :feedback, dependent: :destroy
   has_many :activity_statuses, dependent: :destroy
   has_many :votes, dependent: :destroy
+  has_many_attached :files, dependent: :destroy
+  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
+  friendly_id :name, use: :slugged
   enum activity_type: %i[Curso Plática Post]
   enum status: { "Por validar": 0, "En revisión": 1, "Aprobado": 2 }
-  has_one_attached :file, dependent: :destroy
-  before_update :mark_locations_for_removal, :match_valid?
+  before_save :assign_score
+  before_update :mark_locations_for_removal, :match_valid?, :update_score
 
   scope :from_a_poll, (lambda { |start_date, end_date|
     where('created_at >= ? AND created_at <= ? AND status = ?', start_date, end_date, 2)
@@ -92,6 +93,10 @@ class Activity < ApplicationRecord
     status == 'Aprobado'
   end
 
+  def assign_score
+    self.score = score_by_type
+  end
+
   def to_param
     slug
   end
@@ -128,5 +133,24 @@ class Activity < ApplicationRecord
 
   def match_valid?
     raise 'Activity can only exist in project matches' if match.match_type != 'Content'
+  end
+
+  def score_by_type
+    case activity_type
+    when 'Curso'
+      40
+    when 'Plática'
+      25
+    when 'Post'
+      10
+    end
+  end
+
+  def update_score
+    accumulated_score = score_by_type
+    accumulated_score += 5 if english_approve
+    events_extra_points = Post? ? 5 : 15
+    accumulated_score += events_extra_points * locations.where(approve: true).count
+    self.score = accumulated_score
   end
 end
