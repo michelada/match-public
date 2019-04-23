@@ -12,9 +12,9 @@ class ApplicationController < ::ActionController::Base
 
   def redirect_user
     if current_user.judge?
-      match_judge_main_index_path(@match)
+      match_judge_main_index_path(Match.last)
     else
-      current_user.admin? ? admin_user_manager_index_path : new_match_activity_path(@match)
+      current_user.admin? ? admin_user_manager_index_path : new_match_activity_path(Match.last)
     end
   end
 

@@ -16,5 +16,5 @@ poll:
   start_date: <%= Date.today - 1.day%>
   end_date: <%= Date.today + 1.week%>
   activities_from: <%= Date.today - 3.week%>
-  activities_to: <%= Date.today + 5.day%>
+  activities_to: <%= Date.today + 1.day%>
   match_id: 1
