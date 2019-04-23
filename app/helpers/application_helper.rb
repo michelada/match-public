@@ -15,7 +15,7 @@ module ApplicationHelper
     sanitize(@_markdown.render(content || '')[3..-5])
   end
 
-  def there_are_polls
-    Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).any?
+  def poll_for_vote
+    Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).first
   end
 end

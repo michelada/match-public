@@ -9,7 +9,7 @@ class ActivitiesController < MatchesController
   end
 
   def create
-    assing_instance_variables
+    @activity = Activity.new(activity_params)
     if @activity.save
       flash[:notice] = t('activities.messages.uploaded')
       redirect_to match_team_path(params[:match_id], current_user.team)
@@ -41,7 +41,6 @@ class ActivitiesController < MatchesController
 
   def update
     @activity = Activity.friendly.find(params[:id])
-    assign_score
     if @activity.update(activity_params)
       flash[:notice] = t('activities.messages.updated')
       redirect_to match_team_path(params[:match_id], current_user.team)
@@ -61,23 +60,6 @@ class ActivitiesController < MatchesController
                   :abstract_outline, :notes,
                   :file,
                   locations_attributes: [:name, :id, :_destroy])
-          .merge(match_id: params[:match_id])
-  end
-
-  def assing_instance_variables
-    @activity = Activity.new(activity_params)
-    @activity.user_id = current_user.id
-    assign_score
-  end
-
-  def assign_score
-    @activity.score = case @activity.activity_type
-                      when 'Curso'
-                        40
-                      when 'Plática'
-                        25
-                      when 'Post'
-                        10
-                      end
+          .merge(match_id: params[:match_id], user: current_user)
   end
 end

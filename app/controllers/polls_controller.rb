@@ -1,11 +1,6 @@
 class PollsController < MatchesController
   before_action :user_can_access?
 
-  def index
-    @poll = Poll.last
-    redirect_to match_poll_path(@match, @poll.id)
-  end
-
   def show
     @poll = Poll.find(params[:id])
     @activities = Activity.from_a_poll(@poll.activities_from, @poll.activities_to)

@@ -1,25 +1,13 @@
 module Judge
   class LocationsController < MatchesController
     def update
-      @activity = Activity.friendly.find(params[:activity_id])
-      @location = @activity.locations.where('id = ?', params[:id]).first
-      @location.update_attributes(approve: !@location.approve)
-      update_score
-      message = @location.approve ? t('labels.approved') : t('labels.unapproved')
+      activity = Activity.friendly.find(params[:activity_id])
+      location = activity.locations.find_by(id: params[:id])
+      location.update_attributes(approve: !location.approve)
+      activity.update_attributes(name: activity.name)
+      message = location.approve ? t('labels.approved') : t('labels.unapproved')
       flash[:notice] = message
-      redirect_to match_judge_activity_path(@match, @activity)
-    end
-
-    private
-
-    def update_score
-      @activity.score = 40 if @activity.activity_type == 'Curso'
-      @activity.score = 25 if @activity.activity_type == 'Plática'
-      @activity.score = 10 if @activity.activity_type == 'Post'
-      @activity.score += 5 if @activity.english_approve
-      events_extra_points = @activity.activity_type == 'Post' ? 5 : 15
-      @activity.score += events_extra_points * @activity.locations.where('approve = true').count
-      @activity.update_attributes(score: @activity.score)
+      redirect_to match_judge_activity_path(@match, activity)
     end
   end
 end
