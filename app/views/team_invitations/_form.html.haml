@@ -4,5 +4,5 @@
 
     = form_with(url: match_team_invitations_path(@match), method: "post") do |f|
       = f.label :email, t("user.email")
-      = f.text_field :email, class: 'input-text'
+      = f.text_field :email, class: 'input-text', required: :true
       = f.submit t("devise.invitations.new.submit_button"), class: 'button'
