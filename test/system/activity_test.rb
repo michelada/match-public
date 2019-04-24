@@ -4,7 +4,7 @@ class ActivityTest < ApplicationSystemTestCase
   def setup
     @user = users(:user_with_teammates)
     login_as @user
-    @match = matches(:content_match)
+    @match = matches(:active_content_match)
   end
 
   test 'user can upload an activity' do

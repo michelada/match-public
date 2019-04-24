@@ -64,7 +64,11 @@ es:
     created: "Comentario realizado"
     error_creating: "Error guardando comentario"
   errors:
+    end_date_invalid: "La fecha de inicio no puede ser posterior a la fecha de término"
     format: "%{message}"
+    no_content_match: "El match actual no es de tipo 'Content', por lo cual no se pueden subir actividades"
+    no_project_match: "El match actual no es de tipo 'Project', por lo cual no se pueden subir projectos"
+    overlapped_dates: "Hay un match activo en ese rango de fechas: id: %{match_id} fechas: %{start_date} - %{end_date}"
   home: "Inicio"
   labels:
     activities_range: "Aplicaciones que pueden participar"
@@ -153,6 +157,7 @@ es:
       leave_team: "Abandonar equipo"
       left: "Abandonaste el equipo"
       no_teams: 'No hay equipos'
+      no_leader: 'No hay equipo líder'
       updated: "Equipo actualizado"
       user_invited: "El usuario ha sido agregado a tu equipo"
   placeholders:

@@ -15,64 +15,85 @@ require 'test_helper'
 
 class MatchTest < ActiveSupport::TestCase
   setup do
-    @match = matches(:project_match)
+    @project_match = matches(:empty_project_match)
+    @content_match = matches(:empty_content_match)
   end
 
   test 'matches can have activities' do
     activity1 = activities(:simple_activity)
     activity2 = activities(:simple_activity2)
 
-    @match.activities << activity1
-    activity2.update_attribute(:match_id, @match.id)
+    @content_match.activities << activity1
+    activity2.update_attribute(:match_id, @content_match.id)
 
-    assert_equal(@match.activities.length, 2)
-    assert_equal(activity2, @match.activities.first)
-    assert_equal(activity1, @match.activities.last)
-    assert_equal(activity1.match, @match)
+    assert_equal(2, @content_match.activities.length)
+    assert_equal(activity1, @content_match.activities.last)
+    assert_equal(activity2, @content_match.activities.first)
+    assert_equal(activity1.match, @content_match)
   end
 
   test 'matches can have teams' do
     team1 = teams(:team1)
     team2 = teams(:team2)
 
-    @match.teams << team1
-    team2.update_attribute(:match_id, @match.id)
+    @content_match.teams << team1
+    team2.update_attribute(:match_id, @content_match.id)
 
-    assert_equal(@match.teams.length, 2)
-    assert_equal(team1, @match.teams.first)
-    assert_equal(team2, @match.teams.last)
-    assert_equal(team1.match, @match)
+    assert_equal(2, @content_match.teams.length)
+    assert_equal(team1, @content_match.teams.first)
+    assert_equal(team2, @content_match.teams.last)
+    assert_equal(team1.match, @content_match)
   end
 
   test 'matches can have projects' do
     project1 = projects(:simple_project)
     project2 = projects(:simple_project2)
 
-    @match.projects << project1
-    project2.update_attribute(:match_id, @match.id)
+    @project_match.projects << project1
+    project2.update_attribute(:match_id, @project_match.id)
 
-    assert_equal(@match.projects.length, 2)
-    assert_equal(project1, @match.projects.first)
-    assert_equal(project2, @match.projects.last)
-    assert_equal(project1.match, @match)
+    assert_equal(2, @project_match.projects.length)
+    assert_equal(project1, @project_match.projects.first)
+    assert_equal(project2, @project_match.projects.last)
+    assert_equal(project1.match, @project_match)
+  end
+
+  test 'content matches cannot have projects' do
+    project = projects(:simple_project)
+    assert_raises 'Project can only exist in project matches' do
+      project.update_attribute(match_id: @content_match.id)
+    end
+  end
+
+  test 'activities can only exist in content matches' do
+    activity = activities(:simple_activity)
+    assert_raises 'Activity can only exist in project matches' do
+      activity.update_attribute(match_id: @content_match.id)
+    end
   end
 
   test 'match is invalid with no match type' do
-    @match.match_type = nil
-    refute @match.valid?
+    @project_match.match_type = nil
+    refute @project_match.valid?
   end
 
-  test 'match is invalid with no start date' do
-    @match.start_date = nil
-    refute @match.valid?
+  test 'match is valid with all attributes' do
+    assert @project_match.valid?
+    assert @content_match.valid?
   end
 
-  test 'match is invalid with no end date' do
-    @match.end_date = nil
-    refute @match.valid?
+  test 'match is not valid if start_date is bigger than end_date' do
+    match = Match.new(match_type: 'Content', start_date: Date.today, end_date: Date.today - 1)
+    refute match.valid?
   end
 
-  test 'match is valid with all atteibutes' do
-    assert @match.valid?
+  test 'match cannot be created if it overlaps with another match' do
+    match = Match.new(match_type: 'Content', start_date: '2019-04-24', end_date: '2019-04-30')
+    refute match.valid?
+  end
+
+  test 'match version is assigned automatically when a match is created' do
+    match = Match.create(match_type: 'Content', start_date: '2019-05-01', end_date: '2019-05-02')
+    assert(3, match.version)
   end
 end

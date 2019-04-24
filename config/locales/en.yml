@@ -64,7 +64,11 @@ en:
     created: "Comment saved"
     error_creating: "Error saving comment"
   errors:
+    end_date_invalid: "Start date can't be supperior than end date"
     format: "%{message}"
+    no_content_match: "Current match is not 'Content' type, therefore projects cannot be uploaded"
+    no_project_match: "Current match is not 'Project' type, therefore activities cannot be uploaded"
+    overlapped_dates: "There is another match in the specified range of dates: id: %{match_id} dates: %{start_date} - %{end_date}"
   home: "Home"
   labels:
     activities_range: "Select the activitie's date range that can be part"
@@ -148,6 +152,7 @@ en:
       error_updating: "Error updating the team"
       error_users: "Invalid email users"
       no_teams: 'There are no teams'
+      no_leader: "No leader team"
       leave_team: "Leave team"
       left: "You left the team"
       updated: "Team updated"

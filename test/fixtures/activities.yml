@@ -83,7 +83,7 @@ simple_activity:
   created_at: <%= Date.today + 2.days%>
   activity_type: 2
   name: 'sample post'
-  english: ture
+  english: true
   status: 0
   user_id: 266512
   match_id: 1
@@ -92,7 +92,7 @@ simple_activity2:
   id: 5
   activity_type: 2
   name: 'sample post'
-  english: ture
+  english: true
   slug: "android"
   status: 0
   user: user_test1
@@ -112,3 +112,16 @@ ruby_as_day_to_day:
   status: 0
   user: user_with_teammates
   match_id: 1
+
+actity_with_lots_of_points:
+  activity_type: 0
+  name: "Farming points"
+  description: "This activity was made"
+  pitch_audience: "to ensure Halcones becomes"
+  abstract_outline: "the winner team"
+  english: true
+  status: 2
+  score: 800
+  user: user_test1
+  match_id: 1
+  slug: "farming-points"

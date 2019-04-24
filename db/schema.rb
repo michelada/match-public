@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2019_04_23_210219) do
     t.datetime "updated_at", null: false
     t.bigint "match_id"
     t.bigint "team_id"
+    t.integer "score", default: 0
     t.index ["match_id"], name: "index_projects_on_match_id"
     t.index ["team_id"], name: "index_projects_on_team_id"
   end

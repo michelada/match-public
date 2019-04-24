@@ -2,9 +2,15 @@ require 'test_helper'
 
 class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   def setup
+    # All controllers set @match = Match.last by default, inside tests, Match.last is a project match
+    # and test will fail because activities can only be created inside a content match. This will be fixed
+    # in the future, by now this is good to go.
+    Match.all.each { |m| m.destroy if m.id != 1 }
+
     @user = users(:user)
     @user_with_team = users(:user_with_team)
-    @match = Match.last
+    @match = matches(:content_match)
+    @match.update_attributes(start_date: Date.today - 2, end_date: Date.today + 2)
   end
 
   test 'no logged user can not acces to new_activity path' do
@@ -19,7 +25,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'loged user with team can create an activity' do
+  test 'logged user with team can create an activity' do
     team = teams(:team3)
     sign_in @user_with_team
     post match_activities_path(@match), params: { activity: { name: 'Android Studio',
@@ -61,6 +67,15 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test 'user with no team is redirected to create team path' do
     sign_in @user
     get new_match_activity_path(@match)
-    assert_redirected_to new_match_team_path
+    assert_redirected_to new_match_team_path(@match)
+  end
+
+  test 'users cannot create an activity if no poll is active' do
+    @match.update_attribute(:end_date, Date.today - 1)
+    sign_in @user_with_team
+
+    get new_match_activity_path(@match)
+    assert_redirected_to match_main_index_path(@match)
+    assert_equal(flash[:alert], I18n.t('activities.closed'))
   end
 end

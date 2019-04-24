@@ -23,20 +23,19 @@
 
 class Activity < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: :slugged
   belongs_to :match
   belongs_to :user
   has_many :locations, dependent: :destroy
-  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
   has_many :feedback, dependent: :destroy
   has_many :activity_statuses, dependent: :destroy
   has_many :votes, dependent: :destroy
-  enum activity_type: %i[Curso Plática Post]
-
-  enum status: %i[Por\ validar En\ revisión Aprobado]
   has_many_attached :files, dependent: :destroy
-  before_update :mark_locations_for_removal, :update_score
+  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
+  friendly_id :name, use: :slugged
+  enum activity_type: %i[Curso Plática Post]
+  enum status: %i[Por\ validar En\ revisión Aprobado]
   before_save :assign_score
+  before_update :mark_locations_for_removal, :match_valid?, :update_score
 
   scope :from_a_poll, (lambda { |start_date, end_date|
     where('created_at >= ? AND created_at <= ? AND status = ?', start_date, end_date, 2)
@@ -56,6 +55,11 @@ class Activity < ApplicationRecord
   validates :pitch_audience, :abstract_outline, :description, presence: true, unless: :post?
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
+  validate :belongs_to_content_match?
+
+  def belongs_to_content_match?
+    errors.add(:match_id, I18n.t('errors.no_content_match')) if match&.match_type != 'Content'
+  end
 
   def css_class
     status_class = { "Por validar": 'on-hold', "En revisión": 'review', "Aprobado": 'approved' }
@@ -102,6 +106,10 @@ class Activity < ApplicationRecord
     locations.each do |location|
       location.mark_for_destruction if location.name.blank?
     end
+  end
+
+  def match_valid?
+    raise 'Activity can only exist in project matches' if match.match_type != 'Content'
   end
 
   def score_by_type

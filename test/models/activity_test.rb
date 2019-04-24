@@ -143,4 +143,11 @@ class ActivityTest < ActiveSupport::TestCase
     activity = activities(:activity_workshop)
     assert activity.approved?
   end
+
+  test 'activity is invalid if it belongs to a Project match type' do
+    activity = activities(:simple_activity)
+    activity.match_id = 2
+
+    refute activity.save
+  end
 end

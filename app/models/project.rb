@@ -11,11 +11,23 @@
 #  updated_at   :datetime         not null
 #  match_id     :bigint(8)
 #  team_id      :bigint(8)
+#  score        :integer          default(0)
 #
 
 class Project < ApplicationRecord
   belongs_to :match
   belongs_to :team
+
+  validate :belongs_to_project_match?
+  before_update :match_valid?
+
+  def belongs_to_project_match?
+    errors.add(:match_id, I18n.t('errors.no_project_match')) if match&.match_type != 'Project'
+  end
+
+  def match_valid?
+    raise 'Project can only exist in project matches' if match.match_type != 'Project'
+  end
 
   def users
     team.users
