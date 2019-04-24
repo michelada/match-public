@@ -142,6 +142,7 @@ es:
     destroy: "Eliminar equipo"
     edit: "Editar equipo"
     error_accessing: "No puedes acceder a otro team"
+    invalid_user: 'El usuario ya cuenta con un equipo, o el correo es invalido'
     top: "Top"
     winner: "Equipo ganador"
     messages:

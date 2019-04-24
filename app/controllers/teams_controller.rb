@@ -11,9 +11,8 @@ class TeamsController < MatchesController
 
   def create
     @team = Team.new(team_params)
-    if @team.save
+    if @team.save && invite_users
       current_user.update_attribute(:team, @team)
-      invite_users
       flash[:notice] = t('team.messages.created')
       redirect_to match_main_index_path(@match)
     else
@@ -35,17 +34,20 @@ class TeamsController < MatchesController
   end
 
   def invite_users
-    params[:user_invitations].each do |email|
-      next if email[1].empty?
-
-      User.invite!({ email: email[1] }, current_user)
+    params[:user_invitations].each do |email_input|
+      user = User.find_by_email(email_input)
+      if user.nil?
+        User.invite!({ email: email_input[1] }, current_user)
+      else
+        user.update_attributes(team: @team)
+      end
     end
   end
 
   def valid_users_invitations?
     user1 = User.new(email: params[:user_invitations][:email_1])
     user2 = User.new(email: params[:user_invitations][:email_2])
-    return if user1.can_be_invited? && user2.can_be_invited?
+    return if (user1.can_be_invited? || user1.email.empty?) && (user2.can_be_invited? || user2.email.empty?)
 
     flash[:alert] = t('team.messages.error_users')
     redirect_to new_match_team_path(@match)
