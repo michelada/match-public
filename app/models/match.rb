@@ -15,8 +15,8 @@ class Match < ApplicationRecord
   enum match_type: %i[Content Project]
 
   has_many :activities, dependent: :destroy
-  has_many :projects, dependent: :delete_all
-  has_many :teams, dependent: :delete_all
+  has_many :projects, dependent: :destroy
+  has_many :teams, dependent: :destroy
 
   validates :match_type, :start_date, :end_date, presence: true
   validate :dates_match?, :no_overlaps?
