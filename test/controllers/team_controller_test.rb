@@ -36,4 +36,12 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
     get match_team_path(@match, @team_user.team)
     assert_response :success
   end
+
+  test 'user should not have a team' do
+    refute @user.team?
+  end
+
+  test 'user should be part of a team' do
+    assert @team_user.team?
+  end
 end

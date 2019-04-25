@@ -4,7 +4,7 @@ class TeamInvitationsController < MatchesController
   def new; end
 
   def create
-    if invite_user
+    if invite_user && current_user.team.users.count < 3
       flash[:notice] = t('team.messages.user_invited')
       redirect_to match_team_path(@match, current_user.team)
     else
