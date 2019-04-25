@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :feedbacks, only: [:index, :create, :update]
     end
 
-    resources :polls, only: [:index, :show] do
+    resources :polls, only: [:show] do
       resources :activities, only: [:index] do
         resources :votes, only: [:create, :destroy]
       end

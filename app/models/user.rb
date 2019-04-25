@@ -39,12 +39,12 @@ class User < ApplicationRecord
 
   after_invitation_accepted :initialize_user
 
-  def normal_user?
-    user?
+  def team?
+    team_id
   end
 
-  def team?
-    !team_id.nil?
+  def normal_user?
+    user?
   end
 
   def part_of_team?(team_slug)

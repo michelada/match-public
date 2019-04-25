@@ -101,8 +101,9 @@ class MatchTest < ActiveSupport::TestCase
     match = Match.create(match_type: 'Content',
                          start_date: Date.today + 2.weeks,
                          end_date: Date.today + 4.weeks)
-
-    assert Poll.find_by(match: match)
+    poll = Poll.last
+    assert poll.match = match
+    assert match.poll = poll
   end
 
   test 'poll is not created when a match creation fails' do
