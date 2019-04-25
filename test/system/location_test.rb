@@ -4,6 +4,7 @@ class LocationTest < ApplicationSystemTestCase
   before do
     @team_user = users(:user_with_team)
     sign_in @team_user
+    Match.last.destroy
     @match = matches(:active_content_match)
   end
 

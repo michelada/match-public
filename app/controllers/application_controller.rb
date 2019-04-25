@@ -1,6 +1,7 @@
 # Main controller
 class ApplicationController < ::ActionController::Base
   before_action :authenticate_user!
+  before_action :set_match
 
   def after_sign_in_path_for(_users)
     if current_user.team? && !current_user.admin?
@@ -50,5 +51,19 @@ class ApplicationController < ::ActionController::Base
       flash[:alert] = t('activities.closed')
       redirect_to match_main_index_path(@match)
     end
+  end
+
+  def user_can_upload_project?
+    if current_user.team.nil?
+      flash[:alert] = t('projects.no_team')
+      redirect_to new_match_team_path(@match)
+    elsif current_user.project.present?
+      flash[:alert] = t('projects.already_have_one')
+      redirect_to match_team_path(@match, current_user.team)
+    end
+  end
+
+  def set_match
+    @match = Match.last
   end
 end

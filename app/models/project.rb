@@ -19,6 +19,9 @@ class Project < ApplicationRecord
   belongs_to :team
 
   validate :belongs_to_project_match?
+  validates :name, uniqueness: { case_sensitive: false }
+  validates :name, :description, presence: true
+
   before_update :match_valid?
 
   def belongs_to_project_match?

@@ -39,4 +39,4 @@ simple_project2:
             HEREDOC
   team_id: 1
   created_at: <%= Date.today - 1.week%>
-  match_id: 2
+  match_id: 6

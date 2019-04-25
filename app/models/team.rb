@@ -28,7 +28,7 @@ class Team < ApplicationRecord
     when 'Content'
       activities.where(status: 2).sum('score')
     when 'Project'
-      project.score
+      project&.score || 0
     else
       raise 'Invalid match type'
     end

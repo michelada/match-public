@@ -2,7 +2,8 @@ require 'application_system_test_case'
 
 class TeamTest < ApplicationSystemTestCase
   def setup
-    @match = Match.last
+    Match.last.destroy
+    @match = matches(:active_content_match)
   end
   test 'Users can invite another user at the team' do
     @team_user = users(:user_with_team)
