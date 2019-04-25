@@ -54,8 +54,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :user_manager, only: [:index, :update, :destroy]
-    resources :matches do
-      resources :polls, except: [:show]
-    end
+    resources :matches
   end
 end
