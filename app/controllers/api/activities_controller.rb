@@ -1,7 +1,7 @@
 module Api
   class ActivitiesController < ::ActionController::Base
     def index
-      if Poll.last.can_vote?
+      if Poll.first.can_vote?
         @last_activity = Activity.last
         @response = ::Api::ApiService.new.last_activity_format(@last_activity)
         render json: @response

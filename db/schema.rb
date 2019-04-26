@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_210219) do
+ActiveRecord::Schema.define(version: 2019_04_25_195157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,8 +101,6 @@ ActiveRecord::Schema.define(version: 2019_04_23_210219) do
     t.date "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "activities_from", null: false
-    t.date "activities_to", null: false
     t.bigint "match_id"
     t.index ["match_id"], name: "index_polls_on_match_id"
   end

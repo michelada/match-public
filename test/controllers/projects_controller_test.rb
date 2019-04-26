@@ -13,7 +13,6 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test 'logged user without project can create a new project' do
     sign_in users(:user_with_team)
-
     get new_match_project_path(@match)
 
     assert_response :success, 'Controller response unexpected'

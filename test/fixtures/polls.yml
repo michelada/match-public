@@ -16,6 +16,15 @@ poll:
   id: 776
   start_date: <%= Date.today - 1.day%>
   end_date: <%= Date.today + 1.week%>
-  activities_from: <%= Date.today - 3.week%>
-  activities_to: <%= Date.today + 1.day%>
   match_id: 1
+
+active_poll:
+  match_id: 5
+  start_date: <%= Date.today + 2 %>
+  end_date: <%= Date.today + 3 %>
+
+project_poll:
+    match_id: 6
+    start_date: <%= Date.today + 4 %>
+    end_date: <%= Date.today + 6 %>
+

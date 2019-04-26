@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :feedbacks, only: [:index, :create, :update]
     end
 
-    resources :polls, only: [:index, :show] do
+    resources :polls, only: [:show] do
       resources :activities, only: [:index] do
         resources :votes, only: [:create, :destroy]
       end
@@ -54,8 +54,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :user_manager, only: [:index, :update, :destroy]
-    resources :matches do
-      resources :polls, except: [:show]
-    end
+    resources :matches
   end
 end

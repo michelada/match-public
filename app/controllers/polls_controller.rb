@@ -11,6 +11,7 @@ class PollsController < MatchesController
     @activity_types = @poll.activities.group(:activity_type).select(:activity_type)
     @best_activities = []
     3.times { |i| @best_activities << Activity.best_activities(@poll.id, i) }
+
     return unless @poll.activities.empty?
 
     flash[:alert] = t('poll.empty_activities')
