@@ -24,6 +24,14 @@ class Match < ApplicationRecord
 
   has_one :poll
 
+  def content_match?
+    Content?
+  end
+
+  def project_match?
+    Project?
+  end
+
   def dates_match?
     errors.add(:end_date, I18n.t('errors.end_date_invalid')) if start_date > end_date
   end

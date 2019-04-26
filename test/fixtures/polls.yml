@@ -9,6 +9,7 @@
 #  updated_at      :datetime         not null
 #  activities_from :date             not null
 #  activities_to   :date             not null
+#  match_id        :bigint(8)
 #
 
 poll:

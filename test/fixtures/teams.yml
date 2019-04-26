@@ -25,6 +25,7 @@ team2:
   slug: tigres
 
 team3:
+  id: 3
   match_id: 1
   name: chivos
   slug: chivos

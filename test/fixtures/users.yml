@@ -63,7 +63,7 @@ user_with_team:
   email: 'team_user@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team: team3
+  team_id: 3
 
 user_with_teammates:
   email: 'team_mates@michelada.io'

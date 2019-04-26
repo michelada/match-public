@@ -52,7 +52,7 @@ class User < ApplicationRecord
   end
 
   def project
-    team.project
+    team&.project
   end
 
   def can_be_invited?
