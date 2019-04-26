@@ -26,7 +26,10 @@
             %p.long-line
               = activity.name
             %p.points
-              = t('labels.tentative_score', score: activity.score)
+              - if activity.approved?
+                = t('labels.points', score: activity.score)
+              -else
+                = t('labels.tentative_score', score: activity.score)
           %p{class: activity.css_class}
             = activity.status
           .d-flex.justify-content-between
@@ -35,7 +38,7 @@
             = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail', custom_color: '#F9CF26'}), match_activity_path(@match, activity), id: "go_to_#{activity.id}"
           %hr.section
 
-      - if current_user.activities&.exists?      
+      - if current_user.activities&.exists?
         %h3.mt-5.text-center.mb-3.team
           = t('activities.my_activities')
         %br
@@ -63,7 +66,7 @@
                   - unless activity.Aprobado?
                     = link_to image_tag('ic-edit'), edit_match_activity_path(@match, activity)
                     = link_to image_tag('ic-delete'), match_activity_path(@match, activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
-    
+
     -elsif @match.project_match?
       -if current_user.project.present?
         %h3.mt-5.center-info.mb-3

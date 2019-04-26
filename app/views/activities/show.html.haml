@@ -4,7 +4,7 @@
       %h3.text.red= @activity.name
       %h5
         = @activity.activity_type
-        %em.points= "#{@activity.score} #{t('labels.points')}"
+        %em.points=t('labels.points', score: @activity.score)
       - if @activity.activity_statuses.exists?
         %p
           = t('activities.approved_by', users: judges_appproves(@activity))
