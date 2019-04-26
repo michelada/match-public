@@ -53,16 +53,6 @@ class ApplicationController < ::ActionController::Base
     end
   end
 
-  def user_can_upload_project?
-    if current_user.team.nil?
-      flash[:alert] = t('projects.no_team')
-      redirect_to new_match_team_path(@match)
-    elsif current_user.project.present?
-      flash[:alert] = t('projects.already_have_one')
-      redirect_to match_team_path(@match, current_user.team)
-    end
-  end
-
   def set_match
     @match = Match.last
   end

@@ -201,8 +201,8 @@ es:
     error_creating: "Error creando proyecto"
     error_deleting: "Error eliminando proyecto"
     error_updating: "Error actualizando proyecto"
-    features: "Caracterísitcas"
-    my_project: "Mi Proyecto"
+    features: "Características"
+    my_project: "Mi proyecto"
     no_feature: "No hay características"
     no_repository: "No hay repositorios"
     no_team: "Debes crear primero tu equipo"
@@ -290,7 +290,7 @@ es:
           attributes:
             name:
               blank: "Debes agregar un nombre"
-              taken: "Ya existe un projecto con ese nombre"
+              taken: "Ya existe un proyecto con ese nombre"
             description:
               blank: "Debes de agregar una descripción"
         team:

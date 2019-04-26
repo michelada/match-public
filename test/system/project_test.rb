@@ -7,10 +7,11 @@ class ProjectTest < ApplicationSystemTestCase
     @user_no_project = users(:user_with_team)
   end
 
-  test 'user must fill the required fields to upload an activity' do
+  test 'user can upload a project with all the attributes' do
     login_as @user_no_project
 
-    visit new_match_project_path(@match)
+    visit match_team_path(@match, @user_no_project.team)
+    find("a[href='/match/#{@match.id}/projects/new']").click
 
     fill_in 'project[name]', with: 'Test project'
     fill_in 'project[description]', with: 'Filled from system tests'
@@ -20,16 +21,32 @@ class ProjectTest < ApplicationSystemTestCase
     assert page.has_content?(I18n.t('projects.created'))
   end
 
+  test 'user cannot create a project if required fields are blank' do
+    login_as @user_no_project
+    visit new_match_project_path(@match)
+
+    click_button 'Create Project'
+
+    assert page.has_content?(I18n.t('activerecord.errors.models.project.attributes.name.blank'))
+    assert page.has_content?(I18n.t('activerecord.errors.models.project.attributes.description.blank'))
+  end
+
   test 'users can edit projects' do
     login_as @user
     visit match_team_path(@match, @user.team)
 
     click_link I18n.t('buttons.edit')
-
     fill_in 'project[name]', with: 'Test project updated'
-
     click_button 'Update Project'
 
     assert page.has_content?('Test project updated')
+  end
+
+  test 'users cannot see new project link if they have a project' do
+    login_as @user
+
+    visit match_team_path(@match, @user.team)
+
+    assert_not page.has_content?("a[href='/match/#{@match.id}/projects/new']")
   end
 end

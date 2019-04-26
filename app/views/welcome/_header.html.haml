@@ -5,14 +5,14 @@
         = image_tag 'mcm-logo', alt: 'mcm-logo', height: 60, class: 'company-logo'
       .nav
         - if @match.content_match?
-          = link_to new_match_activity_path do
+          = link_to new_match_activity_path(@match) do
             = render partial: 'icons/ic_activities', locals: {is_active: controller_path == 'activities' }
-        - if can_upload_project?
-          = link_to new_match_project_path do
+        - elsif @match.project_match? && can_upload_project?
+          = link_to new_match_project_path(@match) do
             = render partial: 'icons/ic_activities', locals: {is_active: controller_path == 'projects' }
-        = link_to  match_main_index_path do
+        = link_to  match_main_index_path(@match) do
           = render partial: 'icons/ic_top', locals: {is_active: controller_path == 'main' }
-        = link_to  new_match_team_path do
+        = link_to  new_match_team_path(@match) do
           = render partial: 'icons/ic_team', locals: {is_active: controller_path == 'teams' }
         - if current_user.judge?
           = link_to match_judge_main_index_path(@match) do

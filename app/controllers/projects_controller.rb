@@ -38,10 +38,20 @@ class ProjectsController < ApplicationController
 
   private
 
+  def user_can_upload_project?
+    if current_user.team.nil?
+      flash[:alert] = t('projects.no_team')
+      redirect_to new_match_team_path(@match)
+    elsif current_user.project
+      flash[:alert] = t('projects.already_have_one')
+      redirect_to match_team_path(@match, current_user.team)
+    end
+  end
+
   def project_params
     params.require(:project)
           .permit(:name, :description, :repositories, :features)
-          .merge(match_id: params[:match_id], team_id: current_user.team_id)
+          .merge(match_id: params[:match_id], team: current_user.team)
   end
 
   def set_project

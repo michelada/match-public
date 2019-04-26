@@ -3,11 +3,11 @@
     .activities
       %h3.text.red= @project.name
       
-      %h6.text.red Description
+      %h6.text.red= t('projects.description')
       %h6= markdown(@project.description)
 
-      %h6.text.red Features
+      %h6.text.red= t('projects.features')
       %h6= markdown(@project.features) || t('projects.no_feature')
 
-      %h6.text.red Repositories
+      %h6.text.red= t('projects.repositories')
       %h6= markdown(@project.repositories) || t('projects.no_repository')
