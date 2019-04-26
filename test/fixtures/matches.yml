@@ -46,5 +46,5 @@ active_content_match:
 active_project_match:
   id: 6
   match_type: Project
-  start_date: <%= Date.today - 1 %>
+  start_date: <%= Date.today -2 %>
   end_date: <%= Date.today + 2 %>
