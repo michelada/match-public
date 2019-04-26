@@ -6,6 +6,7 @@ en:
   activities:
     add: "Add activity"
     all: "All activities"
+    approved_by: 'Aproved for: %{users}'
     best: "Best"
     closed: "The time for uploading activities is over."
     edit_activity: "Edit activity"
