@@ -5,6 +5,7 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:user)
     @team_user = users(:user_with_team)
+    Match.last.destroy
     @match = Match.last
   end
 

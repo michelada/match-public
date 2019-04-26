@@ -12,6 +12,7 @@
 
 class ActivityStatus < ApplicationRecord
   belongs_to :activity
+  belongs_to :user
   after_create :verify_general_status
   after_destroy :verify_general_status
   scope :user_approve_status_activity, ->(user, activity) { where(activity_id: activity).where(user_id: user).first }

@@ -7,6 +7,7 @@ es:
   activities:
     add: "Agregar actividad"
     all: "Todas las actividades"
+    approved_by: 'Aprobada por: %{users}'
     best: "Mejores"
     closed: "El tiempo para subir actividades ha terminado."
     edit_activity: "Editar actividad"
@@ -112,6 +113,7 @@ es:
     points: "%{score} pts"
     polls: "Votaciones"
     post: "Post"
+    project: "Proyecto del"
     reviewing: "En revisión"
     role: "Rol"
     score: "Puntaje:"
@@ -193,6 +195,21 @@ es:
   polls:
     deleted: "Votación eliminada"
     updated: "Votación actualizada"
+  projects:
+    already_have_one: "No puedes crear otro proyecto"
+    created: "Proyecto creado"
+    deleted: "Proyecto eliminado"
+    description: "Descripción"
+    error_creating: "Error creando proyecto"
+    error_deleting: "Error eliminando proyecto"
+    error_updating: "Error actualizando proyecto"
+    features: "Características"
+    my_project: "Mi proyecto"
+    no_feature: "No hay características"
+    no_repository: "No hay repositorios"
+    no_team: "Debes crear primero tu equipo"
+    repositories: "Repositorios"
+    updated: "Proyecto actualizado"
   uploads:
     deleted: 'Archivo eliminado'
     error_deleting: 'Error eliminando el archivo'
@@ -271,6 +288,13 @@ es:
           attributes:
             match_type:
               blank: "Debes seleccionar un tipo de match"
+        project:
+          attributes:
+            name:
+              blank: "Debes agregar un nombre"
+              taken: "Ya existe un proyecto con ese nombre"
+            description:
+              blank: "Debes de agregar una descripción"
         team:
           attributes:
             name:

@@ -4,7 +4,8 @@ class JudgeActivityTest < ApplicationSystemTestCase
   def setup
     @user = users(:judge_user)
     login_as @user
-    @match = Match.last
+    Match.last.destroy
+    @match = matches(:active_content_match)
   end
 
   test 'judge user can approve an activity' do

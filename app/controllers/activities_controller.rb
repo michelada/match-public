@@ -62,4 +62,24 @@ class ActivitiesController < MatchesController
                   locations_attributes: [:name, :id, :_destroy])
           .merge(match_id: params[:match_id], user: current_user)
   end
+
+  def user_can_edit_activity?
+    activity = Activity.friendly.find(params[:id])
+    return unless activity.approved?
+
+    flash[:alert] = t('activities.messages.error_accessing')
+    redirect_to root_path
+  end
+
+  def user_can_upload_activity?
+    return redirect_to new_match_team_path(@match) unless current_user.team?
+
+    actual_date = DateTime.now.in_time_zone('Mexico City')
+    limit_date = Match.last&.end_date
+    start_date = Match.last&.start_date
+    return if Match.last && (start_date..limit_date).cover?(actual_date)
+
+    flash[:alert] = t('activities.closed')
+    redirect_to match_main_index_path(@match)
+  end
 end

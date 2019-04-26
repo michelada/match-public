@@ -6,6 +6,7 @@ en:
   activities:
     add: "Add activity"
     all: "All activities"
+    approved_by: 'Aproved for: %{users}'
     best: "Best"
     closed: "The time for uploading activities is over."
     edit_activity: "Edit activity"
@@ -111,6 +112,7 @@ en:
     pitch: "Pitch"
     points: "%{score} pts"
     polls: "Polls"
+    project: "Project"
     reviewing: "On review"
     role: "Role"
     score: "Score:"
@@ -190,6 +192,21 @@ en:
   polls:
     deleted: "Poll deleted"
     updated: "Poll updated"
+  projects:
+    already_have_one: "You already have a project"
+    created: "Project created"
+    deleted: "Project deleted"
+    description: "Description"
+    error_creating: "Error creating project"
+    error_deleting: "Error deleting project"
+    error_updating: "Error updating project"
+    features: "Features"
+    my_project: "My project"
+    no_feature: "No features yet"
+    no_repository: "No repositories yet"
+    no_team: "You must create your team first"
+    repositories: "Repositories"
+    updated: "Project updated"
   uploads:
     deleted: 'File deleted'
     error_deleting: 'Error deleting file'
@@ -267,6 +284,13 @@ en:
           attributes:
             match_type:
               blank: "Match type can't be blank"
+        project:
+          attributes:
+            name:
+              blank: "Name can't be blank"
+              taken: "That name is already taken"
+            description:
+              blank: "Description can't be blank"
         team:
           attributes:
             name:

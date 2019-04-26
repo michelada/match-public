@@ -18,4 +18,8 @@ module ApplicationHelper
   def poll_for_vote
     Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).first
   end
+
+  def can_upload_project?
+    @match.project_match? && current_user.project.nil?
+  end
 end

@@ -3,7 +3,7 @@ require 'test_helper'
 class MainControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:user)
-    @match = Match.last
+    @match = matches(:active_content_match)
   end
 
   test 'no logged user can not visit main index' do
@@ -14,6 +14,7 @@ class MainControllerTest < ActionDispatch::IntegrationTest
   test 'logged user can visit main index' do
     user_with_team = users(:user_with_team)
     sign_in user_with_team
+
     get match_main_index_path(@match)
     assert_response :success
   end

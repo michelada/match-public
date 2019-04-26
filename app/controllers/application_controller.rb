@@ -1,6 +1,7 @@
 # Main controller
 class ApplicationController < ::ActionController::Base
   before_action :authenticate_user!
+  before_action :set_match
 
   def after_sign_in_path_for(_users)
     if current_user.team? && !current_user.admin?
@@ -29,26 +30,7 @@ class ApplicationController < ::ActionController::Base
     redirect_to root_path
   end
 
-  def user_can_edit_activity?
-    activity = Activity.friendly.find(params[:id])
-    return unless activity.approved?
-
-    flash[:alert] = t('activities.messages.error_accessing')
-    redirect_to root_path
-  end
-
-  def user_can_upload_activity?
-    if current_user.team.nil?
-      redirect_to new_match_team_path(@match)
-    else
-      actual_date = DateTime.now.in_time_zone('Mexico City')
-      limit_date = Match.last&.end_date
-      start_date = Match.last&.start_date
-
-      return if Match.last && (start_date..limit_date).cover?(actual_date)
-
-      flash[:alert] = t('activities.closed')
-      redirect_to match_main_index_path(@match)
-    end
+  def set_match
+    @match = Match.last
   end
 end

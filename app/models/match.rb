@@ -12,20 +12,35 @@
 #
 
 class Match < ApplicationRecord
+  before_create :assign_version
+  after_create :create_poll
+
   enum match_type: %i[Content Project]
 
   has_many :activities, dependent: :destroy
   has_many :projects, dependent: :destroy
   has_many :teams, dependent: :destroy
+  has_one :poll, dependent: :delete
 
   validates :match_type, :start_date, :end_date, presence: true
   validate :dates_match?, :no_overlaps?
-  before_save :assign_version
 
-  has_one :poll
+  def content_match?
+    Content?
+  end
+
+  def project_match?
+    Project?
+  end
 
   def dates_match?
     errors.add(:end_date, I18n.t('errors.end_date_invalid')) if start_date > end_date
+  end
+
+  def create_poll
+    Poll.new(start_date: end_date + 1,
+             end_date: end_date + 7.days,
+             match: self)
   end
 
   def no_overlaps?

@@ -1,0 +1,8 @@
+.container.center-vertical.activities
+  .main-content.medium.mt-5
+    = simple_form_for([@match, @project]) do |f|
+      = f.input :name
+      = f.input :description
+      = f.input :repositories
+      = f.input :features    
+      = f.submit            

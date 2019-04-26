@@ -15,12 +15,13 @@ Rails.application.routes.draw do
     resources :main, only: [:index]
     resources :team_invitations, only: [:new, :create]
     resource :user, only: [:update]
+    resources :projects, except: [:index, :destroy]
 
     resources :activities, except: [:index] do
       resources :feedbacks, only: [:index, :create, :update]
     end
 
-    resources :polls, only: [:index, :show] do
+    resources :polls, only: [:show] do
       resources :activities, only: [:index] do
         resources :votes, only: [:create, :destroy]
       end
@@ -53,8 +54,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :user_manager, only: [:index, :update, :destroy]
-    resources :matches do
-      resources :polls, except: [:show]
-    end
+    resources :matches
   end
 end

@@ -11,7 +11,8 @@ class TeamsController < MatchesController
 
   def create
     @team = Team.new(team_params)
-    if @team.save && invite_users
+    if @team.save
+      invite_users
       current_user.update_attribute(:team, @team)
       flash[:notice] = t('team.messages.created')
       redirect_to match_main_index_path(@match)

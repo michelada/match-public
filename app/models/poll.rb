@@ -9,6 +9,7 @@
 #  updated_at      :datetime         not null
 #  activities_from :date             not null
 #  activities_to   :date             not null
+#  match_id        :bigint(8)
 #
 
 class Poll < ApplicationRecord
@@ -31,7 +32,7 @@ class Poll < ApplicationRecord
     where('polls.end_date >= ? and polls.start_date <= ?', date, date)
   })
 
-  validates :start_date, :end_date, :activities_from, :activities_to, presence: true
+  validates :start_date, :end_date, presence: true
   validate :valid_date_range
 
   def voted_for_type?(activity, user)

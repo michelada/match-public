@@ -25,8 +25,7 @@ module Admin
     def edit; end
 
     def update
-      @match.update(match_params)
-      if @match.save
+      if @match.update(match_params)
         flash[:notice] = t('match.update')
         redirect_to admin_matches_path
       else
