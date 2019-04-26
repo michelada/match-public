@@ -7,6 +7,7 @@ es:
   activities:
     add: "Agregar actividad"
     all: "Todas las actividades"
+    approved_by: 'Aprobada por: %{users}'
     best: "Mejores"
     closed: "El tiempo para subir actividades ha terminado."
     edit_activity: "Editar actividad"
