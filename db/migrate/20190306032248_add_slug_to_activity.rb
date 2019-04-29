@@ -3,6 +3,8 @@ class AddSlugToActivity < ActiveRecord::Migration[5.2]
     add_column :activities, :slug, :string
     add_index :activities, :slug, unique: true
 
+    ActiveRecord.Base.connection.exequte('update activities set slug = name;')
+
     Activity.all.each do |activity|
       activity.slug = activity.name.parameterize
       activity.save!
