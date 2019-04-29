@@ -4,8 +4,10 @@ class AddSlugToTeam < ActiveRecord::Migration[5.2]
     add_index :teams, :slug, unique: true
 
     Team.all.each do |team|
-      team.slug = team.name.parameterize
-      team.save!
+      if team.valid?
+        team.slug = team.name.parameterize
+        team.save!
+      end
     end
   end
 
