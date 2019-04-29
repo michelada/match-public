@@ -38,9 +38,9 @@ class Match < ApplicationRecord
   end
 
   def create_poll
-    Poll.new(start_date: end_date + 1,
-             end_date: end_date + 7.days,
-             match: self)
+    Poll.create(start_date: end_date + 1,
+                end_date: end_date + 7.days,
+                match: self)
   end
 
   def no_overlaps?
