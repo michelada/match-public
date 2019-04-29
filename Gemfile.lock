@@ -813,6 +813,8 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
+    friendly_id (5.2.5)
+      activerecord (>= 4.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -933,6 +935,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     rb-readline (0.5.5)
+    redcarpet (3.4.0)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
@@ -1037,6 +1040,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   devise_invitable (~> 1.7.0)
+  friendly_id (~> 5.2.4)
   haml-rails (~> 1.0)
   jbuilder (~> 2.5)
   jquery-rails
@@ -1049,6 +1053,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.2)
   rb-readline
+  redcarpet
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver

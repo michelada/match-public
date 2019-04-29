@@ -1,81 +1,53 @@
-class TeamsController < ApplicationController
-  before_action :user_is_valid
-  VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze
+class TeamsController < MatchesController
+  before_action :user_is_admin?
+  before_action :user_has_permission?, only: [:show]
+  before_action :valid_users_invitations?, only: [:create]
 
   def new
-    redirect_to team_path(current_user.team) unless current_user.team.nil?
+    redirect_to match_team_path(@match, current_user.team) unless current_user.team.nil?
     @team = Team.new
-    @name = "#{Spicy::Proton.adjective}_#{Spicy::Proton.noun}"
+    @team.name = "#{Spicy::Proton.adjective}_#{Spicy::Proton.noun}"
   end
 
   def create
     @team = Team.new(team_params)
-    @name = params[:team][:name]
-    if validate_user && users_invitable && @team.save
+    if @team.save
       current_user.update_attribute(:team, @team)
-      flash[:notice] = t('team.messages.created') if invite_users(params[:user_invitation_1][:email]) && invite_users(params[:user_invitation_2][:email])
-      redirect_to main_index_path
+      invite_users
+      flash[:notice] = t('team.messages.created')
+      redirect_to match_main_index_path(@match)
     else
-      flash[:alert] = t('team.messages.error_creating')
-      render new_team_path
+      flash.now[:alert] = t('team.messages.error_creating')
+      render 'new'
     end
   end
 
   def show
-    user_has_permission
-    @team = Team.find_by(id: params[:id])
-    @activities = Activity.team_activities(params[:id])
-    @my_activities = Activity.user_activities(current_user.id)
-    @team_score = Activity.team_activities_score(params[:id])
+    @team = Team.friendly.find(params[:id])
   end
 
   private
 
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team)
+          .permit(:name)
+          .merge(match_id: params[:match_id])
   end
 
-  def invite_users(user_email)
-    team_id = current_user.team_id
-    user = User.find_by(email: user_email)
-    return true if user_email.empty?
+  def invite_users
+    params[:user_invitations].each do |email|
+      next if email[1].empty?
 
-    if user.nil?
-      User.invite!({ email: user_email }, current_user)
-      User.find_by_email(user_email).update_attributes(team_id: current_user.team_id, role: User.roles[:user])
-    elsif user.team.nil?
-      user.update_attributes(team_id: team_id)
-    else
-      return false
+      User.invite!({ email: email[1] }, current_user)
     end
   end
 
-  def users_invitable
-    user1 = User.find_by(email: params[:user_invitation_1][:email])
-    user2 = User.find_by(email: params[:user_invitation_2][:email])
-    return true if !user1&.team && !user2&.team
+  def valid_users_invitations?
+    user1 = User.new(email: params[:user_invitations][:email_1])
+    user2 = User.new(email: params[:user_invitations][:email_2])
+    return if user1.can_be_invited? && user2.can_be_invited?
 
-    false
-  end
-
-  def validate_user
-    user1 = params[:user_invitation_1][:email]
-    return false if !user1.empty? && !user1.match(VALID_EMAIL_REGEX)
-
-    user2 = params[:user_invitation_2][:email]
-    return false if !user2.empty? && !user2.match(VALID_EMAIL_REGEX)
-
-    true
-  end
-
-  def user_is_valid
-    redirect_to root_path if current_user.role == 'admin'
-  end
-
-  def user_has_permission
-    return if current_user.team&.id == params[:id].to_i
-
-    flash[:alert] = t('team.error_accessing')
-    redirect_to root_path
+    flash[:alert] = t('team.messages.error_users')
+    redirect_to new_match_team_path(@match)
   end
 end

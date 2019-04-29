@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_22_005134) do
+ActiveRecord::Schema.define(version: 2019_04_25_195157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,12 @@ ActiveRecord::Schema.define(version: 2019_02_22_005134) do
     t.text "description"
     t.text "pitch_audience"
     t.text "abstract_outline"
-    t.string "activity_file"
+    t.string "files"
     t.boolean "english_approve"
+    t.string "slug"
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_activities_on_match_id"
+    t.index ["slug"], name: "index_activities_on_slug", unique: true
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -83,19 +87,46 @@ ActiveRecord::Schema.define(version: 2019_02_22_005134) do
     t.index ["activity_id"], name: "index_locations_on_activity_id"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.integer "match_type"
+    t.integer "version"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "polls", force: :cascade do |t|
     t.date "start_date", null: false
     t.date "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "activities_from", null: false
-    t.date "activities_to", null: false
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_polls_on_match_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "repositories"
+    t.text "features"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "match_id"
+    t.bigint "team_id"
+    t.integer "score", default: 0
+    t.index ["match_id"], name: "index_projects_on_match_id"
+    t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_teams_on_match_id"
+    t.index ["slug"], name: "index_teams_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -138,7 +169,12 @@ ActiveRecord::Schema.define(version: 2019_02_22_005134) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "matches"
   add_foreign_key "activities", "users"
   add_foreign_key "locations", "activities"
+  add_foreign_key "polls", "matches"
+  add_foreign_key "projects", "matches"
+  add_foreign_key "projects", "teams"
+  add_foreign_key "teams", "matches"
   add_foreign_key "users", "teams"
 end

@@ -7,6 +7,7 @@ es:
   activities:
     add: "Agregar actividad"
     all: "Todas las actividades"
+    approved_by: 'Aprobada por: %{users}'
     best: "Mejores"
     closed: "El tiempo para subir actividades ha terminado."
     edit_activity: "Editar actividad"
@@ -35,6 +36,7 @@ es:
       deleted: "Actividad eliminada"
       feedback_updated: "Comentario editado"
       feedback_deleted: "Comentario eliminado"
+      no_permitted: "Operación no permitida"
       unapproved: "Actividad desaprobada"
       updated: "Actividad actualizada"
       uploaded: "Actividad cargada"
@@ -53,6 +55,7 @@ es:
     edit: "Editar"
     invite: "Invitar"
     new: "Nuevo"
+    show: "Ver"
     submit: "Enviar"
     upload: "Cargar"
     update: "Actualizar"
@@ -62,23 +65,28 @@ es:
     created: "Comentario realizado"
     error_creating: "Error guardando comentario"
   errors:
+    end_date_invalid: "La fecha de inicio no puede ser posterior a la fecha de término"
     format: "%{message}"
+    no_content_match: "El match actual no es de tipo 'Content', por lo cual no se pueden subir actividades"
+    no_project_match: "El match actual no es de tipo 'Project', por lo cual no se pueden subir projectos"
+    overlapped_dates: "Hay un match activo en ese rango de fechas: id: %{match_id} fechas: %{start_date} - %{end_date}"
   home: "Inicio"
   labels:
     activities_range: "Aplicaciones que pueden participar"
     activities: "Actividades del"
     all: "Todas"
+    archives: 'Archivos:'
     approved: "Aprobado"
     admin: 'Lista de usuarios'
     abstract: "Abstract"
-    aspire_to: "Aspira a "
+    tentative_score: "Aspira a %{score} pts"
     audience: "Audiencia"
     comments: "Comentarios"
     create_team: "Crea tu propia"
     description: "Descripción"
     dinasty: 'Dinastía'
     download: "Descargar archivo"
-    end_date: "Fecha final"
+    end_date: "Fecha de término"
     english: "Inglés"
     email_uno: "Compañero de crimen"
     evaluate: "Evaluar"
@@ -89,39 +97,54 @@ es:
     invite_users: "Invita a tus compañeros"
     invite: 'Agregar integrante'
     last_day: 'Recuerda ejercer tu derecho a votar, tienes hasta: '
+    leader: "Líder"
     link: "Enlace"
     location: "Evento"
     look_who_is: "Mira quién está en la "
     not_location: "No hay evento registrado"
     name: "Título"
-    michelada_score: "Puntaje michelada "
+    match: "Match"
+    match_type: "Tipo de match"
+    michelada_score: "Puntaje michelada"
     notes: "Notas"
     other_location: "Otra:"
     outline: "Outline"
     pitch: "Pitch"
-    points: "pts"
+    points: "%{score} pts"
     polls: "Votaciones"
     post: "Post"
+    project: "Proyecto del"
     reviewing: "En revisión"
     role: "Rol"
     score: "Puntaje:"
     selected_file: "Archivo seleccionado"
     select_location: 'Escoje una opción'
     sign_out: 'Cerrar sesión'
-    start_date: "Fecha inicial"
+    start_date: "Fecha de inicio"
     type: "Tipo:"
     team: "Equipo"
-    tentative_score: "Aspira a"
+    tentative_score: "Aspira a %{score} pts"
     unapproved: "Desaprobado"
+    version: "Versión"
     vote: 'Tu voto es libre y secreto'
     waiting: "En espera"
     welcome: '¡Bienvenido'
     welcome-admin: 'Bienvenido admin'
+  match:
+    edit: 'Editar Match'
+    create: "Match creado"
+    create_new: "Nuevo match"
+    delete: "Match eliminado"
+    error_creating: "Error creando el match"
+    error_deleting: "Error eliminando el match"
+    error_updating: "Error actualizando el match"
+    update: "Match actualizado"
   team:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
     edit: "Editar equipo"
     error_accessing: "No puedes acceder a otro team"
+    top: "Top"
     winner: "Equipo ganador"
     messages:
       created: "Equipo creado"
@@ -129,11 +152,14 @@ es:
       email_not_valid: "Email no válido"
       error_creating: "Error creando el equipo"
       error_deleting: "Error eliminando al equipo"
+      error_inviting: "Error enviando invitación"
       error_leaving: "Error abandonando el equipo"
       error_updating: "Error actualizando el equipo"
+      error_users: "Correo(s) invalidos"
       leave_team: "Abandonar equipo"
       left: "Abandonaste el equipo"
       no_teams: 'No hay equipos'
+      no_leader: 'No hay equipo líder'
       updated: "Equipo actualizado"
       user_invited: "El usuario ha sido agregado a tu equipo"
   placeholders:
@@ -168,6 +194,24 @@ es:
   polls:
     deleted: "Votación eliminada"
     updated: "Votación actualizada"
+  projects:
+    already_have_one: "No puedes crear otro proyecto"
+    created: "Proyecto creado"
+    deleted: "Proyecto eliminado"
+    description: "Descripción"
+    error_creating: "Error creando proyecto"
+    error_deleting: "Error eliminando proyecto"
+    error_updating: "Error actualizando proyecto"
+    features: "Características"
+    my_project: "Mi proyecto"
+    no_feature: "No hay características"
+    no_repository: "No hay repositorios"
+    no_team: "Debes crear primero tu equipo"
+    repositories: "Repositorios"
+    updated: "Proyecto actualizado"
+  uploads:
+    deleted: 'Archivo eliminado'
+    error_deleting: 'Error eliminando el archivo'
   user:
     change_password: "Cambiar contraseña"
     confirm_new_password: "Confirmar nueva contraseña"
@@ -239,6 +283,17 @@ es:
               blank: "Debes de poner un nombre"
             location:
               blank: "Necesitas agregar una locación"
+        match:
+          attributes:
+            match_type:
+              blank: "Debes seleccionar un tipo de match"
+        project:
+          attributes:
+            name:
+              blank: "Debes agregar un nombre"
+              taken: "Ya existe un proyecto con ese nombre"
+            description:
+              blank: "Debes de agregar una descripción"
         team:
           attributes:
             name:

@@ -8,17 +8,17 @@ module Judge
       else
         flash[:alert] = t('comments.error_creating')
       end
-      redirect_to judge_activity_path(@activity)
+      redirect_to match_judge_activity_path(@match, @activity)
     end
 
     def update
       @feedback = Feedback.find_by(id: params[:id])
-      if @feedback.update_attributes(comment: params[:comment])
+      if @feedback.update_attributes(feedback_params)
         flash[:notice] = t('activities.messages.feedback_updated')
       else
         flash[:alert] = t('alerts.activities.not_black')
       end
-      redirect_to judge_activity_path(@feedback.activity)
+      redirect_to match_judge_activity_path(@match, @feedback.activity)
     end
 
     private
@@ -34,7 +34,7 @@ module Judge
     end
 
     def load_activity
-      @activity = Activity.find(params[:activity_id])
+      @activity = Activity.friendly.find(params[:activity_id])
     end
   end
 end

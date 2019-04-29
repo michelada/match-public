@@ -8,11 +8,6 @@
 #  name                   :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  invitation_token       :string
@@ -31,13 +26,43 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :team, optional: true
+  belongs_to :match, optional: true
   has_many :activities, dependent: :destroy
   has_many :activity_statuses
   has_many :feedback, dependent: :destroy
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :validatable, validate_on_invite: true
-  VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
-  enum role: { user: 0, judge: 1, admin: 2 }
+  VALID_EMAIL_REGEX = /~*@michelada.io\z/i.freeze
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  enum role: %i[user judge admin]
   scope :all_except_actual, ->(actual_user) { where.not(id: actual_user).order('email ASC') }
+
+  after_invitation_accepted :initialize_user
+
+  def team?
+    team_id
+  end
+
+  def normal_user?
+    user?
+  end
+
+  def part_of_team?(team_slug)
+    team&.slug == team_slug
+  end
+
+  def project
+    team&.project
+  end
+
+  def can_be_invited?
+    return true if email.empty?
+    return false if User.find_by_email(email)&.team?
+
+    email.match?(VALID_EMAIL_REGEX)
+  end
+
+  def initialize_user
+    update_attributes!(team_id: invited_by&.team&.id, role: User.roles[:user])
+  end
 end

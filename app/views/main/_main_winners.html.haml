@@ -4,9 +4,9 @@
     %strong
       = t('team.winner')
 %h2
-  = @winner_team.first.name
+  = @winner_team.name
   .text-red
-    = "#{@winner_team.first.total_score} #{t('labels.points')}"
+    = t('labels.points') % { score: @winner_team.score }
 %br
 %h3.d-flex.justify-content-center.align-items-center
   =t('activities.best')
@@ -14,9 +14,9 @@
 
 
 .latest-activities.mt-5.mb-5
-  -@last_activities.each_with_index do |activity, index|
+  - @last_activities.each_with_index do |activity, index|
     .activity
-      .mb-3= activity.first.name
+      .mb-3= activity&.first&.name
       .d-flex.mb-3.justify-content-between
-        = Activity.activity_types.keys[index]
-      .text-red= "#{activity.first&.points} #{t('labels.points')}"
+        = activity.type
+      .text-red= t('labels.points') % { score: activity.score }

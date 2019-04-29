@@ -1,8 +1,8 @@
 module Api
   class TeamsController < ::ActionController::Base
     def index
-      if Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).empty?
-        @top_five_teams = Activity.top_teams_by_score(5)
+      if Poll.last.can_vote?
+        @top_five_teams = Match.where(match_type: 'Content').last.teams_by_score.first(5)
         @response = ::Api::ApiService.new.top_teams_format(@top_five_teams)
         render json: @response
       else
@@ -11,9 +11,8 @@ module Api
     end
 
     def api
-      @best_activities = []
-      3.times { |i| @best_activities << Activity.best_activities(Poll.last, i) }
-      @response = ::Api::ApiService.new.top_activities_format(@best_activities)
+      @winner_team = Match.last&.winner_team
+      @response = ::Api::ApiService.new.winner_team(@winner_team)
       render json: @response
     end
   end

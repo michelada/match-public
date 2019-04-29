@@ -9,7 +9,17 @@ module ApplicationHelper
     end
   end
 
-  def there_are_not_polls
-    Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).empty?
+  def markdown(content)
+    @_renderer ||= Redcarpet::Render::HTML.new(hard_wrap: true)
+    @_markdown ||= Redcarpet::Markdown.new(@_renderer)
+    sanitize(@_markdown.render(content || '')[3..-5])
+  end
+
+  def poll_for_vote
+    Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).first
+  end
+
+  def can_upload_project?
+    @match.project_match? && current_user.project.nil?
   end
 end

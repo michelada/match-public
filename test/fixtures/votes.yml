@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: votes
+#
+#  id          :bigint(8)        not null, primary key
+#  activity_id :bigint(8)        not null
+#  user_id     :bigint(8)        not null
+#  poll_id     :bigint(8)        not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  value       :integer          not null
+#
+
+java_vote:
+  user: user_with_teammates
+  activity_id: 234423
+  value: 10
+  poll_id: 776
