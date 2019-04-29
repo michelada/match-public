@@ -48,7 +48,7 @@ class Activity < ApplicationRecord
     joins(:votes)
     .where('votes.poll_id = ?', poll_id)
     .where('activities.activity_type = ?', type)
-    .group('activities.name')
+    .group('activities.name, activities.activity_type')
     .select('activities.name, activities.activity_type ,sum(votes.value) as points')
     .order('points desc').limit(1)
   })
