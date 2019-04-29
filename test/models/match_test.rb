@@ -79,7 +79,10 @@ class MatchTest < ActiveSupport::TestCase
 
   test 'match is valid with all attributes' do
     assert @project_match.valid?
-    assert @content_match.valid?
+  end
+
+  test 'match is not valid if it overlaps' do
+    refute @content_match.valid?
   end
 
   test 'match is not valid if start_date is bigger than end_date' do
