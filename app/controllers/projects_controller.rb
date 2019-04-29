@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update]
   before_action :user_can_upload_project?, only: [:new, :create]
+  before_action :user_can_modify_project?, only: [:update, :edit]
 
   def index
     @projects = @match.projects
@@ -38,16 +39,6 @@ class ProjectsController < ApplicationController
 
   private
 
-  def user_can_upload_project?
-    if current_user.team.nil?
-      flash[:alert] = t('projects.no_team')
-      redirect_to new_match_team_path(@match)
-    elsif current_user.project
-      flash[:alert] = t('projects.already_have_one')
-      redirect_to match_team_path(@match, current_user.team)
-    end
-  end
-
   def project_params
     params.require(:project)
           .permit(:name, :description, :repositories, :features)
@@ -56,5 +47,23 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = @match.projects.find(params[:id])
+  end
+
+  def user_can_modify_project?
+    project = Project.find(params[:id])
+    return if project.team == current_user.team
+
+    flash[:alert] = t('activities.messages.no_permitted')
+    redirect_to new_match_team_path(@match)
+  end
+
+  def user_can_upload_project?
+    if current_user.team.nil?
+      flash[:alert] = t('projects.no_team')
+      redirect_to new_match_team_path(@match)
+    elsif current_user.project
+      flash[:alert] = t('projects.already_have_one')
+      redirect_to match_team_path(@match, current_user.team)
+    end
   end
 end
