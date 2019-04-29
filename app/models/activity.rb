@@ -49,7 +49,7 @@ class Activity < ApplicationRecord
     .where('votes.poll_id = ?', poll_id)
     .where('activities.activity_type = ?', type)
     .group('activities.name')
-    .select('activities.name, sum(votes.value) as points')
+    .select('activities.name, activities.activity_type ,sum(votes.value) as points')
     .order('points desc').limit(1)
   })
   validates :pitch_audience, :abstract_outline, :description, presence: true, unless: :post?
