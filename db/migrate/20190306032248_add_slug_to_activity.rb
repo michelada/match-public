@@ -6,8 +6,10 @@ class AddSlugToActivity < ActiveRecord::Migration[5.2]
     ActiveRecord::Base.connection.execute('update activities set slug = name;')
 
     Activity.all.each do |activity|
-      activity.slug = activity.name.parameterize
-      activity.save!
+      if activity.valid?
+        activity.slug = activity.name.parameterize
+        activity.save!
+      end    
     end
   end
 
