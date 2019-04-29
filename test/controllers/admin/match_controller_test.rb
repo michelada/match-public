@@ -42,8 +42,8 @@ class MatchControllerTest < ActionDispatch::IntegrationTest
     match = matches(:active_content_match)
     sign_in @user
 
-    patch admin_match_path(match), params: { match: { start_date: Date.today + 2.days,
-                                                      end_date: Date.today + 4.days,
+    patch admin_match_path(match), params: { match: { start_date: Date.today + 20.days,
+                                                      end_date: Date.today + 30.days,
                                                       match_type: 'Content' } }
 
     assert_redirected_to admin_matches_path
