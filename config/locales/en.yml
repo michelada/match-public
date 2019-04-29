@@ -141,6 +141,7 @@ en:
     destroy: "Delete team"
     edit: "Edit team"
     error_accessing: "You cannot see into another team"
+    invalid_user: 'User already has a team or the email is invalid'
     top: "Top"
     winner: "Winner team"
     messages:

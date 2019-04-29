@@ -56,10 +56,7 @@ class User < ApplicationRecord
   end
 
   def can_be_invited?
-    return true if email.empty?
-    return false if User.find_by_email(email)&.team?
-
-    email.match?(VALID_EMAIL_REGEX)
+    !User.find_by_email(email)&.team? && email.match?(VALID_EMAIL_REGEX)
   end
 
   def initialize_user

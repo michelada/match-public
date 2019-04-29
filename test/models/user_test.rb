@@ -25,6 +25,11 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  def setup
+    @user_with_team = users(:user_with_team)
+    @user_no_team = users(:user)
+  end
+
   test 'user must be invalid without email' do
     user = User.new(password: 'normalUser',
                     password_confirmation: 'normalUser')
@@ -46,8 +51,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'user must be a normal user' do
-    user = users(:user)
-    assert user.normal_user?
+    assert @user_with_team.normal_user?
+    assert @user_no_team.normal_user?
   end
 
   test 'user must be a judge user' do
@@ -61,24 +66,25 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'user has no a team' do
-    user = users(:user)
-    refute user.team?
+    refute @user_no_team.team?
   end
 
   test 'user must have a team' do
-    user = users(:user_with_team)
-    assert user.team?
+    assert @user_with_team.team?
   end
 
   test 'user must be part of a the team' do
-    user = users(:user_with_team)
     team = teams(:team3)
-    assert user.part_of_team?(team.slug)
+    assert @user_with_team.part_of_team?(team.slug)
+  end
+
+  test 'user with team can not be invited' do
+    user = users(:user_with_team)
+    refute user.can_be_invited?
   end
 
   test 'user with no team can be invited to one' do
-    user = users(:user)
-    assert user.can_be_invited?
+    assert @user_no_team.can_be_invited?
   end
 
   test 'user that is not already registered in system can be invited' do
@@ -88,8 +94,11 @@ class UserTest < ActiveSupport::TestCase
     assert user.can_be_invited?
   end
 
-  test 'user with team can not be invited' do
-    user = users(:user_with_team)
-    refute user.can_be_invited?
+  test 'user should not have a team' do
+    refute @user_no_team.team?
+  end
+
+  test 'user should be part of a team' do
+    assert @user_with_team.team?
   end
 end
