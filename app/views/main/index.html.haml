@@ -6,7 +6,7 @@
         =t('labels.michelada_score')
         .text.red.ml-2.increase-3.text= t('labels.points') % { score: @match.total_score }
 
-    - if @winner_team.nil?
+    - if active_match?
       = render partial: 'main'
     - else
       = render partial: 'main_winners'

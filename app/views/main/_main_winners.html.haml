@@ -12,11 +12,11 @@
   =t('activities.best')
   .text.red.increase-3.ml-3= t('activities.label')
 
-
 .latest-activities.mt-5.mb-5
-  - @last_activities.each_with_index do |activity, index|
-    .activity
-      .mb-3= activity&.first&.name
-      .d-flex.mb-3.justify-content-between
-        = activity.first.activity_type
-      .text-red= t('labels.points') % { score: activity.first.points }
+  - @best_activities.each_with_index do |activity, index|
+    - if activity.exists?
+      .activity
+        .mb-3= activity.first&.name
+        .d-flex.mb-3.justify-content-between
+          = activity.first&.activity_type
+        .text-red= t('labels.points') % { score: activity.first&.points }
