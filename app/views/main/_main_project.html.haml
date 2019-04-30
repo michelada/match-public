@@ -9,10 +9,11 @@
   %p.top-three.mb-5
     - @match.teams_by_score.each_with_index do |team, i|
       -if i < 3
-        .text.red= team.project&.name
-        = team.name
-        .d-flex.mb-3.justify-content-between
-          %em= team.project&.description
+        %h5
+          .text.red= team.name
+          = team.project&.name
+          .d-flex.mb-3.justify-content-between
+            %em= team.project&.description
           //Add option to see the status
         %hr.section
       -else

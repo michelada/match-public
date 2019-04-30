@@ -4,12 +4,10 @@
     = t('labels.project')
     %span
       = t('labels.team')
-
-  %h3.mt-5.mb-3.team
 .contain.center-vertical
   .main-content.medium
     .activities
-      %h3.text.red= @team.project&.name
+      %h4.text.red= @team.project&.name
       
       %h6.text.red= t('projects.description')
       %h6= markdown(@team.project&.description)
