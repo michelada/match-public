@@ -5,7 +5,7 @@
         - unless @match.project_match?
           = image_tag 'mcm-logo', alt: 'mcm-logo', height: 60, class: 'company-logo'
         - else
-          = image_tag 'michelada', alt: 'mcm-logo', height: 60, class: 'company-logo'
+          = image_tag 'mpm', alt: 'mcm-logo', height: 60, class: 'company-logo'
       .nav
         - if @match.content_match?
           = link_to new_match_activity_path(@match) do
