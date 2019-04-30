@@ -10,7 +10,9 @@ class ActivityTest < ApplicationSystemTestCase
 
   test 'user can upload an activity' do
     Poll.delete_all
-    visit new_match_activity_path(@match)
+    match = matches(:active_content_match)
+
+    visit new_match_activity_path(match)
     fixture_files_path = "#{Rails.root}/test/fixtures/files/"
 
     fill_in 'activity[name]', with: 'Test'
