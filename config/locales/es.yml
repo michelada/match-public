@@ -92,6 +92,7 @@ es:
     evaluate: "Evaluar"
     events: "Eventos:"
     extra_points: "Puntos extra"
+    features: "Features"
     fight: "PELEA"
     information: "Sólo .zip, .jpg, .jpeg, .png, .key o .pdf"
     invite_users: "Invita a tus compañeros"
@@ -114,6 +115,7 @@ es:
     polls: "Votaciones"
     post: "Post"
     project: "Proyecto del"
+    repositories: "Repositorios"
     reviewing: "En revisión"
     role: "Rol"
     score: "Puntaje:"
@@ -175,6 +177,9 @@ es:
       audience: "¿Cómo dirigirse al  público?"
       guide: "¿Qué temas se abordan?"
       event: "¿En qué lugar se impartió?"
+    project:
+      repositories: "¿Dónde está tu projecto?"
+      features: "¿Qué hace?"
   poll:
     best_activity: "Lo mejor de lo mejor"
     create_new: "Nueva votación"
