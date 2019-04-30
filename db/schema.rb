@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_195157) do
+ActiveRecord::Schema.define(version: 2019_04_30_192614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,11 +70,12 @@ ActiveRecord::Schema.define(version: 2019_04_25_195157) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.string "comment"
-    t.integer "activity_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_feedbacks_on_activity_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.index %w[commentable_type commentable_id], name: "index_feedbacks_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 

@@ -2,12 +2,13 @@
 #
 # Table name: feedbacks
 #
-#  id          :bigint(8)        not null, primary key
-#  comment     :string
-#  activity_id :integer
-#  user_id     :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id               :bigint(8)        not null, primary key
+#  comment          :string
+#  user_id          :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  commentable_type :string
+#  commentable_id   :bigint(8)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -15,6 +16,7 @@
 feedback:
   comment: "I think this could looks better, try again"
   user_id: 1
-  activity_id: 1
+  commentable_type: 'Activity'
+  commentable_id: 1
 
 

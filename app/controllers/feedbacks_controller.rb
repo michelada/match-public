@@ -1,5 +1,5 @@
 class FeedbacksController < MatchesController
-  before_action :load_activity, only: [:create, :update]
+  before_action :load_commentable, only: [:create, :update]
   def create
     @comment = Feedback.new(feedback_params)
     if @comment.save
@@ -7,7 +7,7 @@ class FeedbacksController < MatchesController
     else
       flash[:alert] = t('comments.error_creating')
     end
-    redirect_to match_activity_path(@match, @activity)
+    redirect_to @commentable_path
   end
 
   def update
@@ -17,7 +17,7 @@ class FeedbacksController < MatchesController
     else
       flash[:alert] = t('alerts.activities.not_black')
     end
-    redirect_to match_activity_path(@match, @feedback.activity)
+    redirect_to @commentable_path
   end
 
   private
@@ -26,10 +26,16 @@ class FeedbacksController < MatchesController
     params.require(:feedback)
           .permit(:comment)
           .merge(user_id: current_user.id,
-                 activity_id: @activity.id)
+                 commentable: @commentable)
   end
 
-  def load_activity
-    @activity = Activity.friendly.find(params[:activity_id])
+  def load_commentable
+    if params[:activity_id].present?
+      @commentable = Activity.friendly.find(params[:activity_id])
+      @commentable_path = match_activity_path(@match, @commentable)
+    elsif params[:project_id].present?
+      @commentable = Project.friendly.find(params[:project_id])
+      @commentable_path = match_project_path(@match, @commentable)
+    end
   end
 end

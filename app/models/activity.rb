@@ -26,7 +26,7 @@ class Activity < ApplicationRecord
   belongs_to :match
   belongs_to :user
   has_many :locations, dependent: :destroy
-  has_many :feedback, dependent: :destroy
+  has_many :feedbacks, as: :commentable
   has_many :activity_statuses, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many_attached :files, dependent: :destroy

@@ -2,14 +2,12 @@
 #
 # Table name: polls
 #
-#  id              :bigint(8)        not null, primary key
-#  start_date      :date             not null
-#  end_date        :date             not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  activities_from :date             not null
-#  activities_to   :date             not null
-#  match_id        :bigint(8)
+#  id         :bigint(8)        not null, primary key
+#  start_date :date             not null
+#  end_date   :date             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  match_id   :bigint(8)
 #
 
 class Poll < ApplicationRecord

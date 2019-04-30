@@ -22,6 +22,8 @@ class Project < ApplicationRecord
   validates :name, uniqueness: { case_sensitive: false }
   validates :name, :description, presence: true
 
+  has_many :feedbacks, as: :commentable
+
   before_update :match_valid?
 
   def belongs_to_project_match?
