@@ -1,3 +1,6 @@
+%h3.d-flex.justify-content-end.total-score
+  = t('labels.michelada_score')
+  .text.red.ml-2.increase-3.text= t('labels.points') % { score: @match.total_score }
 .d-flex.align-items-center.mt-4.mb-5
   = image_tag 'ic-prize', alt: 'prize', height: '90', class: 'mr-3'
   %h1

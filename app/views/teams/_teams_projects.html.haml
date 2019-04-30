@@ -1,0 +1,27 @@
+-if current_user.project.present?
+  %hr.section
+  %h3.mt-5.center-info.mb-3
+    = t('labels.project')
+    %span
+      = t('labels.team')
+
+  %h3.mt-5.mb-3.team
+.contain.center-vertical
+  .main-content.medium
+    .activities
+      %h3.text.red= @team.project&.name
+      
+      %h6.text.red= t('projects.description')
+      %h6= markdown(@team.project&.description)
+
+      %h6.text.red= t('projects.features')
+      %h6= markdown(@team.project&.features) || t('projects.no_feature')
+
+      %h6.text.red= t('projects.repositories')
+      %h6= markdown(@team.project&.repositories) || t('projects.no_repository')
+    = link_to t('buttons.edit'), edit_match_project_path(@match, current_user.project), class: 'button'
+.text-right.mt-5
+  = link_to t('team.messages.leave_team'), match_user_path(@match, current_user.id), method: :patch, data: {confirm: t('actions.confirm')}
+  - if @team.users.count < 3
+    .text-right.mb-5.mt-2
+      = link_to t('labels.invite'), new_match_team_invitation_path

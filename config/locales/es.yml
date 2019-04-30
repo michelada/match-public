@@ -209,6 +209,7 @@ es:
     no_repository: "No hay repositorios"
     no_team: "Debes crear primero tu equipo"
     repositories: "Repositorios"
+    projects: "Proyectos"
     updated: "Proyecto actualizado"
   uploads:
     deleted: 'Archivo eliminado'
