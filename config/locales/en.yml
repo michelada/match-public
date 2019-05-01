@@ -92,6 +92,7 @@ en:
     evaluate: "Evaluate"
     events: "Events:"
     extra_points: "Extra Points"
+    features: "Features"
     fight: "FIGHT"
     information: "Only .zip, .jpg, .jpeg, .png, .key or .pdf"
     invite_users: "Invite your teammates"
@@ -113,6 +114,7 @@ en:
     points: "%{score} pts"
     polls: "Polls"
     project: "Project"
+    repositories: "Repositories"
     reviewing: "On review"
     role: "Role"
     score: "Score:"
@@ -172,6 +174,9 @@ en:
       audience: "Which is your audience?"
       guide: "What are you talking?"
       event: "Where did you do that?"
+      project:
+      repositories: "Where is your project?"
+      features: "What does your project do?"
   poll:
     best_activity: "The best of the best"
     create_new: "Create a poll"

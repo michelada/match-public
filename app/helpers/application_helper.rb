@@ -22,4 +22,8 @@ module ApplicationHelper
   def can_upload_project?
     @match.project_match? && current_user.project.nil?
   end
+
+  def active_match?
+    Match.active_match.first ? true : false
+  end
 end
