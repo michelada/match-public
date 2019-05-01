@@ -1,9 +1,9 @@
 .main-content.container.medium.mt-5
   .top-players
-    - if @winner_team.nil?
-      - if @match.match_type == 'Content'
+    - if active_match?
+      - if @match.content_match?
         = render partial: 'main'
-      - else
+      - elsif @match.project_match?
         = render partial: 'main_project'
     - else
       = render partial: 'main_winners'

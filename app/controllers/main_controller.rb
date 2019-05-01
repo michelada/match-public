@@ -2,12 +2,10 @@ class MainController < MatchesController
   before_action :user_is_admin?
 
   def index
-    if Poll.last_ended_poll(DateTime.now).empty?
-      @poll = @match.poll
-    else
-      @winner_team = Match.last.leader_team
-      @last_activities = []
-      3.times { |i| @last_activities << Activity.best_activities(Poll.last, i) }
-    end
+    return if Match.active_match.first
+
+    @winner_team = Match.last.leader_team
+    @best_activities = []
+    3.times { |i| @best_activities << Activity.best_activities(Poll.last, i) }
   end
 end

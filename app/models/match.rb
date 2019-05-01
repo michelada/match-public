@@ -25,6 +25,8 @@ class Match < ApplicationRecord
   validates :match_type, :start_date, :end_date, presence: true
   validate :dates_match?, :no_overlaps?
 
+  scope :active_match, -> { where('? BETWEEN start_date AND end_date', Date.today) }
+
   def content_match?
     Content?
   end
