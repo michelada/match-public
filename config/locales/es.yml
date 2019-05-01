@@ -178,7 +178,7 @@ es:
       guide: "¿Qué temas se abordan?"
       event: "¿En qué lugar se impartió?"
     project:
-      repositories: "¿Dónde está tu projecto?"
+      repositories: "¿Dónde está tu proyecto?"
       features: "¿Qué hace?"
   poll:
     best_activity: "Lo mejor de lo mejor"
