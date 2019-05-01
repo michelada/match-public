@@ -300,6 +300,8 @@ es:
               taken: "Ya existe un proyecto con ese nombre"
             description:
               blank: "Debes de agregar una descripción"
+            features:
+              blank: "Debes de agregar por lo menos un feature de tu proyecto"
         team:
           attributes:
             name:

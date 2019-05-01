@@ -296,6 +296,8 @@ en:
               taken: "That name is already taken"
             description:
               blank: "Description can't be blank"
+            features:
+              blank: "Features can't be blank"
         team:
           attributes:
             name:
