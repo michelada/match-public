@@ -35,7 +35,7 @@ module Judge
         @commentable = Activity.friendly.find(params[:activity_id])
         @commentable_path = match_judge_activity_path(@match, @commentable)
       elsif params[:project_id].present?
-        @commentable = Project.friendly.find(params[:project_id])
+        @commentable = Project.find(params[:project_id])
         @commentable_path = match_judge_project_path(@match, @commentable)
       end
     end

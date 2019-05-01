@@ -26,4 +26,10 @@ module ApplicationHelper
   def active_match?
     Match.active_match.first ? true : false
   end
+
+  def user_can_comment?(commentable)
+    return true if current_user.judge?
+
+    commentable.team_id == current_user.team_id
+  end
 end

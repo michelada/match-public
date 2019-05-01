@@ -20,7 +20,7 @@ class Project < ApplicationRecord
 
   validate :belongs_to_project_match?
   validates :name, uniqueness: { case_sensitive: false }
-  validates :name, :description, presence: true
+  validates :name, :description, :features, presence: true
 
   has_many :feedbacks, as: :commentable
 

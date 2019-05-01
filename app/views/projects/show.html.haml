@@ -11,3 +11,27 @@
 
       %h6.text.red= t('projects.repositories')
       %h6= markdown(@project.repositories) || t('projects.no_repository')
+
+      %h5.mt-5.mb-5
+        = t("comments.all")
+      - @project.feedbacks.sort_by{|fb| fb.created_at}.each_with_index do |feedbacks, i|
+        %div{:id => "com_#{i}", class: 'comment'}
+          %h6.gray.d-flex.justify-content-between{class: feedbacks.user.judge? ? 'judge' : 'regular'}
+            = feedbacks.user.name? ? feedbacks.user.name : feedbacks.user.email.remove('@michelada.io').capitalize
+            - if feedbacks.user_id == current_user.id
+              .edit_comment
+                = link_to t("buttons.edit"), "#", :id => "#{i}"
+          %p{:class => "gray", :id => "comment_#{i}", class: 'comment-content mt-3'}
+            = markdown(feedbacks.comment)
+          %textarea{:value => "#{feedbacks.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}
+          - if feedbacks.user_id == current_user.id
+            .form_data
+              %input{type: "hidden", id: "acId#{i}", value: "#{@project.id}"}
+              %input{type: "hidden", id: "fbId#{i}", value: "#{feedbacks.id}"}
+
+          %hr.section
+      .mt-4
+        - if user_can_comment?(@project)
+          = simple_form_for [ @match, @project, @feedback] do |f|
+            = f.text_area :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text mt-4'}, required: false
+            = f.button :submit, t('comments.create'), class: 'button'

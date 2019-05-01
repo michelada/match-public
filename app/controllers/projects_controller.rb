@@ -22,7 +22,9 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @feedback = Feedback.new
+  end
 
   def edit; end
 

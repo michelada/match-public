@@ -53,8 +53,8 @@ class MatchTest < ActiveSupport::TestCase
     project2.update_attribute(:match_id, @project_match.id)
 
     assert_equal(2, @project_match.projects.length)
-    assert_equal(project1, @project_match.projects.first)
-    assert_equal(project2, @project_match.projects.last)
+    assert(@project_match.projects.include?(project2))
+    assert(@project_match.projects.include?(project1))
     assert_equal(project1.match, @project_match)
   end
 
