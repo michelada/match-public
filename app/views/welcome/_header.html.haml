@@ -2,7 +2,12 @@
   - if user_signed_in?
     .container.header
       = link_to match_main_index_path do
-        = image_tag 'mcm-logo', alt: 'mcm-logo', height: 60, class: 'company-logo'
+        - if @match.content_match?
+          = image_tag 'mcm-logo', alt: 'mcm-logo', height: 60, class: 'company-logo'
+        - elsif @match.project_match?
+          = image_tag 'mpm-logo', alt: 'mpm-logo', height: 60, class: 'company-logo'
+        - else
+          = image_tag 'michelada-logo', alt: 'michelada-logo', height: 60, class: 'company-logo'
       .nav
         - if @match.content_match?
           = link_to new_match_activity_path(@match) do
