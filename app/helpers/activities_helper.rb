@@ -1,11 +1,13 @@
 module ActivitiesHelper
-  def user_can_comment?(activity)
-    return true if current_user.judge?
-
-    activity.user.team_id == current_user.team_id
-  end
-
   def judges_appproves(activity)
     activity.activity_statuses.collect { |status| status.user.email.remove('@michelada.io') }.join(', ')
+  end
+
+  def sorted_comments(commentable)
+    commentable.feedbacks.sort_by(&:created_at)
+  end
+
+  def user_name(user)
+    user.name? ? user.name : user.email.remove('@michelada.io').capitalize
   end
 end

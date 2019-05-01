@@ -15,6 +15,7 @@ class ProjectTest < ApplicationSystemTestCase
 
     fill_in 'project[name]', with: 'Test project'
     fill_in 'project[description]', with: 'Filled from system tests'
+    fill_in 'project[features]', with: 'Is cool'
 
     click_button 'Create Project'
 

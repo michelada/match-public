@@ -22,7 +22,7 @@ class Project < ApplicationRecord
   validates :name, uniqueness: { case_sensitive: false }
   validates :name, :description, :features, presence: true
 
-  has_many :feedbacks, as: :commentable
+  has_many :feedbacks, as: :commentable, dependent: :destroy
 
   before_update :match_valid?
 
