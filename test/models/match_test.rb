@@ -78,6 +78,8 @@ class MatchTest < ActiveSupport::TestCase
   end
 
   test 'match is valid with all attributes' do
+    @project_match.update_attributes(start_date: Date.today + 5.weeks,
+                                    end_date: Date.today + 6.weeks)
     assert @project_match.valid?
   end
 
