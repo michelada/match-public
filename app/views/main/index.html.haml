@@ -1,8 +1,8 @@
 .main-content.container.medium.mt-5
-  .top-players
+  .top-teams
     - if active_match?
       - if @match.content_match?
-        = render partial: 'main'
+        = render partial: 'main_content'
       - elsif @match.project_match?
         = render partial: 'main_project'
     - else

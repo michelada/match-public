@@ -10,7 +10,7 @@
 
     %h3.mt-5
       %span.team=@team.name
-    - if @match.match_type == 'Content'
+    - if @match.content_match?
       = render partial: 'teams_content'
-    - else
+    - elsif @match.project_match?
       = render partial: 'teams_projects'

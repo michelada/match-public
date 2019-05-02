@@ -115,6 +115,7 @@ es:
     polls: "Votaciones"
     post: "Post"
     project: "Proyecto del"
+    projects: "Proyectos"
     repositories: "Repositorios"
     reviewing: "En revisión"
     role: "Rol"
@@ -212,9 +213,9 @@ es:
     my_project: "Mi proyecto"
     no_feature: "No hay características"
     no_repository: "No hay repositorios"
+    no_project: "No hay proyecto registrado"
     no_team: "Debes crear primero tu equipo"
     repositories: "Repositorios"
-    projects: "Proyectos"
     updated: "Proyecto actualizado"
   uploads:
     deleted: 'Archivo eliminado'
