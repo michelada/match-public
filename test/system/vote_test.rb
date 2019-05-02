@@ -1,8 +1,8 @@
-require 'test_helper'
+require 'application_system_test_case'
 
 class VoteTest < ApplicationSystemTestCase
   def setup
-    @user = users(:user_with_teammates)
+    @user = users(:user_in_match)
     login_as @user
     Match.last.destroy
     @match = matches(:content_match)

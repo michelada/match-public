@@ -95,7 +95,7 @@ simple_activity2:
   english: true
   slug: "android"
   status: 0
-  user: user_test1
+  user_id: 187671
 
 ruby_as_day_to_day:
   created_at: <%= Date.today + 2.days%>
@@ -107,10 +107,9 @@ ruby_as_day_to_day:
   english: true
   status: 2
   score: 120
-  user: user_with_teammates
+  user_id: 123123
   slug: "rails-as-a-day-to-day"
   status: 0
-  user: user_with_teammates
   match_id: 1
 
 actity_with_lots_of_points:
@@ -122,6 +121,6 @@ actity_with_lots_of_points:
   english: true
   status: 2
   score: 800
-  user: user_test1
+  user_id: 187671
   match_id: 1
   slug: "farming-points"

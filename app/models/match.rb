@@ -84,4 +84,9 @@ class Match < ApplicationRecord
   def total_score
     activities.where(status: 2).sum(:score)
   end
+
+  def active?
+    actual_date = DateTime.now.in_time_zone('Mexico City')
+    (start_date..end_date).cover?(actual_date)
+  end
 end

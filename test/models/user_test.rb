@@ -66,11 +66,11 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'user has no a team' do
-    refute @user_no_team.team?
+    refute @user_no_team.current_team
   end
 
   test 'user must have a team' do
-    assert @user_with_team.team?
+    assert @user_with_team.current_team
   end
 
   test 'user must be part of a the team' do
@@ -95,10 +95,24 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'user should not have a team' do
-    refute @user_no_team.team?
+    refute @user_no_team.current_team
   end
 
   test 'user should be part of a team' do
-    assert @user_with_team.team?
+    assert @user_with_team.current_team
+  end
+
+  test 'user can obtain its current team' do
+    team = teams(:team_project_match)
+    assert_equal team, @user_with_team.current_team
+  end
+
+  test 'user current team is related to the last match version' do
+    assert_equal Match.last, @user_with_team.current_team.match
+  end
+
+  test 'user with no last-match team should not have a current team' do
+    @user_with_team.teams.last.destroy
+    refute @user_with_team.current_team
   end
 end

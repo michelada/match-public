@@ -19,10 +19,12 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test 'poll return the top score team' do
-    register_activities
     team2 = teams(:team2)
+    activity = activities(:activity_post)
+    team3 = teams(:team3)
+    activity.update_attributes(user: team2.users.first, status: 2)
 
-    assert_includes  @poll.match.teams_by_score, @team1
+    assert_includes  @poll.match.teams_by_score, team3
     assert_includes  @poll.match.teams_by_score, team2
   end
 
@@ -42,12 +44,5 @@ class PollTest < ActiveSupport::TestCase
     assert_includes match.last_three_activities, android_studio
     assert_includes match.last_three_activities, ruby
     assert_includes match.last_three_activities, simple_activity
-  end
-
-  def register_activities
-    simple_activity = activities(:simple_activity)
-    simple_activity2 = activities(:simple_activity2)
-    simple_activity.update_attributes(score: 1000)
-    simple_activity2.update_attributes(score: 800)
   end
 end

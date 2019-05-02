@@ -9,8 +9,9 @@ class ProjectTest < ApplicationSystemTestCase
 
   test 'user can upload a project with all the attributes' do
     login_as @user_no_project
+    @user_no_project.project.delete
+    visit match_team_path(@match, @user_no_project.current_team)
 
-    visit match_team_path(@match, @user_no_project.team)
     find("a[href='/match/#{@match.id}/projects/new']").click
 
     fill_in 'project[name]', with: 'Test project'
@@ -24,6 +25,7 @@ class ProjectTest < ApplicationSystemTestCase
 
   test 'user cannot create a project if required fields are blank' do
     login_as @user_no_project
+    @user_no_project.project.delete
     visit new_match_project_path(@match)
 
     click_button 'Create Project'
@@ -34,9 +36,9 @@ class ProjectTest < ApplicationSystemTestCase
 
   test 'users can edit projects' do
     login_as @user
-    visit match_team_path(@match, @user.team)
+    visit match_team_path(@match, @user.current_team)
     within('.activities-table') do
-      find("a[href='/match/#{@match.id}/projects/#{@user.team.project.id}/edit']").click
+      find("a[href='/match/#{@match.id}/projects/#{@user.current_team.project.id}/edit']").click
     end
     fill_in 'project[name]', with: 'Test project updated'
     click_button 'Update Project'
@@ -47,7 +49,7 @@ class ProjectTest < ApplicationSystemTestCase
   test 'users cannot see new project link if they have a project' do
     login_as @user
 
-    visit match_team_path(@match, @user.team)
+    visit match_team_path(@match, @user.current_team)
 
     assert_not page.has_content?("a[href='/match/#{@match.id}/projects/new']")
   end

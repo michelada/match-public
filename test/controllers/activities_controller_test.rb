@@ -13,7 +13,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     @match.update_attributes(start_date: Date.today - 2, end_date: Date.today + 2)
   end
 
-  test 'no logged user can not acces to new_activity path' do
+  test 'no logged user can not access to new_activity path' do
     get new_match_activity_path(@match)
     assert_redirected_to new_user_session_path, 'Controller response unexpected'
     assert_equal flash[:alert], I18n.t('devise.failure.unauthenticated')
@@ -48,7 +48,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_equal flash[:alert], I18n.t('devise.failure.unauthenticated')
   end
 
-  test 'users with no team can not access create activity view' do
+  test 'users with no team can not access to create activity view' do
     sign_in @user
     get new_match_activity_path(@match)
     assert_redirected_to new_match_team_path(@match), 'Controller response unexpected'

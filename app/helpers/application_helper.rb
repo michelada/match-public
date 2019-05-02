@@ -56,6 +56,6 @@ module ApplicationHelper
   def user_can_comment?(commentable)
     return true if current_user.judge?
 
-    commentable.team == current_user.team
+    commentable.team == current_user.current_team
   end
 end

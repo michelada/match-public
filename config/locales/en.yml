@@ -152,6 +152,7 @@ en:
     destroy: "Delete team"
     edit: "Edit team"
     error_accessing: "You cannot see into another team"
+    error_limit_members: "Team is full"
     invalid_user: 'User already has a team or the email is invalid'
     top: "Top"
     winner: "Winner team"
