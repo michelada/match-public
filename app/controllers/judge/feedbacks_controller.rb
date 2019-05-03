@@ -26,7 +26,7 @@ module Judge
     def feedback_params
       params.require(:feedback)
             .permit(:comment)
-            .merge(user_id: current_user.id,
+            .merge(user: current_user,
                    commentable: @commentable)
     end
 

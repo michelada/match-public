@@ -71,17 +71,17 @@
       %hr.mt-5
         %h5.mt-5.mb-5
           = t("comments.all")
-      - @activity.feedbacks.sort_by{|fb| fb.created_at}.each_with_index do |feedbacks, i|
+      - sorted_comments(@activity).each_with_index do |feedbacks, i|
         %div{:id => "com_#{i}", class: 'comment mt-4'}
           %h6.gray.d-flex.justify-content-between{class: feedbacks.user.judge? ? 'judge' : 'regular'}
-            = feedbacks.user.name? ? feedbacks.user.name : feedbacks.user.email.remove('@michelada.io').capitalize
+            = user_name(feedbacks.user)
             - if feedbacks.user_id == current_user.id
               .edit_comment
                 = link_to t("buttons.edit"), "#", :id => "#{i}"
           %p{:class => "gray", :id => "comment_#{i}", class: 'comment-content mt-3'}
             = markdown(feedbacks.comment)
           %textarea{:value => "#{feedbacks.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}
-          - if feedbacks.user_id == current_user.id
+          - if feedbacks.user == current_user
             .form_data
               %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
               %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedbacks.id}"}

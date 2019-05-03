@@ -14,7 +14,7 @@
 
       %h5.mt-5.mb-5
         = t("comments.all")
-      - @project.feedbacks.sort_by{|fb| fb.created_at}.each_with_index do |feedbacks, i|
+      - sorted_comments(@project).each_with_index do |feedbacks, i|
         %div{:id => "com_#{i}", class: 'comment'}
           %h6.gray.d-flex.justify-content-between{class: feedbacks.user.judge? ? 'judge' : 'regular'}
             = feedbacks.user.name? ? feedbacks.user.name : feedbacks.user.email.remove('@michelada.io').capitalize
