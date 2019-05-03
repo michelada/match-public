@@ -22,7 +22,9 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @feedback = Feedback.new
+  end
 
   def edit; end
 
@@ -46,11 +48,11 @@ class ProjectsController < ApplicationController
   end
 
   def set_project
-    @project = @match.projects.find(params[:id])
+    @project = @match.projects.friendly.find(params[:id])
   end
 
   def user_can_modify_project?
-    project = Project.find(params[:id])
+    project = Project.friendly.find(params[:id])
     return if project.team == current_user.team
 
     flash[:alert] = t('activities.messages.no_permitted')

@@ -15,7 +15,10 @@ Rails.application.routes.draw do
     resources :main, only: [:index]
     resources :team_invitations, only: [:new, :create]
     resource :user, only: [:update]
-    resources :projects, except: [:index, :destroy]
+
+    resources :projects, except: [:index, :destroy] do
+      resources :feedbacks, only: [:index, :create, :update]
+    end
 
     resources :activities, except: [:index] do
       resources :feedbacks, only: [:index, :create, :update]

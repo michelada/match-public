@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_195157) do
+ActiveRecord::Schema.define(version: 2019_05_02_173015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,11 +70,12 @@ ActiveRecord::Schema.define(version: 2019_04_25_195157) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.string "comment"
-    t.integer "activity_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_feedbacks_on_activity_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.index %w[commentable_type commentable_id], name: "index_feedbacks_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
@@ -115,7 +116,9 @@ ActiveRecord::Schema.define(version: 2019_04_25_195157) do
     t.bigint "match_id"
     t.bigint "team_id"
     t.integer "score", default: 0
+    t.string "slug"
     t.index ["match_id"], name: "index_projects_on_match_id"
+    t.index ["slug"], name: "index_projects_on_slug", unique: true
     t.index ["team_id"], name: "index_projects_on_team_id"
   end
 

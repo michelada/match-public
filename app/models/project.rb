@@ -15,12 +15,17 @@
 #
 
 class Project < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   belongs_to :match
   belongs_to :team
 
   validate :belongs_to_project_match?
   validates :name, uniqueness: { case_sensitive: false }
-  validates :name, :description, presence: true
+  validates :name, :description, :features, presence: true
+
+  has_many :feedbacks, as: :commentable, dependent: :destroy
 
   before_update :match_valid?
 
@@ -30,6 +35,10 @@ class Project < ApplicationRecord
 
   def match_valid?
     raise 'Project can only exist in project matches' if match.match_type != 'Project'
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed?
   end
 
   def users

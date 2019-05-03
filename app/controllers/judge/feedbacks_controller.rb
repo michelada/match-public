@@ -1,14 +1,14 @@
 module Judge
   class FeedbacksController < JudgeController
-    before_action :load_activity, except: [:update]
+    before_action :load_commentable
     def create
-      generate_comment
+      @comment = Feedback.new(feedback_params)
       if @comment.save
         flash[:notice] = t('comments.created')
       else
         flash[:alert] = t('comments.error_creating')
       end
-      redirect_to match_judge_activity_path(@match, @activity)
+      redirect_to @commentable_path
     end
 
     def update
@@ -18,23 +18,26 @@ module Judge
       else
         flash[:alert] = t('alerts.activities.not_black')
       end
-      redirect_to match_judge_activity_path(@match, @feedback.activity)
+      redirect_to @commentable_path
     end
 
     private
 
-    def generate_comment
-      @comment = Feedback.new(feedback_params)
-      @comment.user_id = current_user.id
-      @comment.activity_id = @activity.id
-    end
-
     def feedback_params
-      params.require(:feedback).permit(:comment)
+      params.require(:feedback)
+            .permit(:comment)
+            .merge(user: current_user,
+                   commentable: @commentable)
     end
 
-    def load_activity
-      @activity = Activity.friendly.find(params[:activity_id])
+    def load_commentable
+      if params[:activity_id].present?
+        @commentable = Activity.friendly.find(params[:activity_id])
+        @commentable_path = match_judge_activity_path(@match, @commentable)
+      elsif params[:project_id].present?
+        @commentable = Project.friendly.find(params[:project_id])
+        @commentable_path = match_judge_project_path(@match, @commentable)
+      end
     end
   end
 end
