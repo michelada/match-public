@@ -34,7 +34,7 @@ class FeedbacksController < MatchesController
       @commentable = Activity.friendly.find(params[:activity_id])
       @commentable_path = match_activity_path(@match, @commentable)
     elsif params[:project_id].present?
-      @commentable = Project.find(params[:project_id])
+      @commentable = Project.friendly.find(params[:project_id])
       @commentable_path = match_project_path(@match, @commentable)
     end
   end
