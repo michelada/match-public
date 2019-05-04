@@ -5,11 +5,12 @@ class TeamInvitationTest < ApplicationSystemTestCase
     @match = matches(:content_match)
   end
 
-  test 'user without team can view the opcion create a new team' do
+  test 'user without team can view the option create a new team' do
     user = users(:user)
     sign_in user
 
     visit new_match_team_path(@match)
+    assert has_button?(I18n.t('buttons.create'))
   end
 
   test 'user can create a dynasty in create a new team' do
@@ -17,15 +18,8 @@ class TeamInvitationTest < ApplicationSystemTestCase
     sign_in user
 
     visit new_match_team_path(@match)
-    click_button 'Crear'
-  end
-
-  test 'user only can view the option to create a dynasty' do
-    user = users(:user)
-    sign_in user
-
-    visit new_match_team_path(@match)
-    assert has_button?(I18n.t('buttons.create'))
+    click_button I18n.t('buttons.create')
+    assert page.has_content?(I18n.t('team.messages.created'))
   end
 
   test 'user can invite someone when creating a new team' do
@@ -39,7 +33,7 @@ class TeamInvitationTest < ApplicationSystemTestCase
     assert page.has_content?(I18n.t('team.messages.created'))
   end
 
-  test 'user can invite someone when do not have a account' do
+  test 'user can invite someone to their team if he/she is not registered in the system' do
     user = users(:user)
     sign_in user
 

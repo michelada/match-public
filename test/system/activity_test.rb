@@ -37,6 +37,7 @@ class ActivityTest < ApplicationSystemTestCase
     assert page.has_content?(I18n.t('activerecord.errors.models.activity.attributes.description.blank'))
     assert page.has_content?(I18n.t('activerecord.errors.models.activity.attributes.abstract_outline.blank'))
     assert page.has_content?(I18n.t('activerecord.errors.models.activity.attributes.pitch_audience.blank'))
+    assert page.has_content?(I18n.t('activities.messages.error_creating'))
   end
 
   test 'user can select english' do
@@ -46,6 +47,7 @@ class ActivityTest < ApplicationSystemTestCase
     find(:css, "#activity_english[value='1']").set(true)
     assert page.has_checked_field?('activity_english')
     click_button 'Enviar'
+    assert page.has_content?(I18n.t('activities.messages.uploaded'))
     visit match_teams_path(@match)
     assert page.has_content?('EN')
     click_link 'EN'
@@ -57,6 +59,7 @@ class ActivityTest < ApplicationSystemTestCase
     select 'Post', from: 'activity[activity_type]'
     fill_in 'activity[name]', with: 'Post'
     click_button 'Enviar'
+    assert page.has_content?(I18n.t('activities.messages.uploaded'))
     visit match_teams_path(@match)
     assert page.has_content?('Post')
   end
@@ -69,6 +72,7 @@ class ActivityTest < ApplicationSystemTestCase
     fill_in 'activity[pitch_audience]', with: 'Test'
     fill_in 'activity[abstract_outline]', with: 'Test'
     click_button 'Enviar'
+    assert page.has_content?(I18n.t('activities.messages.uploaded'))
     visit match_teams_path(@match)
     assert page.has_content?('Talk')
   end
@@ -81,6 +85,7 @@ class ActivityTest < ApplicationSystemTestCase
     fill_in 'activity[pitch_audience]', with: 'Test'
     fill_in 'activity[abstract_outline]', with: 'Test'
     click_button 'Enviar'
+    assert page.has_content?(I18n.t('activities.messages.uploaded'))
     visit match_teams_path(@match)
     assert page.has_content?('Course')
   end
@@ -123,23 +128,5 @@ class ActivityTest < ApplicationSystemTestCase
     page.driver.browser.switch_to.alert.accept
 
     assert page.has_content?(I18n.t('uploads.deleted'))
-  end
-
-  test 'user can vote for an activity' do
-    visit match_poll_path(@match, @match.poll)
-    activity = activities(:activity_workshop)
-
-    find("a[href='/match/#{@match.id}/polls/#{@match.poll.id}/activities/#{activity.slug}/votes']").click
-    assert page.has_content?(I18n.t('votes.voted'))
-  end
-
-  test 'user can delete its vote for an activity' do
-    visit match_poll_path(@match, @match.poll)
-    vote = votes(:java_vote)
-    activity = activities(:activity_post)
-    find("a[href='/match/#{@match.id}/polls/#{@match.poll.id}/activities/#{activity.slug}/votes/#{vote.id}']").click
-    page.driver.browser.switch_to.alert.accept
-
-    assert page.has_content?(I18n.t('votes.unvoted'))
   end
 end

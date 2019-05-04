@@ -19,7 +19,7 @@ class LoginTest < ApplicationSystemTestCase
     assert_equal(current_path, new_match_team_path(@match))
   end
 
-  test 'if the user forgot his password he can change using the option forget password' do
+  test 'if user forgot its password he/she can change it using Forget my password option' do
     visit new_user_session_path
 
     click_link I18n.t('user.forgot_password')
@@ -27,18 +27,20 @@ class LoginTest < ApplicationSystemTestCase
 
     fill_in 'user[email]', with: 'normal_user@michelada.io'
     click_button 'Enviar instrucciones'
+    assert page.has_content?(I18n.t('devise.passwords.send_instructions'))
   end
 
-  test 'the app only accept domain michelada.io' do
+  test 'users email is valid if it is part of @michelada domain' do
     visit new_user_registration_path
 
     fill_in 'user[email]', with: 'new_normal_user@michelada.io'
     fill_in 'user[password]', with: '123456'
     fill_in 'user[password_confirmation]', with: '123456'
     click_button 'Registrarse'
+    assert page.has_content?('Bienvenido! Te has registrado correctamente.')
   end
 
-  test 'the app do not accept another domain' do
+  test 'users email is invalid if it is not part of @michelada domain' do
     visit new_user_registration_path
 
     fill_in 'user[email]', with: 'normal_user@gmail.com'
@@ -55,5 +57,6 @@ class LoginTest < ApplicationSystemTestCase
     visit new_match_team_path(@match)
     click_link I18n.t('user.log_out')
     assert_equal(current_path, root_path)
+    assert page.has_content?('Cerraste sesión correctamente.')
   end
 end
