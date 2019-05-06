@@ -1,12 +1,9 @@
 .main-content.container.medium.mt-5
-  .top-players
-
-    - if @match.match_type == 'Content'
-      %h3.d-flex.justify-content-end.total-score
-        =t('labels.michelada_score')
-        .text.red.ml-2.increase-3.text= t('labels.points') % { score: @match.total_score }
-
+  .top-teams
     - if active_match?
-      = render partial: 'main'
+      - if @match.content_match?
+        = render partial: 'main_content'
+      - elsif @match.project_match?
+        = render partial: 'main_project'
     - else
       = render partial: 'main_winners'

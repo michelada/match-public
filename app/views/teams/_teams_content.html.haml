@@ -1,0 +1,62 @@
+%p
+  = t('labels.score')
+  %span
+    = "#{@team.score || 0}"
+%hr
+-if @match.content_match?
+  %h3.mt-5.center-info.mb-3
+    = t('labels.activities')
+    %span
+      = t('labels.team')
+  - @team.activities&.each do |activity|
+    %div{id: "activity_#{activity.id}"}
+      .d-flex.justify-content-between
+        %p.long-line
+          = activity.name
+        %p.points
+          - if activity.approved?
+            = t('labels.points', score: activity.score)
+          -else
+            = t('labels.tentative_score', score: activity.score)
+      %p{class: activity.css_class}
+        = activity.status
+      .d-flex.justify-content-between
+        %p
+          = activity.activity_type
+        = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail', custom_color: '#F9CF26'}), match_activity_path(@match, activity), id: "go_to_#{activity.id}"
+      %hr.section
+
+  - if current_user.activities&.exists?
+    %h3.mt-5.text-center.mb-3.team
+      = t('activities.my_activities')
+    %br
+    %table.activities-table
+      %thead.mb-3
+        %tr
+          %th
+            = t('labels.name')
+          %th.text-center
+            = t('labels.type')
+          %th.text-center
+            = t('activities.status')
+          %th.text-right
+            = t('buttons.actions')
+      %tbody
+        - current_user.activities&.each do |activity|
+          %tr
+            %td
+              %p.long-line= link_to activity.name, match_activity_path(@match, activity)
+            %td.text-center
+              = activity.activity_type
+            %td.text-center{class: activity.css_class}
+              = activity.status
+            %td.text-right.activity-actions
+              - unless activity.Aprobado?
+                = link_to image_tag('ic-edit'), edit_match_activity_path(@match, activity)
+                = link_to image_tag('ic-delete'), match_activity_path(@match, activity), class:'ml-2', method: :delete, data: {confirm: t('actions.confirm')}
+
+.text-right.mt-5
+  = link_to t('team.messages.leave_team'), match_user_path(@match, current_user.id), method: :patch, data: {confirm: t('actions.confirm')}
+- if @team.users.count < 3
+  .text-right.mb-5.mt-2
+    = link_to t('labels.invite'), new_match_team_invitation_path

@@ -1,0 +1,29 @@
+.d-flex.align-items-center.mt-4.mb-5
+  = image_tag 'project', alt: 'prize', height: '90', class: 'mr-3'
+  %h1
+    = t('labels.projects')
+- if @match.teams_by_score.empty?
+  %h3.text-center.mt5
+    = t("team.messages.no_teams")
+- else
+  %p.top-three.mb-5
+    - @match.teams_by_score.each_with_index do |team, i|
+      -if i < 3
+        %h5
+          .text.red= team.name
+          = team.project&.name
+          .d-flex.mb-3.justify-content-between
+            %em= team.project&.description
+          //Add option to see the status
+        %hr.section
+      -else
+        .collapsed-teams
+          .text.red= team.project&.name
+          = team.name
+          .d-flex.mb-3.justify-content-between
+            %em= team.project&.description
+            //Add option to see the status
+          %hr.section
+- if @match.teams_by_score.count > 3
+  .text-center
+    = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }

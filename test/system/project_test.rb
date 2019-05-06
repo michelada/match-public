@@ -35,8 +35,9 @@ class ProjectTest < ApplicationSystemTestCase
   test 'users can edit projects' do
     login_as @user
     visit match_team_path(@match, @user.team)
-
-    click_link I18n.t('buttons.edit')
+    within('.activities-table') do
+      find("a[href='/match/#{@match.id}/projects/#{@user.team.project.id}/edit']").click
+    end
     fill_in 'project[name]', with: 'Test project updated'
     click_button 'Update Project'
 
