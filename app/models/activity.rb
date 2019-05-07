@@ -74,6 +74,10 @@ class Activity < ApplicationRecord
     self.score = score_by_type
   end
 
+  def team
+    user.team
+  end
+
   def to_param
     slug
   end
