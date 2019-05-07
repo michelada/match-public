@@ -12,6 +12,7 @@
 #  match_id     :bigint(8)
 #  team_id      :bigint(8)
 #  score        :integer          default(0)
+#  slug         :string
 #
 
 class Project < ApplicationRecord

@@ -55,6 +55,14 @@ es:
     edit: "Editar"
     invite: "Invitar"
     new: "Nuevo"
+    markdown:
+      bold: "Negritas"
+      code: "Código"
+      code_block: "Bloque"
+      italic: "Cursiva"
+      link: "Enlace"
+      list: "Lista"
+      quote: "Cita"
     show: "Ver"
     submit: "Enviar"
     upload: "Cargar"
@@ -169,7 +177,7 @@ es:
   placeholders:
     activity_name: "Nombre de la actividad"
     comment: "Escribe el comentario"
-    link: "https://"
+    link: "https://www.example.com\nhttp://www.example2.com"
     team_name: "Nombre del equipo"
     user_email: "Ingresa el correo del usuario"
     activity:

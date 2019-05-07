@@ -79,12 +79,13 @@ class MatchTest < ActiveSupport::TestCase
 
   test 'match is valid with all attributes' do
     @project_match.update_attributes(start_date: Date.today + 5.weeks,
-                                    end_date: Date.today + 6.weeks)
+                                     end_date: Date.today + 6.weeks)
     assert @project_match.valid?
   end
 
   test 'match is not valid if it overlaps' do
-    refute @content_match.valid?
+    match = matches(:active_content_match)
+    refute match.valid?
   end
 
   test 'match is not valid if start_date is bigger than end_date' do

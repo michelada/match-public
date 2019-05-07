@@ -10,7 +10,7 @@
 #  user_id          :bigint(8)        not null
 #  activity_type    :integer          not null
 #  status           :integer          default("Por validar"), not null
-#  notes            :string
+#  notes            :text
 #  score            :integer          default(0)
 #  description      :text
 #  pitch_audience   :text

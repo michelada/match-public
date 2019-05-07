@@ -24,7 +24,7 @@ class FeedbacksController < MatchesController
 
   def feedback_params
     params.require(:feedback)
-          .permit(:comment)
+          .permit(:comment, :file)
           .merge(user_id: current_user.id,
                  commentable: @commentable)
   end

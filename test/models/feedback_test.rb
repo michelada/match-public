@@ -7,6 +7,7 @@
 #  user_id          :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  file             :string
 #  commentable_type :string
 #  commentable_id   :bigint(8)
 #
