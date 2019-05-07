@@ -4,9 +4,9 @@
     %strong
       = t('team.winner')
 %h2
-  = @winner_team.name
+  = @winner_team&.name
   .text-red
-    = t('labels.points') % { score: @winner_team.score }
+    = t('labels.points') % { score: @winner_team&.score }
 %br
 %h3.d-flex.justify-content-center.align-items-center
   =t('activities.best')

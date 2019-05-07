@@ -54,6 +54,14 @@ en:
     delete: "Delete"
     edit: "Edit"
     invite: "Invite"
+    markdown:
+      bold: "Bold"
+      code: "Code"
+      code_block: "Code block"
+      italic: "Italic"
+      link: "Link"
+      list: "List"
+      quote: "Quote"
     new: "New"
     show: 'Show'
     submit: "Submit"
@@ -166,7 +174,7 @@ en:
   placeholders:
     activity_name: "Activity name"
     comment: "Type a comment"
-    link: "https://"
+    link: "https://www.example.com\nhttp://www.example2.com"
     team_name: "Team name"
     user_email: "Insert the user email"
     activity:

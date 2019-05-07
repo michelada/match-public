@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_02_173015) do
+ActiveRecord::Schema.define(version: 2019_05_03_174111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_05_02_173015) do
     t.bigint "user_id", null: false
     t.integer "activity_type", null: false
     t.integer "status", default: 0, null: false
-    t.string "notes"
+    t.text "notes"
     t.integer "score", default: 0
     t.text "description"
     t.text "pitch_audience"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_05_02_173015) do
     t.datetime "updated_at", null: false
     t.string "commentable_type"
     t.bigint "commentable_id"
+    t.string "file"
     t.index %w[commentable_type commentable_id], name: "index_feedbacks_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end

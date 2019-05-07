@@ -2,7 +2,7 @@
   .main-content.medium
     .activities
       %h3.text.red= @project.name
-      
+
       %h6.text.red= t('projects.description')
       %h6= markdown(@project.description)
 
@@ -14,24 +14,40 @@
 
       %h5.mt-5.mb-5
         = t("comments.all")
-      - sorted_comments(@project).each_with_index do |feedbacks, i|
-        %div{:id => "com_#{i}", class: 'comment'}
-          %h6.gray.d-flex.justify-content-between{class: feedbacks.user.judge? ? 'judge' : 'regular'}
-            = feedbacks.user.name? ? feedbacks.user.name : feedbacks.user.email.remove('@michelada.io').capitalize
-            - if feedbacks.user_id == current_user.id
+      - sorted_comments(@project).each_with_index do |feedback, i|
+        %div{ id: "com_#{i}", class: 'comment' }
+          %h6.gray.d-flex.justify-content-between{ class: feedback.user.judge? ? 'judge' : 'regular' }
+            = user_name(feedback.user)
+            - if feedback.user_id == current_user.id
+              .original_comment
+                %input{ type: 'hidden', value: feedback.comment, id: "originalText_#{i}" }
+              .form_data
+                %input{ type: 'hidden', id: "commentId#{i}", value: "#{@project.id}" }
+                %input{ type: 'hisdden', id: "feedbackId#{i}", value: "#{feedback.id}" }
               .edit_comment
-                = link_to t("buttons.edit"), "#", :id => "#{i}"
-          %p{:class => "gray", :id => "comment_#{i}", class: 'comment-content mt-3'}
-            = markdown(feedbacks.comment)
-          %textarea{:value => "#{feedbacks.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}
-          - if feedbacks.user_id == current_user.id
-            .form_data
-              %input{type: "hidden", id: "acId#{i}", value: "#{@project.id}"}
-              %input{type: "hidden", id: "fbId#{i}", value: "#{feedbacks.id}"}
+                = link_to t('buttons.edit'), '#', id: "#{i}"
+          .comment-content
+            %p{ class: 'gray mt-3', id: '#'}
+              = markdown(feedback.comment, feedback.file)
+            %textarea{ value: "#{feedback.comment}", hidden: true, id: "editor_#{i}", class: 'input-text mb-0 mt-2' }
 
-          %hr.section
       .mt-4
         - if user_can_comment?(@project)
           = simple_form_for [ @match, @project, @feedback] do |f|
-            = f.text_area :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text mt-4'}, required: false
-            = f.button :submit, t('comments.create'), class: 'button'
+            = f.text_area :comment, label: t('comments.create') , placeholder: t('placeholders.comment'), input_html: { class: 'input-text mt-4' }, required: false
+            .comment-actions
+              %ul
+                %li#boldButton
+                  = link_to t('buttons.markdown.bold'), ''
+                %li#italicButton
+                  = link_to t('buttons.markdown.italic'), ''
+                %li#codeButton
+                  = link_to t('buttons.markdown.code'), ''
+                %li#linkButton
+                  = link_to t('buttons.markdown.link'), ''
+                %li#quoteButton
+                  = link_to t('buttons.markdown.quote'), ''
+                %li#listButton
+                  = link_to t('buttons.markdown.list'), ''
+            = f.file_field :file, class:'inputfile', accept: '.jpg,.png,.jpeg'
+            = f.button :submit, t('comments.create'), class: 'button', id: 'btn-comment'
