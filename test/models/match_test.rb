@@ -85,6 +85,7 @@ class MatchTest < ActiveSupport::TestCase
 
   test 'match is not valid if it overlaps' do
     match = matches(:active_content_match)
+
     refute match.valid?
   end
 

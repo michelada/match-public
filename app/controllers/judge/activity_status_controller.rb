@@ -18,7 +18,7 @@ module Judge
         flash[:alert] = t('activities.messages.error_unapproving')
       end
 
-      redirect_to match_judge_activity_path(@match, activity)
+      redirect_to match_judge_activity_path(@match, @activity)
     end
 
     private
