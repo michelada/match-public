@@ -35,7 +35,7 @@
   - @match.last_three_activities.each do |activity|
     .activity
       .mb-3= activity.name
-      .mb-3= activity.user.team&.name
+      .mb-3= activity.user.current_team&.name
       .d-flex.mb-3.justify-content-between
         = activity.activity_type
         .text.red= t('labels.tentative_score', score: activity.score)

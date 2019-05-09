@@ -4,7 +4,7 @@ class ApplicationController < ::ActionController::Base
   before_action :set_match
 
   def after_sign_in_path_for(_users)
-    if current_user.team? && !current_user.admin?
+    if current_user.current_team && !current_user.admin?
       new_match_team_path(Match.last)
     else
       redirect_user

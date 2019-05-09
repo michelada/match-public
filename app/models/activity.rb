@@ -75,7 +75,7 @@ class Activity < ApplicationRecord
   end
 
   def team
-    user.team
+    user.current_team
   end
 
   def to_param

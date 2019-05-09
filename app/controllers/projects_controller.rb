@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       flash[:notice] = t('projects.created')
-      redirect_to match_team_path(@match, current_user.team)
+      redirect_to match_team_path(@match, current_user.current_team)
     else
       flash[:alert] = t('projects.error_creating')
       render 'new'
@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
     @project.update(project_params)
     if @project.save
       flash[:notice] = t('projects.updated')
-      redirect_to match_team_path(@match, current_user.team)
+      redirect_to match_team_path(@match, current_user.current_team)
     else
       flash[:alert] = t('projects.error_updating')
       render 'edit'
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project)
           .permit(:name, :description, :repositories, :features)
-          .merge(match_id: params[:match_id], team: current_user.team)
+          .merge(match_id: params[:match_id], team: current_user.current_team)
   end
 
   def set_project
@@ -53,19 +53,19 @@ class ProjectsController < ApplicationController
 
   def user_can_modify_project?
     project = Project.friendly.find(params[:id])
-    return if project.team == current_user.team
+    return if project.team == current_user.current_team
 
     flash[:alert] = t('activities.messages.no_permitted')
     redirect_to new_match_team_path(@match)
   end
 
   def user_can_upload_project?
-    if current_user.team.nil?
+    if current_user.current_team.nil?
       flash[:alert] = t('projects.no_team')
       redirect_to new_match_team_path(@match)
     elsif current_user.project
       flash[:alert] = t('projects.already_have_one')
-      redirect_to match_team_path(@match, current_user.team)
+      redirect_to match_team_path(@match, current_user.current_team)
     end
   end
 end

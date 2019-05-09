@@ -154,6 +154,7 @@ es:
     create: "Crear un equipo"
     destroy: "Eliminar equipo"
     edit: "Editar equipo"
+    error_limit_members: "El equipo ya está completo"
     error_accessing: "No puedes acceder a otro team"
     invalid_user: 'El usuario ya cuenta con un equipo, o el correo es invalido'
     top: "Top"

@@ -4,7 +4,7 @@ class TeamsController < MatchesController
   before_action :valid_users_invitations?, only: [:create]
 
   def new
-    redirect_to match_team_path(@match, current_user.team) unless current_user.team.nil?
+    redirect_to match_team_path(@match, current_user.current_team) if current_user.current_team
     @team = Team.new
     @team.name = "#{Spicy::Proton.adjective}_#{Spicy::Proton.noun}"
   end
@@ -13,7 +13,7 @@ class TeamsController < MatchesController
     @team = Team.new(team_params)
     if @team.save
       invite_users
-      current_user.update_attribute(:team, @team)
+      current_user.teams << @team
       flash[:notice] = t('team.messages.created')
       redirect_to match_main_index_path(@match)
     else

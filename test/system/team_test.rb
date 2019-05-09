@@ -5,8 +5,10 @@ class TeamTest < ApplicationSystemTestCase
     Match.last.destroy
     @match = matches(:active_content_match)
   end
+
   test 'Users can invite another user at the team' do
-    @team_user = users(:user_with_team)
+    @team_user = users(:user_in_match)
+
     sign_in @team_user
     visit new_match_team_path(@match)
     click_link 'Agregar integrante'
@@ -22,7 +24,7 @@ class TeamTest < ApplicationSystemTestCase
   end
 
   test 'if the team is not complete the page sample a link' do
-    @team_user = users(:user_with_team)
+    @team_user = users(:user_in_match)
     sign_in @team_user
     visit new_match_team_path(@match)
     assert has_link?('Agregar integrante')

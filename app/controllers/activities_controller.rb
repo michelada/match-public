@@ -12,7 +12,7 @@ class ActivitiesController < MatchesController
     @activity = Activity.new(activity_params)
     if @activity.save
       flash[:notice] = t('activities.messages.uploaded')
-      redirect_to match_team_path(params[:match_id], current_user.team)
+      redirect_to match_team_path(params[:match_id], current_user.current_team)
     else
       @activity.locations.build if @activity.locations.blank?
       flash.now[:alert] = t('activities.messages.error_creating')
@@ -32,7 +32,7 @@ class ActivitiesController < MatchesController
     else
       flash[:alert] = t('activities.messages.error_deleting')
     end
-    redirect_to match_team_path(params[:match_id], current_user.team)
+    redirect_to match_team_path(params[:match_id], current_user.current_team)
   end
 
   def edit
@@ -43,7 +43,7 @@ class ActivitiesController < MatchesController
     @activity = Activity.friendly.find(params[:id])
     if @activity.update(activity_params)
       flash[:notice] = t('activities.messages.updated')
-      redirect_to match_team_path(params[:match_id], current_user.team)
+      redirect_to match_team_path(params[:match_id], current_user.current_team)
     else
       flash.now[:alert] = t('alerts.activities.not_black')
       render 'edit'
@@ -72,14 +72,15 @@ class ActivitiesController < MatchesController
   end
 
   def user_can_upload_activity?
-    return redirect_to new_match_team_path(@match) unless current_user.team?
+    if current_user.current_team
+      match = Match.find(params[:match_id])
+      return if match.active?
 
-    actual_date = DateTime.now.in_time_zone('Mexico City')
-    limit_date = Match.last&.end_date
-    start_date = Match.last&.start_date
-    return if Match.last && (start_date..limit_date).cover?(actual_date)
-
-    flash[:alert] = t('activities.closed')
-    redirect_to match_main_index_path(@match)
+      flash[:alert] = t('activities.closed')
+      redirect_to match_main_index_path(@match)
+    else
+      flash[:alert] = t('projects.no_team')
+      redirect_to new_match_team_path(@match)
+    end
   end
 end

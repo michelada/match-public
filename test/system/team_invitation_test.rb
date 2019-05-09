@@ -3,6 +3,7 @@ require 'application_system_test_case'
 class TeamInvitationTest < ApplicationSystemTestCase
   before do
     @match = matches(:content_match)
+    Match.last.destroy
   end
 
   test 'user without team can view the option create a new team' do
@@ -66,15 +67,15 @@ class TeamInvitationTest < ApplicationSystemTestCase
     click_button 'Enviar invitación'
   end
 
-  test 'user can not invite an a user with team' do
-    user = users(:user_test2)
-    use2 = users(:user_with_teammates2)
+  test 'user can not invite an user with team' do
+    user = users(:user_in_match)
+    use2 = users(:user2_in_match)
     sign_in user
 
     visit new_match_team_invitation_path(@match)
     fill_in 'email', with: use2.email
-
     click_button 'Enviar invitación'
+
     assert page.has_content?(I18n.t('team.invalid_user'))
   end
 
@@ -100,11 +101,12 @@ class TeamInvitationTest < ApplicationSystemTestCase
     assert page.has_content?(I18n.t('team.messages.error_users'))
   end
 
-  test 'user can see the link and go to the invitation view.' do
+  test 'user can see the link and go to the invitation view' do
     user = users(:user_in_match)
     active_match = matches(:active_content_match)
     sign_in user
-    visit match_team_path(active_match, user.team)
+
+    visit match_team_path(active_match, user.current_team)
 
     assert page.find(:css, "a[href='/match/#{active_match.id}/team_invitations/new']")
   end

@@ -42,55 +42,52 @@ user_test1:
   email: 'test@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team_id: 1
   id: 187671
 
 user_test2:
   email: 'test2@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team_id: 2
   id: 266512
 
 user_test3:
   email: 'test3@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team_id: 2
   id: 266515
 
 user_with_team:
+  id: 98854
   email: 'team_user@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team_id: 3
 
 user_with_teammates:
+  id: 123123
   email: 'team_mates@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team: team4
 
 user_with_teammates2:
+  id: 1231232
   email: 'team_mates2@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team: team4
 
 user_with_teammates3:
+  id: 1231233
   email: 'team_mates3@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team: team4
 
 user_in_match:
+  id: 87277234
   email: 'actualteam1@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team: teamMatch
 
 user2_in_match:
+  id: 98887
   email: 'actualteam2@michelada.io'
   role: 0
   encrypted_password: <%= Devise::Encryptor.digest(User, 'usertest') %>
-  team: teamMatch

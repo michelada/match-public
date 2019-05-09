@@ -25,7 +25,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  belongs_to :team, optional: true
+  has_and_belongs_to_many :teams
   belongs_to :match, optional: true
   has_many :activities, dependent: :destroy
   has_many :activity_statuses
@@ -39,8 +39,8 @@ class User < ApplicationRecord
 
   after_invitation_accepted :initialize_user
 
-  def team?
-    team_id
+  def current_team
+    teams&.find_by(match: Match.last)
   end
 
   def normal_user?
@@ -48,18 +48,19 @@ class User < ApplicationRecord
   end
 
   def part_of_team?(team_slug)
-    team&.slug == team_slug
+    teams&.find_by(slug: team_slug) ? true : false
   end
 
   def project
-    team&.project
+    current_team&.project
   end
 
   def can_be_invited?
-    !User.find_by_email(email)&.team? && email.match?(VALID_EMAIL_REGEX)
+    !User.find_by_email(email)&.current_team && email.match?(VALID_EMAIL_REGEX)
   end
 
   def initialize_user
-    update_attributes!(team_id: invited_by&.team&.id, role: User.roles[:user])
+    update_attributes!(role: User.roles[:user])
+    teams << invited_by&.current_team
   end
 end

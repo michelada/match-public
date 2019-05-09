@@ -6,6 +6,7 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
     @user = users(:user)
     @team_user = users(:user_with_team)
     Match.last.destroy
+    @team_user.teams << teams(:teamMatch)
     @match = Match.last
   end
 
@@ -27,13 +28,13 @@ class TeamControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'no loged user can no visit activity team show' do
-    get match_team_path(@match, @team_user.team)
+    get match_team_path(@match, @team_user.current_team)
     assert_redirected_to new_user_session_path, 'Controller response unexpected'
   end
 
   test 'loged user can visit team show' do
     sign_in @team_user
-    get match_team_path(@match, @team_user.team)
+    get match_team_path(@match, @team_user.current_team)
     assert_response :success
   end
 end

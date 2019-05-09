@@ -6,6 +6,7 @@ class LocationTest < ApplicationSystemTestCase
     sign_in @team_user
     Match.last.destroy
     @match = matches(:active_content_match)
+    @team_user.teams.last.update_attributes(match: Match.last)
   end
 
   test 'Users can create a new location from new_activity view' do

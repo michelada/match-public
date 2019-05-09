@@ -35,11 +35,12 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   test 'Project can have many users through team' do
-    user1 = users(:user_test2)
-    user2 = users(:user_test3)
+    project = projects(:simple_project2)
+    user1 = users(:user_with_team)
+    user2 = users(:user_test1)
 
-    assert_equal(@project.users.first, user1)
-    assert_equal(@project.users.last, user2)
-    assert_equal(user1.project, @project)
+    assert_equal(project.users.first, user1)
+    assert_equal(project.users.last, user2)
+    assert_equal(user1.project, project)
   end
 end

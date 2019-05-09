@@ -12,7 +12,7 @@
 #
 
 java_vote:
-  user: user_with_teammates
+  user_id: 87277234
   activity_id: 234423
   value: 10
   poll_id: 776

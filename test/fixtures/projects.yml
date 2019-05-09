@@ -38,6 +38,6 @@ simple_project2:
             is tall
             and tan
             HEREDOC
-  team_id: 1
+  team_id: 10
   created_at: <%= Date.today - 1.week%>
   match_id: 6
