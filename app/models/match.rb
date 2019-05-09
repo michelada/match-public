@@ -86,7 +86,7 @@ class Match < ApplicationRecord
   end
 
   def active?
-    actual_date = DateTime.now.in_time_zone('Mexico City')
+    actual_date = Date.today.in_time_zone('Mexico City')
     (start_date..end_date).cover?(actual_date)
   end
 end

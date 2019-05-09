@@ -21,7 +21,6 @@ class LoginTest < ApplicationSystemTestCase
 
   test 'if user forgot its password he/she can change it using Forget my password option' do
     visit new_user_session_path
-
     click_link I18n.t('user.forgot_password')
     assert_equal(current_path, new_user_password_path)
 
