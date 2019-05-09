@@ -1,0 +1,41 @@
+%h3.d-flex.justify-content-end.total-score
+  = t('labels.michelada_score')
+  .text.red.ml-2.increase-3.text= t('labels.points') % { score: @match.total_score }
+.d-flex.align-items-center.mt-4.mb-5
+  = image_tag 'ic-prize', alt: 'prize', height: '90', class: 'mr-3'
+  %h1
+    = t('team.top')
+    %strong.text.yellow 3
+- if @match.teams_by_score.empty?
+  %h3.text-center.mt5
+    = t("team.messages.no_teams")
+- else
+  %p.top-three.mb-5
+    - @match.teams_by_score.each_with_index do |team, i|
+      -if i < 3
+        .d-flex.justify-content-between.mb-4
+          = team.name
+          .text.red
+            = t('labels.points') % { score: team.score}
+      -else
+        .collapsed-teams
+          .d-flex.justify-content-between.mb-4
+            = team.name
+            .text.red
+              = t('labels.points') % { score: team.score}
+- if @match.teams_by_score.count > 3
+  .text-center
+    = render partial: 'icons/arrow', locals: { custom_class: 'my-5 break-arrow' }
+%br
+%h3.d-flex.justify-content-center.align-items-center
+  =t('labels.look_who_is')
+  .text.red.increase-3.ml-3= t('labels.fight')
+
+.latest-activities.mt-5.mb-5
+  - @match.last_three_activities.each do |activity|
+    .activity
+      .mb-3= activity.name
+      .mb-3= activity.user.current_team&.name
+      .d-flex.mb-3.justify-content-between
+        = activity.activity_type
+        .text.red= t('labels.tentative_score', score: activity.score)

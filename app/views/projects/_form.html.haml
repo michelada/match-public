@@ -1,0 +1,9 @@
+.container.center-vertical.activities
+  .main-content.medium.mt-5
+    = simple_form_for([@match, @project]) do |f|
+      .mt-2
+      = f.input :name, label: t("labels.name"), placeholder: t("placeholders.activity.title"), input_html: { class: 'input-text' }
+      = f.input :description, label: t("labels.description"), placeholder: t("placeholders.activity.description"), input_html: { class: 'input-text optional-fields' }
+      = f.input :features, label: t("labels.features"), placeholder: t("placeholders.project.features"), input_html: { class: 'input-text optional-fields' }
+      = f.input :repositories, label: t("labels.repositories"), placeholder: t("placeholders.project.repositories"), input_html: { class: 'input-text optional-fields' }
+      = f.submit label: t("buttons.submit"), class: 'button'

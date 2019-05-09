@@ -12,11 +12,13 @@ gem 'bootstrap_form', '~>4.1.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'devise_invitable', '~>1.7.0'
+gem 'friendly_id', '~> 5.2.4'
 gem 'haml-rails', '~> 1.0'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
+gem 'redcarpet'
 gem 'sass-rails', '~> 5.0'
 gem 'sendgrid-ruby'
 gem 'simple_form', '~>4.0.1'
@@ -42,11 +44,11 @@ group :development do
 end
 
 group :test do
-  gem 'chromedriver-helper'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'selenium-webdriver'
   gem 'simplecov'
+  gem 'webdrivers', '~> 3.0'
 end
 
 group :production, :staging do

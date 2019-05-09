@@ -4,21 +4,46 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  name       :string           not null
-#  score      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  slug       :string
+#  match_id   :bigint(8)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 team1:
+  id: 1
+  match_id: 5
   name: halcones
+  slug: halcones
 
 team2:
+  id: 2
+  match_id: 1
   name: tigres
+  slug: tigres
 
 team3:
+  id: 3
+  match_id: 1
   name: chivos
+  slug: chivos
 
 team4:
+  id: 4444
+  match_id: 1
   name: fullteam
+  slug: fullteam
+
+teamMatch:
+  id: 03223
+  match_id: 5
+  name: ActualTeam
+  slug: actualteam
+
+team_project_match:
+  id: 10
+  match_id: 6
+  name: halcones_project
+  slug: halcones_project

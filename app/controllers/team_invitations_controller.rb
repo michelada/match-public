@@ -1,45 +1,44 @@
-class TeamInvitationsController < ApplicationController
-  VALID_EMAIL_REGEX = /~*@michelada.io/i.freeze
+class TeamInvitationsController < MatchesController
+  before_action :verify_user, only: [:create]
+  before_action :user_can_invite?, only: [:create]
 
   def new; end
 
   def create
-    if validate_user && invite_user
+    if invite_user
       flash[:notice] = t('team.messages.user_invited')
-      redirect_to team_path(current_user.team)
+      redirect_to match_team_path(@match, current_user.current_team)
     else
-      redirect_to new_team_invitation_path
+      flash[:alert] = t('team.messages.error_inviting')
+      redirect_to new_match_team_invitation_path(@match)
     end
   end
 
   private
 
-  def team_invitations_params
-    params.permit(:email)
-  end
-
   def invite_user
-    user_email = params[:email]
-    user = User.find_by(email: user_email)
+    user = User.find_by_email(@user.email)
     if user.nil?
-      if User.invite!({ email: user_email }, current_user)
-        new_user = User.find_by(email: user_email)
-        new_user.update_attributes(team_id: current_user.team_id, role: User.roles[:user])
-      end
-    elsif user.team.nil?
-      user.update_attributes(team_id: current_user.team_id)
+      User.invite!({ email: params[:email] }, current_user)
     else
-      flash[:alert] = t('activerecord.errors.models.user.attributes.email.already_has_team')
-      return false
+      user.teams << current_user.current_team
     end
   end
 
-  def validate_user
-    user_email = params[:email]
-    if user_email.empty? || !user_email.match(VALID_EMAIL_REGEX)
-      flash[:alert] = t('team.messages.email_not_valid')
-      return false
-    end
-    true
+  def verify_user
+    @user = User.new(email: params[:email])
+    return if @user.can_be_invited?
+
+    flash[:alert] = t('team.invalid_user')
+    redirect_to new_match_team_invitation_path(params[:match_id])
+  end
+
+  def user_can_invite?
+    return redirect_to root_path unless current_user&.current_team
+
+    return if current_user.current_team.users.count < 3
+
+    flash[:alert] = t('team.messages.error_limit_members')
+    redirect_to match_team_path(@match, current_user.current_team)
   end
 end

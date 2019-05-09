@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: polls
+#
+#  id         :bigint(8)        not null, primary key
+#  start_date :date             not null
+#  end_date   :date             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  match_id   :bigint(8)
+#
+
+poll:
+  id: 776
+  start_date: <%= Date.today - 1.day%>
+  end_date: <%= Date.today + 1.week%>
+  match_id: 1
+
+active_poll:
+  match_id: 5
+  start_date: <%= Date.today + 2 %>
+  end_date: <%= Date.today + 3 %>
+
+project_poll:
+    match_id: 6
+    start_date: <%= Date.today + 4 %>
+    end_date: <%= Date.today + 6 %>
+

@@ -1,0 +1,36 @@
+-if current_user.project.present?
+  %hr.section
+  %h3.mt-5.center-info.mb-3
+    = t('labels.project')
+    %span
+      = t('labels.team')
+  .contain.center-vertical
+    .main-content.medium
+      %table.activities-table
+        %thead.mb-3
+          %tr
+            %th
+              = t('labels.name')
+            %th.text-right
+              = t('buttons.actions')
+        %tbody
+          %tr
+            %td
+              %h4.text.red.long-line= @team.project.name
+            %td.text-right.activity-actions
+              = link_to image_tag('ic-edit'), edit_match_project_path(@match, current_user.project)
+              = link_to image_tag('ic-view'), match_project_path(@match, current_user.project)
+
+- else
+  %hr.section
+  %h3.mt-5.center-info.mb-3
+    = t('labels.project')
+    %span
+      = t('labels.team')
+  %h6= t('projects.no_project')
+
+.text-right.mt-5
+  = link_to t('team.messages.leave_team'), match_user_path(@match, current_user.id), method: :patch, data: {confirm: t('actions.confirm')}
+  - if @team.users.count < 3
+    .text-right.mb-5.mt-2
+      = link_to t('labels.invite'), new_match_team_invitation_path

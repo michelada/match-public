@@ -8,11 +8,6 @@
 #  name                   :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  invitation_token       :string
@@ -30,7 +25,94 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user_with_team = users(:user_with_team)
+    @user_no_team = users(:user)
+  end
+
+  test 'user must be invalid without email' do
+    user = User.new(password: 'normalUser',
+                    password_confirmation: 'normalUser')
+    refute user.valid?
+  end
+
+  test 'user must be invalid if email is not from michelada domain' do
+    user = User.new(email: 'miguel.urbina@gmail.com',
+                    password: 'normalUser',
+                    password_confirmation: 'normalUser')
+    refute user.valid?
+  end
+
+  test 'user must be valid' do
+    user = User.new(email: 'miguel.urbina@michelada.io',
+                    password: 'normalUser',
+                    password_confirmation: 'normalUser')
+    assert user.valid?
+  end
+
+  test 'user must be a normal user' do
+    assert @user_with_team.normal_user?
+    assert @user_no_team.normal_user?
+  end
+
+  test 'user must be a judge user' do
+    user = users(:judge_user)
+    assert user.judge?
+  end
+
+  test 'user must be an admin user' do
+    user = users(:admin_user)
+    assert user.admin?
+  end
+
+  test 'user has no a team' do
+    refute @user_no_team.current_team
+  end
+
+  test 'user must have a team' do
+    assert @user_with_team.current_team
+  end
+
+  test 'user must be part of a the team' do
+    team = teams(:team3)
+    assert @user_with_team.part_of_team?(team.slug)
+  end
+
+  test 'user with team can not be invited' do
+    user = users(:user_with_team)
+    refute user.can_be_invited?
+  end
+
+  test 'user with no team can be invited to one' do
+    assert @user_no_team.can_be_invited?
+  end
+
+  test 'user that is not already registered in system can be invited' do
+    user = User.new(email: 'miguel.urbina@michelada.io',
+                    password: 'normalUser',
+                    password_confirmation: 'normalUser')
+    assert user.can_be_invited?
+  end
+
+  test 'user should not have a team' do
+    refute @user_no_team.current_team
+  end
+
+  test 'user should be part of a team' do
+    assert @user_with_team.current_team
+  end
+
+  test 'user can obtain its current team' do
+    team = teams(:team_project_match)
+    assert_equal team, @user_with_team.current_team
+  end
+
+  test 'user current team is related to the last match version' do
+    assert_equal Match.last, @user_with_team.current_team.match
+  end
+
+  test 'user with no last-match team should not have a current team' do
+    @user_with_team.teams.last.destroy
+    refute @user_with_team.current_team
+  end
 end

@@ -6,6 +6,7 @@ en:
   activities:
     add: "Add activity"
     all: "All activities"
+    approved_by: 'Aproved for: %{users}'
     best: "Best"
     closed: "The time for uploading activities is over."
     edit_activity: "Edit activity"
@@ -28,6 +29,7 @@ en:
       error_approving: "Error approving activity"
       error_unapproving: "Error unapproving activity"
       error_deleting: "Error deleting activity"
+      error_inviting: "Error inviting user"
       error_update: "Error updating activity"
       error_upload: "Error uploading activity"
       error_updating_fedeback: "Error editing comment"
@@ -35,6 +37,7 @@ en:
       deleted: "Activity deleted"
       feedback_updated: "Comment updated"
       feedback_deleted: "Comment deleted"
+      no_permitted: 'Operation not permited'
       unapproved: "The activity was unapproved"
       updated: "Activity updated"
       uploaded: "Activity uploaded"
@@ -51,7 +54,16 @@ en:
     delete: "Delete"
     edit: "Edit"
     invite: "Invite"
+    markdown:
+      bold: "Bold"
+      code: "Code"
+      code_block: "Code block"
+      italic: "Italic"
+      link: "Link"
+      list: "List"
+      quote: "Quote"
     new: "New"
+    show: 'Show'
     submit: "Submit"
     upload: "Upload"
     update: "Update"
@@ -61,16 +73,21 @@ en:
     created: "Comment saved"
     error_creating: "Error saving comment"
   errors:
+    end_date_invalid: "Start date can't be supperior than end date"
     format: "%{message}"
+    no_content_match: "Current match is not 'Content' type, therefore projects cannot be uploaded"
+    no_project_match: "Current match is not 'Project' type, therefore activities cannot be uploaded"
+    overlapped_dates: "There is another match in the specified range of dates: id: %{match_id} dates: %{start_date} - %{end_date}"
   home: "Home"
   labels:
     activities_range: "Select the activitie's date range that can be part"
     activities: "Activities on"
     all: "All"
+    archives: 'Files:'
     approved: "Approved"
     admin: 'Users list'
     abstract: "Abstract"
-    aspire_to: "Aspire to"
+    aspire_to: "Aspire to %{score} pts"
     audience: "Audience"
     comments: "Comments"
     create_team: "Create your own"
@@ -83,23 +100,30 @@ en:
     evaluate: "Evaluate"
     events: "Events:"
     extra_points: "Extra Points"
+    features: "Features"
     fight: "FIGHT"
     information: "Only .zip, .jpg, .jpeg, .png, .key or .pdf"
     invite_users: "Invite your teammates"
     invite: 'Add member'
     last_day: "Don't forget to exercise your rights, you've until: "
+    leader: "Leader"
     link: 'Link'
     location: "Location"
     look_who_is: "Look who is in the"
     not_location: "Location not register"
     name: "Name of your content"
-    michelada_score: "michelada score "
+    match: "Match"
+    match_type: "Match type"
+    michelada_score: "michelada score"
     notes: "Notes"
     other_location: "Add another one: "
     outline: "Outline"
     pitch: "Pitch"
-    points: "pts"
+    points: "%{score} pts"
     polls: "Polls"
+    project: "Project"
+    projects: "Projects"
+    repositories: "Repositories"
     reviewing: "On review"
     role: "Role"
     score: "Score:"
@@ -109,26 +133,41 @@ en:
     start_date: "Start date"
     team: "Team"
     type: "Type"
-    tentative_score: "Aspires to"
+    tentative_score: "Aspires to %{score} pts"
     unapproved: "Unapproved"
+    version: "Version"
     vote: 'Your vote is free and secret'
     waiting: "Waiting"
     welcome: 'Welcome'
     welcome-admin: 'Welcome admin'
+  match:
+    create: "Match created"
+    delete: "Match deleted"
+    error_creating: "Error creating match"
+    error_deleting: "Error deleting match"
+    error_updating: "Error updating match"
+    update: "Match updated"
   team:
     create: "Create a team"
     destroy: "Delete team"
     edit: "Edit team"
     error_accessing: "You cannot see into another team"
+    error_limit_members: "Team is full"
+    invalid_user: 'User already has a team or the email is invalid'
+    top: "Top"
+    winner: "Winner team"
     messages:
       created: "Team created"
       deleted: "Team deleted"
       email_not_valid: "Invalid email"
       error_creating: "Error creating the team"
       error_deleting: "Error deleting the team"
+      error_inviting: "Error inviting user"
       error_leaving: "Error leaving the team"
       error_updating: "Error updating the team"
+      error_users: "Invalid email users"
       no_teams: 'There are no teams'
+      no_leader: "No leader team"
       leave_team: "Leave team"
       left: "You left the team"
       updated: "Team updated"
@@ -136,7 +175,7 @@ en:
   placeholders:
     activity_name: "Activity name"
     comment: "Type a comment"
-    link: "https://"
+    link: "https://www.example.com\nhttp://www.example2.com"
     team_name: "Team name"
     user_email: "Insert the user email"
     activity:
@@ -145,6 +184,9 @@ en:
       audience: "Which is your audience?"
       guide: "What are you talking?"
       event: "Where did you do that?"
+      project:
+        repositories: "Where is your project?"
+        features: "What does your project do?"
   poll:
     best_activity: "The best of the best"
     create_new: "Create a poll"
@@ -165,6 +207,25 @@ en:
   polls:
     deleted: "Poll deleted"
     updated: "Poll updated"
+  projects:
+    already_have_one: "You already have a project"
+    created: "Project created"
+    deleted: "Project deleted"
+    description: "Description"
+    error_creating: "Error creating project"
+    error_deleting: "Error deleting project"
+    error_updating: "Error updating project"
+    features: "Features"
+    my_project: "My project"
+    no_feature: "No features yet"
+    no_repository: "No repositories yet"
+    no_project: "No project yet"
+    no_team: "You must create your team first"
+    repositories: "Repositories"
+    updated: "Project updated"
+  uploads:
+    deleted: 'File deleted'
+    error_deleting: 'Error deleting file'
   user:
     change_password: "Change password"
     confirm_new_password: "Confirm new password"
@@ -235,6 +296,19 @@ en:
               blank: "A name is required"
             location:
               blank: "Location needed"
+        match:
+          attributes:
+            match_type:
+              blank: "Match type can't be blank"
+        project:
+          attributes:
+            name:
+              blank: "Name can't be blank"
+              taken: "That name is already taken"
+            description:
+              blank: "Description can't be blank"
+            features:
+              blank: "Features can't be blank"
         team:
           attributes:
             name:

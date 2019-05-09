@@ -1,0 +1,45 @@
+
+user_test1:
+  team_id: 1
+  user_id: 187671
+
+user_test1:
+  team_id: 10
+  user_id: 187671
+
+user_test2:
+  team_id: 2
+  user_id: 266512
+
+user_test3:
+  team_id: 2
+  user_id: 266515
+
+user_with_team_project:
+  team_id: 10
+  user_id: 98854
+
+user_with_team:
+  team_id: 3
+  user_id: 98854
+
+user_with_teammates:
+  team_id: 4444
+  user_id: 123123
+
+user_with_teammates2:
+  team_id: 4444
+  user_id: 1231232
+
+user_with_teammates3:
+  team_id: 4444
+  user_id: 1231233
+
+user_in_match:
+  team_id: 03223
+  user_id: 87277234
+
+user2_in_match:
+  team_id: 03223
+  user_id: 98887
+

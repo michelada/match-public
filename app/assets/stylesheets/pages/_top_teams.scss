@@ -1,0 +1,42 @@
+.top-teams {
+  h1 {
+    color: $white;
+    text-transform: capitalize;
+    font-weight: 100;
+    strong {
+      font-size: calc(#{$highlight-font-size} + 10px);
+    }
+  }
+  .break-arrow {
+    fill: $white;
+    height: $primary-icon-size;
+    cursor: pointer;
+    transition: .5s;
+    &.expanded {
+      transition: .5s;
+      transform: rotate(180deg);
+    }
+  }
+  h3 {
+    font-weight: 100;
+  }
+  .latest-activities {
+    .activity {
+      padding: $regular-padding 0;
+      margin: $regular-margin 0;
+      border-bottom: 1px solid $light-blue;
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+  .collapsed-teams {
+    overflow: hidden;
+    transition: .5s;
+    height: 0px;
+    &.expanded {
+      height: auto;
+      transition: .5s;
+    }
+  }
+}

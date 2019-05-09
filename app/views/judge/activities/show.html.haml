@@ -5,47 +5,47 @@
         = t('user.judge.activities.on_old.remember')
         %span.text.red
           = t('user.judge.activities.on_old.objetive')
-      
+
       -if @activity_status.nil?
-        = link_to image_tag('ic-not-approved', :class => "check-activity approve-false", :id => "approve"),  judge_activity_activity_status_index_path(@activity), method: :post
+        = link_to image_tag('ic-not-approved', class: 'check-activity approve-false', id: 'approve'),  match_judge_activity_activity_status_index_path(@match, @activity), method: :post
         %label= "#{t('activities.status_approve')}"
       - else
-        = link_to image_tag('ic-checked', :class => "check-activity approve-true", :id => "disapprove"), judge_activity_activity_status_path(@activity), method: :delete, data: {confirm: t('actions.confirm')}
+        = link_to image_tag('ic-checked', class: 'check-activity approve-true', id: 'disapprove'), match_judge_activity_activity_status_path(@match, @activity), method: :delete, data: {confirm: t('actions.confirm')}
         %label= "#{t('activities.status_approved')}"
       %h3
         = @activity.name
       %h6.mt-4
         = @activity.activity_type
-        %em.points= "#{@activity.score} #{t('labels.points')}"
+        %em.points=t('labels.points', { score: @activity.score })
       -unless @activity.activity_type == 'Post'
         %h6.text.red=t('user.judge.activities.description') if @activity.description
-        %p= @activity.description
-        -if @activity.activity_type == "Curso"
+        %p= markdown(@activity.description)
+        -if @activity.activity_type == 'Curso'
           %h6.text.red= t('user.judge.activities.intended_audence') if @activity.pitch_audience
-          %p= @activity.pitch_audience
+          %p= markdown(@activity.pitch_audience)
           %h6.text.red= t('user.judge.activities.outline') if @activity.abstract_outline
-          %p= @activity.abstract_outline
+          %p= markdown(@activity.abstract_outline)
         -else
           %h6.text.red= t('user.judge.activities.pitch') if @activity.pitch_audience
-          %p= @activity.pitch_audience
+          %p= markdown(@activity.pitch_audience)
           %h6.text.red= t('user.judge.activities.abstract') if @activity.abstract_outline
-          %p= @activity.abstract_outline
-      
+          %p= markdown(@activity.abstract_outline)
+
       - unless @activity.notes&.empty?
-        %h6.text.red= t("labels.link")
-        %p= @activity.notes
-      
+        %h6.text.red= t('labels.link')
+        %p= sanitize_links(@activity.notes)
+
       - if !@activity.locations.empty? || @activity.english
         %hr.section
         %h5
           =t('labels.extra_points')
           %em.text.red= t('labels.evaluate')
       -if @activity.english
-        %p 
+        %p
           - if @activity.english_approve
-            = link_to image_tag('ic-checked', :class => "check-activity approve-#{@activity.english_approve}"), judge_activity_path(@activity), method: :patch
-          - else 
-            = link_to image_tag('ic-not-approved', :class => "check-activity approve-#{@activity.english_approve}"), judge_activity_path(@activity), method: :patch
+            = link_to image_tag('ic-checked', class: "check-activity approve-#{@activity.english_approve}"), match_judge_activity_path(@match, @activity), method: :patch
+          - else
+            = link_to image_tag('ic-not-approved', class: "check-activity approve-#{@activity.english_approve}"), match_judge_activity_path(@match, @activity), method: :patch
           %label= t('labels.english')
 
       %h6.text.red= t('labels.events')
@@ -53,38 +53,57 @@
         %ul
           - @activity.locations&.each do |events|
             %li
-              -if events.approve 
-                = link_to image_tag('ic-checked', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch
-              -else 
-                = link_to image_tag('ic-not-approved', :class => "check-activity approve-#{events.approve}"), judge_activity_location_path(@activity, events), method: :patch  
+              -if events.approve
+                = link_to image_tag('ic-checked', class: "check-activity approve-#{events.approve}"), match_judge_activity_location_path(@match, @activity, events), method: :patch
+              -else
+                = link_to image_tag('ic-not-approved', class: "check-activity approve-#{events.approve}"), match_judge_activity_location_path(@match, @activity, events), method: :patch
               %label= "#{events.name}"
       - else
         %p= t('labels.not_location')
 
 
-    .activities  
-      - if @activity.file.attached? 
-        = link_to t('labels.download'), @activity.file, disposition: "attachment", class:'button', target: :_blank
+    .activities
+      - if @activity.files.attached?
+        %h6.text.red= t('labels.archives')
+        - @activity.files.each do |file|
+          %label= file.filename
+          = link_to t('labels.download'), file, disposition: 'attachment', class: 'button', target: :_blank
       %hr.mt-5
         %h5.mt-5.mb-5
-          = t("comments.all")
-      - @activity.feedback.sort_by{|fb| fb.created_at}.each_with_index do |feedback, i|
-        %div{:id => "com_#{i}", class: 'comment mt-4'}
-          %h6.gray.d-flex.justify-content-between{class: feedback.user.role == 'judge' ? 'judge' : 'regular'}
-            = feedback.user.name? ? feedback.user.name : feedback.user.email.remove('@michelada.io').capitalize
+          = t('comments.all')
+      - sorted_comments(@activity).each_with_index do |feedback, i|
+        %div{ id: "com_#{i}", class: 'comment mt-4'}
+          %h6.gray.d-flex.justify-content-between{class: feedback.user.judge? ? 'judge' : 'regular'}
+            = user_name(feedback.user)
             - if feedback.user_id == current_user.id
+              .original_comment
+                %input{ type: 'hidden', value: feedback.comment, id: "originalText_#{i}"}
               .edit_comment
-                = link_to t("buttons.edit"), "#", :id => "#{i}"
-          %p{:class => "gray", :id => "comment_#{i}", class: 'comment-content mt-3'}
-            = feedback.comment
-          %textarea{:value => "#{feedback.comment}", :hidden => true, :id => "editor_#{i}", class: "input-text mb-0 mt-2"}
-          - if feedback.user_id == current_user.id
-            .form_data
-              %input{:type => "hidden", :id => "acId#{i}", :value => "#{@activity.id}"}
-              %input{:type => "hidden", :id => "fbId#{i}", :value => "#{feedback.id}"}
-        %hr.section
-      .mt-4
-        = simple_form_for [:judge, @activity, @feedback] do |f|
-          = f.text_area :comment, label: t('comments.create') , placeholder: t('placeholders.comment'), input_html: { class: 'input-text mt-4'}, required: false
-          = f.button :submit, t('comments.create'), class: 'button', id: 'btn-comment'
+                = link_to t('buttons.edit'), "#", :id => "#{i}"
+              .form_data
+                %input{ type: 'hidden', id: "commentId#{i}", :value => "#{@activity.id}"}
+                %input{ type: 'hidden', id: "feedbackId#{i}", :value => "#{feedback.id}"}
+          .comment-content
+            %p{ class: 'gray mt-3', id: "comment_#{i}"}
+              = markdown(feedback.comment, feedback.file)
+            %textarea{ value: "#{feedback.comment}", hidden: true, id: "editor_#{i}", class: 'input-text mb-0 mt-2' }
+
+      = simple_form_for [@match, :judge, @activity, @feedback] do |f|
+        = f.text_area :comment, label: t('comments.create') , placeholder: t('placeholders.comment'), input_html: { class: 'input-text mt-4'}, required: false
+        .comment-actions
+          %ul
+            %li#boldButton
+              = link_to t('buttons.markdown.bold'), ''
+            %li#italicButton
+              = link_to t('buttons.markdown.italic'), ''
+            %li#codeButton
+              = link_to t('buttons.markdown.code'), ''
+            %li#linkButton
+              = link_to t('buttons.markdown.link'), ''
+            %li#quoteButton
+              = link_to t('buttons.markdown.quote'), ''
+            %li#listButton
+              = link_to t('buttons.markdown.list'), ''
+        = f.file_field :file, class:'inputfile', accept: '.jpg,.png,.jpeg'
+        = f.button :submit, t('comments.create'), class: 'button', id: 'btn-comment'
 

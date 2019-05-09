@@ -10,7 +10,7 @@
               .d-flex.justify-content-between
                 %p
                   = activity.activity_type
-                = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), judge_activity_path(activity), id: "go_to_#{activity.id}"
+                = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), match_judge_activity_path(@match, activity.id), id: "go_to_#{activity.id}"
               %hr.section
         %div{id: "pending_activities_container", class:"activitiesContainer"}
           - @pending_activities&.sort_by{|activity| activity.created_at}.each do |activity|
@@ -19,7 +19,7 @@
               .d-flex.justify-content-between
                 %p
                   = activity.activity_type
-                = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), judge_activity_path(activity), id: "go_to_#{activity.id}"
+                = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), match_judge_activity_path(@match, activity.id), id: "go_to_#{activity.id}"
               %hr.section
         %div{id: "all_activities_container", class:"activitiesContainer"}
           - @all_activities&.sort_by{|activity| activity.created_at}.each do |activity|
@@ -30,5 +30,5 @@
               .d-flex.justify-content-between
                 %p
                   = activity.activity_type
-                = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), judge_activity_path(activity), id: "go_to_#{activity.id}"
+                = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), match_judge_activity_path(@match, activity.id), id: "go_to_#{activity.id}"
               %hr.section

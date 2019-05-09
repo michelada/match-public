@@ -21,7 +21,7 @@
               %td.text-center
                 = poll.votes.count
               %td.text-right.poll-actions
-                = link_to image_tag('ic-edit'), edit_admin_poll_path(poll)
-                = link_to image_tag('ic-delete'), admin_poll_path(poll), method: :delete, data: {confirm:t('actions.confirm') }
+                = link_to image_tag('ic-edit'), edit_admin_match_poll_path(@match, poll)
+                = link_to image_tag('ic-delete'), admin_match_poll_path(@match, poll), method: :delete, data: {confirm:t('actions.confirm') }
     %br
     = link_to t('poll.create_new'), new_admin_poll_path, class: 'button' if allowed_to_create_poll

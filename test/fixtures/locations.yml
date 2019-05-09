@@ -2,18 +2,29 @@
 #
 # Table name: locations
 #
-#  id         :bigint(8)        not null, primary key
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint(8)        not null, primary key
+#  name        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  approve     :boolean          default(FALSE)
+#  activity_id :bigint(8)        not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 location1:
-  activity_id: 1
+  activity: activity_talk
   name: UDC
+  approve: false
 
 location2:
-  activity_id: 2
+  activity: activity_talk
   name: Tec
+  approve: false
+
+workshop:
+  activity_id: 120
+  name: Tec de Colima
+  approve: true
+
+

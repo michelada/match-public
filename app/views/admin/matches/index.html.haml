@@ -1,0 +1,39 @@
+.center-vertical.match-list
+  %table.match-table
+    %tr.center-info
+      %th
+        = t('labels.match_type')
+      %th
+        = t('labels.version')
+      %th
+        = t('labels.start_date')
+      %th
+        = t('labels.end_date')
+      %th
+        = t('labels.leader')
+      %th{colspan: 3}
+        = t('buttons.actions')
+
+    - @matches.each do |m|
+      %tr.center-info
+        %td
+          = m.match_type
+        %td
+          = m.version
+        %td
+          = m.start_date.to_date
+        %td
+          = m.end_date.to_date
+        %td
+          = m.leader_team&.name || t('team.messages.no_leader')
+        %td.match-actions
+          = link_to image_tag('ic-prize'), admin_match_path(m)
+        %td.match-actions
+          = link_to image_tag('ic-edit'), edit_admin_match_path(m)
+        %td.match-actions
+          = link_to image_tag('ic-delete'), admin_match_path(m), method: :delete, data: {confirm: t('actions.confirm')}
+
+
+  %p.center-info
+    = link_to t('buttons.new'), new_admin_match_path
+

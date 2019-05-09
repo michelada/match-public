@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_22_005134) do
+ActiveRecord::Schema.define(version: 2019_05_03_174111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,17 @@ ActiveRecord::Schema.define(version: 2019_02_22_005134) do
     t.bigint "user_id", null: false
     t.integer "activity_type", null: false
     t.integer "status", default: 0, null: false
-    t.string "notes"
+    t.text "notes"
     t.integer "score", default: 0
     t.text "description"
     t.text "pitch_audience"
     t.text "abstract_outline"
-    t.string "activity_file"
+    t.string "files"
     t.boolean "english_approve"
+    t.string "slug"
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_activities_on_match_id"
+    t.index ["slug"], name: "index_activities_on_slug", unique: true
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -66,11 +70,13 @@ ActiveRecord::Schema.define(version: 2019_02_22_005134) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.string "comment"
-    t.integer "activity_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_feedbacks_on_activity_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.string "file"
+    t.index %w[commentable_type commentable_id], name: "index_feedbacks_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
@@ -83,19 +89,55 @@ ActiveRecord::Schema.define(version: 2019_02_22_005134) do
     t.index ["activity_id"], name: "index_locations_on_activity_id"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.integer "match_type"
+    t.integer "version"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "polls", force: :cascade do |t|
     t.date "start_date", null: false
     t.date "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "activities_from", null: false
-    t.date "activities_to", null: false
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_polls_on_match_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "repositories"
+    t.text "features"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "match_id"
+    t.bigint "team_id"
+    t.integer "score", default: 0
+    t.string "slug"
+    t.index ["match_id"], name: "index_projects_on_match_id"
+    t.index ["slug"], name: "index_projects_on_slug", unique: true
+    t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_teams_on_match_id"
+    t.index ["slug"], name: "index_teams_on_slug", unique: true
+  end
+
+  create_table "teams_users", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_teams_users_on_team_id"
+    t.index ["user_id"], name: "index_teams_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,7 +156,6 @@ ActiveRecord::Schema.define(version: 2019_02_22_005134) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
-    t.bigint "team_id"
     t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
@@ -122,7 +163,6 @@ ActiveRecord::Schema.define(version: 2019_02_22_005134) do
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
     t.index %w[invited_by_type invited_by_id], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   create_table "votes", force: :cascade do |t|
@@ -138,7 +178,11 @@ ActiveRecord::Schema.define(version: 2019_02_22_005134) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "matches"
   add_foreign_key "activities", "users"
   add_foreign_key "locations", "activities"
-  add_foreign_key "users", "teams"
+  add_foreign_key "polls", "matches"
+  add_foreign_key "projects", "matches"
+  add_foreign_key "projects", "teams"
+  add_foreign_key "teams", "matches"
 end

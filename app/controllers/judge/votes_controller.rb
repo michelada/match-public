@@ -3,13 +3,13 @@ module Judge
     before_action :user_can_vote?, only: [:create]
 
     def create
-      assign_vote_value
+      @vote = Vote.new(vote_params)
       if @vote.save
         flash[:notice] = t('votes.voted')
       else
         flash[:alert] = t('votes.error_voting')
       end
-      redirect_to polls_path
+      redirect_to match_polls_path(params[:match_id], params[:poll_id])
     end
 
     def destroy
@@ -19,26 +19,29 @@ module Judge
       else
         flash[:alert] = t('votes.error_unvoting')
       end
-      redirect_to polls_path
+      redirect_to match_polls_path(params[:match_id], params[:poll_id])
     end
 
     private
 
-    def assign_vote_value
-      @vote = Vote.new
-      @vote.poll_id = params[:poll_id]
-      @vote.activity_id = params[:activity_id]
-      @vote.user_id = current_user.id
-      @vote.value = 50
+    def vote_params
+      activity = Activity.friendly.find(params[:activity_id])
+      params.permit(:poll_id).merge(activity_id: activity.id,
+                                    user_id: current_user.id,
+                                    value: 50)
     end
 
     def user_can_vote?
-      activity_type = Activity.type_of_activity(params[:activity_id])
-      user_has_voted = Vote.judge_has_voted_for_type(activity_type.first.type)
-      return true if user_has_voted.empty?
+      poll = Poll.find_by(id: params[:poll_id])
+      activity = Activity.friendly.find(params[:activity_id])
+      return unless poll.voted_for_type?(activity, current_user)
 
       flash[:alert] = t('votes.error_type')
-      redirect_to polls_path
+      redirect_to match_polls_path(params[:match_id], params[:poll_id])
+
+      # activity_type = Activity.type_of_activity(params[:activity_id])
+      # user_has_voted = Vote.judge_has_voted_for_type(activity_type.first.type)
+      # return true if user_has_voted.empty?
     end
   end
 end
