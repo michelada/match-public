@@ -66,6 +66,9 @@ class ProjectsController < ApplicationController
     elsif current_user.project
       flash[:alert] = t('projects.already_have_one')
       redirect_to match_team_path(@match, current_user.current_team)
+    elsif @match.content_match?
+      flash[:alert] = t('match.error_type')
+      redirect_to root_path
     end
   end
 end

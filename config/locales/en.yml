@@ -145,6 +145,7 @@ en:
     delete: "Match deleted"
     error_creating: "Error creating match"
     error_deleting: "Error deleting match"
+    error_type: "Actual match does not accept this action"
     error_updating: "Error updating match"
     update: "Match updated"
   team:

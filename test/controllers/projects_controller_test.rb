@@ -116,4 +116,14 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_equal flash[:alert], I18n.t('activities.messages.no_permitted')
     assert_redirected_to new_match_team_path(@match)
   end
+
+  test 'user can no access to new activity view' do
+    user = users(:user_with_team)
+    user.project.destroy
+    sign_in user
+
+    get new_match_activity_path(@match)
+    assert_redirected_to root_path
+    assert_equal flash[:alert], I18n.t('match.error_type')
+  end
 end

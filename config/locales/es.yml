@@ -148,6 +148,7 @@ es:
     delete: "Match eliminado"
     error_creating: "Error creando el match"
     error_deleting: "Error eliminando el match"
+    error_type: "El match actual no acepta esta acción"
     error_updating: "Error actualizando el match"
     update: "Match actualizado"
   team:
