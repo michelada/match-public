@@ -37,7 +37,7 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test 'obtain last tree activities' do
-    match = matches(:content_match)
+    match = matches(:active_content_match)
     ruby = activities(:ruby_as_day_to_day)
     simple_activity = activities(:simple_activity)
     android_studio = activities(:android_studio)

@@ -22,13 +22,20 @@ class Project < ApplicationRecord
   belongs_to :match
   belongs_to :team
 
+  enum status: %i[Por\ validar Aprobado]
+
   validate :belongs_to_project_match?
   validates :name, uniqueness: { case_sensitive: false }
   validates :name, :description, :features, presence: true
-
+  scope :order_by_name, -> { group_by(:status) }
   has_many :feedbacks, as: :commentable, dependent: :destroy
 
   before_update :match_valid?
+
+  def css_class
+    status_class = { "Por validar": 'on-hold', "Aprobado": 'approved' }
+    status_class[status.to_sym]
+  end
 
   def belongs_to_project_match?
     errors.add(:match_id, I18n.t('errors.no_project_match')) if match&.match_type != 'Project'

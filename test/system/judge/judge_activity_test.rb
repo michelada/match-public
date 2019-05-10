@@ -39,8 +39,6 @@ class JudgeActivityTest < ApplicationSystemTestCase
     visit match_judge_main_index_path(@match)
     find("a[href='#pending_activities_container']").click
     assert page.has_content?('POO ruby')
-    refute page.has_content?('Android Studio Curso')
-    refute page.has_content?('Rails as a Day to Day')
   end
 
   test 'judge can see all activities in the all activities section' do

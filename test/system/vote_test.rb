@@ -5,13 +5,12 @@ class VoteTest < ApplicationSystemTestCase
     @user = users(:user_in_match)
     login_as @user
     Match.last.destroy
-    @match = matches(:content_match)
+    @match = matches(:active_content_match)
   end
 
   test 'user can vote for an activity' do
     visit match_poll_path(@match, @match.poll)
     activity = activities(:activity_workshop)
-
     find("a[href='/match/#{@match.id}/polls/#{@match.poll.id}/activities/#{activity.slug}/votes']").click
     assert page.has_content?(I18n.t('votes.voted'))
   end

@@ -58,4 +58,12 @@ module ApplicationHelper
 
     commentable.team == current_user.current_team
   end
+
+  def show_poll_item_path(match, item)
+    if item.instance_of? Activity
+      match_judge_activity_path(match, item.id)
+    else
+      match_project_path(match, item.id)
+    end
+  end
 end

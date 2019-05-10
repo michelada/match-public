@@ -27,7 +27,9 @@ class Activity < ApplicationRecord
   belongs_to :user
   has_many :locations, dependent: :destroy
   has_many :feedbacks, as: :commentable, dependent: :destroy
-  has_many :activity_statuses, dependent: :destroy
+  # has_many :activity_statuses, dependent: :destroy
+  has_many :activity_statuses, as: :item, dependent: :destroy
+
   has_many :votes, dependent: :destroy
   has_many_attached :files, dependent: :destroy
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
@@ -52,6 +54,7 @@ class Activity < ApplicationRecord
     .select('activities.name, activities.activity_type ,sum(votes.value) as points')
     .order('points desc').limit(1)
   })
+  scope :sort_by_creation, -> { order('created_at DESC') }
   validates :pitch_audience, :abstract_outline, :description, presence: true, unless: :post?
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
