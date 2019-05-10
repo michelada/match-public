@@ -96,6 +96,8 @@ es:
     download: "Descargar archivo"
     end_date: "Fecha de término"
     english: "Inglés"
+    english_aproved: "Inglés aprobado"
+    english_unaproved: "Inglés desaprobado"
     email_uno: "Compañero de crimen"
     evaluate: "Evaluar"
     events: "Eventos:"
@@ -109,6 +111,8 @@ es:
     leader: "Líder"
     link: "Enlace"
     location: "Evento"
+    location_aproved: "Evento aprobado."
+    location_unaproved: "Evento desaprobado."
     look_who_is: "Mira quién está en la "
     not_location: "No hay evento registrado"
     name: "Título"
@@ -331,4 +335,4 @@ es:
               invalid: "E-mail no válido"
               taken: "E-mail ya registrado"
             password_confirmation:
-              confirmation: "Error en la contraseña"
+              confirmation: "Las contraseñas no coinciden "

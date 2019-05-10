@@ -96,6 +96,8 @@ en:
     download: "Download file"
     end_date: "End date"
     english: "English"
+    english_aproved: "English approve"
+    english_unaproved: "English unapprove"
     email_uno: 'Partner in crime'
     evaluate: "Evaluate"
     events: "Events:"
@@ -109,6 +111,8 @@ en:
     leader: "Leader"
     link: 'Link'
     location: "Location"
+    location_aproved: "Location approve"
+    location_unaproved: "Location unapprove"
     look_who_is: "Look who is in the"
     not_location: "Location not register"
     name: "Name of your content"

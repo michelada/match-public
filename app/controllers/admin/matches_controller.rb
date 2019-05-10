@@ -17,7 +17,7 @@ module Admin
         flash[:notice] = t('match.create')
         redirect_to admin_matches_path
       else
-        flash[:alert] = t('match.error_creating')
+        flash[:alert] = @match.errors.full_messages.first
         render 'new'
       end
     end
@@ -29,7 +29,7 @@ module Admin
         flash[:notice] = t('match.update')
         redirect_to admin_matches_path
       else
-        flash[:error] = t('match.error_updating')
+        flash[:error] = @match.errors.full_messages.first
         render 'edit'
       end
     end

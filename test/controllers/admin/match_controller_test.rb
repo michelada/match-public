@@ -35,7 +35,7 @@ class MatchControllerTest < ActionDispatch::IntegrationTest
                                                 end_date: Date.today + 13.days } }
 
     assert_response :success
-    assert_equal I18n.t('match.error_creating'), flash[:alert]
+    assert_equal I18n.t('activerecord.errors.models.match.attributes.match_type.blank'), flash[:alert]
   end
 
   test 'user can update a match ' do
