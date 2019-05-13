@@ -9,7 +9,7 @@ es:
     all: "Todas las actividades"
     approved_by: 'Aprobada por: %{users}'
     best: "Mejores"
-    closed: "El tiempo para subir actividades ha terminado."
+    closed: "El tiempo para subir actividades ha terminado"
     edit_activity: "Editar actividad"
     label: "ACTIVIDADES"
     my_activities: "Mis actividades"
@@ -96,8 +96,8 @@ es:
     download: "Descargar archivo"
     end_date: "Fecha de término"
     english: "Inglés"
-    english_aproved: "Inglés aprobado"
-    english_unaproved: "Inglés desaprobado"
+    english_approved: "Inglés aprobado"
+    english_unapproved: "Inglés desaprobado"
     email_uno: "Compañero de crimen"
     evaluate: "Evaluar"
     events: "Eventos:"
@@ -111,8 +111,8 @@ es:
     leader: "Líder"
     link: "Enlace"
     location: "Evento"
-    location_aproved: "Evento aprobado."
-    location_unaproved: "Evento desaprobado."
+    location_approved: "Evento aprobado"
+    location_unapproved: "Evento desaprobado"
     look_who_is: "Mira quién está en la "
     not_location: "No hay evento registrado"
     name: "Título"
@@ -252,8 +252,8 @@ es:
     password_confirmation: "Confirmar contraseña"
     password_requirement: "(Al menos 6 caracteres)"
     password: "Contraseña"
-    recover_password: "Ingresa un correo a donde te mandaremos las intrucciones para recuperar tu contraseña."
-    registrado: 'Ya tengo una cuenta.'
+    recover_password: "Ingresa un correo a donde te mandaremos las intrucciones para recuperar tu contraseña"
+    registrado: 'Ya tengo una cuenta'
     remember_me: "Recordarme"
     role_updated: "Rol actualizado"
     judge:
@@ -264,7 +264,7 @@ es:
         outline: "Outline:"
         pitch: "Pitch:"
         on_old:
-          objetive: "Objetivo."
+          objetive: "Objetivo"
           remember: "Recuerda ser"
   votes:
     error_type: "Ya tienes un voto hacia una actividad de este tipo"
@@ -285,7 +285,7 @@ es:
       let_the: "¡Que el"
       best_player: "MEJOR JUGADOR"
       win: "gane!"
-      about: "MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blogs, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología."
+      about: "MCM es un concurso de desarrollo de contenido de 6 semanas en el que todos los michelada surgirán con excelentes publicaciones de blogs, charlas o talleres, sin un tema específico que cubrir para que todos puedan compartir sus ideas y conocimientos relacionados con tecnología"
   activerecord:
     errors:
       messages:
