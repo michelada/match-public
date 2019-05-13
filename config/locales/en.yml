@@ -96,8 +96,8 @@ en:
     download: "Download file"
     end_date: "End date"
     english: "English"
-    english_approved: "English approve"
-    english_unapproved: "English unapprove"
+    english_approved: "English approved"
+    english_unapproved: "English unapproved"
     email_uno: 'Partner in crime'
     evaluate: "Evaluate"
     events: "Events:"
@@ -111,8 +111,8 @@ en:
     leader: "Leader"
     link: 'Link'
     location: "Location"
-    location_approved: "Location approve"
-    location_unapproved: "Location unapprove"
+    location_approved: "Location approved"
+    location_unapproved: "Location unapproved"
     look_who_is: "Look who is in the"
     not_location: "Location not register"
     name: "Name of your content"
@@ -250,7 +250,7 @@ en:
     password_requirement: "(At least 6 characters)"
     password: "Password"
     recover_password: "Enter an email address where you'll receive the intructions to recover your password"
-    registrado: 'I already have an account'
+    already_registered: 'I already have an account'
     remember_me: "Remember me"
     role_updated: "Role updated"
     judge:
