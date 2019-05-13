@@ -10,7 +10,7 @@
 #  updated_at  :datetime         not null
 #
 
-class ActivityStatus < ApplicationRecord
+class Status < ApplicationRecord
   self.table_name = 'item_approves'
   belongs_to :item, polymorphic: true
   belongs_to :user
@@ -20,8 +20,6 @@ class ActivityStatus < ApplicationRecord
   scope :approves_in_activity, ->(item) { where(item_id: item, approve: true, item_type: item.class) }
 
   def verify_general_status
-    return if item.class != Activity
-
     if item.statuses.count == 3
       item.update_attributes(status: 2)
     else

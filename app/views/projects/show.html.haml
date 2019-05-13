@@ -11,6 +11,12 @@
 
       %h6.text.red= t('projects.repositories')
       %h6= markdown(@project.repositories) || t('projects.no_repository')
+      -if current_user.judge?
+        = link_to image_tag('ic-not-approved', class: 'check-activity approve-false', id: 'approve'),  match_judge_project_activity_status_index_path(@match, @project), method: :post
+        %label= "#{t('activities.status_approve')}"
+      - else
+        = link_to image_tag('ic-checked', class: 'check-activity approve-true', id: 'disapprove'), match_judge_activity_activity_status_path(@match, @project), method: :delete, data: {confirm: t('actions.confirm')}
+        %label= "#{t('activities.status_approved')}"
 
       %h5.mt-5.mb-5
         = t("comments.all")

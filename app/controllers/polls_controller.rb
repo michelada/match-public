@@ -2,7 +2,12 @@ class PollsController < MatchesController
   before_action :user_can_access?
 
   def show
-    @poll = Poll.find(params[:id])
+    @poll.match.content_match? ? initialize_activities : initialize_projects
+  end
+
+  private
+
+  def initialize_activities
     @activities_votes = if current_user.judge?
                           Vote.judge_activities_votes(@poll.id)
                         else
@@ -11,17 +16,23 @@ class PollsController < MatchesController
     @activity_types = @poll.activities.group(:activity_type).select(:activity_type)
     @best_activities = []
     3.times { |i| @best_activities << Activity.best_activities(@poll.id, i) }
+  end
 
-    return unless @poll.activities.empty?
-
-    flash[:alert] = t('poll.empty_activities')
-    redirect_to match_main_index_path(@match)
+  def initialize_projects
+    @contents = @poll.projects
   end
 
   def user_can_access?
-    return unless Poll.users_can_vote(Time.now.in_time_zone('Mexico City').to_date).empty?
+    @poll = Poll.find(params[:id])
+    return if @poll.can_vote? && (@poll.activities.any? || @poll.projects.any?)
 
-    flash[:alert] = t('poll.error_accesing')
+    validate_poll_content
+    flash[:alert] = t('poll.error_accesing') unless @poll.can_vote?
     redirect_to match_main_index_path(@match)
+  end
+
+  def validate_poll_content
+    flash[:alert] = t('poll.empty_activities') if @poll.match.content_match? && @poll.activities.empty?
+    flash[:alert] = t('poll.empty_projects') if @poll.match.project_match? && @poll.projects.empty?
   end
 end

@@ -29,6 +29,7 @@ class Project < ApplicationRecord
   validates :name, :description, :features, presence: true
   scope :order_by_name, -> { group_by(:status) }
   has_many :feedbacks, as: :commentable, dependent: :destroy
+  has_many :statuses, as: :item, dependent: :destroy, class_name: 'ActivityStatus'
 
   before_update :match_valid?
 

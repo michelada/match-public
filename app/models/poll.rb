@@ -13,6 +13,7 @@
 class Poll < ApplicationRecord
   belongs_to :match
   has_many :votes, dependent: :destroy
+  has_many :projects, -> { where(status: 1) }, through: :match
   has_many :activities, through: :match
   has_many :users, through: :activities
   has_many :teams, through: :users

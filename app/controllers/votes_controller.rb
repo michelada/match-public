@@ -24,7 +24,7 @@ class VotesController < MatchesController
   private
 
   def vote_params
-    activity = Activity.friendly.find(params[:activity_id])
+    activity = Activity.friendly.find(params[:content_id])
     params.permit(:poll_id).merge(activity_id: activity.id,
                                   user_id: current_user.id,
                                   value: 10)
@@ -32,7 +32,9 @@ class VotesController < MatchesController
 
   def user_can_vote?
     poll = Poll.find_by(id: params[:poll_id])
-    activity = Activity.friendly.find(params[:activity_id])
+    return unless poll.match.content_match?
+
+    activity = Activity.friendly.find(params[:content_id])
     return unless poll.voted_for_type?(activity, current_user)
 
     flash[:alert] = t('votes.error_type')

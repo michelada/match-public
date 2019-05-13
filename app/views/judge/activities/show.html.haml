@@ -6,7 +6,7 @@
         %span.text.red
           = t('user.judge.activities.on_old.objetive')
 
-      -if @activity_status.nil?
+      -if @activity.status_by_user(current_user).nil?
         = link_to image_tag('ic-not-approved', class: 'check-activity approve-false', id: 'approve'),  match_judge_activity_activity_status_index_path(@match, @activity), method: :post
         %label= "#{t('activities.status_approve')}"
       - else
