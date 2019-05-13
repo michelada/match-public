@@ -3,6 +3,6 @@ class LandingPageController < ApplicationController
   def index
     return redirect_to admin_user_manager_index_path if current_user&.admin?
 
-    redirect_to new_match_activity_path(Match.last) unless current_user.nil?
+    redirect_to new_match_team_path(Match.last) unless current_user.nil?
   end
 end

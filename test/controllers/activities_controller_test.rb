@@ -68,14 +68,22 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     get new_match_activity_path(@match)
     assert_redirected_to new_match_team_path(@match)
+    assert_equal I18n.t('projects.no_team'), flash[:alert]
   end
 
-  test 'users cannot create an activity if no poll is active' do
+  test 'users cannot create an activity if no match is active' do
     @match.update_attribute(:end_date, Date.today - 1)
     sign_in @user_with_team
 
     get new_match_activity_path(@match)
     assert_redirected_to match_main_index_path(@match)
-    assert_equal(flash[:alert], I18n.t('activities.closed'))
+    assert_equal I18n.t('activities.closed'), flash[:alert]
+  end
+
+  test 'user can no access to new project view' do
+    sign_in @user_with_team
+    get new_match_project_path(@match)
+    assert_redirected_to root_path, 'Controller response unexpected'
+    assert_equal I18n.t('match.error_type'), flash[:alert]
   end
 end

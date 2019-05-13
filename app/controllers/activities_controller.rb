@@ -72,15 +72,20 @@ class ActivitiesController < MatchesController
   end
 
   def user_can_upload_activity?
-    if current_user.current_team
-      match = Match.find(params[:match_id])
-      return if match.active?
+    match = Match.find(params[:match_id])
+    if match.content_match?
+      if current_user.current_team
+        return if match.active?
 
-      flash[:alert] = t('activities.closed')
-      redirect_to match_main_index_path(@match)
+        flash[:alert] = t('activities.closed')
+        redirect_to match_main_index_path(@match)
+      else
+        flash[:alert] = t('projects.no_team')
+        redirect_to new_match_team_path(@match)
+      end
     else
-      flash[:alert] = t('projects.no_team')
-      redirect_to new_match_team_path(@match)
+      flash[:alert] = t('match.error_type')
+      redirect_to root_path
     end
   end
 end
