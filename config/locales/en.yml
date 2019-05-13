@@ -6,9 +6,9 @@ en:
   activities:
     add: "Add activity"
     all: "All activities"
-    approved_by: 'Aproved for: %{users}'
+    approved_by: 'Approved for: %{users}'
     best: "Best"
-    closed: "The time for uploading activities is over."
+    closed: "The time for uploading activities is over"
     edit_activity: "Edit activity"
     label: "ACTIVITIES"
     my_activities: "My activities"
@@ -96,6 +96,8 @@ en:
     download: "Download file"
     end_date: "End date"
     english: "English"
+    english_approved: "English approved"
+    english_unapproved: "English unapproved"
     email_uno: 'Partner in crime'
     evaluate: "Evaluate"
     events: "Events:"
@@ -109,6 +111,8 @@ en:
     leader: "Leader"
     link: 'Link'
     location: "Location"
+    location_approved: "Location approved"
+    location_unapproved: "Location unapproved"
     look_who_is: "Look who is in the"
     not_location: "Location not register"
     name: "Name of your content"
@@ -245,8 +249,8 @@ en:
     password_confirmation: "Password confirmation"
     password_requirement: "(At least 6 characters)"
     password: "Password"
-    recover_password: "Enter an email address where you'll receive the intructions to recover your password."
-    registrado: 'I already have an account. '
+    recover_password: "Enter an email address where you'll receive the intructions to recover your password"
+    already_registered: 'I already have an account'
     remember_me: "Remember me"
     role_updated: "Role updated"
     judge:
@@ -257,7 +261,7 @@ en:
         outline: "Outline:"
         pitch: "Pitch:"
         on_old:
-          objetive: "objetive."
+          objetive: "objetive"
           remember: "Remember to be"
   votes:
     error_type: "You already voted for an activity of this type"
@@ -277,7 +281,7 @@ en:
       let_the: "Let the"
       best_player: "BEST PLAYER"
       win: "win"
-      about: "MCM is a 6 week content development competition where all michelada will come up with great blog posts, talks or workshops, without a specific subject to cover, in order to allow all of them to share their ideas and knowledge related to technology."
+      about: "MCM is a 6 week content development competition where all michelada will come up with great blog posts, talks or workshops, without a specific subject to cover, in order to allow all of them to share their ideas and knowledge related to technology"
   activerecord:
     errors:
       messages:
