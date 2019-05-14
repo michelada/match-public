@@ -11,8 +11,11 @@ class RemoveTeamIdFromUser < ActiveRecord::Migration[5.2]
   def down
     add_reference :users, :team, foreign_key: true
     User.all.each do |user|
-      user.update_attributes!(team_id: user.teams.find_by(match: Match.first)&.id)
-      user.teams.delete(user.teams.find_by(match: Match.first)&.id)
+      first_team = user.teams.find_by(match: Match.first)
+      if first_team
+        user.update_attributes!(team_id: first_team.id)
+        user.teams.delete(first_team.id)
+      end
     end
   end
 end
