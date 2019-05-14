@@ -211,6 +211,7 @@ es:
     error_updating: "Error actualizado la votación"
     title: "Votaciones"
     updated: "Votación actualizada correctamente"
+    user_has_voted: "Solo puedes votar una sola vez"
     vote: "Vota"
     votes: "Votos"
   polls:

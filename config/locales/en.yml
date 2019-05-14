@@ -208,6 +208,7 @@ en:
     error_updating: "Error updating poll"
     title: "Polls"
     updated: "Poll updated"
+    user_has_voted: "You can only vote once"
     vote: "Vote"
     votes: "Votes"
   polls:

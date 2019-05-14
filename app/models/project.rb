@@ -30,8 +30,10 @@ class Project < ApplicationRecord
   scope :order_by_name, -> { group_by(:status) }
   has_many :feedbacks, as: :commentable, dependent: :destroy
   has_many :statuses, as: :item, dependent: :destroy, class_name: 'ActivityStatus'
+  has_many :votes, as: :content, dependent: :destroy
 
   before_update :match_valid?
+  scope :order_by_name, -> { order('name ASC') }
 
   def css_class
     status_class = { "Por validar": 'on-hold', "Aprobado": 'approved' }

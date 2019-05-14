@@ -13,8 +13,9 @@
 
 class Vote < ApplicationRecord
   belongs_to :user
-  belongs_to :activity
+  belongs_to :content, polymorphic: true
   belongs_to :poll
+
   scope :has_voted_for_type, (lambda { |user_id, type|
     where(user_id: user_id)
       .joins(:activity)
@@ -40,14 +41,7 @@ class Vote < ApplicationRecord
 
   scope :judge_activities_votes, (lambda { |poll_id|
     where('votes.poll_id = ?', poll_id)
-    .joins(:user).where('users.role = ?', 1)
-    .select('votes.id as id, votes.activity_id as activity_id')
-  })
-
-  scope :user_activities_votes, (lambda { |poll_id, user_id|
-    where('votes.poll_id = ?', poll_id)
-    .joins(:user)
-    .where('users.id = ?', user_id)
-    .select('votes.id as id, votes.activity_id as activity_id')
+    .joins(:user).where('users.role = ? AND votes.content_type = ?', 1, 'Activity')
+    .select('votes.id as id, votes.content_id as content_id')
   })
 end

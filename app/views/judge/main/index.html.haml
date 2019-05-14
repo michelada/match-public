@@ -3,7 +3,7 @@
     .main-cont
       .judge
         = render partial: 'sections'
-        = render 'form', items: @on_hold_items, identifier:  'on_hold_activities_container'
-        - if @all_items.first.instance_of? Activity
-          = render 'form', items: @pending_items, identifier:  'pending_activities_container'
-        = render 'form', items: @all_items, identifier:  'all_activities_container'
+        = render 'form', items: @on_hold_contents, identifier:  'on_hold_activities_container'
+        - if @all_content.first.instance_of? Activity
+          = render 'form', items: @pending_contents, identifier:  'pending_activities_container'
+        = render 'form', items: @all_content, identifier:  'all_activities_container'

@@ -7,14 +7,14 @@ module Judge
     private
 
     def initialize_activities
-      @on_hold_items = @match.activities.where(status: 0).sort_by_creation
-      @pending_items = @match.activities.where(status: 1).sort_by_creation
-      @all_items = @match.activities.order_by_name
+      @on_hold_contents = @match.activities.where(status: 0).sort_by_creation
+      @pending_contents = @match.activities.where(status: 1).sort_by_creation
+      @all_content = @match.activities.order_by_name
     end
 
     def initialize_projects
-      @on_hold_items = @match.projects.where(status: 0)
-      @all_items = @match.projects
+      @on_hold_contents = @match.projects.where(status: 0)
+      @all_content = @match.projects.order_by_name
     end
   end
 end

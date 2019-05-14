@@ -38,9 +38,6 @@ Rails.application.routes.draw do
         resources :activity_status, only: [:create, :destroy]
       end
       resources :polls, only: [:show] do
-        resources :activities, only: [:index] do
-          resources :votes, only: [:create, :destroy]
-        end
       end
       resources :main, only: [:index]
     end

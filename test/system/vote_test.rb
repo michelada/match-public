@@ -21,7 +21,6 @@ class VoteTest < ApplicationSystemTestCase
   test 'user can delete its vote for an activity' do
     vote = votes(:java_vote)
     activity = activities(:activity_post)
-
     visit match_poll_path(@match, @match.poll)
     find("a[href='/match/#{@match.id}/polls/#{@match.poll.id}/content/#{activity.slug}/votes/#{vote.id}']").click
     page.driver.browser.switch_to.alert.accept

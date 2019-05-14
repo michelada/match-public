@@ -25,11 +25,10 @@ class Activity < ApplicationRecord
   extend FriendlyId
   belongs_to :match
   belongs_to :user
-  has_many :locations, dependent: :destroy
   has_many :feedbacks, as: :commentable, dependent: :destroy
+  has_many :locations, dependent: :destroy
   has_many :statuses, as: :item, dependent: :destroy
-
-  has_many :votes, dependent: :destroy
+  has_many :votes,  as: :content, dependent: :destroy
   has_many_attached :files, dependent: :destroy
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
   friendly_id :name, use: :slugged

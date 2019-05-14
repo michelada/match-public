@@ -9,9 +9,9 @@ class PollsController < MatchesController
 
   def initialize_activities
     @activities_votes = if current_user.judge?
-                          Vote.judge_activities_votes(@poll.id)
+                          @poll.judge_votes
                         else
-                          Vote.user_activities_votes(@poll.id, current_user.id)
+                          @poll.user_votes(current_user)
                         end
     @activity_types = @poll.activities.group(:activity_type).select(:activity_type)
     @best_activities = []
