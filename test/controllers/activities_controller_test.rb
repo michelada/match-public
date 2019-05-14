@@ -11,6 +11,14 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     @user_with_team = users(:user_with_team)
     @match = matches(:content_match)
     @match.update_attributes(start_date: Date.today - 2, end_date: Date.today + 2)
+
+    @params = { activity: { name: 'Android Studio',
+      description: 'prueba de Android',
+      pitch_audience: 'prueba de campos requeridos',
+      abstract_outline: 'prueba abstrac',
+      activity_type: 'Curso',
+      english: 0,
+      match_id: @match.id } }
   end
 
   test 'no logged user can not access to new_activity path' do
@@ -28,22 +36,13 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test 'logged user with team can create an activity' do
     team = teams(:team3)
     sign_in @user_with_team
-    post match_activities_path(@match), params: { activity: { name: 'Android Studio',
-                                                              description: 'prueba de Android',
-                                                              pitch_audience: 'prueba de campos requeridos',
-                                                              abstract_outline: 'prueba abstrac',
-                                                              activity_type: 'Curso',
-                                                              english: 0,
-                                                              match_id: @match.id } }
+    post match_activities_path(@match), params: @params
     assert_redirected_to match_team_path(@match, team), 'Controller response unexpected'
     assert_equal flash[:notice], I18n.t('activities.messages.uploaded')
   end
 
   test 'no loged user can not create an activity' do
-    post match_activities_path(@match), params: { activity: { id: 2,
-                                                              name: 'Android Studio',
-                                                              activity_type: 'Curso',
-                                                              english: 0 } }
+    post match_activities_path(@match), params: @params
     assert_redirected_to new_user_session_path, 'Controller response unexpected'
     assert_equal flash[:alert], I18n.t('devise.failure.unauthenticated')
   end
@@ -56,10 +55,8 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
   test 'users can not created an activity if the activity name is blank' do
     sign_in @user_with_team
-    post match_activities_path(@match), params: { activity: { id: 3,
-                                                              name: '',
-                                                              activity_type: 'Curso',
-                                                              english: 0 } }
+    @params[:activity][:name] = ''
+    post match_activities_path(@match), params: @params
     assert_response :success
     assert_equal flash[:alert], I18n.t('activities.messages.error_creating')
   end

@@ -3,6 +3,12 @@ require 'test_helper'
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @match = matches(:active_project_match)
+    @params = { project: { name: 'Example project',
+      description: 'Random description for the example project',
+      repositories: 'GitHub-repo, GitLab-repo',
+      features: 'User session',
+      match: @match,
+      team: '' } }
   end
 
   test 'no logged user cannot access to new activity view' do
@@ -46,12 +52,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     user.project.destroy
     sign_in user
 
-    post match_projects_path(@match), params: { project: { name: 'Example project',
-                                                           description: 'Random description for the example project',
-                                                           repositories: 'GitHub-repo, GitLab-repo',
-                                                           features: 'User session',
-                                                           match: @match,
-                                                           team: user.current_team } }
+    @params[:project][:team] = user.current_team
+    post match_projects_path(@match), params: @params
     assert_redirected_to match_team_path(@match, user.current_team)
     assert_equal I18n.t('projects.created'), flash[:notice]
   end
@@ -61,11 +63,9 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     user.project.destroy
     sign_in user
 
-    post match_projects_path(@match), params: { project: { name: 'Example project',
-                                                           repositories: 'GitHub-repo, GitLab-repo',
-                                                           features: 'User session',
-                                                           match: @match,
-                                                           team: user.current_team } }
+    @params[:project][:team] = user.current_team
+    @params[:project].delete(:description)
+    post match_projects_path(@match), params: @params
     assert_response :success
     assert_equal flash[:alert], I18n.t('projects.error_creating')
   end
@@ -75,12 +75,9 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     user.project.destroy
     sign_in user
 
-    post match_projects_path(@match), params: { project: { description: 'Random description for the example project',
-                                                           repositories: 'GitHub-repo, GitLab-repo',
-                                                           features: 'User session',
-                                                           match: @match,
-                                                           team: user.current_team } }
-
+    @params[:project][:team] = user.current_team
+    @params[:project].delete(:name)
+    post match_projects_path(@match), params:@params
     assert_response :success
     assert_equal flash[:alert], I18n.t('projects.error_creating')
   end
@@ -89,13 +86,9 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     user = users(:user_test1)
     sign_in user
 
-    put match_project_path(@match, user.current_team.project), params: { project: { name: 'A new project name',
-                                                                                    description: 'Random description',
-                                                                                    repositories: 'GitHub-repo, GitLab-repo',
-                                                                                    features: 'User session',
-                                                                                    match: @match,
-                                                                                    team: user.current_team } }
-
+    @params[:project][:team] = user.current_team
+    @params[:project][:name] = 'A new project name'
+    put match_project_path(@match, user.current_team.project), params: @params
     assert_redirected_to match_team_path(@match, user.current_team)
     assert_equal flash[:notice], I18n.t('projects.updated')
   end
@@ -107,12 +100,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     user = users(:user_test1)
     sign_in user
 
-    put match_project_path(@match, project), params: { project: { name: 'A new project name',
-                                                                  description: 'Random description',
-                                                                  repositories: 'GitHub-repo, GitLab-repo',
-                                                                  features: 'User session',
-                                                                  match: @match,
-                                                                  team: user.current_team } }
+    @params[:project][:team] = user.current_team
+    put match_project_path(@match, project), params: @params
     assert_equal flash[:alert], I18n.t('activities.messages.no_permitted')
     assert_redirected_to new_match_team_path(@match)
   end
