@@ -13,12 +13,12 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     @match.update_attributes(start_date: Date.today - 2, end_date: Date.today + 2)
 
     @params = { activity: { name: 'Android Studio',
-      description: 'prueba de Android',
-      pitch_audience: 'prueba de campos requeridos',
-      abstract_outline: 'prueba abstrac',
-      activity_type: 'Curso',
-      english: 0,
-      match_id: @match.id } }
+                            description: 'prueba de Android',
+                            pitch_audience: 'prueba de campos requeridos',
+                            abstract_outline: 'prueba abstrac',
+                            activity_type: 'Curso',
+                            english: 0,
+                            match_id: @match.id } }
   end
 
   test 'no logged user can not access to new_activity path' do

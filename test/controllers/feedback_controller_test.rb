@@ -6,8 +6,8 @@ class FeedbackControllerTest < ActionDispatch::IntegrationTest
     @match = Match.last
     feedback = feedbacks(:feedback)
     @params = { feedback: { comment: feedback.comment,
-      user_id: feedback.user_id,
-      commentable: feedback.commentable } }
+                            user_id: feedback.user_id,
+                            commentable: feedback.commentable } }
   end
 
   test 'user can create a comment' do

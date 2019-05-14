@@ -4,11 +4,11 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @match = matches(:active_project_match)
     @params = { project: { name: 'Example project',
-      description: 'Random description for the example project',
-      repositories: 'GitHub-repo, GitLab-repo',
-      features: 'User session',
-      match: @match,
-      team: '' } }
+                           description: 'Random description for the example project',
+                           repositories: 'GitHub-repo, GitLab-repo',
+                           features: 'User session',
+                           match: @match,
+                           team: '' } }
   end
 
   test 'no logged user cannot access to new activity view' do
@@ -77,7 +77,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
     @params[:project][:team] = user.current_team
     @params[:project].delete(:name)
-    post match_projects_path(@match), params:@params
+    post match_projects_path(@match), params: @params
     assert_response :success
     assert_equal flash[:alert], I18n.t('projects.error_creating')
   end

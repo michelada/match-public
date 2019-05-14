@@ -5,8 +5,8 @@ class MatchControllerTest < ActionDispatch::IntegrationTest
     @match = matches(:content_match)
     @user = users(:admin_user)
     @params = { match: { start_date: Date.today + 10.days,
-      end_date: Date.today + 13.days,
-      match_type: 'Content' } }
+                         end_date: Date.today + 13.days,
+                         match_type: 'Content' } }
   end
 
   test 'no logged user can not visit admin match page' do
