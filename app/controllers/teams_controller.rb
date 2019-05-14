@@ -39,8 +39,8 @@ class TeamsController < MatchesController
       user = User.find_by_email(email_input)
       if user.nil?
         User.invite!({ email: email_input[1] }, current_user)
-      else
-        user.update_attributes(team: @team)
+      elsif user.email != current_user.email
+        user.teams << @teams
       end
     end
   end
