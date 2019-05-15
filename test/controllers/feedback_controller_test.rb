@@ -4,7 +4,7 @@ class FeedbackControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:user)
     @match = Match.last
-    feedback = feedbacks(:feedback)
+    feedback = feedbacks(:poo_java_feedback)
     @params = { feedback: { comment: feedback.comment,
                             user_id: feedback.user_id,
                             commentable: feedback.commentable } }
