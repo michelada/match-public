@@ -4,6 +4,9 @@ class MatchControllerTest < ActionDispatch::IntegrationTest
   def setup
     @match = matches(:content_match)
     @user = users(:admin_user)
+    @match_params = { match: { start_date: Date.today + 10.days,
+                               end_date: Date.today + 13.days,
+                               match_type: 'Content' } }
   end
 
   test 'no logged user can not visit admin match page' do
@@ -20,9 +23,7 @@ class MatchControllerTest < ActionDispatch::IntegrationTest
   test 'user can create a match with all data' do
     sign_in @user
 
-    post admin_matches_path, params: { match: { start_date: Date.today + 10.days,
-                                                end_date: Date.today + 13.days,
-                                                match_type: 'Content' } }
+    post admin_matches_path, params: @match_params
 
     assert_redirected_to admin_matches_path
     assert_equal I18n.t('match.create'), flash[:notice]
@@ -31,8 +32,8 @@ class MatchControllerTest < ActionDispatch::IntegrationTest
   test 'user can not create a match without match_type' do
     sign_in @user
 
-    post admin_matches_path, params: { match: { start_date: Date.today + 10.days,
-                                                end_date: Date.today + 13.days } }
+    @match_params[:match].delete(:match_type)
+    post admin_matches_path, params: @match_params
 
     assert_response :success
     assert_equal I18n.t('activerecord.errors.models.match.attributes.match_type.blank'), flash[:alert]
@@ -42,10 +43,9 @@ class MatchControllerTest < ActionDispatch::IntegrationTest
     match = matches(:active_content_match)
     sign_in @user
 
-    patch admin_match_path(match), params: { match: { start_date: Date.today + 20.days,
-                                                      end_date: Date.today + 30.days,
-                                                      match_type: 'Content' } }
-
+    @match_params[:match][:start_date] = Date.today + 20.days
+    @match_params[:match][:end_date] = Date.today + 30.days
+    patch admin_match_path(match), params: @match_params
     assert_redirected_to admin_matches_path
     assert_equal flash[:notice], I18n.t('match.update')
   end

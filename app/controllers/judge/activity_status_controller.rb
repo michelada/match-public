@@ -1,25 +1,25 @@
 module Judge
   class ActivityStatusController < JudgeController
-    before_action :load_status, except: [:index, :new]
+    before_action :load_status
     def create
-      @item.statuses.build(user_id: current_user.id, approve: true)
-      if @item.save
+      @content.statuses.build(user_id: current_user.id, approve: true)
+      if @content.save
         flash[:notice] = t('activities.messages.approved')
       else
         flash[:alert] = t('activities.messages.error_approving')
       end
-      redirect_to @item_path
+      redirect_to @content_path
     end
 
     def destroy
-      @item_status = ActivityStatus.user_approve_status_activity(current_user.id, @item.id)
-      if @item_status.destroy
+      @content_status = ActivityStatus.user_approve_status_activity(current_user.id, @content.id)
+      if @content_status.destroy
         flash[:notice] = t('activities.messages.unapproved')
       else
         flash[:alert] = t('activities.messages.error_unapproving')
       end
 
-      redirect_to @item_path
+      redirect_to @content_path
     end
 
     private
@@ -30,11 +30,11 @@ module Judge
 
     def load_status
       if params[:activity_id].present?
-        @item = Activity.friendly.find(params[:activity_id])
-        @item_path = match_activity_path(@match, @item)
+        @content = Activity.friendly.find(params[:activity_id])
+        @content_path = match_activity_path(@match, @content)
       elsif params[:project_id].present?
-        @item = Project.friendly.find(params[:project_id])
-        @item_path = match_project_path(@match, @item)
+        @content = Project.friendly.find(params[:project_id])
+        @content_path = match_project_path(@match, @content)
       end
     end
   end

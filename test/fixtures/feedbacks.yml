@@ -14,7 +14,7 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-feedback:
+poo_java_feedback:
   comment: "I think this could looks better, try again"
   user_id: 1
   commentable_type: 'Activity'
