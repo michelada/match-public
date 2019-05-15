@@ -11,25 +11,32 @@
 
       %h6.text.red= t('projects.repositories')
       %h6= markdown(@project.repositories) || t('projects.no_repository')
+      -if current_user.judge?
+        = link_to image_tag('ic-not-approved', class: 'check-activity approve-false', id: 'approve'),  match_judge_project_activity_status_index_path(@match, @project), method: :post
+        %label= "#{t('activities.status_approve')}"
+      - else
+        = link_to image_tag('ic-checked', class: 'check-activity approve-true', id: 'disapprove'), match_judge_activity_activity_status_path(@match, @project), method: :delete, data: {confirm: t('actions.confirm')}
+        %label= "#{t('activities.status_approved')}"
 
       %h5.mt-5.mb-5
         = t("comments.all")
-      - sorted_comments(@project).each_with_index do |feedback, i|
-        %div{ id: "com_#{i}", class: 'comment' }
-          %h6.gray.d-flex.justify-content-between{ class: feedback.user.judge? ? 'judge' : 'regular' }
-            = user_name(feedback.user)
-            - if feedback.user_id == current_user.id
-              .original_comment
-                %input{ type: 'hidden', value: feedback.comment, id: "originalText_#{i}" }
-              .form_data
-                %input{ type: 'hidden', id: "commentId#{i}", value: "#{@project.id}" }
-                %input{ type: 'hisdden', id: "feedbackId#{i}", value: "#{feedback.id}" }
-              .edit_comment
-                = link_to t('buttons.edit'), '#', id: "#{i}"
-          .comment-content
-            %p{ class: 'gray mt-3', id: '#'}
-              = markdown(feedback.comment, feedback.file)
-            %textarea{ value: "#{feedback.comment}", hidden: true, id: "editor_#{i}", class: 'input-text mb-0 mt-2' }
+      - if user_can_comment?(@project)
+        - sorted_comments(@project).each_with_index do |feedback, i|
+          %div{ id: "com_#{i}", class: 'comment' }
+            %h6.gray.d-flex.justify-content-between{ class: feedback.user.judge? ? 'judge' : 'regular' }
+              = user_name(feedback.user)
+              - if feedback.user_id == current_user.id
+                .original_comment
+                  %input{ type: 'hidden', value: feedback.comment, id: "originalText_#{i}" }
+                .form_data
+                  %input{ type: 'hidden', id: "commentId#{i}", value: "#{@project.id}" }
+                  %input{ type: 'hisdden', id: "feedbackId#{i}", value: "#{feedback.id}" }
+                .edit_comment
+                  = link_to t('buttons.edit'), '#', id: "#{i}"
+            .comment-content
+              %p{ class: 'gray mt-3', id: '#'}
+                = markdown(feedback.comment, feedback.file)
+              %textarea{ value: "#{feedback.comment}", hidden: true, id: "editor_#{i}", class: 'input-text mb-0 mt-2' }
 
       .mt-4
         - if user_can_comment?(@project)

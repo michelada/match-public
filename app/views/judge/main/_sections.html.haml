@@ -1,0 +1,14 @@
+
+.judge
+  .button-group
+    %a.button.pill.px-1{href: "#on_hold_activities_container", id: "onHoldActivitiesSectionButton", class: "activePill"}
+      = t('labels.waiting')
+    - if @all_content.first.instance_of? Activity
+      %a.button.pill.px-1{href: "#pending_activities_container", id: "pendingActivitiesSectionButton"}
+        = t('labels.reviewing')
+    %a.button.pill.px-1{href: "#all_activities_container", id: "allActivitiesSectionButton"}
+      = t('labels.all')
+  %h3
+    = t('user.judge.activities.on_old.remember')
+    %span.text.red
+      = t('user.judge.activities.on_old.objetive')

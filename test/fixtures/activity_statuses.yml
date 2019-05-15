@@ -13,16 +13,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  activity_id: 1
+  item_id: 1
+  item_type: 'Activity'
   user_id: 1
   approve: false
 
 two:
-  activity_id: 1
+  item_id: 1
+  item_type: 'Activity'
   user_id: 1
   approve: false
 
 poo_java:
   user_id: 32
-  activity_id: 120
+  item_id: 120
+  item_type: 'Activity'
   approve: true

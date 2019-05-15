@@ -202,6 +202,7 @@ es:
     deleted: "Votación eliminada"
     edit_poll: "Editar votación"
     empty_activities: "Aún no existen actividades por las cuales votar"
+    empty_projects: "Aún no existen proyectos por los cuales votar"
     error_accesing: "No puedes acceder a esta votación"
     error_actual_polls: "No puedes crear una nueva votación mientras haya alguna programada a futuro"
     error_creating: "La votación no ha sido creada"
@@ -210,6 +211,7 @@ es:
     error_updating: "Error actualizado la votación"
     title: "Votaciones"
     updated: "Votación actualizada correctamente"
+    user_has_voted: "Solo puedes votar una sola vez"
     vote: "Vota"
     votes: "Votos"
   polls:

@@ -34,7 +34,7 @@ activity_workshop:
   status: 2
   score: 20
   slug: "poo-java"
-  match_id: 1
+  match_id: 5
   id: 120
 
 activity_talk:
@@ -48,7 +48,7 @@ activity_talk:
   score: 10
   slug: "poo-ruby"
   status: 0
-  match_id: 1
+  match_id: 5
 
 activity_post:
   name: POO Kotlin
@@ -61,7 +61,7 @@ activity_post:
   score: 10
   slug: "poo-kotlin"
   status: 2
-  match_id: 1
+  match_id: 5
   id: 234423
 
 android_studio:
@@ -76,7 +76,7 @@ android_studio:
   score: 120
   user_id: 266512
   slug: android-studio-curso
-  match_id: 1
+  match_id: 5
 
 simple_activity:
   id: 4
@@ -86,7 +86,7 @@ simple_activity:
   english: true
   status: 0
   user_id: 266512
-  match_id: 1
+  match_id: 5
 
 simple_activity2:
   id: 5
@@ -110,7 +110,7 @@ ruby_as_day_to_day:
   user_id: 123123
   slug: "rails-as-a-day-to-day"
   status: 0
-  match_id: 1
+  match_id: 5
 
 actity_with_lots_of_points:
   activity_type: 0
@@ -122,5 +122,5 @@ actity_with_lots_of_points:
   status: 2
   score: 800
   user_id: 187671
-  match_id: 1
+  match_id: 5
   slug: "farming-points"

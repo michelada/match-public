@@ -13,6 +13,7 @@
 
 java_vote:
   user_id: 87277234
-  activity_id: 234423
+  content_type: 'Activity'
+  content_id: 234423
   value: 10
-  poll_id: 776
+  poll: active_poll

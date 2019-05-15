@@ -1,0 +1,14 @@
+%tr
+  %td
+    = t('placeholders.activity_name')
+  %td.text-center
+    = t('buttons.actions')
+- @contents.each do |content|
+  %tr
+    %td
+      = link_to content.name, match_project_path(@match, content)
+    %td.text-center
+      - if user_has_voted_for(content)
+        = link_to '', match_poll_content_vote_path(@match, @poll, content, content.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+      - else
+        = link_to '', match_poll_content_votes_path(@match, @poll, content), method: :post, class:'activity-vote'

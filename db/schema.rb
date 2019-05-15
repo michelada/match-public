@@ -58,16 +58,6 @@ ActiveRecord::Schema.define(version: 2019_05_14_184619) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
-  create_table "activity_statuses", force: :cascade do |t|
-    t.integer "activity_id", null: false
-    t.integer "user_id", null: false
-    t.boolean "approve", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_activity_statuses_on_activity_id"
-    t.index ["user_id"], name: "index_activity_statuses_on_user_id"
-  end
-
   create_table "feedbacks", force: :cascade do |t|
     t.string "comment"
     t.integer "user_id"
@@ -78,6 +68,17 @@ ActiveRecord::Schema.define(version: 2019_05_14_184619) do
     t.string "file"
     t.index %w[commentable_type commentable_id], name: "index_feedbacks_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
+  create_table "item_approves", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.boolean "approve", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "item_type"
+    t.bigint "item_id"
+    t.index %w[item_type item_id], name: "index_item_approves_on_item_type_and_item_id"
+    t.index ["user_id"], name: "index_item_approves_on_user_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -118,6 +119,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_184619) do
     t.bigint "team_id"
     t.integer "score", default: 0
     t.string "slug"
+    t.integer "status", default: 0
     t.index ["match_id"], name: "index_projects_on_match_id"
     t.index ["slug"], name: "index_projects_on_slug", unique: true
     t.index ["team_id"], name: "index_projects_on_team_id"
@@ -156,6 +158,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_184619) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.bigint "team_id"
     t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
@@ -163,16 +166,18 @@ ActiveRecord::Schema.define(version: 2019_05_14_184619) do
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
     t.index %w[invited_by_type invited_by_id], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   create_table "votes", force: :cascade do |t|
-    t.bigint "activity_id", null: false
     t.bigint "user_id", null: false
     t.bigint "poll_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "value", null: false
-    t.index ["activity_id"], name: "index_votes_on_activity_id"
+    t.string "content_type"
+    t.bigint "content_id"
+    t.index %w[content_type content_id], name: "index_votes_on_content_type_and_content_id"
     t.index ["poll_id"], name: "index_votes_on_poll_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
@@ -185,4 +190,5 @@ ActiveRecord::Schema.define(version: 2019_05_14_184619) do
   add_foreign_key "projects", "matches"
   add_foreign_key "projects", "teams"
   add_foreign_key "teams", "matches"
+  add_foreign_key "users", "teams"
 end

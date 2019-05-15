@@ -25,10 +25,10 @@ class Activity < ApplicationRecord
   extend FriendlyId
   belongs_to :match
   belongs_to :user
-  has_many :locations, dependent: :destroy
   has_many :feedbacks, as: :commentable, dependent: :destroy
-  has_many :activity_statuses, dependent: :destroy
-  has_many :votes, dependent: :destroy
+  has_many :locations, dependent: :destroy
+  has_many :statuses, as: :item, dependent: :destroy
+  has_many :votes,  as: :content, dependent: :destroy
   has_many_attached :files, dependent: :destroy
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
   friendly_id :name, use: :slugged
@@ -40,7 +40,7 @@ class Activity < ApplicationRecord
   scope :from_a_poll, (lambda { |start_date, end_date|
     where('created_at >= ? AND created_at <= ? AND status = ?', start_date, end_date, 2)
   })
-  scope :checked_activities, ->(actual_user) { joins(:activity_statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
+  scope :checked_activities, ->(actual_user) { joins(:statuses).where('activity_statuses.user_id = ?', actual_user).select('activities.id') }
   scope :unapproved, ->(actual_user) { where('activities.id IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :pending_activities, ->(actual_user) { where('activities.id NOT IN (?)', checked_activities(actual_user)).order('name ASC') }
   scope :order_by_name, -> { order('name ASC') }
@@ -52,6 +52,7 @@ class Activity < ApplicationRecord
     .select('activities.name, activities.activity_type ,sum(votes.value) as points')
     .order('points desc').limit(1)
   })
+  scope :sort_by_creation, -> { order('created_at DESC') }
   validates :pitch_audience, :abstract_outline, :description, presence: true, unless: :post?
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
@@ -125,6 +126,10 @@ class Activity < ApplicationRecord
     when 'Post'
       10
     end
+  end
+
+  def status_by_user(user)
+    statuses.find_by(user: user)
   end
 
   def update_score

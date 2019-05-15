@@ -1,0 +1,11 @@
+%div{id: identifier, class:"activitiesContainer"}
+  - items&.each do |item|
+    %div{id: "activity_#{item.id}"}
+      %p.long-line2= item.name
+      %p{class: item.css_class}
+        = item.status
+      .d-flex.justify-content-between
+        %p
+          = item.activity_type if item.instance_of? Activity
+        = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), poll_content_path(@match, item), id: "go_to_#{item.id}"
+      %hr.section

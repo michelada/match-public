@@ -11,27 +11,30 @@
       .mb-1
         %table
           %tbody
-            - @poll.activities_by_type.each_pair do |type, activities|
-              %tr
-                %td{colspan: 3}
-                  %h2.mt-4= type
-              %tr
-                %td
-                  = t('placeholders.activity_name')
-                %td.text-center
-                  = t('buttons.actions')
-              - activities.each do |activity|
+            - if @poll.match.content_match?
+              - @poll.activities_by_type.each_pair do |type, activities|
+                %tr
+                  %td{colspan: 3}
+                    %h2.mt-4= type
                 %tr
                   %td
-                    = link_to activity.name, match_activity_path(@match, activity.id)
+                    = t('placeholders.activity_name')
                   %td.text-center
-                    - if @activities_votes.map(&:activity).exclude?(activity)
+                    = t('buttons.actions')
+                - activities.each do |activity|
+                  %tr
+                    %td
+                      = link_to activity.name, match_activity_path(@match, activity.id)
+                    %td.text-center
                       -if current_user.judge?
-                        = link_to '', match_judge_poll_activity_votes_path(@match, @poll, activity), method: :post, class:'activity-vote'
+                        - if judges_has_voted_for(activity)
+                          = link_to '', match_poll_content_vote_path(@match, @poll, activity, @activities_votes.select{ |vote| vote.activity == activity }), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+                        - else
+                          = link_to '', match_poll_content_votes_path(@match, @poll, activity), method: :post, class:'activity-vote'
                       -else
-                        = link_to '', match_poll_activity_votes_path(@match, @poll, activity), method: :post, class:'activity-vote'
-                    -else
-                      -if current_user.judge?
-                        = link_to '', match_judge_poll_activity_vote_path(@match, @poll, activity, @activities_votes.select{ |vote| vote.activity == activity }), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
-                      -else
-                        = link_to '', match_poll_activity_vote_path(@match, @poll, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+                        - if user_has_voted_for(activity)
+                          = link_to '', match_poll_content_vote_path(@match, @poll, activity, activity.votes.where(user: current_user.id).first.id), method: :delete, data: { confirm: t('actions.remove_vote')}, class:'activity-vote voted'
+                        -else
+                          = link_to '', match_poll_content_votes_path(@match, @poll, activity), method: :post, class:'activity-vote'
+            - else
+              = render 'project_form'

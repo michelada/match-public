@@ -2,33 +2,8 @@
   .contain.center-vertical
     .main-cont
       .judge
-        = render partial: 'judge/form'
-        %div{id: "on_hold_activities_container", class:"activitiesContainer"}
-          - @on_hold_activities&.sort_by{|activity| activity.created_at}.each do |activity|
-            %div{id: "activity_#{activity.id}"}
-              %p.long-line2= activity.name
-              .d-flex.justify-content-between
-                %p
-                  = activity.activity_type
-                = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), match_judge_activity_path(@match, activity.id), id: "go_to_#{activity.id}"
-              %hr.section
-        %div{id: "pending_activities_container", class:"activitiesContainer"}
-          - @pending_activities&.sort_by{|activity| activity.created_at}.each do |activity|
-            %div{id: "activity_#{activity.id}"}
-              %p.long-line2= activity.name
-              .d-flex.justify-content-between
-                %p
-                  = activity.activity_type
-                = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), match_judge_activity_path(@match, activity.id), id: "go_to_#{activity.id}"
-              %hr.section
-        %div{id: "all_activities_container", class:"activitiesContainer"}
-          - @all_activities&.sort_by{|activity| activity.created_at}.each do |activity|
-            %div{id: "activity_#{activity.id}"}
-              %p.long-line2= activity.name
-              %p{class: activity.css_class}
-                = activity.status
-              .d-flex.justify-content-between
-                %p
-                  = activity.activity_type
-                = link_to render(partial: 'icons/arrow', locals: {custom_class: 'icon-detail'}), match_judge_activity_path(@match, activity.id), id: "go_to_#{activity.id}"
-              %hr.section
+        = render partial: 'sections'
+        = render 'form', items: @on_hold_contents, identifier:  'on_hold_activities_container'
+        - if @all_content.first.instance_of? Activity
+          = render 'form', items: @pending_contents, identifier:  'pending_activities_container'
+        = render 'form', items: @all_content, identifier:  'all_activities_container'
