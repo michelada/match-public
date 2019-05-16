@@ -200,12 +200,6 @@ en:
       project:
         repositories: "Where is your project?"
         features: "What does your project do?"
-  projects:
-    messages:
-      approved: "Project approved"
-      error_approve: "Error approving project"
-      error_unapproving: "Error unapproving project"
-      unapproved: "Project unapproved"
   poll:
     best_activity: "The best of the best"
     create_new: "Create a poll"
@@ -244,6 +238,11 @@ en:
     no_team: "You must create your team first"
     repositories: "Repositories"
     updated: "Project updated"
+    messages:
+      approved: "Project approved"
+      error_approve: "Error approving project"
+      error_unapproving: "Error unapproving project"
+      unapproved: "Project unapproved"
   uploads:
     deleted: 'File deleted'
     error_deleting: 'Error deleting file'

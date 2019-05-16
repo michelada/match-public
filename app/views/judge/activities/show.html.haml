@@ -10,7 +10,7 @@
         = link_to image_tag('ic-not-approved', class: 'check-activity approve-false', id: 'approve'),  match_judge_activity_content_approvations_path(@match, @activity), method: :post
         %label= "#{t('activities.status_approve')}"
       - else
-        = link_to image_tag('ic-checked', class: 'check-activity approve-true', id: 'disapprove'), match_judge_activity_content_approvation_path(@match, @activity), method: :delete, data: {confirm: t('actions.confirm')}
+        = link_to image_tag('ic-checked', class: 'check-activity approve-true', id: 'disapprove'), match_judge_activity_content_approvation_path(@match, @activity, @activity.status_by_user(current_user)), method: :delete, data: {confirm: t('actions.confirm')}
         %label= "#{t('activities.status_approved')}"
       %h3
         = @activity.name

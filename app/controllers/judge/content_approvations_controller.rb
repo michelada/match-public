@@ -20,8 +20,8 @@ module Judge
     end
 
     def destroy
-      @content_status = ActivityStatus.user_approve_status_activity(current_user.id, @content.id)
-      if @content_status.destroy
+      content_status = ActivityStatus.find(params[:id])
+      if content_status.destroy
         flash[:notice] = if @content.class == Activity
                            t('activities.messages.unapproved')
                          else
@@ -38,10 +38,6 @@ module Judge
     end
 
     private
-
-    def activity_status_params
-      params.permit(:activity_id)
-    end
 
     def load_status
       if params[:activity_id].present?

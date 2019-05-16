@@ -22,7 +22,7 @@ class Project < ApplicationRecord
   belongs_to :match
   belongs_to :team
 
-  enum status: %i[Por\ validar Aprobado]
+  enum status: %i[Por\ validar En\ revisión Aprobado]
 
   validate :belongs_to_project_match?
   validates :name, uniqueness: { case_sensitive: false }
@@ -36,7 +36,7 @@ class Project < ApplicationRecord
   scope :order_by_name, -> { order('name ASC') }
 
   def css_class
-    status_class = { "Por validar": 'on-hold', "Aprobado": 'approved' }
+    status_class = { "Por validar": 'on-hold', "En revisión": 'review', "Aprobado": 'approved' }
     status_class[status.to_sym]
   end
 

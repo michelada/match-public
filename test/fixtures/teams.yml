@@ -53,3 +53,9 @@ teamMatch5:
   match_id: 5
   name: Pooruby
   slug: Pooruby
+
+team_no_calidated_project:
+  id: 11
+  match_id: 6
+  name: moleTeam
+  slug: mole-tea,
