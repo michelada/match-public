@@ -1,6 +1,6 @@
 module ActivitiesHelper
   def judges_appproves(activity)
-    activity.statuses.collect { |status| status.user.email.remove('@michelada.io') }.join(', ')
+    activity.approvations.collect { |status| status.user.email.remove('@michelada.io') }.join(', ')
   end
 
   def sorted_comments(commentable)

@@ -1,27 +1,26 @@
 class MakeActivityStatusesPolymorfic < ActiveRecord::Migration[5.2]
   def up
-    rename_table :activity_statuses, :item_approves
-    add_reference :item_approves, :item, polymorphic: true, index: true
+    rename_table :activity_statuses, :content_approvations
+    add_reference :content_approvations, :content, polymorphic: true, index: true
 
-    ActivityStatus.all.each do |item|
-      item.item_type = 'Activity'
-      item.item_id = item.activity_id
-      item.save!
+    ActivityStatus.all.each do |content_status|
+      content_status.content = Activity.find(content_status.activity_id)
+      content_status.save!
     end
 
-    remove_column :item_approves, :activity_id
+    remove_column :content_approvations, :activity_id
   end
 
   def down
-    add_column :item_approves, :activity_id, :integer
-    add_index :item_approves, :activity_id
+    add_column :content_approvations, :activity_id, :integer
+    add_index :content_approvations, :activity_id
 
-    ActivityStatus.all.each do |item_approvation|
-      item_approvation.activity_id = item_approvation.item_id
-      item_approvation.save!
+    ActivityStatus.all.each do |content_status|
+      content_status.activity_id = content_status.content_id
+      content_status.save!
     end
-    remove_column :item_approves, :item_id
-    remove_column :item_approves, :item_type
-    rename_table :item_approves, :activity_statuses
+    remove_column :content_approvations, :content_id
+    remove_column :content_approvations, :content_type
+    rename_table :content_approvations, :activity_statuses
   end
 end

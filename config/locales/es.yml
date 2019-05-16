@@ -203,6 +203,12 @@ es:
     project:
       repositories: "¿Dónde está tu proyecto?"
       features: "¿Qué hace?"
+  projects:
+    messages:
+      approved: "Proyecto aprobado"
+      error_approve: "Error aprobando actividad"
+      error_unapproving: "Error desaprobando actividad"
+      unapproved: "Proyecto desaprobado"
   poll:
     best_activity: "Lo mejor de lo mejor"
     create_new: "Nueva votación"

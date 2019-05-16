@@ -14,7 +14,7 @@ class JudgeActivityTest < ApplicationSystemTestCase
 
     visit match_judge_main_index_path(@match)
     find("a[href='/match/#{@match.id}/judge/activities/#{activity.id}']").click
-    find("a[href='/match/#{@match.id}/judge/activities/#{activity.slug}/activity_status']").click
+    find("a[href='/match/#{@match.id}/judge/activities/#{activity.slug}/content_approvations']").click
 
     assert page.has_content?(I18n.t('activities.messages.approved'))
   end
@@ -24,7 +24,7 @@ class JudgeActivityTest < ApplicationSystemTestCase
     visit match_judge_main_index_path(@match)
     find("a[href='#all_activities_container']").click
     find("a[href='/match/#{@match.id}/judge/activities/#{activity.id}']").click
-    find("a[href='/match/#{@match.id}/judge/activities/#{activity.slug}/activity_status/#{activity.id}']").click
+    find("a[href='/match/#{@match.id}/judge/activities/#{activity.slug}/content_approvations/#{activity.id}']").click
     page.driver.browser.switch_to.alert.accept
 
     assert page.has_content?(I18n.t('activities.messages.unapproved'))
