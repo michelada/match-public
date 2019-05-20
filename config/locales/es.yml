@@ -46,6 +46,14 @@ es:
       not_black: "Los campos no pueden estar en blanco"
     status_approve: "Aprobada"
     status_unapprove: "Desaprobada"
+  api:
+    errors:
+      no_activities: "No hay actividades"
+      no_content_match: "No hay actividades en este match"
+      no_teams_created: "No hay equipos creados"
+    team: "Equipo %{team}, %{activity_type}"
+    score: "%{score} puntos"
+    winner: "Ganador: %{team}"
   buttons:
     actions: "Acciones"
     add: "Agregar"

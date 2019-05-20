@@ -1,7 +1,9 @@
 module Api
   class ApiService
     def top_teams_format(teams)
-      response = obtain_base_object.clone
+      return numerics_top_list_data if teams.empty?
+
+      response = numerics_top_list_data.clone
       response['data'] = []
       teams.each do |team|
         response['data'].push(
@@ -13,20 +15,24 @@ module Api
     end
 
     def winner_team(team)
-      response = obtain_label_object.clone
+      return numerics_top_list_data if team.nil?
+
+      response = numerics_label_data.clone
       response['data'] = []
-      response['postfix'] = "Score #{team&.first&.score}"
+      response['postfix'] = I18n.t('api.score', score: team&.score)
       response['data'] = {
-        value: team.first.name
+        value: I18n.t('api.winner', team: team.name)
       }
       response.to_json
     end
 
     def last_activity_format(activity)
+      return numerics_label_data if activity.nil?
+
       activity_type = activity.activity_type == 'Post' ? 'Post' : get_activity_type_en(activity.activity_type)
-      response = obtain_label_object.clone
+      response = numerics_label_data.clone
       response['data'] = []
-      response['postfix'] = "Team #{activity.user.current_team&.name} - #{activity_type}"
+      response['postfix'] = I18n.t('api.team', team: activity.user.current_team.name, activity_type: activity_type)
       response['data'] = {
         value: activity.name
       }
@@ -34,9 +40,9 @@ module Api
     end
 
     def top_activities_format(activity)
-      response = obtain_base_object.clone
+      response = numerics_top_list_data.clone
       response['data'] = []
-      response['valueNameHeader'] = 'Activities'
+      response['valueNameHeader'] = I18n.t('activities.title')
       response['valueHeader'] = 'TOP 3'
       activity.each_with_index do |activities, index|
         response['data'].push(
@@ -47,36 +53,40 @@ module Api
       response.to_json
     end
 
+    def project_match_message
+      response = numerics_label_data.clone
+      response['data'] = []
+      response['postfix'] = I18n.t('api.errors.no_content_match')
+      response['data'] = I18n.t('api.errors.no_content_match')
+      response.to_json
+    end
+
     private
 
     def get_activity_type_en(activity_type)
       activity_type == 'Curso' ? 'Course' : 'Talk'
     end
 
-    def obtain_base_object
+    def numerics_top_list_data
       {
         "valueNameHeader": 'TEAMS',
         "valueHeader": 'TOP 5',
         "color": 'red',
         "data": [
           {
-            "name": 'Jean-Luc Picard',
-            "value": 1450
-          },
-          {
-            "name": 'James Kirk',
-            "value": 350
+            "name": I18n.t('api.errors.no_teams_created'),
+            "value": 0
           }
         ]
       }
     end
 
-    def obtain_label_object
+    def numerics_label_data
       {
-        "postfix": 'MyUnits',
+        "postfix": 'Activities',
         "color": 'blue',
         "data": {
-          "value": 1234
+          "value": I18n.t('api.errors.no_activities')
         }
       }
     end
