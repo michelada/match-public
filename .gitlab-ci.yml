@@ -1,7 +1,10 @@
-test:
-  script:
-    - rails test
-
+before_script:
+  - ruby -v
+  - which ruby
+  - gem install bundler --no-document
+  - bundle install --quiet
+  - bundle exec rake db:migrate --quiet
+  - bundle exec rake db:test:prepare --quiet
 rubocop:
   script:
-    - rubocop
+    - bundle exec rubocop

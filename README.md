@@ -1,3 +1,4 @@
+![Build Status](<project_url>/badges/<branch_name>/build.svg)
 # README
 
 This README would normally document whatever steps are necessary to get the
