@@ -1,0 +1,20 @@
+-if @activity.english
+  %h6.text.red= t('labels.english')
+  %p
+    - if @activity.english_approve
+      = image_tag('ic-checked', class: "check-activity approve-#{@activity.english_approve}")
+    - else
+      = image_tag('ic-not-approved', class: "check-activity approve-#{@activity.english_approve}")
+    %label= t('labels.english')
+%h6.text.red= t('labels.events')
+- unless @activity.locations.empty?
+  %ul
+    - @activity.locations&.each do |events|
+      %li
+        -if events.approve
+          = image_tag('ic-checked', class: "approve-#{events.approve} check-activity")
+        -else
+          = image_tag('ic-not-approved', class: "approve-#{events.approve} check-activity")
+        %label= "#{events.name}"
+- else
+  %p= t('labels.not_location')

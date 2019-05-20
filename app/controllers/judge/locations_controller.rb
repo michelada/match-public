@@ -7,7 +7,7 @@ module Judge
       activity.update_attributes(name: activity.name)
       message = location.approve ? t('labels.location_approved') : t('labels.location_unapproved')
       flash[:notice] = message
-      redirect_to match_judge_activity_path(@match, activity)
+      redirect_to match_activity_path(@match, activity)
     end
   end
 end

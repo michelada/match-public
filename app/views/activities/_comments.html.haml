@@ -1,0 +1,16 @@
+- sorted_comments(@activity).each_with_index do |feedback, i|
+  %div{:id => "com_#{i}", class: 'comment'}
+    %h6.gray.d-flex.justify-content-between{class: feedback.user.judge? ? 'judge' : 'regular'}
+      = user_name(feedback.user)
+      - if feedback.user == current_user
+        .original_comment
+          %input{type: 'hidden', value: feedback.comment, id: "originalText_#{i}"}
+        .edit_comment
+          = link_to t('buttons.edit'), '#', :id => "#{i}"
+        .form_data
+          %input{ type: 'hidden', id: "commentId#{i}", value: "#{@activity.id}"}
+          %input{ type: 'hidden', id: "feedbackId#{i}", value: "#{feedback.id}"}
+    .comment-content
+      %p{ class: 'gray', id: "comment_#{i}", class: 'mt-3'}
+        = markdown(feedback.comment, feedback.file)
+      %textarea{ value: "#{feedback.comment}", hidden: true, id: "editor_#{i}", class: 'input-text mb-0 mt-2'}

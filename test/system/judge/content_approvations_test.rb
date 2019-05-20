@@ -12,7 +12,7 @@ class ContentApprovationsTest < ApplicationSystemTestCase
     activity = activities(:ruby_as_day_to_day)
 
     visit match_judge_main_index_path(match)
-    find("a[href='/match/#{match.id}/judge/activities/#{activity.id}']").click
+    find("a[href='/match/#{match.id}/activities/#{activity.id}']").click
     find("a[href='/match/#{match.id}/judge/activities/#{activity.slug}/content_approvations']").click
 
     assert page.has_content?(I18n.t('activities.messages.approved'))
@@ -27,7 +27,7 @@ class ContentApprovationsTest < ApplicationSystemTestCase
 
     visit match_judge_main_index_path(match)
     find("a[href='#all_activities_container']").click
-    find("a[href='/match/#{match.id}/judge/activities/#{activity.id}']").click
+    find("a[href='/match/#{match.id}/activities/#{activity.id}']").click
     find("a[href='/match/#{match.id}/judge/activities/#{activity.slug}/content_approvations/#{activity_approvation.id}']").click
     page.driver.browser.switch_to.alert.accept
 

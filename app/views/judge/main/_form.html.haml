@@ -1,5 +1,5 @@
 %div{id: identifier, class:"activitiesContainer"}
-  - items&.each do |content|
+  - all_content&.each do |content|
     %div{id: "activity_#{content.id}"}
       %p.long-line2= content.name
       %p{class: content.css_class}
