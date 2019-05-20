@@ -5,6 +5,29 @@ before_script:
   - bundle install --quiet
   - bundle exec rake db:migrate --quiet
   - bundle exec rake db:test:prepare --quiet
+
+stages:
+  - lint
+  - test
+
 rubocop:
+  stage: lint
   script:
     - bundle exec rubocop
+
+unit:
+  stage: test
+  script:
+    - cp config/database.ci.yml config/database.yml
+    - bundle exec rake db:create RAILS_ENV=test
+    - bundle exec rake db:test:prepare RAILS_ENV=test
+    - SIMPLECOV_NAME=test bundle exec rake test
+
+system:
+  stage: test
+  script:
+    - cp config/database.ci.yml config/database.yml
+    - bundle exec rake db:create RAILS_ENV=test
+    - bundle exec rake db:test:prepare RAILS_ENV=test
+    - SIMPLECOV_NAME=system bundle exec rake test:system
+
