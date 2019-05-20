@@ -27,7 +27,7 @@ class Activity < ApplicationRecord
   belongs_to :user
   has_many :feedbacks, as: :commentable, dependent: :destroy
   has_many :locations, dependent: :destroy
-  has_many :statuses, as: :item, dependent: :destroy
+  has_many :approvations, as: :content, dependent: :destroy, class_name: 'ActivityStatus'
   has_many :votes,  as: :content, dependent: :destroy
   has_many_attached :files, dependent: :destroy
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :created_whithout_name
@@ -129,7 +129,7 @@ class Activity < ApplicationRecord
   end
 
   def status_by_user(user)
-    statuses.find_by(user: user)
+    approvations.find_by(user: user)
   end
 
   def update_score

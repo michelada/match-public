@@ -22,21 +22,21 @@ class Project < ApplicationRecord
   belongs_to :match
   belongs_to :team
 
-  enum status: %i[Por\ validar Aprobado]
+  enum status: %i[Por\ validar En\ revisión Aprobado]
 
   validate :belongs_to_project_match?
   validates :name, uniqueness: { case_sensitive: false }
   validates :name, :description, :features, presence: true
   scope :order_by_name, -> { group_by(:status) }
   has_many :feedbacks, as: :commentable, dependent: :destroy
-  has_many :statuses, as: :item, dependent: :destroy, class_name: 'ActivityStatus'
+  has_many :approvations, as: :content, dependent: :destroy, class_name: 'ActivityStatus'
   has_many :votes, as: :content, dependent: :destroy
 
   before_update :match_valid?
   scope :order_by_name, -> { order('name ASC') }
 
   def css_class
-    status_class = { "Por validar": 'on-hold', "Aprobado": 'approved' }
+    status_class = { "Por validar": 'on-hold', "En revisión": 'review', "Aprobado": 'approved' }
     status_class[status.to_sym]
   end
 
@@ -50,6 +50,10 @@ class Project < ApplicationRecord
 
   def should_generate_new_friendly_id?
     name_changed?
+  end
+
+  def status_by_user(user)
+    approvations.find_by(user: user)
   end
 
   def users

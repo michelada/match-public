@@ -5,7 +5,10 @@ module Judge
     layout 'application'
 
     def user_is_judge
-      redirect_to main_index_path if current_user.role != 'judge'
+      return if current_user.judge?
+
+      flash[:alert] = t('activities.messages.not_permitted')
+      redirect_to root_path
     end
   end
 end

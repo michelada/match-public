@@ -13,7 +13,7 @@
 class Poll < ApplicationRecord
   belongs_to :match
   has_many :votes, dependent: :destroy
-  has_many :projects, -> { where(status: 1) }, through: :match
+  has_many :projects, -> { where(status: 2) }, through: :match
   has_many :activities, through: :match
   has_many :users, through: :activities
   has_many :teams, through: :users
@@ -34,22 +34,6 @@ class Poll < ApplicationRecord
   validates :start_date, :end_date, presence: true
   validate :valid_date_range
 
-  def voted_for_activity_type?(activity, user)
-    votes.where(user: user)
-         .joins('inner join activities on activities.id = votes.content_id')
-         .where(activities: { activity_type: Activity.activity_types.fetch(activity.activity_type) })
-         .any?
-  end
-
-  def user_has_voted?(user)
-    votes.where(user: user).present?
-  end
-
-  def can_vote?
-    actual_date = Time.now.in_time_zone('Mexico City').to_date
-    end_date >= actual_date && start_date <= actual_date
-  end
-
   def activities_by_type
     activities.includes(:votes)
               .where(status: 2)
@@ -57,12 +41,28 @@ class Poll < ApplicationRecord
               .group_by(&:activity_type)
   end
 
-  def user_votes(user)
-    votes.where(user: user)
+  def can_vote?
+    actual_date = Time.now.in_time_zone('Mexico City').to_date
+    end_date >= actual_date && start_date <= actual_date
   end
 
   def judge_votes
     votes.where(user: { role: 1 })
+  end
+
+  def user_has_voted?(user)
+    votes.where(user: user).present?
+  end
+
+  def user_votes(user)
+    votes.where(user: user)
+  end
+
+  def voted_for_activity_type?(activity, user)
+    votes.where(user: user)
+         .joins('inner join activities on activities.id = votes.content_id')
+         .where(activities: { activity_type: Activity.activity_types.fetch(activity.activity_type) })
+         .any?
   end
 end
 

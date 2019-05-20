@@ -11,21 +11,19 @@
 #
 
 class ActivityStatus < ApplicationRecord
-  self.table_name = 'item_approves'
-  belongs_to :item, polymorphic: true
+  self.table_name = 'content_approvations'
+  belongs_to :content, polymorphic: true
   belongs_to :user
   after_create :verify_general_status
   after_destroy :verify_general_status
-  scope :user_approve_status_activity, ->(user, item) { where(item_id: item, user_id: user).first }
-  scope :approves_in_activity, ->(item) { where(item_id: item, approve: true, item_type: item.class) }
+  scope :user_approve_status_activity, ->(user, item) { where(content_id: item, user_id: user).first }
+  scope :approves_in_activity, ->(item) { where(content_id: item, approve: true, content_type: item.class) }
 
   def verify_general_status
-    return if item.class != Activity
-
-    if item.statuses.count == 3
-      item.update_attributes(status: 2)
+    if content.approvations.count == 3
+      content.update_attributes(status: 2)
     else
-      item.update_attributes(status: 1)
+      content.update_attributes(status: 1)
     end
   end
 end

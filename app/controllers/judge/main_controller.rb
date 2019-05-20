@@ -13,7 +13,7 @@ module Judge
     end
 
     def initialize_projects
-      @on_hold_contents = @match.projects.where(status: 0)
+      @on_hold_contents = @match.projects.where.not(status: 2)
       @all_content = @match.projects.order_by_name
     end
   end

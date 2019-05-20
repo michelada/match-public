@@ -25,19 +25,25 @@ simple_project:
   team_id: 2
   created_at: <%= Date.today - 1.week%>
   match_id: 2
+  slug: mystring
 
 simple_project2:
+  id: 1
   name: Simple project
   description: Description
-  repositories: <<~ HEREDOC
-                repository1.com
-                repository2.io
-                HEREDOC
-  features: <<~ HEREDOC
-            looks cool
-            is tall
-            and tan
-            HEREDOC
+  repositories: "Gitlag repo, GitHub repo"
+  features: "Log up, Log in"
   team_id: 10
   created_at: <%= Date.today - 1.week%>
   match_id: 6
+  slug: simple-project
+
+project_no_validated:
+  name: No validated project
+  description: Description
+  repositories: "Gitlag repo, GitHub repo"
+  features: "Log up, Log in"
+  team_id: 11
+  created_at: <%= Date.today%>
+  match_id: 6
+  slug: no-validated-project

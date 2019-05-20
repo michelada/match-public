@@ -241,6 +241,11 @@ es:
     no_team: "Debes crear primero tu equipo"
     repositories: "Repositorios"
     updated: "Proyecto actualizado"
+    messages:
+      approved: "Proyecto aprobado"
+      error_approve: "Error aprobando proyecto"
+      error_unapproving: "Error desaprobando proyecto"
+      unapproved: "Proyecto desaprobado"
   uploads:
     deleted: 'Archivo eliminado'
     error_deleting: 'Error eliminando el archivo'

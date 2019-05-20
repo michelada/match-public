@@ -7,8 +7,7 @@ class JudgeTest < ApplicationSystemTestCase
   end
 
   test 'judge can visit her main menu' do
-    @judge = users(:judge_user)
-    login_as @judge
+    login_as users(:judge_user)
     visit match_main_index_path(@match)
   end
 end
