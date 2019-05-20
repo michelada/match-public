@@ -1,5 +1,8 @@
 image: ruby:2.5.3
 
+services:
+  - postgres
+
 before_script:
   - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
   - ruby -v
