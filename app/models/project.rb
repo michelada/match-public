@@ -28,6 +28,7 @@ class Project < ApplicationRecord
   validates :name, uniqueness: { case_sensitive: false }
   validates :name, :description, :features, presence: true
   scope :order_by_name, -> { group_by(:status) }
+  scope :sort_by_creation, -> { order('created_at DESC') }
   has_many :feedbacks, as: :commentable, dependent: :destroy
   has_many :approvations, as: :content, dependent: :destroy, class_name: 'ActivityStatus'
   has_many :votes, as: :content, dependent: :destroy

@@ -27,16 +27,22 @@ class Match < ApplicationRecord
 
   scope :active_match, -> { where('? BETWEEN start_date AND end_date', Date.today) }
 
-  def content_match?
-    Content?
+  def active?
+    actual_date = Date.today.in_time_zone('Mexico City')
+    (start_date..end_date).cover?(actual_date)
   end
 
-  def project_match?
-    Project?
+  def assign_version
+    latest_version = Match.where(match_type: match_type).max_by(&:version)&.version || 0
+    self.version = latest_version + 1
   end
 
   def dates_match?
     errors.add(:end_date, I18n.t('errors.end_date_invalid')) if start_date > end_date
+  end
+
+  def content_match?
+    Content?
   end
 
   def create_poll
@@ -56,6 +62,10 @@ class Match < ApplicationRecord
     end
   end
 
+  def last_three_activities
+    activities.order(created_at: :desc).limit(3)
+  end
+
   def leader_team
     teams.max_by(&:score)
   end
@@ -64,29 +74,29 @@ class Match < ApplicationRecord
     teams.sort_by(&:score).reverse&.first(teams_number)
   end
 
-  def assign_version
-    latest_version = Match.where(match_type: match_type).max_by(&:version)&.version || 0
-    self.version = latest_version + 1
+  def pending_user_approves(user)
+    if content_match?
+      activities.where.not(name: activities.joins(:approvations)
+                                           .where(content_approvations: { user_id: user.id }).pluck(:name))
+    else
+      projects.where.not(name: projects.joins(:approvations)
+                                       .where(content_approvations: { user_id: user.id }).pluck(:name))
+    end
+  end
+
+  def project_match?
+    Project?
   end
 
   def teams_by_score
     teams.sort_by(&:score).reverse!
   end
 
-  def winner_team
-    teams.max_by(&:score)
-  end
-
-  def last_three_activities
-    activities.order(created_at: :desc).limit(3)
-  end
-
   def total_score
     activities.where(status: 2).sum(:score)
   end
 
-  def active?
-    actual_date = Date.today.in_time_zone('Mexico City')
-    (start_date..end_date).cover?(actual_date)
+  def winner_team
+    teams.max_by(&:score)
   end
 end
