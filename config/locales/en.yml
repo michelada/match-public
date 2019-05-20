@@ -46,6 +46,14 @@ en:
       other_blank: "This field can't be blank"
     status_approve: "Approved"
     status_unapprove: "Unapproved"
+  api:
+    errors:
+      no_activities: "There are not activities"
+      no_content_match: "There are not activities in this match"
+      no_teams_created: "There are not teams in this match yet"
+    team: "Team %{team}, %{activity_type}"
+    score: "%{score} points"
+    winner: "Winner: %{team}"
   buttons:
     actions: "Actions"
     add: "Add"
