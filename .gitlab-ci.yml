@@ -11,10 +11,9 @@ before_script:
   - ruby -v
   - which ruby
   - gem install bundler  --no-document
-  - bundle check || bundle install --jobs $(nproc)
   - apt-get update -yq
   - apt-get install -y nodejs
-
+  - bundle check || bundle install --jobs $(nproc)
 
 stages:
   - lint
