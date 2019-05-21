@@ -29,7 +29,7 @@ tests:
     - cp config/database.ci.yml config/database.yml
     - RAILS_ENV=test bundle exec rake db:create
     - RAILS_ENV=test bundle exec rake db:test:prepare
-    - bundle exec rails test -d
+    - SIMPLECOV_NAME=test bundle exec rake test
 
 system Tests:
   stage: test
@@ -37,4 +37,4 @@ system Tests:
     - cp config/database.ci.yml config/database.yml
     - RAILS_ENV=test bundle exec rake db:create
     - RAILS_ENV=test bundle exec rake db:test:prepare
-    - bundle exec rails test:system
+    - SIMPLECOV_NAME=system bundle exec rake test:system
