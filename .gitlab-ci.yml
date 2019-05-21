@@ -12,10 +12,6 @@ before_script:
   - ruby -v
   - which ruby
   - gem install bundler --no-document
-  - bundle check || bundle install --jobs $(nproc)
-  - cp config/database.ci.yml config/database.yml
-  - RAILS_ENV=test bundle exec rake db:create
-  - RAILS_ENV=test bundle exec rake db:test:prepare
 
 stages:
   - lint
@@ -29,10 +25,17 @@ rubocop:
 tests:
   stage: test
   script:
+    - bundle check || bundle install --jobs $(nproc)
+    - cp config/database.ci.yml config/database.yml
+    - RAILS_ENV=test bundle exec rake db:create
+    - RAILS_ENV=test bundle exec rake db:test:prepare
     - bundle exec rails test -d
 
 system Tests:
   stage: test
   script:
-    - ./bin/setup_chrome
+    - bundle check || bundle install --jobs $(nproc)
+    - cp config/database.ci.yml config/database.yml
+    - RAILS_ENV=test bundle exec rake db:create
+    - RAILS_ENV=test bundle exec rake db:test:prepare
     - bundle exec rails test:system

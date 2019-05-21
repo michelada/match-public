@@ -52,7 +52,7 @@ group :test do
 end
 
 group :production, :staging do
-  gem 'aws-sdk'
+  gem 'aws-s3'
   gem 'pg'
 end
 
