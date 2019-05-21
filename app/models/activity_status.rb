@@ -20,7 +20,13 @@ class ActivityStatus < ApplicationRecord
   scope :approves_in_activity, ->(item) { where(content_id: item, approve: true, content_type: item.class) }
 
   def verify_general_status
-    if content.approvations.count == 3
+    if content.class == Activity
+      if content.approvations.count == 3
+        content.update_attributes(status: 2)
+      else
+        content.update_attributes(status: 1)
+      end
+    elsif content.approvations.count == 5
       content.update_attributes(status: 2)
     else
       content.update_attributes(status: 1)
