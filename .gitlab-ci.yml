@@ -14,7 +14,10 @@ before_script:
   - apt-get update -yq
   - apt-get install -y apt-transport-https build-essential cmake nodejs
   - bundle check || bundle install --jobs $(nproc)
+  - gem update --system
   - gem install bundler --no-document
+  - bundler update --bundler
+
 
 stages:
   - lint
