@@ -8,14 +8,14 @@ variables:
   DB_HOST: postgres
 
 before_script:
-  - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
+  - apt-get update -qq && apt-get install -y -qq nodejs
   - ruby -v
   - which ruby
   - gem install bundler --no-document
   - bundle check || bundle install --jobs $(nproc)
   - cp config/database.ci.yml config/database.yml
   - RAILS_ENV=test bundle exec rake db:create
-  - RAILS_ENV=test bundle exec rake db:migrate
+  - RAILS_ENV=test bundle exec rake db:test:prepare
 
 stages:
   - lint
@@ -26,31 +26,13 @@ rubocop:
   script:
     - bundle exec rubocop
 
-Tests:
+tests:
   stage: test
   script:
     - bundle exec rails test -d
 
-System Tests:
+system Tests:
   stage: test
   script:
     - ./bin/setup_chrome
     - bundle exec rails test:system
-
-
-# unit:
-#   stage: test
-#   script:
-#     - cp config/database.ci.yml config/database.yml
-#     - bundle exec rake db:create RAILS_ENV=test
-#     - bundle exec rake db:test:prepare RAILS_ENV=test
-#     - SIMPLECOV_NAME=test bundle exec rake test
-
-# system:
-#   stage: test
-#   script:
-#     - cp config/database.ci.yml config/database.yml
-#     - bundle exec rake db:create RAILS_ENV=test
-#     - bundle exec rake db:test:prepare RAILS_ENV=test
-#     - SIMPLECOV_NAME=system bundle exec rake test:system
-
