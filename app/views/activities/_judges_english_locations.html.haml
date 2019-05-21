@@ -1,0 +1,19 @@
+-if @activity.english
+  %h6.text.red= t('labels.english')
+  %p
+    - if @activity.english_approve
+      = link_to image_tag('ic-checked', class: "check-activity approve-#{@activity.english_approve}"), match_judge_activity_path(@match, @activity), method: :patch
+    - else
+      = link_to image_tag('ic-not-approved', class: "check-activity approve-#{@activity.english_approve}"), match_judge_activity_path(@match, @activity), method: :patch
+%h6.text.red= t('labels.events')
+- unless @activity.locations.empty?
+  %ul
+    - @activity.locations&.each do |events|
+      %li
+        -if events.approve
+          = link_to image_tag('ic-checked', class: "check-activity approve-#{events.approve}"), match_judge_activity_location_path(@match, @activity, events), method: :patch
+        -else
+          = link_to image_tag('ic-not-approved', class: "check-activity approve-#{events.approve}"), match_judge_activity_location_path(@match, @activity, events), method: :patch
+        %label= "#{events.name}"
+- else
+  %p= t('labels.not_location')

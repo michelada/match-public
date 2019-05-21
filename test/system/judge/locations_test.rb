@@ -11,7 +11,7 @@ class LocationsTest < ApplicationSystemTestCase
   test 'judge user can validate a location' do
     activity = activities(:activity_talk)
 
-    visit match_judge_activity_path(@match, activity)
+    visit match_activity_path(@match, activity)
     find("a[href='/match/#{@match.id}/judge/activities/#{activity.slug}/locations/#{activity.locations.first.id}']").click
     assert page.has_content?(I18n.t('labels.location_approved'))
   end
@@ -19,7 +19,7 @@ class LocationsTest < ApplicationSystemTestCase
   test 'judge can unapprove an activity location' do
     activity = activities(:activity_workshop)
 
-    visit match_judge_activity_path(@match, activity)
+    visit match_activity_path(@match, activity)
     find("a[href='/match/#{@match.id}/judge/activities/#{activity.slug}/locations/#{activity.locations.first.id}']").click
     assert page.has_content?(I18n.t('labels.location_unapproved'))
   end

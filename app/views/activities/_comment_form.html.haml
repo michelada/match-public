@@ -1,0 +1,18 @@
+= simple_form_for [ @match, @activity, @feedback] do |f|
+  = f.text_area :comment, label: t('comments.create'), placeholder: t('placeholders.comment'), input_html: { class: 'input-text mt-4'}, required: false
+  .comment-actions
+    %ul
+      %li#boldButton
+        = link_to t('buttons.markdown.bold'), ''
+      %li#italicButton
+        = link_to t('buttons.markdown.italic'), ''
+      %li#codeButton
+        = link_to t('buttons.markdown.code'), ''
+      %li#linkButton
+        = link_to t('buttons.markdown.link'), ''
+      %li#quoteButton
+        = link_to t('buttons.markdown.quote'), ''
+      %li#listButton
+        = link_to t('buttons.markdown.list'), ''
+  = f.file_field :file, class:'inputfile', accept: '.jpg,.png,.jpeg'
+  = f.button :submit, t('comments.create'), class: 'button'

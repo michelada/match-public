@@ -11,7 +11,7 @@ class CommentTest < ApplicationSystemTestCase
   test 'judge can leave a comment on the activity' do
     activity = activities(:activity_workshop)
 
-    visit match_judge_activity_path(@match, activity)
+    visit match_activity_path(@match, activity)
     fill_in 'feedback[comment]', with: 'Looks like this is a fantastic activity'
     find('input[name="commit"]').click
 
@@ -21,7 +21,7 @@ class CommentTest < ApplicationSystemTestCase
   test 'judge can edit a comment' do
     activity = activities(:activity_workshop)
 
-    visit match_judge_activity_path(@match, activity)
+    visit match_activity_path(@match, activity)
     fill_in 'feedback[comment]', with: 'Looks like this is a fantastic activity'
     find('input[name="commit"]').click
     page.find("a[href='#']", visible: :all).click
