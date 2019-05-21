@@ -12,10 +12,10 @@ before_script:
   - ruby -v
   - which ruby
   - gem install bundler --no-document
-  - bundle install --quiet
+  - bundle check || bundle install --jobs $(nproc)
+  - cp config/database.yml.ci config/database.yml
   - bundle exec rails db:create RAILS_ENV=test
   - bundle exec rails db:schema:load RAILS_ENV=test
-  - bundle exec webpack
 
 stages:
   - lint
@@ -30,6 +30,7 @@ Tests:
   stage: test
   script:
     - bundle exec rails test -d
+
 System Tests:
   stage: test
   script:
