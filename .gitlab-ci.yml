@@ -8,13 +8,20 @@ variables:
   DB_HOST: postgres
 
 before_script:
-  - ruby -v
-  - which ruby
+  # Install node and some other deps
   - curl -sL https://deb.nodesource.com/setup_8.x | bash -
   - apt-get update -yq
-  - apt-get install -y apt-transport-https build-essential cmake nodejs
+  - apt-get install -y apt-transport-https build-essential cmake nodejs python-software-properties software-properties-common unzip
+  # Install yarn
+  - wget -q -O - https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+  - echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+  - apt-get update -yq
+  - apt-get install -y yarn
+# Project setup
+  # Check if the dependencies are ok, if not install what is missing
   - bundle check || bundle install --jobs $(nproc)
-  - gem install bundler --no-document
+  - yarn install
+
 
 stages:
   - lint
