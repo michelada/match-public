@@ -6,6 +6,6 @@ default: &default
   host: <%= ENV['DB_HOST'] %>
   pool: 5
 
-  test:
-    <<: *default
-    database: mcm_test
+test:
+  <<: *default
+  database: mcm_test
