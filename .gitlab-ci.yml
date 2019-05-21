@@ -12,7 +12,7 @@ before_script:
   - which ruby
   - gem install bundler  --no-document
 #   - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-  - sudo apt-get install -y nodejs
+#   - sudo apt-get install -y nodejs
   - apt-get update -yq
 #   - apt-get install -y nodejs
   - node -v
