@@ -1,9 +1,8 @@
 default: &default
   adapter: postgresql
-
-test:
-  <<: *default
-  Host: postgres
-  User: runner
-  Password:
-  Database: mcm_test
+  encoding: unicode
+  username: postgres
+  password: postgres
+  host: <%= ENV['DB_HOST'] %>
+  pool: 5
+  database: mcm_michelada
