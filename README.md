@@ -1,3 +1,4 @@
+[![pipeline status](https://git.michelada.io/michelada/mcm.michelada/badges/development/pipeline.svg)](https://git.michelada.io/michelada/mcm.michelada/commits/development)
 # README
 
 This README would normally document whatever steps are necessary to get the
