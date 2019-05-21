@@ -8,11 +8,13 @@ variables:
   DB_HOST: postgres
 
 before_script:
-  - apt-get update -qq && apt-get install -y -qq nodejs
   - ruby -v
   - which ruby
-  - gem install bundler --no-document
+  - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+  - apt-get update -yq
+  - apt-get install -y apt-transport-https build-essential cmake nodejs
   - bundle check || bundle install --jobs $(nproc)
+  - gem install bundler --no-document
 
 stages:
   - lint
