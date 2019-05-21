@@ -5,4 +5,7 @@ default: &default
   password: postgres
   host: <%= ENV['DB_HOST'] %>
   pool: 5
-  database: mcm_michelada
+
+  test:
+    <<: *default
+    database: mcm_test
