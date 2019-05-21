@@ -13,7 +13,7 @@ before_script:
   - which ruby
   - gem install bundler --no-document
   - bundle check || bundle install --jobs $(nproc)
-  - cp config/database.yml.ci config/database.yml
+  - cp config/database.ci.yml config/database.yml
   - bundle exec rails db:create RAILS_ENV=test
   - bundle exec rails db:schema:load RAILS_ENV=test
 
