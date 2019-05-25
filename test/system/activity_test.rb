@@ -21,7 +21,7 @@ class ActivityTest < ApplicationSystemTestCase
     fill_in 'activity[pitch_audience]', with: 'Test location'
     fill_in 'activity[abstract_outline]', with: 'Test location'
     attach_file 'activity[files][]', [fixture_files_path + 'Curso introductorio Android Studio.pdf',
-                                      fixture_files_path + 'evidence.PNG']
+                                      fixture_files_path + 'evidence.png']
     fill_in 'add_location_input', with: 'Test location'
     find(:css, "input[id$='add_location_input']").native.send_keys(:enter)
     fill_in 'activity[notes]', with: 'https://www.google.com/'
@@ -119,8 +119,8 @@ class ActivityTest < ApplicationSystemTestCase
   test 'user can delete a file from activity edition' do
     activity = activities(:ruby_as_day_to_day)
     activity.update_attributes(user: @user)
-    activity.files.attach(io: File.open("#{Rails.root}/test/fixtures/files/evidence.PNG"),
-                          filename: 'evidence.PNG',
+    activity.files.attach(io: File.open("#{Rails.root}/test/fixtures/files/evidence.png"),
+                          filename: 'evidence.png',
                           content_type: 'image/png')
     activity.save!
     file = activity.files.first
