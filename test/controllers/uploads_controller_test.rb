@@ -3,7 +3,7 @@ require 'test_helper'
 class UploadsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @activity = activities(:ruby_as_day_to_day)
-    @activity.files.attach(io: File.open("#{Rails.root}/test/fixtures/files/evidence.PNG"), filename: 'evidence.PNG', content_type: 'image/png')
+    @activity.files.attach(io: File.open("#{Rails.root}/test/fixtures/files/evidence.png"), filename: 'evidence.png', content_type: 'image/png')
     @activity.save!
     @file = @activity.files.first
     @match = @activity.match
