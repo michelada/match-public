@@ -52,12 +52,7 @@ group :test do
 end
 
 group :production, :staging do
-  gem 'aws-s3'
   gem 'pg'
-end
-
-group :production do
-  gem 'sentry-raven'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
