@@ -30,14 +30,14 @@ class LoginTest < ApplicationSystemTestCase
   end
 
   test 'users email is valid if it is part of @michelada domain' do
-    skip
     visit new_user_registration_path
 
     fill_in 'user[email]', with: 'new_normal_user@michelada.io'
     fill_in 'user[password]', with: '123456'
     fill_in 'user[password_confirmation]', with: '123456'
     click_button 'Registrarse'
-    assert page.has_content?('Bienvenido! Te has registrado correctamente.')
+
+    assert page.has_content?('Bienvenido')
   end
 
   test 'users email is invalid if it is not part of @michelada domain' do
@@ -48,7 +48,7 @@ class LoginTest < ApplicationSystemTestCase
     fill_in 'user[password_confirmation]', with: '123456'
 
     click_button 'Registrarse'
-    assert page.has_content?(I18n.t('activerecord.errors.models.user.attributes.email.invalid'))
+    assert page.has_content?('E-mail no válido')
   end
 
   test 'user can logout' do
